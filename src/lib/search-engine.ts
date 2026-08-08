@@ -5,7 +5,7 @@ import type { SearchResult, SearchFilters, SearchResponse, Website, Language, Su
 import { getPublicWebsites, addSearchQuery, getWebsiteById } from './db';
 import { cache } from './cache';
 import { findClosestMatch, resolveMoviePoster, slugify } from './utils';
-import { websiteToStreamingSource } from './website-capabilities';
+import { websiteToStreamingSource, websitesForCategory } from './website-capabilities';
 
 // Search dictionary for spell correction
 const COMMON_TITLES = [
@@ -29,7 +29,7 @@ export async function executeSearch(
   query: string,
   filters: SearchFilters = {},
   page: number = 1,
-  pageSize: number = 20
+  pageSize: number = 1
 ): Promise<SearchResponse> {
   const startTime = Date.now();
 
@@ -51,7 +51,7 @@ export async function executeSearch(
   const normalizedQ = normalizeQuery(query);
 
   // Check cache first
-  const cacheKey = `search-v7:${normalizedQ}:${filters.imdbId || ''}:${JSON.stringify(filters)}:${page}:${pageSize}`;
+  const cacheKey = `search-v8:${normalizedQ}:${filters.imdbId || ''}:${JSON.stringify(filters)}:${page}:${pageSize}`;
   const cached = cache.get<SearchResponse>(cacheKey);
   if (cached) {
     return cached;
@@ -104,10 +104,10 @@ export async function executeSearch(
     for (let mIdx = 0; mIdx < mediaItems.length; mIdx++) {
       const item = mediaItems[mIdx];
       const category = filters.category || 'movies';
+      const relevantWebsites = websitesForCategory(websites, category);
+      const sources = relevantWebsites.map((w) => websiteToStreamingSource(w, item.title));
+      const primarySite = relevantWebsites[0];
       const poster = item.poster || resolveMoviePoster(item.title, category, mIdx);
-
-      const sources = websites.map((w) => websiteToStreamingSource(w, item.title));
-      const primarySite = websites[0];
 
       allResults.push({
         id: `fallback-${mIdx}-${slugify(item.title)}`,
@@ -333,8 +333,8 @@ function buildUnifiedResult(
   posterHint?: string
 ): SearchResult {
   const category = media.category || filterCategory || 'movies';
-  // Search every site in the directory (admin priority order)
-  const sources = websites.map((w) => websiteToStreamingSource(w, media.title));
+  const relevantWebsites = websitesForCategory(websites, category);
+  const sources = relevantWebsites.map((w) => websiteToStreamingSource(w, media.title));
   const primary = sources[0];
   const poster = media.poster || posterHint || resolveMoviePoster(media.title, category, mIdx);
 

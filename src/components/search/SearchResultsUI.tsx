@@ -115,105 +115,232 @@ export function useSiteHandoff() {
   return { target, requestHandoff, clearHandoff: () => setTarget(null) };
 }
 
-export function StreamingSourcesPanel({
-  sources,
-  title,
+export const SOURCES_INITIAL_VISIBLE = 15;
+
+function SourceRowCompact({
+  source,
+  rank,
   onVisit,
-  showAll = false,
 }: {
-  sources: StreamingSource[];
-  title: string;
+  source: StreamingSource;
+  rank: number;
   onVisit: (source: StreamingSource) => void;
-  showAll?: boolean;
 }) {
-  const [expanded, setExpanded] = useState(showAll);
-  const visible = expanded ? sources : sources.slice(0, 10);
-
-  if (sources.length === 0) return null;
-
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between gap-3">
-        <div>
-          <h3 className="font-display text-base font-bold text-white">Where to watch</h3>
-          <p className="text-xs text-white/45 mt-0.5">
-            {sources.length} indexed {sources.length === 1 ? 'site' : 'sites'} · ranked by priority
-          </p>
-        </div>
-        {sources.length > 10 && !showAll && (
-          <button
-            type="button"
-            onClick={() => setExpanded(!expanded)}
-            className="text-xs font-bold text-[#e8b86d] hover:underline shrink-0"
-          >
-            {expanded ? 'Show less' : `All ${sources.length} sites`}
-          </button>
+    <button
+      type="button"
+      onClick={() => onVisit(source)}
+      className="search-source-card group text-left flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-[#e8b86d]/35 transition-all"
+    >
+      <span className="text-[10px] font-mono text-white/25 w-5 shrink-0">{rank}</span>
+      <div className="w-9 h-9 rounded-lg bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+        {source.websiteLogo ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={source.websiteLogo} alt="" className="w-full h-full object-cover" />
+        ) : (
+          <span className="text-xs font-bold text-[#e8b86d]">{source.websiteName.charAt(0)}</span>
         )}
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-        {visible.map((source, idx) => (
-          <button
-            key={source.websiteId}
-            type="button"
-            onClick={() => onVisit(source)}
-            className="search-source-card group text-left flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-[#e8b86d]/35 transition-all"
-          >
-            <span className="text-[10px] font-mono text-white/25 w-5 shrink-0">{idx + 1}</span>
-            <div className="w-9 h-9 rounded-lg bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
-              {source.websiteLogo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={source.websiteLogo} alt="" className="w-full h-full object-cover" />
-              ) : (
-                <span className="text-xs font-bold text-[#e8b86d]">{source.websiteName.charAt(0)}</span>
+      <div className="flex-1 min-w-0">
+        <p className="text-sm font-bold text-white truncate group-hover:text-[#e8b86d] transition-colors">
+          {source.websiteName}
+        </p>
+        <div className="flex flex-wrap gap-1 mt-1">
+          {source.quality.slice(0, 2).map((q) => (
+            <span
+              key={q}
+              className={cn(
+                'text-[9px] font-bold px-1.5 py-0.5 rounded border',
+                QUALITY_COLORS[q] || 'bg-white/10 text-white/60 border-white/15'
               )}
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-bold text-white truncate group-hover:text-[#e8b86d] transition-colors">
-                {source.websiteName}
-              </p>
-              <div className="flex flex-wrap gap-1 mt-1">
-                {source.quality.slice(0, 2).map((q) => (
-                  <span
-                    key={q}
-                    className={cn(
-                      'text-[9px] font-bold px-1.5 py-0.5 rounded border',
-                      QUALITY_COLORS[q] || 'bg-white/10 text-white/60 border-white/15'
-                    )}
-                  >
-                    {q === '4k' ? '4K' : q.toUpperCase()}
-                  </span>
-                ))}
-                <span className="text-[9px] text-white/40 truncate max-w-[100px]">
-                  {source.languages.slice(0, 2).map(formatLanguageLabel).join(' · ')}
-                </span>
-              </div>
-            </div>
-            <span className="shrink-0 w-8 h-8 rounded-lg bg-[#e8b86d]/15 border border-[#e8b86d]/30 flex items-center justify-center text-[#e8b86d] group-hover:bg-[#e8b86d] group-hover:text-[#1a1208] transition-colors">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M5 12h14M13 6l6 6-6 6" />
+            >
+              {q === '4k' ? '4K' : q.toUpperCase()}
+            </span>
+          ))}
+        </div>
+      </div>
+      <span className="shrink-0 w-8 h-8 rounded-lg bg-[#e8b86d]/15 border border-[#e8b86d]/30 flex items-center justify-center text-[#e8b86d] group-hover:bg-[#e8b86d] group-hover:text-[#1a1208] transition-colors">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </svg>
+      </span>
+    </button>
+  );
+}
+
+function SourceRowDetailed({
+  source,
+  rank,
+  onVisit,
+}: {
+  source: StreamingSource;
+  rank: number;
+  onVisit: (source: StreamingSource) => void;
+}) {
+  let hostname = '';
+  try {
+    hostname = new URL(source.url).hostname.replace(/^www\./, '');
+  } catch {
+    hostname = source.url;
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => onVisit(source)}
+      className="search-source-card group text-left w-full p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-[#e8b86d]/35 transition-all"
+    >
+      <div className="flex items-start gap-4">
+        <span className="text-xs font-mono text-white/30 pt-1 w-6 shrink-0">#{rank}</span>
+        <div className="w-12 h-12 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+          {source.websiteLogo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={source.websiteLogo} alt="" className="w-full h-full object-cover" />
+          ) : (
+            <span className="text-sm font-bold text-[#e8b86d]">{source.websiteName.charAt(0)}</span>
+          )}
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-wrap items-center gap-2 mb-1">
+            <p className="text-base font-display font-bold text-white group-hover:text-[#e8b86d] transition-colors">
+              {source.websiteName}
+            </p>
+            {source.verified && (
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
+                Verified
+              </span>
+            )}
+          </div>
+          <p className="text-xs text-white/40 mb-3 truncate">{hostname}</p>
+          <div className="flex flex-wrap gap-1.5 mb-2">
+            {source.quality.map((q) => (
+              <span
+                key={q}
+                className={cn(
+                  'text-[10px] font-bold px-2 py-0.5 rounded-md border',
+                  QUALITY_COLORS[q] || 'bg-white/10 text-white/60 border-white/15'
+                )}
+              >
+                {q === '4k' ? '4K UHD' : q.toUpperCase()}
+              </span>
+            ))}
+          </div>
+          <p className="text-xs text-white/55">
+            <span className="text-white/35">Audio · </span>
+            {source.languages.map(formatLanguageLabel).join(', ')}
+          </p>
+        </div>
+        <span className="shrink-0 w-11 h-11 rounded-xl bg-[#e8b86d] text-[#1a1208] flex items-center justify-center group-hover:bg-[#f0c987] transition-colors mt-1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </span>
+      </div>
+    </button>
+  );
+}
+
+export function StreamingSourcesPanel({
+  sources,
+  onVisit,
+  initialVisible = SOURCES_INITIAL_VISIBLE,
+}: {
+  sources: StreamingSource[];
+  title?: string;
+  onVisit: (source: StreamingSource) => void;
+  showAll?: boolean;
+  initialVisible?: number;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  if (sources.length === 0) {
+    return (
+      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-6 text-center">
+        <p className="text-sm text-white/45">No matching sites in your directory for this title.</p>
+      </div>
+    );
+  }
+
+  const hasMore = sources.length > initialVisible;
+  const visible = expanded ? sources : sources.slice(0, initialVisible);
+  const remaining = sources.length - initialVisible;
+
+  return (
+    <div className="space-y-4">
+      <div>
+        <h3 className="font-display text-lg font-bold text-white">Available on your sites</h3>
+        <p className="text-sm text-white/45 mt-1">
+          Showing {visible.length} of {sources.length} category-matched {sources.length === 1 ? 'site' : 'sites'} · admin priority order
+        </p>
+      </div>
+
+      <div className={cn('grid gap-2.5', expanded ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2')}>
+        <AnimatePresence mode="popLayout">
+          {visible.map((source, idx) => (
+            <motion.div
+              key={source.websiteId}
+              layout
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2, delay: expanded ? idx * 0.02 : 0 }}
+            >
+              {expanded ? (
+                <SourceRowDetailed source={source} rank={idx + 1} onVisit={onVisit} />
+              ) : (
+                <SourceRowCompact source={source} rank={idx + 1} onVisit={onVisit} />
+              )}
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
+      {hasMore && (
+        <button
+          type="button"
+          onClick={() => setExpanded(!expanded)}
+          className="search-sources-expand-btn group w-full"
+          aria-expanded={expanded}
+        >
+          <span className="search-sources-expand-btn-inner">
+            <span className="flex flex-col items-start sm:items-center sm:flex-row sm:gap-3">
+              <span className="font-display text-base sm:text-lg font-bold text-white group-hover:text-[#e8b86d] transition-colors">
+                {expanded ? 'Show fewer sites' : `Load ${remaining} more with full details`}
+              </span>
+              <span className="text-xs text-white/45 mt-0.5 sm:mt-0">
+                {expanded ? 'Back to compact view' : 'Quality, audio & direct links'}
+              </span>
+            </span>
+            <span
+              className={cn(
+                'search-sources-expand-chevron shrink-0 transition-transform duration-300',
+                expanded && 'rotate-180'
+              )}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M6 9l6 6 6-6" />
               </svg>
             </span>
-          </button>
-        ))}
-      </div>
+          </span>
+        </button>
+      )}
     </div>
   );
 }
 
 export function SearchHeroResult({
   result,
-  websitesSearched,
   onVisitSource,
   onTrailer,
 }: {
   result: SearchResult;
-  websitesSearched: number;
+  websitesSearched?: number;
   onVisitSource: (source: StreamingSource) => void;
   onTrailer?: (key: string) => void;
 }) {
   const poster = result.poster || resolveMoviePoster(result.title, result.category);
   const sources = result.sources || [];
+  const availableCount = sources.length;
 
   return (
     <motion.article
@@ -263,7 +390,7 @@ export function SearchHeroResult({
                 </span>
               )}
               <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#e8b86d]/10 text-[#e8b86d] border border-[#e8b86d]/25">
-                {websitesSearched} sites scanned
+                Available on {availableCount} {availableCount === 1 ? 'site' : 'sites'}
               </span>
             </div>
 
@@ -333,7 +460,7 @@ export function SearchHeroResult({
 
         {sources.length > 0 && (
           <div className="mt-6 pt-6 border-t border-white/10">
-            <StreamingSourcesPanel sources={sources} title={result.title} onVisit={onVisitSource} showAll />
+            <StreamingSourcesPanel sources={sources} onVisit={onVisitSource} />
           </div>
         )}
       </div>
