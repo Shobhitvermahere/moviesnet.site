@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, Suspense } from 'react';
+import { useState, useEffect, useCallback, Suspense, useRef } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
@@ -49,6 +49,12 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
 ];
 
 const MAGIC_LOADING_DELAY_MS = 1800;
+
+function dismissMobileKeyboard() {
+  if (typeof document === 'undefined') return;
+  const active = document.activeElement;
+  if (active instanceof HTMLElement) active.blur();
+}
 
 // --- Fetch search results ---
 async function fetchSearch(query: string, filters: SearchFilters, page: number): Promise<SearchResponse> {
@@ -428,6 +434,7 @@ function SearchContent() {
   const [activeTrailerKey, setActiveTrailerKey] = useState<string | null>(null);
   const [isMagicLoading, setIsMagicLoading] = useState(false);
   const [isFilterOpen, setFilterOpen] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -529,6 +536,13 @@ function SearchContent() {
   });
 
   const suggestionsList = suggestionData?.suggestions || [];
+
+  useEffect(() => {
+    if (debouncedQuery.trim().length >= 2 && data && !isLoading && !isFetching) {
+      setShowSuggestions(false);
+      dismissMobileKeyboard();
+    }
+  }, [debouncedQuery, data, isLoading, isFetching]);
 
   const { data: websitesData } = useQuery<Website[]>({
     queryKey: ['public-websites'],
@@ -635,6 +649,7 @@ function SearchContent() {
               </svg>
             </div>
             <input
+              ref={searchInputRef}
               type="text"
               value={query}
               onChange={(e) => {
@@ -653,6 +668,7 @@ function SearchContent() {
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   setShowSuggestions(false);
+                  dismissMobileKeyboard();
                 }
               }}
               placeholder="Search movies, anime, TV…"
@@ -681,6 +697,7 @@ function SearchContent() {
                   layout="inline"
                   onSelect={(item) => {
                     setShowSuggestions(false);
+                    dismissMobileKeyboard();
                     setQuery(item.title);
                     setDebouncedQuery(item.title);
                     setPage(1);

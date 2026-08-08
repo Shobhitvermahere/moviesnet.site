@@ -3,14 +3,10 @@
 // ============================================================================
 import { NextRequest, NextResponse } from 'next/server';
 import { cache } from '@/lib/cache';
+import { getTrendingSearches } from '@/lib/db';
+import { rankAndMergeSuggestions, type SearchSuggestionItem } from '@/lib/suggestion-rank';
 
-export interface SearchSuggestionItem {
-  title: string;
-  year: number | null;
-  category: string;
-  poster: string | null;
-  imdbId?: string;
-}
+export type { SearchSuggestionItem };
 
 export async function GET(request: NextRequest) {
   try {
@@ -21,7 +17,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ suggestions: [] });
     }
 
-    const cacheKey = `imdb-sug-v1:${query.toLowerCase()}`;
+    const cacheKey = `imdb-sug-v2:${query.toLowerCase()}`;
     const cached = cache.get<SearchSuggestionItem[]>(cacheKey);
     if (cached) {
       return NextResponse.json({ suggestions: cached });
@@ -104,11 +100,14 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    if (suggestions.length > 0) {
-      cache.set(cacheKey, suggestions, 5 * 60 * 1000);
+    const dbTrending = getTrendingSearches('today').map((t) => t.query);
+    const ranked = rankAndMergeSuggestions(query, suggestions, dbTrending);
+
+    if (ranked.length > 0) {
+      cache.set(cacheKey, ranked, 5 * 60 * 1000);
     }
 
-    return NextResponse.json({ suggestions });
+    return NextResponse.json({ suggestions: ranked });
   } catch (error) {
     console.error('Suggestions API error:', error);
     return NextResponse.json({ suggestions: [] });

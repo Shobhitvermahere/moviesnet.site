@@ -298,23 +298,34 @@ export function SearchHeroResult({
   const sources = result.sources || [];
   const availableCount = sources.length;
 
+  const detailItems = [
+    result.year ? { label: 'Year', value: String(result.year) } : null,
+    result.runtime ? { label: 'Runtime', value: result.runtime } : null,
+    result.status ? { label: 'Status', value: result.status.replace('-', ' ') } : null,
+    result.seasonCount ? { label: 'Seasons', value: String(result.seasonCount) } : null,
+    result.episodeCount ? { label: 'Episodes', value: String(result.episodeCount) } : null,
+    result.languages?.length ? { label: 'Audio', value: result.languages.slice(0, 3).join(', ') } : null,
+    result.quality?.length ? { label: 'Quality', value: result.quality.join(', ').toUpperCase() } : null,
+    result.rating ? { label: 'Rating', value: `★ ${result.rating.toFixed(1)}` } : null,
+  ].filter(Boolean) as { label: string; value: string }[];
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      className="search-hero-card relative overflow-hidden rounded-2xl border border-white/10"
+      className="search-result-detail-card search-hero-card relative overflow-hidden rounded-2xl border border-white/10 shadow-xl"
     >
       {result.backdrop && (
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-20 blur-2xl scale-110 pointer-events-none"
+          className="absolute inset-0 bg-cover bg-center opacity-15 blur-2xl scale-110 pointer-events-none"
           style={{ backgroundImage: `url(${result.backdrop})` }}
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0c12]/95 via-[#0d1018]/92 to-[#080a10]/95 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0c12]/96 via-[#0d1018]/94 to-[#080a10]/96 pointer-events-none" />
 
-      <div className="relative z-10 p-5 sm:p-8">
-        <div className="flex flex-col gap-6">
-          <div className="relative w-40 sm:w-48 mx-auto shrink-0">
+      <div className="relative z-10 p-4 sm:p-6 lg:p-8">
+        <div className="flex flex-row gap-4 sm:gap-6">
+          <div className="relative w-28 sm:w-36 lg:w-44 shrink-0">
             <div className="aspect-[2/3] rounded-xl overflow-hidden border border-white/15 shadow-2xl bg-black/50">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -327,85 +338,91 @@ export function SearchHeroResult({
               />
             </div>
             {result.rating && (
-              <div className="absolute -bottom-2 -right-2 px-2.5 py-1 rounded-lg bg-[#e8b86d] text-[#1a1208] text-xs font-black shadow-lg">
+              <div className="absolute -bottom-2 -right-2 px-2 py-1 rounded-lg bg-[#e8b86d] text-[#1a1208] text-[10px] sm:text-xs font-black shadow-lg">
                 ★ {result.rating.toFixed(1)}
               </div>
             )}
           </div>
 
-          <div className="flex-1 min-w-0 text-center">
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
+          <div className="flex-1 min-w-0 text-left">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
               {result.confidenceScore && (
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
-                  IMDb verified · {result.confidenceScore}%
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
+                  IMDb {result.confidenceScore}%
                 </span>
               )}
               {result.category && (
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 text-white/55 border border-white/10 capitalize">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-white/5 text-white/55 border border-white/10 capitalize">
                   {result.category.replace('-', ' ')}
                 </span>
               )}
-              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#e8b86d]/10 text-[#e8b86d] border border-[#e8b86d]/25">
-                Available on {availableCount} {availableCount === 1 ? 'site' : 'sites'}
+              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#e8b86d]/10 text-[#e8b86d] border border-[#e8b86d]/25">
+                {availableCount} {availableCount === 1 ? 'site' : 'sites'}
               </span>
             </div>
 
-            <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight mb-2">
+            <h2 className="font-display text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight mb-1.5 sm:mb-2 leading-tight">
               {result.title}
-            </h1>
+            </h2>
 
-            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-white/55 mb-4">
-              {result.year && <span>{result.year}</span>}
-              {result.runtime && (
-                <>
-                  <span className="text-white/20">·</span>
-                  <span>{result.runtime}</span>
-                </>
-              )}
-              {result.genres?.slice(0, 3).map((g) => (
-                <span key={g} className="text-white/40">
-                  {g}
-                </span>
-              ))}
-              {result.imdbId && (
-                <>
-                  <span className="text-white/20">·</span>
-                  <a
-                    href={`https://www.imdb.com/title/${result.imdbId}/`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#e8b86d] hover:underline font-semibold"
+            {result.originalTitle && result.originalTitle !== result.title && (
+              <p className="text-xs text-white/45 mb-2 truncate">{result.originalTitle}</p>
+            )}
+
+            {result.genres && result.genres.length > 0 && (
+              <p className="text-xs sm:text-sm text-white/50 mb-2 sm:mb-3 line-clamp-2">
+                {result.genres.slice(0, 4).join(' · ')}
+              </p>
+            )}
+
+            {detailItems.length > 0 && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                {detailItems.map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-lg border border-white/8 bg-white/[0.03] px-2 py-1.5 sm:px-2.5 sm:py-2"
                   >
-                    IMDb
-                  </a>
-                </>
-              )}
-            </div>
+                    <p className="text-[9px] uppercase tracking-wide text-white/35 font-semibold">{item.label}</p>
+                    <p className="text-[11px] sm:text-xs font-semibold text-white/80 capitalize truncate">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {result.overview && (
-              <p className="text-sm sm:text-base text-white/60 leading-relaxed line-clamp-4 mb-5 max-w-3xl mx-auto">
+              <p className="text-xs sm:text-sm text-white/60 leading-relaxed line-clamp-3 sm:line-clamp-4 mb-3 sm:mb-4">
                 {result.overview}
               </p>
             )}
 
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-2">
+            <div className="flex flex-wrap items-center gap-2">
               {result.trailerKey && onTrailer && (
                 <button
                   type="button"
                   onClick={() => onTrailer(result.trailerKey!)}
-                  className="px-4 py-2.5 rounded-xl border border-white/15 text-white text-sm font-semibold hover:bg-white/5 transition-colors"
+                  className="px-3 py-2 rounded-xl border border-white/15 text-white text-xs font-semibold hover:bg-white/5 transition-colors"
                 >
                   ▶ Trailer
                 </button>
+              )}
+              {result.imdbId && (
+                <a
+                  href={`https://www.imdb.com/title/${result.imdbId}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 rounded-xl border border-white/15 text-[#e8b86d] text-xs font-semibold hover:bg-white/5 transition-colors"
+                >
+                  IMDb
+                </a>
               )}
               {sources[0] && (
                 <button
                   type="button"
                   onClick={() => onVisitSource(sources[0])}
-                  className="px-5 py-2.5 rounded-xl bg-[#e8b86d] text-[#1a1208] font-display font-bold text-sm hover:bg-[#f0c987] transition-colors inline-flex items-center gap-2"
+                  className="px-4 py-2 rounded-xl bg-[#e8b86d] text-[#1a1208] font-display font-bold text-xs sm:text-sm hover:bg-[#f0c987] transition-colors inline-flex items-center gap-1.5"
                 >
-                  Watch on {sources[0].websiteName}
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  Watch
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </button>
@@ -415,7 +432,7 @@ export function SearchHeroResult({
         </div>
 
         {sources.length > 0 && (
-          <div className="mt-6 pt-6 border-t border-white/10">
+          <div className="mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-white/10">
             <StreamingSourcesPanel sources={sources} onVisit={onVisitSource} />
           </div>
         )}

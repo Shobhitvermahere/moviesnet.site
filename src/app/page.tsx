@@ -345,6 +345,9 @@ export default function HomePage() {
     (e: React.FormEvent) => {
       e.preventDefault();
       if (searchQuery.trim()) {
+        if (typeof document !== 'undefined' && document.activeElement instanceof HTMLElement) {
+          document.activeElement.blur();
+        }
         router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       }
     },

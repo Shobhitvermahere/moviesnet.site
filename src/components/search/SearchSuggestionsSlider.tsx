@@ -10,6 +10,7 @@ export interface SearchSuggestionItem {
   category: string;
   poster: string | null;
   imdbId?: string;
+  trending?: boolean;
 }
 
 interface SearchSuggestionsSliderProps {
@@ -65,7 +66,7 @@ export function SearchSuggestionsSlider({
             isHome ? 'text-white/45' : 'text-purple-400'
           )}
         >
-          {isHome ? 'Suggested titles' : 'IMDb / TMDB suggestions'}
+          {isHome ? 'Trending & matches' : 'Trending & IMDb matches'}
         </p>
         <div className="flex items-center gap-1 shrink-0">
           <button
@@ -127,6 +128,11 @@ export function SearchSuggestionsSlider({
                 </div>
               )}
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 to-transparent" />
+              {item.trending && (
+                <span className="absolute top-1.5 left-1.5 text-[8px] font-black uppercase tracking-wide px-1.5 py-0.5 rounded bg-[#e8b86d] text-[#1a1208]">
+                  Hot
+                </span>
+              )}
               {item.year && (
                 <span className="absolute bottom-1.5 left-1.5 text-[10px] font-bold text-white/80">{item.year}</span>
               )}

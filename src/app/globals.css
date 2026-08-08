@@ -473,6 +473,10 @@ body {
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
 }
 
+.search-result-detail-card {
+  background: linear-gradient(155deg, rgba(12, 14, 22, 0.98), rgba(8, 10, 16, 0.96));
+}
+
 .search-handoff-card {
   background: linear-gradient(165deg, #12151f, #0a0c14);
   border: 1px solid rgba(232, 184, 109, 0.25);

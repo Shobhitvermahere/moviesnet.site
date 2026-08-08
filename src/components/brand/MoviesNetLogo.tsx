@@ -5,9 +5,9 @@ import { LogoMark } from './LogoMark';
 type LogoSize = 'sm' | 'md' | 'lg';
 
 const SIZE_MAP: Record<LogoSize, { mark: number; text: string; compactText: string }> = {
-  sm: { mark: 28, text: 'text-sm', compactText: 'text-[11px] sm:text-xs md:text-sm' },
-  md: { mark: 34, text: 'text-base sm:text-lg', compactText: 'text-xs sm:text-sm md:text-base' },
-  lg: { mark: 44, text: 'text-xl sm:text-2xl', compactText: 'text-sm sm:text-lg md:text-xl' },
+  sm: { mark: 28, text: 'text-sm', compactText: 'text-xs sm:text-sm md:text-base' },
+  md: { mark: 34, text: 'text-base sm:text-lg', compactText: 'text-sm sm:text-base md:text-lg' },
+  lg: { mark: 44, text: 'text-xl sm:text-2xl', compactText: 'text-base sm:text-xl md:text-2xl' },
 };
 
 interface MoviesNetLogoProps {
