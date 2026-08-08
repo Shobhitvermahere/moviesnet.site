@@ -1,4 +1,5 @@
 import type { Website } from '@/types';
+import { getDailyImdbTrendingMovies } from './imdb-trending';
 import { resolveWebsiteLogoUrl } from './website-logo';
 
 export interface LiveShowcaseItem {
@@ -11,6 +12,7 @@ export interface LiveShowcaseItem {
   synopsis: string;
   sourcesCount: number;
   category: 'movies' | 'anime';
+  imdbId?: string;
 }
 
 export interface DirectoryTrendingPick extends LiveShowcaseItem {
@@ -188,30 +190,7 @@ function pickFeaturedSites(websites: Website[], category: LiveShowcaseItem['cate
 export async function fetchLiveShowcase(): Promise<{ movies: LiveShowcaseItem[]; anime: LiveShowcaseItem[] }> {
   let liveMovies: LiveShowcaseItem[] = [];
   try {
-    const tvRes = await fetch('https://api.tvmaze.com/shows?page=1', { next: { revalidate: 3600 } });
-    if (tvRes.ok) {
-      const tvData = await tvRes.json();
-      liveMovies = tvData.slice(0, 12).map((show: {
-        name: string;
-        premiered?: string;
-        rating?: { average?: number };
-        image?: { original?: string; medium?: string };
-        genres?: string[];
-        summary?: string;
-      }) => ({
-        title: show.name,
-        year: show.premiered ? parseInt(show.premiered.split('-')[0], 10) : 2024,
-        rating: show.rating?.average ? show.rating.average.toFixed(1) : (8 + Math.random() * 1.5).toFixed(1),
-        quality: '4K UHD',
-        poster: show.image?.original || show.image?.medium || FALLBACK_MOVIES[0].poster,
-        genres: show.genres || ['Drama', 'Action'],
-        synopsis: show.summary
-          ? show.summary.replace(/<[^>]*>?/gm, '').slice(0, 120) + '...'
-          : 'Trending show.',
-        sourcesCount: Math.floor(Math.random() * 10) + 12,
-        category: 'movies' as const,
-      }));
-    }
+    liveMovies = await getDailyImdbTrendingMovies(12);
   } catch {
     // fall through to fallback
   }

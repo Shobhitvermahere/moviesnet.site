@@ -8,7 +8,22 @@ import { formatNumber, DIRECTORY_CATEGORIES, cn } from '@/lib/utils';
 import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
 import { WebsiteLogo } from '@/components/WebsiteLogo';
 import { buildSearchUrlFromSuggestion } from '@/lib/search-navigation';
+import type { LiveShowcaseItem } from '@/lib/trending-showcase';
 import type { ContentCategory } from '@/types';
+
+function buildShowcaseSearchUrl(item: {
+  title: string;
+  poster: string;
+  imdbId?: string;
+}): string {
+  return buildSearchUrlFromSuggestion({
+    title: item.title,
+    year: null,
+    category: 'Movie',
+    poster: item.poster || null,
+    imdbId: item.imdbId,
+  });
+}
 
 const DISCORD_URL = 'https://discord.gg/ATGRvAjBr';
 const REDDIT_URL = 'https://www.reddit.com/user/allsitehub/';
@@ -304,8 +319,12 @@ export default function HomePage() {
   const [siteSearchQuery, setSiteSearchQuery] = useState('');
   const [showcaseTab, setShowcaseTab] = useState<'movies' | 'anime'>('movies');
   const [websites, setWebsites] = useState<SiteData[]>([]);
-  const [liveMovies, setLiveMovies] = useState(TOP_RANK_MOVIES);
-  const [liveAnime, setLiveAnime] = useState(TOP_RANK_ANIME);
+  const [liveMovies, setLiveMovies] = useState<LiveShowcaseItem[]>(
+    TOP_RANK_MOVIES.map((item) => ({ ...item, category: 'movies' as const }))
+  );
+  const [liveAnime, setLiveAnime] = useState<LiveShowcaseItem[]>(
+    TOP_RANK_ANIME.map((item) => ({ ...item, category: 'anime' as const }))
+  );
   const [loading, setLoading] = useState(true);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
   const [heroSuggestions, setHeroSuggestions] = useState<
@@ -578,7 +597,7 @@ export default function HomePage() {
                 Trending now
               </h2>
               <p className="mt-3 text-base text-white/50 max-w-xl">
-                Popular titles people are searching — pick one to find sources instantly.
+                Daily IMDb Moviemeter picks — tap any title to search sources instantly.
               </p>
             </div>
 
@@ -647,9 +666,10 @@ export default function HomePage() {
               className="home-rail-scroll flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-2"
             >
               {showcaseItems.map((item, idx) => (
-                <article
-                  key={item.title}
-                  className="home-rail-item group relative min-w-[180px] w-[180px] sm:min-w-[220px] sm:w-[220px] shrink-0 snap-start rounded-2xl overflow-hidden border border-white/10 bg-[#0a0d14]/70"
+                <Link
+                  key={`${item.title}-${item.imdbId || idx}`}
+                  href={buildShowcaseSearchUrl(item)}
+                  className="home-rail-item home-rail-card-link group relative min-w-[180px] w-[180px] sm:min-w-[220px] sm:w-[220px] shrink-0 snap-start rounded-2xl overflow-hidden border border-white/10 bg-[#0a0d14]/70"
                 >
                   <div className="relative aspect-[2/3] overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -675,18 +695,12 @@ export default function HomePage() {
                         <span className="text-white/30">·</span>
                         <span>{item.rating}</span>
                       </div>
-                      <h3 className="font-display text-sm font-semibold text-white leading-snug line-clamp-2">
+                      <h3 className="font-display text-sm font-semibold text-white leading-snug line-clamp-2 group-hover:text-[#e8b86d] transition-colors">
                         {item.title}
                       </h3>
                     </div>
                   </div>
-                  <Link
-                    href={`/search?q=${encodeURIComponent(item.title)}`}
-                    className="block text-center py-3 text-xs font-semibold tracking-wide text-white/70 hover:text-[#e8b86d] border-t border-white/10 transition-colors"
-                  >
-                    Find sources
-                  </Link>
-                </article>
+                </Link>
               ))}
             </motion.div>
           </AnimatePresence>
