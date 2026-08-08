@@ -203,6 +203,86 @@ body {
     0 0 60px rgba(232, 184, 109, 0.08);
 }
 
+/* --- Search page (professional) --- */
+.search-page {
+  --search-accent: #e8b86d;
+  --search-accent-dim: rgba(232, 184, 109, 0.15);
+}
+
+.search-page-hero {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.search-page-input-wrap {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(232, 184, 109, 0.2);
+  border-radius: 1rem;
+  padding: 0.35rem;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+.search-page-input-wrap .search-input {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding-left: 3rem;
+}
+
+.search-page-input-wrap .search-input:focus {
+  box-shadow: none;
+  background: transparent;
+}
+
+.search-hero-card {
+  background: linear-gradient(145deg, rgba(14, 16, 24, 0.95), rgba(8, 10, 16, 0.98));
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+}
+
+.search-handoff-card {
+  background: linear-gradient(165deg, #12151f, #0a0c14);
+  border: 1px solid rgba(232, 184, 109, 0.25);
+}
+
+.search-source-card:focus-visible {
+  outline: 2px solid rgba(232, 184, 109, 0.5);
+  outline-offset: 2px;
+}
+
+.search-filter-panel {
+  background: rgba(10, 12, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  backdrop-filter: blur(20px);
+}
+
+.search-category-pill {
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.search-category-pill-active {
+  background: var(--search-accent);
+  color: #1a1208;
+  border-color: transparent;
+}
+
+.search-category-pill-inactive {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.search-category-pill-inactive:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .home-fade-up {
   animation: home-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

@@ -6,8 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchStore } from '@/stores';
 import { cn, CATEGORIES, QUALITY_COLORS, STATUS_COLORS, resolveMoviePoster } from '@/lib/utils';
-import { formatLanguageLabel } from '@/lib/website-capabilities';
 import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
+import { SearchHeroResult, SiteHandoffModal, StreamingSourcesPanel, useSiteHandoff } from '@/components/search/SearchResultsUI';
+import { SearchTrendingPicks } from '@/components/search/SearchTrendingPicks';
 import { buildSearchUrlFromSuggestion } from '@/lib/search-navigation';
 import type { SearchResponse, SearchFilters, SearchResult, ContentCategory, Language, Quality, ContentStatus, SortOption, Website } from '@/types';
 
@@ -67,74 +68,15 @@ async function fetchSearch(query: string, filters: SearchFilters, page: number):
   return res.json();
 }
 
-function SourceListTable({ sources, showAll = false }: { sources: NonNullable<SearchResult['sources']>; showAll?: boolean }) {
-  const [expanded, setExpanded] = useState(showAll);
-  const visible = expanded ? sources : sources.slice(0, 8);
-
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between">
-        <span className="text-xs font-bold text-cyan-300">
-          Streaming Sites ({sources.length}) — ranked by admin priority
-        </span>
-        {sources.length > 8 && !showAll && (
-          <button onClick={() => setExpanded(!expanded)} className="text-[11px] font-black text-purple-400 hover:underline">
-            {expanded ? 'Show Less' : `+ ${sources.length - 8} More`}
-          </button>
-        )}
-      </div>
-      <div className="rounded-xl border border-white/10 overflow-hidden">
-        <div className="hidden sm:grid grid-cols-[1fr_120px_140px_80px] gap-2 px-3 py-2 bg-white/[0.04] text-[10px] font-black text-white/40 uppercase tracking-wider border-b border-white/10">
-          <span>Website</span>
-          <span>Video Quality</span>
-          <span>Audio</span>
-          <span className="text-right">Watch</span>
-        </div>
-        {visible.map((source, idx) => (
-          <a
-            key={source.websiteId}
-            href={source.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col sm:grid sm:grid-cols-[1fr_120px_140px_80px] gap-2 px-3 py-2.5 border-b border-white/[0.06] last:border-0 hover:bg-cyan-500/10 transition-colors group"
-          >
-            <div className="flex items-center gap-2.5 min-w-0">
-              <span className="text-[10px] font-mono text-white/30 w-4">{idx + 1}</span>
-              <div className="w-6 h-6 rounded-md bg-white/10 flex items-center justify-center overflow-hidden flex-shrink-0">
-                {source.websiteLogo ? (
-                  <img src={source.websiteLogo} alt="" className="w-full h-full object-cover" />
-                ) : (
-                  <span className="text-[9px] font-black text-cyan-300">{source.websiteName.charAt(0)}</span>
-                )}
-              </div>
-              <span className="text-sm font-bold text-white group-hover:text-cyan-300 truncate">{source.websiteName}</span>
-              {source.verified && (
-                <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex-shrink-0">✓</span>
-              )}
-            </div>
-            <div className="flex flex-wrap gap-1 pl-6 sm:pl-0">
-              {source.quality.slice(0, 3).map((q) => (
-                <span key={q} className={cn('text-[10px] font-black px-2 py-0.5 rounded-full border', QUALITY_COLORS[q] || 'bg-white/10 text-white/70 border-white/20')}>
-                  {q === '4k' ? '4K' : q.toUpperCase()}
-                </span>
-              ))}
-            </div>
-            <div className="text-xs text-white/70 font-semibold pl-6 sm:pl-0 truncate">
-              {source.languages.map(formatLanguageLabel).join(', ')}
-            </div>
-            <div className="pl-6 sm:pl-0 sm:text-right">
-              <span className="inline-flex items-center gap-1 text-xs font-black text-cyan-400 group-hover:text-cyan-300">
-                Open →
-              </span>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function SearchResultCard({ result, index }: { result: SearchResult; index: number }) {
+function SearchResultCard({
+  result,
+  index,
+  onVisitSource,
+}: {
+  result: SearchResult;
+  index: number;
+  onVisitSource: (source: NonNullable<SearchResult['sources']>[number]) => void;
+}) {
   const [imgError, setImgError] = useState(false);
   const fallbackPoster = resolveMoviePoster(result.title, result.category, index);
 
@@ -145,7 +87,7 @@ function SearchResultCard({ result, index }: { result: SearchResult; index: numb
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay: index * 0.04 }}
-      className="group relative rounded-2xl apple-glass-card spatial-card overflow-hidden spotlight mb-6"
+      className="group relative rounded-2xl search-hero-card border border-white/10 overflow-hidden mb-5"
     >
       <div className="flex flex-col sm:flex-row">
         {/* Poster */}
@@ -284,7 +226,7 @@ function SearchResultCard({ result, index }: { result: SearchResult; index: numb
             {/* Ranked streaming sources */}
             {sourcesList.length > 0 && (
               <div className="mb-2">
-                <SourceListTable sources={sourcesList} />
+                <StreamingSourcesPanel sources={sourcesList} title={result.title} onVisit={onVisitSource} />
               </div>
             )}
           </div>
@@ -298,8 +240,11 @@ function SearchResultCard({ result, index }: { result: SearchResult; index: numb
               href={result.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-black text-xs shadow-lg shadow-purple-500/25 border border-white/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.preventDefault();
+                if (sourcesList[0]) onVisitSource(sourcesList[0]);
+              }}
+              className="px-5 py-2.5 rounded-xl bg-[#e8b86d] text-[#1a1208] font-display font-bold text-xs hover:bg-[#f0c987] transition-all flex items-center gap-2"
             >
               <span>Watch on {result.websiteName}</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -338,7 +283,7 @@ function MagicLoadingOverlay({ query }: { query: string }) {
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
-      className="my-8 w-full max-w-xl mx-auto p-8 rounded-3xl bg-gradient-to-b from-[#0d1028] via-[#090b1c] to-[#050612] border border-cyan-500/30 shadow-2xl text-center space-y-6 relative overflow-hidden"
+      className="my-8 w-full max-w-xl mx-auto p-8 rounded-2xl search-handoff-card text-center space-y-6 relative overflow-hidden"
     >
       <div className="absolute -top-12 -left-12 w-36 h-36 bg-cyan-500/20 rounded-full blur-3xl" />
       <div className="absolute -bottom-12 -right-12 w-36 h-36 bg-purple-500/20 rounded-full blur-3xl" />
@@ -349,8 +294,8 @@ function MagicLoadingOverlay({ query }: { query: string }) {
             ✨
           </div>
         </div>
-        <h3 className="text-xl font-black text-white tracking-tight">
-          ✨ Magic begins in...
+        <h3 className="text-xl font-display font-bold text-white tracking-tight">
+          Searching across all sites…
         </h3>
         <p className="text-xs font-semibold text-cyan-300 mt-1">
           Searching across trusted sources for &ldquo;{query}&rdquo;
@@ -446,7 +391,7 @@ function FilterPanel({
 
       <aside
         className={cn(
-          'space-y-6 p-6 rounded-2xl bg-[#0d0d10]/90 backdrop-blur-xl border border-white/[0.08] shadow-2xl transition-all duration-300',
+          'space-y-6 p-6 rounded-2xl search-filter-panel transition-all duration-300',
           !isOpen && 'hidden lg:block'
         )}
       >
@@ -742,6 +687,15 @@ function SearchContent() {
     return () => clearTimeout(timer);
   }, [isLoading, isFetching, debouncedQuery]);
 
+  const { target: handoffTarget, requestHandoff, clearHandoff } = useSiteHandoff();
+
+  const handleVisitSource = useCallback(
+    (source: NonNullable<SearchResult['sources']>[number], title: string) => {
+      requestHandoff(source, title);
+    },
+    [requestHandoff]
+  );
+
   const handleFilterChange = useCallback((newFilters: SearchFilters) => {
     setFilters(newFilters);
     setPage(1);
@@ -786,7 +740,8 @@ function SearchContent() {
   }, []);
 
   return (
-    <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+    <div className="search-page min-h-screen py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
+      <SiteHandoffModal target={handoffTarget} onClose={clearHandoff} />
       {/* Official YouTube Trailer Modal */}
       <AnimatePresence>
         {activeTrailerKey && (
@@ -824,38 +779,42 @@ function SearchContent() {
       </AnimatePresence>
 
       <div className="page-shell mx-auto">
-        {/* Category & Discovery Bar */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar">
-          {[
-            { id: undefined, label: '🔥 All Categories' },
-            { id: 'movies', label: '🎬 Movies' },
-            { id: 'tv-shows', label: '📺 TV Shows' },
-            { id: 'anime', label: '⚔️ Anime' },
-            { id: 'documentaries', label: '🎙️ Documentaries' },
-            { id: 'cartoons', label: '👾 Kids & Cartoons' },
-            { id: 'trending', label: '📈 Trending' },
-            { id: 'new-releases', label: '🆕 New Releases' },
-            { id: 'popular', label: '⭐ Popular' },
-            { id: 'top-rated', label: '🏆 Top Rated' },
-          ].map((cat) => (
-            <button
-              key={cat.label}
-              onClick={() => handleFilterChange({ ...filters, category: cat.id as any })}
-              className={cn(
-                'px-4 py-2 rounded-2xl text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 border shadow-md',
-                filters.category === cat.id
-                  ? 'bg-gradient-to-r from-purple-500 via-indigo-600 to-cyan-500 text-white border-purple-400/40 shadow-purple-500/25'
-                  : 'bg-white/[0.04] text-white/70 hover:text-white hover:bg-white/[0.08] border-white/10'
-              )}
-            >
-              <span>{cat.label}</span>
-            </button>
-          ))}
+        {/* Page header */}
+        <div className="search-page-hero">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#e8b86d]/70 mb-2">MoviesNet Search</p>
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-white mb-6">
+            Find your title across every indexed site
+          </h1>
+
+          {/* Category pills — real filters only */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 mb-6 no-scrollbar">
+            {[
+              { id: undefined, label: 'All' },
+              { id: 'movies' as const, label: 'Movies' },
+              { id: 'tv-shows' as const, label: 'TV Shows' },
+              { id: 'anime' as const, label: 'Anime' },
+              { id: 'manga' as const, label: 'Manga' },
+              { id: 'sports' as const, label: 'Sports' },
+              { id: 'live-tv' as const, label: 'Live TV' },
+            ].map((cat) => (
+              <button
+                key={cat.label}
+                type="button"
+                onClick={() => handleFilterChange({ ...filters, category: cat.id })}
+                className={cn(
+                  'search-category-pill',
+                  filters.category === cat.id ? 'search-category-pill-active' : 'search-category-pill-inactive'
+                )}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Search Header */}
-        <div className="mb-10">
-          <div className="relative max-w-4xl search-input-container hero-search-wrapper">
+        {/* Search input */}
+        <div className="mb-8">
+          <div className="relative max-w-3xl search-input-container hero-search-wrapper search-page-input-wrap">
             <div className="absolute left-5 top-1/2 -translate-y-1/2 text-purple-400">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8" />
@@ -883,8 +842,8 @@ function SearchContent() {
                   setShowSuggestions(false);
                 }
               }}
-              placeholder="Search movies, anime, TV shows, cartoons across every source..."
-              className="search-input text-lg py-5 pl-14 pr-12 shadow-2xl rounded-2xl border-white/[0.12] focus:border-purple-500/50"
+              placeholder="Search movies, anime, TV shows…"
+              className="search-input text-base py-4 pl-12 pr-12"
               autoFocus
               aria-label="Search"
             />
@@ -934,7 +893,7 @@ function SearchContent() {
               Did you mean{' '}
               <button
                 onClick={() => setQuery(data.correction!)}
-                className="text-purple-400 hover:text-purple-300 font-bold underline underline-offset-4"
+                className="text-[#e8b86d] hover:text-[#f0c987] font-semibold underline underline-offset-4"
               >
                 {data.correction}
               </button>
@@ -974,35 +933,39 @@ function SearchContent() {
           <div className="flex-1 min-w-0">
             {/* Empty state - no query */}
             {!debouncedQuery && (
-              <div className="text-center py-20 px-4 rounded-3xl bg-[#0e0e11]/50 border border-white/[0.06] backdrop-blur-xl">
-                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 flex items-center justify-center mx-auto mb-6 shadow-2xl">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="M21 21l-4.35-4.35" />
-                  </svg>
+              <div className="py-8 px-4 sm:px-6 rounded-2xl search-hero-card border border-white/10">
+                <div className="text-center max-w-lg mx-auto mb-2">
+                  <div className="w-14 h-14 rounded-2xl bg-[#e8b86d]/10 border border-[#e8b86d]/25 flex items-center justify-center mx-auto mb-4">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#e8b86d]">
+                      <circle cx="11" cy="11" r="8" />
+                      <path d="M21 21l-4.35-4.35" />
+                    </svg>
+                  </div>
+                  <h2 className="font-display text-xl sm:text-2xl font-bold text-white mb-2">Search everywhere at once</h2>
+                  <p className="text-sm text-white/45 leading-relaxed">
+                    Type any title above to find which of your indexed sites have it.
+                  </p>
                 </div>
-                <h2 className="text-2xl font-bold text-white mb-2">Search Everywhere at Once</h2>
-                <p className="text-sm text-white/40 max-w-md mx-auto mb-8 leading-relaxed">
-                  Type any title above to discover which websites contain the content you are looking for.
-                </p>
 
-                {/* Recent searches */}
                 {mounted && recentSearches.length > 0 && (
-                  <div className="max-w-md mx-auto">
-                    <h3 className="text-xs font-bold text-white/30 uppercase tracking-wider mb-3">Recent Searches</h3>
+                  <div className="max-w-md mx-auto text-center mt-6">
+                    <h3 className="text-xs font-semibold text-white/35 uppercase tracking-wider mb-3">Recent searches</h3>
                     <div className="flex flex-wrap gap-2 justify-center">
                       {recentSearches.map((term) => (
                         <button
                           key={term}
+                          type="button"
                           onClick={() => setQuery(term)}
-                          className="px-3.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-xs text-white/70 hover:text-white hover:bg-white/[0.08] hover:border-purple-500/30 transition-all font-medium"
+                          className="search-category-pill search-category-pill-inactive hover:text-white"
                         >
-                          🔍 {term}
+                          {term}
                         </button>
                       ))}
                     </div>
                   </div>
                 )}
+
+                <SearchTrendingPicks onSelect={(title) => setQuery(title)} />
               </div>
             )}
 
@@ -1062,31 +1025,29 @@ function SearchContent() {
                   </motion.div>
                 )}
 
-                {/* Website Mini Filter Bar */}
+                {/* Website filter bar */}
                 <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-6 no-scrollbar">
                   <button
+                    type="button"
                     onClick={() => setFilters({ ...filters, website: undefined })}
                     className={cn(
-                      'px-3.5 py-1.5 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap flex-shrink-0',
-                      !filters.website
-                        ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg border border-cyan-400/30'
-                        : 'bg-white/[0.04] text-white/60 hover:text-white hover:bg-white/[0.08] border border-white/10'
+                      'search-category-pill',
+                      !filters.website ? 'search-category-pill-active' : 'search-category-pill-inactive'
                     )}
                   >
-                    <span>🌐 All {data.websitesSearched || websites.length} Websites</span>
+                    All {data.websitesSearched || websites.length} sites
                   </button>
                   {websites.slice(0, 20).map((site) => (
                     <button
                       key={site.id}
+                      type="button"
                       onClick={() => setFilters({ ...filters, website: filters.website === site.id ? undefined : site.id })}
                       className={cn(
-                        'px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap flex-shrink-0 border',
-                        filters.website === site.id
-                          ? 'bg-cyan-500/25 text-cyan-300 border-cyan-500/50 shadow-md'
-                          : 'bg-white/[0.04] text-white/60 hover:text-white hover:bg-white/[0.08] border-white/10'
+                        'search-category-pill flex items-center gap-1.5',
+                        filters.website === site.id ? 'search-category-pill-active' : 'search-category-pill-inactive'
                       )}
                     >
-                      <span className="w-3.5 h-3.5 rounded bg-white/10 flex items-center justify-center text-[9px] font-black text-cyan-300 overflow-hidden">
+                      <span className="w-3.5 h-3.5 rounded bg-black/30 flex items-center justify-center text-[9px] font-bold overflow-hidden">
                         {site.logoUrl ? <img src={site.logoUrl} alt="" className="w-full h-full object-cover" /> : site.name.charAt(0)}
                       </span>
                       <span>{site.name}</span>
@@ -1096,246 +1057,109 @@ function SearchContent() {
 
                 {data.results.length > 0 ? (
                   <div className="space-y-6">
-                    {/* Featured Movie / Show Spotlight Master Unified Title Card */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 15 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#0b0e26] via-[#101438] to-[#08091a] border border-cyan-500/30 p-6 sm:p-8 shadow-2xl backdrop-blur-2xl"
-                    >
-                      {/* Full-Bleed Backdrop Blur */}
-                      {data.results[0].backdrop && (
-                        <div
-                          className="absolute inset-0 bg-cover bg-center opacity-15 blur-xl pointer-events-none"
-                          style={{ backgroundImage: `url(${data.results[0].backdrop})` }}
-                        />
-                      )}
+                    <SearchHeroResult
+                      result={data.results[0]}
+                      websitesSearched={data.websitesSearched || websites.length}
+                      onVisitSource={(source) => handleVisitSource(source, data.results[0].title)}
+                      onTrailer={setActiveTrailerKey}
+                    />
 
-                      <div className="relative z-10 flex flex-col lg:flex-row items-start gap-8">
-                        {/* High-Definition Movie Poster */}
-                        <div className="relative w-44 sm:w-52 h-64 sm:h-76 rounded-2xl overflow-hidden shadow-2xl border border-white/20 flex-shrink-0 bg-black/60 group mx-auto lg:mx-0">
-                          <img
-                            src={data.results[0].poster || resolveMoviePoster(data.results[0].title, data.results[0].category)}
-                            alt={data.results[0].title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src = resolveMoviePoster(data.results[0].title, data.results[0].category);
-                            }}
-                          />
-                          {data.results[0].confidenceScore && (
-                            <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-emerald-500 text-white font-black text-[10px] uppercase shadow-md border border-white/30">
-                              {data.results[0].confidenceScore}% Match
-                            </div>
-                          )}
-                          {data.results[0].rating && (
-                            <div className="absolute bottom-2 right-2 px-2.5 py-0.5 rounded-full bg-amber-400 text-black font-black text-[11px] shadow-md flex items-center gap-1">
-                              ★ {data.results[0].rating.toFixed(1)}/10
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Title & Unified Metadata Details */}
-                        <div className="flex-1 text-center lg:text-left space-y-4">
-                          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
-                            <span className="px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-black uppercase tracking-wider">
-                              ✨ UNIFIED TITLE VIEW
-                            </span>
-                            {data.results[0].category && (
-                              <span className="px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs font-black uppercase tracking-wider">
-                                {data.results[0].category.replace('-', ' ')}
-                              </span>
-                            )}
-                          </div>
-
-                          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-                            {data.results[0].title.replace(/\s*on\s+.*$/i, '')}
-                          </h2>
-
-                          {data.results[0].originalTitle && data.results[0].originalTitle !== data.results[0].title && (
-                            <p className="text-xs text-white/50 italic">
-                              Original Title: {data.results[0].originalTitle}
-                            </p>
-                          )}
-
-                          {/* Year • Rating • Genres • Runtime */}
-                          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs text-white/80 font-bold">
-                            {data.results[0].year && <span className="text-white font-extrabold">{data.results[0].year}</span>}
-                            {data.results[0].rating && (
-                              <>
-                                <span>•</span>
-                                <span className="px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30">
-                                  ⭐ {data.results[0].rating.toFixed(1)} / 10
-                                </span>
-                              </>
-                            )}
-                            {data.results[0].genres && data.results[0].genres.length > 0 && (
-                              <>
-                                <span>•</span>
-                                <span className="text-purple-300 font-extrabold">
-                                  {data.results[0].genres.join(' • ')}
-                                </span>
-                              </>
-                            )}
-                            {data.results[0].runtime && (
-                              <>
-                                <span>•</span>
-                                <span className="text-cyan-300">⏱ {data.results[0].runtime}</span>
-                              </>
-                            )}
-                            {data.results[0].imdbId && (
-                              <>
-                                <span>•</span>
-                                <a
-                                  href={`https://www.imdb.com/title/${data.results[0].imdbId}/`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-200 border border-amber-500/30 hover:bg-amber-500/40 transition-all"
-                                >
-                                  IMDb
-                                </a>
-                              </>
-                            )}
-                            {data.results[0].sources && data.results[0].sources.length > 0 && (
-                              <>
-                                <span>•</span>
-                                <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-                                  📡 {data.results[0].sources.length} streaming sites
-                                </span>
-                              </>
-                            )}
-                          </div>
-
-                          {/* Overview / Storyline */}
-                          <p className="text-xs sm:text-sm text-white/70 max-w-2xl leading-relaxed">
-                            {data.results[0].overview || `Search results for ${data.results[0].title} across verified streaming providers.`}
-                          </p>
-
-                          {/* Action Buttons: Trailer & Fast Stream */}
-                          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
-                            {data.results[0].trailerKey && (
-                              <button
-                                onClick={() => setActiveTrailerKey(data.results[0].trailerKey!)}
-                                className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-red-600 to-rose-600 text-white font-black text-xs shadow-lg shadow-rose-600/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border border-white/20"
-                              >
-                                <span>▶ Watch Official Trailer</span>
-                              </button>
-                            )}
+                    {/* Official licensed providers */}
+                    {data.results[0].officialProviders && data.results[0].officialProviders.length > 0 && (
+                      <div className="search-hero-card rounded-2xl border border-white/10 p-5 sm:p-6">
+                        <h3 className="font-display text-sm font-bold text-white mb-3">Official streaming providers</h3>
+                        <div className="flex flex-wrap gap-2">
+                          {data.results[0].officialProviders.map((provider) => (
                             <a
-                              href={data.results[0].url}
+                              key={provider.id}
+                              href={provider.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-black text-xs shadow-lg shadow-purple-500/30 hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border border-white/20"
+                              className="px-3.5 py-2 rounded-xl border border-white/10 bg-white/[0.03] text-white/80 text-xs font-semibold transition-all flex items-center gap-2 hover:border-[#e8b86d]/35 hover:bg-[#e8b86d]/5"
                             >
-                              <span>🚀 Launch Stream on {data.results[0].websiteName}</span>
+                              {provider.logo && (
+                                <img src={provider.logo} alt={provider.name} className="w-5 h-5 rounded" />
+                              )}
+                              <span>{provider.name}</span>
+                              <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-white/60 capitalize">
+                                {provider.type === 'flatrate' ? 'Stream' : provider.type === 'rent' ? 'Rent' : 'Buy'}
+                              </span>
                             </a>
-                          </div>
-
-                          {/* Official Licensed Providers Grid — Real data from TMDB */}
-                          {data.results[0].officialProviders && data.results[0].officialProviders.length > 0 && (
-                            <div className="pt-4 border-t border-white/10">
-                              <div className="text-[11px] font-black text-cyan-300 uppercase tracking-wider mb-2 flex items-center gap-2">
-                                <span>📺 Official Streaming Providers:</span>
-                              </div>
-                              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
-                                {data.results[0].officialProviders.map((provider) => (
-                                  <a
-                                    key={provider.id}
-                                    href={provider.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-3.5 py-1.5 rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-cyan-200 text-xs font-black transition-all flex items-center gap-2 hover:scale-105 hover:bg-cyan-500/20"
-                                  >
-                                    {provider.logo && (
-                                      <img src={provider.logo} alt={provider.name} className="w-5 h-5 rounded" />
-                                    )}
-                                    <span>{provider.name}</span>
-                                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-white font-extrabold capitalize">
-                                      {provider.type === 'flatrate' ? 'Stream' : provider.type === 'rent' ? 'Rent' : 'Buy'}
-                                    </span>
-                                  </a>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Cast Members Avatars */}
-                          {data.results[0].cast && data.results[0].cast.length > 0 && (
-                            <div className="pt-3 border-t border-white/10">
-                              <div className="text-[11px] font-black text-purple-300 uppercase tracking-wider mb-2">
-                                🎭 Top Cast Members:
-                              </div>
-                              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-                                {data.results[0].cast.map((actor, aIdx) => (
-                                  <div key={aIdx} className="flex items-center gap-2 bg-white/[0.04] p-1.5 pr-3 rounded-xl border border-white/10">
-                                    <div className="w-7 h-7 rounded-full bg-purple-500/20 overflow-hidden flex-shrink-0 border border-white/20 flex items-center justify-center">
-                                      {actor.profilePath ? (
-                                        <img src={actor.profilePath} alt={actor.name} className="w-full h-full object-cover" />
-                                      ) : (
-                                        <span className="text-[9px] font-black text-purple-300">{actor.name.charAt(0)}</span>
-                                      )}
-                                    </div>
-                                    <div className="text-left">
-                                      <div className="text-[11px] font-bold text-white leading-tight">{actor.name}</div>
-                                      <div className="text-[9px] text-white/50 leading-tight">{actor.character}</div>
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Similar Titles Carousel */}
-                          {data.results[0].similarTitles && data.results[0].similarTitles.length > 0 && (
-                            <div className="pt-3 border-t border-white/10">
-                              <div className="text-[11px] font-black text-cyan-300 uppercase tracking-wider mb-2">
-                                🎬 Similar Titles You May Like:
-                              </div>
-                              <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
-                                {data.results[0].similarTitles.map((sim) => (
-                                  <button
-                                    key={sim.id}
-                                    onClick={() => setQuery(sim.title)}
-                                    className="flex items-center gap-2 p-1.5 pr-3 rounded-xl bg-white/[0.04] hover:bg-cyan-500/20 border border-white/10 transition-all text-left flex-shrink-0 group"
-                                  >
-                                    <div className="w-6 h-8 rounded bg-black/50 overflow-hidden flex-shrink-0 border border-white/10">
-                                      {sim.poster ? (
-                                        <img src={sim.poster} alt={sim.title} className="w-full h-full object-cover group-hover:scale-105" />
-                                      ) : (
-                                        <span className="text-[8px] font-black text-cyan-300">🎬</span>
-                                      )}
-                                    </div>
-                                    <div>
-                                      <div className="text-[11px] font-bold text-white group-hover:text-cyan-300 line-clamp-1">{sim.title}</div>
-                                      {sim.year && <div className="text-[9px] text-white/40">{sim.year}</div>}
-                                    </div>
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Ranked directory sources for top match */}
-                          {data.results[0].sources && data.results[0].sources.length > 0 && (
-                            <div className="pt-4 border-t border-white/10 w-full">
-                              <SourceListTable sources={data.results[0].sources} showAll />
-                            </div>
-                          )}
+                          ))}
                         </div>
                       </div>
-                    </motion.div>
+                    )}
+
+                    {/* Cast */}
+                    {data.results[0].cast && data.results[0].cast.length > 0 && (
+                      <div className="search-hero-card rounded-2xl border border-white/10 p-5 sm:p-6">
+                        <h3 className="font-display text-sm font-bold text-white mb-3">Top cast</h3>
+                        <div className="flex flex-wrap gap-3">
+                          {data.results[0].cast.map((actor, aIdx) => (
+                            <div key={aIdx} className="flex items-center gap-2 bg-white/[0.03] p-1.5 pr-3 rounded-xl border border-white/10">
+                              <div className="w-8 h-8 rounded-full bg-white/5 overflow-hidden flex-shrink-0 border border-white/10 flex items-center justify-center">
+                                {actor.profilePath ? (
+                                  <img src={actor.profilePath} alt={actor.name} className="w-full h-full object-cover" />
+                                ) : (
+                                  <span className="text-[10px] font-bold text-[#e8b86d]">{actor.name.charAt(0)}</span>
+                                )}
+                              </div>
+                              <div className="text-left">
+                                <div className="text-xs font-semibold text-white leading-tight">{actor.name}</div>
+                                <div className="text-[10px] text-white/45 leading-tight">{actor.character}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Similar titles */}
+                    {data.results[0].similarTitles && data.results[0].similarTitles.length > 0 && (
+                      <div className="search-hero-card rounded-2xl border border-white/10 p-5 sm:p-6">
+                        <h3 className="font-display text-sm font-bold text-white mb-3">Similar titles</h3>
+                        <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+                          {data.results[0].similarTitles.map((sim) => (
+                            <button
+                              key={sim.id}
+                              type="button"
+                              onClick={() => setQuery(sim.title)}
+                              className="flex items-center gap-2 p-1.5 pr-3 rounded-xl bg-white/[0.03] hover:bg-[#e8b86d]/10 border border-white/10 hover:border-[#e8b86d]/25 transition-all text-left flex-shrink-0 group"
+                            >
+                              <div className="w-7 h-10 rounded bg-black/50 overflow-hidden flex-shrink-0 border border-white/10">
+                                {sim.poster ? (
+                                  <img src={sim.poster} alt={sim.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                                ) : (
+                                  <span className="text-[8px] font-bold text-[#e8b86d] flex items-center justify-center h-full">🎬</span>
+                                )}
+                              </div>
+                              <div>
+                                <div className="text-xs font-semibold text-white group-hover:text-[#e8b86d] line-clamp-1">{sim.title}</div>
+                                {sim.year && <div className="text-[10px] text-white/40">{sim.year}</div>}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Additional title matches */}
                     {data.results.length > 1 && (
                       <>
-                        <div className="flex items-center justify-between px-2 py-1 text-xs font-extrabold text-cyan-300 border-b border-white/10 pb-2">
-                          <span className="flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                        <div className="flex items-center justify-between px-1 py-2 text-xs font-semibold text-white/50 border-b border-white/10">
+                          <span>
                             {data.totalResults - 1} more {data.totalResults - 1 === 1 ? 'match' : 'matches'}
                           </span>
-                          <span className="text-white/40 font-normal">IMDb / TMDB Verified</span>
+                          <span className="text-white/35">IMDb / TMDB verified</span>
                         </div>
                         <div className="space-y-4">
                           {data.results.slice(1).map((result, idx) => (
-                            <SearchResultCard key={result.id} result={result} index={idx + 1} />
+                            <SearchResultCard
+                              key={result.id}
+                              result={result}
+                              index={idx + 1}
+                              onVisitSource={(source) => handleVisitSource(source, result.title)}
+                            />
                           ))}
                         </div>
                       </>
