@@ -598,6 +598,16 @@ body {
   outline-offset: 2px;
 }
 
+.search-source-box {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.search-source-box-inner {
+  border-radius: 0.7rem;
+}
+
 .search-source-card-full {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
@@ -642,7 +652,7 @@ body {
 
 .search-sources-expand-btn {
   border: 1px solid rgba(232, 184, 109, 0.28);
-  border-radius: 1.25rem;
+  border-radius: 0.875rem;
   padding: 0.35rem;
   background: linear-gradient(145deg, rgba(232, 184, 109, 0.08), rgba(232, 184, 109, 0.02));
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -655,25 +665,14 @@ body {
 
 .search-sources-expand-btn-inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  width: 100%;
-  padding: 1rem 1.25rem;
-  border-radius: 1rem;
-  background: rgba(10, 12, 18, 0.65);
-}
-
-.search-sources-expand-chevron {
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 0.85rem;
-  border: 1px solid rgba(232, 184, 109, 0.35);
-  background: rgba(232, 184, 109, 0.12);
-  color: #e8b86d;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(10, 12, 18, 0.65);
 }
 
 .home-fade-up {

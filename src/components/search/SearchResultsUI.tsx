@@ -138,13 +138,13 @@ function SourceRowDetailed({
     <button
       type="button"
       onClick={() => onVisit(source)}
-      className="search-source-card search-source-card-full group text-left w-full p-5 sm:p-6 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-[#e8b86d]/35 transition-all"
+      className="search-source-box search-source-card group text-left w-full rounded-xl border border-white/10 bg-[#0c0f16] hover:bg-[#10141d] hover:border-[#e8b86d]/30 active:scale-[0.99] transition-all"
     >
-      <div className="flex items-center gap-4 sm:gap-5">
-        <span className="text-sm font-mono font-bold text-[#e8b86d]/60 w-8 shrink-0 text-center">
-          {rank}
-        </span>
-        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 shadow-lg p-1.5">
+      <div className="search-source-box-inner flex items-start gap-3 p-3 sm:p-4">
+        <div className="search-source-rank shrink-0 w-7 h-7 rounded-lg bg-[#e8b86d]/10 border border-[#e8b86d]/20 flex items-center justify-center">
+          <span className="text-[11px] font-mono font-bold text-[#e8b86d]">{rank}</span>
+        </div>
+        <div className="search-source-logo w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 p-1.5">
           <WebsiteLogo
             homepageUrl={source.url}
             logoUrl={source.websiteLogo}
@@ -153,48 +153,36 @@ function SourceRowDetailed({
           />
         </div>
         <div className="flex-1 min-w-0">
-          <div className="flex flex-wrap items-center gap-2.5 mb-1.5">
-            <p className="text-lg sm:text-xl font-display font-bold text-white group-hover:text-[#e8b86d] transition-colors">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+            <p className="text-sm sm:text-base font-display font-bold text-white group-hover:text-[#e8b86d] transition-colors truncate">
               {source.websiteName}
             </p>
             {source.verified && (
-              <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
+              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-300 border border-emerald-500/20 shrink-0">
                 Verified
               </span>
             )}
           </div>
-          <p className="text-sm text-white/40 mb-3">{hostname}</p>
-          <div className="flex flex-wrap gap-2 mb-2.5">
-            {source.quality.map((q) => (
+          <p className="text-[11px] sm:text-xs text-white/40 mb-2 truncate">{hostname}</p>
+          <div className="flex flex-wrap gap-1.5">
+            {source.quality.slice(0, 3).map((q) => (
               <span
                 key={q}
                 className={cn(
-                  'text-xs font-bold px-2.5 py-1 rounded-lg border',
+                  'text-[10px] font-bold px-2 py-0.5 rounded-md border',
                   QUALITY_COLORS[q] || 'bg-white/10 text-white/60 border-white/15'
                 )}
               >
-                {q === '4k' ? '4K UHD' : q.toUpperCase()}
+                {q === '4k' ? '4K' : q.toUpperCase()}
               </span>
             ))}
-          </div>
-          <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/55">
-            <p>
-              <span className="text-white/35">Audio · </span>
-              {source.languages.map(formatLanguageLabel).join(', ')}
-            </p>
-            {source.subtitles.length > 0 && (
-              <p>
-                <span className="text-white/35">Subs · </span>
-                {source.subtitles.map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join(', ')}
-              </p>
+            {source.languages.length > 0 && (
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md border border-white/10 bg-white/[0.04] text-white/50 truncate max-w-full">
+                {source.languages.slice(0, 2).map(formatLanguageLabel).join(', ')}
+              </span>
             )}
           </div>
         </div>
-        <span className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#e8b86d] text-[#1a1208] flex items-center justify-center group-hover:bg-[#f0c987] transition-colors shadow-lg shadow-[#e8b86d]/20">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M5 12h14M13 6l6 6-6 6" />
-          </svg>
-        </span>
       </div>
     </button>
   );
@@ -234,7 +222,7 @@ export function StreamingSourcesPanel({
         </p>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2 sm:gap-2.5">
         <AnimatePresence mode="popLayout">
           {visible.map((source, idx) => (
             <motion.div
@@ -258,24 +246,12 @@ export function StreamingSourcesPanel({
           className="search-sources-expand-btn group w-full"
           aria-expanded={expanded}
         >
-          <span className="search-sources-expand-btn-inner">
-            <span className="flex flex-col items-start sm:items-center sm:flex-row sm:gap-3">
-              <span className="font-display text-base sm:text-lg font-bold text-white group-hover:text-[#e8b86d] transition-colors">
-                {expanded ? 'Show fewer sites' : `Load ${remaining} more sites`}
-              </span>
-              <span className="text-xs text-white/45 mt-0.5 sm:mt-0">
-                {expanded ? 'Collapse to top 15' : `See all ${sources.length} available sources`}
-              </span>
+          <span className="search-sources-expand-btn-inner justify-center text-center">
+            <span className="font-display text-base sm:text-lg font-bold text-white group-hover:text-[#e8b86d] transition-colors">
+              {expanded ? 'Show fewer sites' : `Load ${remaining} more sites`}
             </span>
-            <span
-              className={cn(
-                'search-sources-expand-chevron shrink-0 transition-transform duration-300',
-                expanded && 'rotate-180'
-              )}
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
+            <span className="text-xs text-white/45 mt-1 block">
+              {expanded ? 'Collapse to top 15' : `See all ${sources.length} available sources`}
             </span>
           </span>
         </button>
