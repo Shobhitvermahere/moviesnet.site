@@ -122,18 +122,14 @@ export function Header() {
   return (
     <>
       <header className="site-header fixed top-0 left-0 right-0 z-50">
-        <div className="border-b border-white/[0.08] bg-[#03050a]/80 backdrop-blur-2xl supports-[backdrop-filter]:bg-[#03050a]/70">
+        <div className="border-b border-white/[0.08] bg-[#03050a]/92 max-md:backdrop-blur-none md:bg-[#03050a]/80 md:backdrop-blur-2xl supports-[backdrop-filter]:md:bg-[#03050a]/70">
           <div className="page-shell mx-auto page-gutter">
             <div className="flex items-center justify-between gap-2 h-[var(--header-height)] min-h-[3.5rem]">
               <MoviesNetLogo
                 size="sm"
-                variant="mark"
-                className="lg:hidden transition-opacity hover:opacity-90 shrink-0 min-w-0"
-              />
-              <MoviesNetLogo
-                size="md"
                 variant="full"
-                className="hidden lg:inline-flex transition-opacity hover:opacity-90 shrink-0 min-w-0 max-w-[min(100%,14rem)]"
+                responsive
+                className="transition-opacity hover:opacity-90 shrink-0 min-w-0 lg:gap-2.5 [&_svg]:lg:w-[34px] [&_svg]:lg:h-[34px] [&_.logo-wordmark]:lg:text-base"
               />
 
               <nav className="hidden md:flex items-center gap-0.5 lg:gap-1" aria-label="Main navigation">

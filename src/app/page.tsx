@@ -415,34 +415,32 @@ export default function HomePage() {
   return (
     <div className="relative min-h-screen bg-transparent text-[#f4f1ea] overflow-x-hidden">
       {/* HERO + search (suggestions expand inline and push trending down) */}
-      <motion.section
-        layout
+      <section
         className={cn(
           'home-hero-section relative flex flex-col page-gutter',
           hasHeroSuggestions
             ? 'min-h-0 py-10 sm:py-12 justify-start'
             : 'min-h-[calc(100svh-var(--header-height))] justify-center pb-12 sm:pb-16 pt-6 sm:pt-12'
         )}
-        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="max-w-6xl mx-auto w-full text-center">
           <div>
-            <h1 className="home-fade-up sm:hidden home-hero-tagline font-display text-2xl font-bold tracking-tight text-white/95 mb-3 px-1">
+            <h1 className="home-fade-up lg:hidden home-hero-tagline font-display text-2xl font-bold tracking-tight text-white/95 mb-3 px-1">
               Search once. Find everywhere.
             </h1>
 
-            <h1 className="home-fade-up hidden sm:block font-display font-extrabold home-hero-brand mb-4 sm:mb-6 select-none mx-auto">
+            <h1 className="home-fade-up hidden lg:block font-display font-extrabold home-hero-brand mb-4 sm:mb-6 select-none mx-auto">
               <span className="brand-solid">Movies</span>
               <span className="brand-accent">Net</span>
             </h1>
 
-            <p className="home-fade-up-delay home-hero-tagline hidden sm:block font-display text-xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white/95 mb-4 sm:mb-5 px-1">
+            <p className="home-fade-up-delay home-hero-tagline hidden lg:block font-display text-xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white/95 mb-4 sm:mb-5 px-1">
               Search once. Find everywhere.
             </p>
 
             <p className="home-fade-up-delay-2 text-sm sm:text-lg text-white/55 max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed px-1">
-              <span className="sm:hidden">One search across movies, anime, manga, sports, and live TV.</span>
-              <span className="hidden sm:inline">One query across curated movies, anime, manga, sports, and live TV — then open the original source.</span>
+              <span className="lg:hidden">One search across movies, anime, manga, sports, and live TV.</span>
+              <span className="hidden lg:inline">One query across curated movies, anime, manga, sports, and live TV — then open the original source.</span>
             </p>
           </div>
 
@@ -520,13 +518,9 @@ export default function HomePage() {
             </div>
           )}
         </div>
-      </motion.section>
+      </section>
 
-      <motion.div
-        layout
-        className="home-content-below page-shell mx-auto page-gutter space-y-16 sm:space-y-24 pb-20 sm:pb-28 pt-4 sm:pt-6"
-        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <div className="home-content-below page-shell mx-auto page-gutter space-y-16 sm:space-y-24 pb-20 sm:pb-28 pt-4 sm:pt-6">
         {/* TRENDING */}
         <section id="trending" className="scroll-mt-28">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
@@ -586,13 +580,9 @@ export default function HomePage() {
             className="home-rail-scroll flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-2"
           >
             {showcaseItems.map((item, idx) => (
-              <motion.article
+              <article
                 key={item.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.28) }}
-                className="home-rail-item group relative min-w-[200px] w-[200px] sm:min-w-[220px] sm:w-[220px] shrink-0 snap-start rounded-2xl overflow-hidden border border-white/10 bg-[#0a0d14]/70"
+                className="home-rail-item group relative min-w-[180px] w-[180px] sm:min-w-[220px] sm:w-[220px] shrink-0 snap-start rounded-2xl overflow-hidden border border-white/10 bg-[#0a0d14]/70"
               >
                 <div className="relative aspect-[2/3] overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -629,7 +619,7 @@ export default function HomePage() {
                 >
                   Find sources
                 </Link>
-              </motion.article>
+              </article>
             ))}
           </div>
         </section>
@@ -712,14 +702,13 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="home-directory-grid">
-              {filteredWebsites.map((site, index) => (
-                <motion.article
+              {filteredWebsites.map((site) => (
+                <a
                   key={site.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: Math.min(index * 0.02, 0.2) }}
-                  className="home-directory-card group flex flex-col rounded-2xl border border-white/10 bg-[#0a0d14]/55 hover:border-[#e8b86d]/25 transition-colors p-4 sm:p-5"
+                  href={site.homepageUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="home-directory-card directory-card-link group flex flex-col rounded-2xl border border-white/10 bg-[#0a0d14]/55 hover:border-[#e8b86d]/30 active:scale-[0.99] transition-[transform,border-color,background-color] duration-200 p-4 sm:p-5"
                 >
                   <div className="flex items-start gap-3 mb-3 min-w-0">
                     <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center p-1.5 shrink-0 overflow-hidden">
@@ -727,6 +716,7 @@ export default function HomePage() {
                         homepageUrl={site.homepageUrl}
                         logoUrl={site.logoUrl}
                         name={site.name}
+                        size={64}
                         imgClassName="w-full h-full"
                       />
                     </div>
@@ -738,34 +728,31 @@ export default function HomePage() {
                         {site.homepageUrl.replace(/^https?:\/\//, '')}
                       </p>
                     </div>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      className="shrink-0 text-white/25 group-hover:text-[#e8b86d]/70 transition-colors mt-0.5"
+                      aria-hidden
+                    >
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-white/55 leading-relaxed line-clamp-2 mb-3 sm:mb-4 flex-1">
+                  <p className="text-xs sm:text-sm text-white/55 leading-relaxed line-clamp-2 flex-1">
                     {site.description || 'Curated portal ready for multi-source discovery.'}
                   </p>
 
-                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-white/40 mb-3 pt-3 border-t border-white/8">
+                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-white/40 mt-3 pt-3 border-t border-white/8">
                     <span>{formatNumber(site.totalIndexed || 0)} indexed</span>
                     <span className="text-emerald-400/90">Online</span>
                   </div>
-
-                  <div className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-2">
-                    <a
-                      href={site.homepageUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="py-2.5 min-h-[2.75rem] rounded-xl border border-white/10 text-center text-xs font-semibold text-white/75 hover:bg-white/[0.05] transition-colors flex items-center justify-center"
-                    >
-                      Visit
-                    </a>
-                    <Link
-                      href={`/search?q=${encodeURIComponent(site.name)}`}
-                      className="py-2.5 min-h-[2.75rem] rounded-xl bg-[#e8b86d]/15 border border-[#e8b86d]/25 text-center text-xs font-semibold text-[#e8b86d] hover:bg-[#e8b86d]/25 transition-colors flex items-center justify-center"
-                    >
-                      Search
-                    </Link>
-                  </div>
-                </motion.article>
+                </a>
               ))}
             </div>
           )}
@@ -816,7 +803,7 @@ export default function HomePage() {
             })}
           </div>
         </section>
-      </motion.div>
+      </div>
     </div>
   );
 }

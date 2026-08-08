@@ -69,10 +69,28 @@
 
 .site-header {
   padding-top: env(safe-area-inset-top, 0px);
+  transform: translateZ(0);
 }
 
 .support-dropdown {
   -webkit-tap-highlight-color: transparent;
+}
+
+.directory-card-link {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-content-below > section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 480px;
+}
+
+.gpu-smooth {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @media (max-width: 767px) {
@@ -83,6 +101,20 @@
 
   .search-page {
     padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .home-rail-item:hover {
+    transform: none;
+  }
+
+  .glass-strong,
+  .home-search-shell {
+    backdrop-filter: blur(12px) saturate(130%);
+    -webkit-backdrop-filter: blur(12px) saturate(130%);
+  }
+
+  .home-directory-card:active {
+    background-color: rgba(232, 184, 109, 0.06);
   }
 }
 

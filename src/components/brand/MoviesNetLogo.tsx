@@ -13,6 +13,8 @@ const SIZE_MAP: Record<LogoSize, { mark: number; text: string }> = {
 interface MoviesNetLogoProps {
   size?: LogoSize;
   variant?: 'full' | 'mark';
+  /** Hide wordmark below lg breakpoint (header mobile/tablet) */
+  responsive?: boolean;
   href?: string;
   className?: string;
   onClick?: () => void;
@@ -21,6 +23,7 @@ interface MoviesNetLogoProps {
 export function MoviesNetLogo({
   size = 'md',
   variant = 'full',
+  responsive = false,
   href = '/',
   className,
   onClick,
@@ -31,7 +34,13 @@ export function MoviesNetLogo({
     <>
       <LogoMark size={mark} />
       {variant === 'full' && (
-        <span className={cn('font-display font-bold tracking-tight whitespace-nowrap', text)}>
+        <span
+          className={cn(
+            'logo-wordmark font-display font-bold tracking-tight whitespace-nowrap',
+            text,
+            responsive && 'hidden lg:inline'
+          )}
+        >
           <span className="text-white">Movies</span>
           <span className="text-[#e8b86d]">Net</span>
         </span>

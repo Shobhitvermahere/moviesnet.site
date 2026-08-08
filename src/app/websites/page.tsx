@@ -11,11 +11,14 @@ function WebsiteRowItem({ website, index }: { website: Partial<Website>; index: 
   const domain = website.homepageUrl?.replace(/^https?:\/\//, '').replace(/\/.*$/, '') || '';
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 10 }}
+    <motion.a
+      href={website.homepageUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.02 }}
-      className="group rounded-2xl border border-white/[0.08] bg-[#0a0d14]/60 p-4 sm:p-5 shadow-lg min-w-0"
+      transition={{ duration: 0.2, delay: Math.min(index * 0.015, 0.12) }}
+      className="directory-card-link group block rounded-2xl border border-white/[0.08] bg-[#0a0d14]/60 p-4 sm:p-5 shadow-lg min-w-0 hover:border-[#e8b86d]/30 active:scale-[0.99] transition-[transform,border-color] duration-200"
     >
       <div className="flex items-start gap-3 min-w-0">
         <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 overflow-hidden p-1.5">
@@ -24,6 +27,7 @@ function WebsiteRowItem({ website, index }: { website: Partial<Website>; index: 
               homepageUrl={website.homepageUrl}
               logoUrl={website.logoUrl}
               name={website.name}
+              size={64}
               imgClassName="w-full h-full"
             />
           ) : (
@@ -78,27 +82,23 @@ function WebsiteRowItem({ website, index }: { website: Partial<Website>; index: 
             </div>
           )}
         </div>
-      </div>
 
-      <div className="mt-4 pt-4 border-t border-white/[0.06] grid grid-cols-1 min-[420px]:grid-cols-[1fr_auto] gap-2">
-        <span className="text-[11px] font-mono text-white/35 px-2.5 py-2 rounded-lg bg-white/[0.03] border border-white/[0.06] truncate self-center">
-          {domain}
-        </span>
-        <a
-          href={website.homepageUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary text-xs font-bold px-4 py-2.5 min-h-[2.75rem] rounded-xl shadow-md flex items-center justify-center gap-1.5"
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="shrink-0 text-white/25 group-hover:text-[#e8b86d]/70 transition-colors mt-0.5"
+          aria-hidden
         >
-          Visit Source
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-            <polyline points="15 3 21 3 21 9" />
-            <line x1="10" y1="14" x2="21" y2="3" />
-          </svg>
-        </a>
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+          <polyline points="15 3 21 3 21 9" />
+          <line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
       </div>
-    </motion.article>
+    </motion.a>
   );
 }
 
@@ -111,6 +111,7 @@ export default function WebsitesPage() {
       const res = await fetch('/api/websites');
       return res.json();
     },
+    staleTime: 5 * 60 * 1000,
   });
 
   const filteredWebsites = websites
@@ -121,9 +122,9 @@ export default function WebsitesPage() {
     <div className="min-h-screen py-8 sm:py-16 page-gutter">
       <div className="page-shell mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.35 }}
           className="text-center mb-8 sm:mb-12"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#e8b86d] mb-3 block">
@@ -133,17 +134,12 @@ export default function WebsitesPage() {
             Indexed websites
           </h1>
           <p className="text-white/50 max-w-2xl mx-auto text-sm sm:text-lg px-1">
-            All configured websites indexed by MoviesNet. Parallel search runs across these verified sources.
+            Tap any site to open it directly. All sources indexed by MoviesNet.
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="websites-filter-rail mb-6 sm:mb-8"
-        >
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1.5 rounded-2xl bg-[#0d0d10]/90 border border-white/[0.08] backdrop-blur-xl max-w-4xl mx-auto">
+        <div className="websites-filter-rail mb-6 sm:mb-8">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar p-1.5 rounded-2xl bg-[#0d0d10]/90 border border-white/[0.08] max-w-4xl mx-auto">
             {CATEGORIES.map((cat) => {
               const count = websites?.filter((w) => w.categories?.includes(cat.slug)).length || 0;
               return (
@@ -163,12 +159,12 @@ export default function WebsitesPage() {
               );
             })}
           </div>
-        </motion.div>
+        </div>
 
         {isLoading ? (
           <div className="space-y-3">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-28 sm:h-24 skeleton rounded-2xl" />
+              <div key={i} className="h-24 skeleton rounded-2xl" />
             ))}
           </div>
         ) : filteredWebsites.length > 0 ? (
