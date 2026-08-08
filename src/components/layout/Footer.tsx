@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { CATEGORIES } from '@/lib/utils';
+import { MoviesNetLogo } from '@/components/brand/MoviesNetLogo';
 
 export function Footer() {
   return (
@@ -8,18 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-lg border border-[#e8b86d]/35 bg-[#e8b86d]/10 flex items-center justify-center">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e8b86d" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <path d="M21 21l-4.35-4.35" />
-                </svg>
-              </div>
-              <span className="font-display text-lg font-bold tracking-tight">
-                <span className="text-white">Movies</span>
-                <span className="text-[#e8b86d]">Net</span>
-              </span>
-            </Link>
+            <MoviesNetLogo size="md" className="mb-4" />
             <p className="text-sm text-white/45 leading-relaxed mb-6">
               Search once. Find everywhere.<br />
               Discover titles across curated sites, then open the original source.

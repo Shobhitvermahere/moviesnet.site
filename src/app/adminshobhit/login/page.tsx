@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useAdminStore } from '@/stores';
 import { useRouter } from 'next/navigation';
+import { MoviesNetLogo } from '@/components/brand/MoviesNetLogo';
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -64,15 +65,10 @@ export default function AdminLoginPage() {
       >
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-400 p-0.5 shadow-lg shadow-purple-500/25 flex items-center justify-center mx-auto mb-4">
-            <div className="w-full h-full bg-black/40 backdrop-blur-md rounded-[14px] flex items-center justify-center">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
-            </div>
+          <div className="flex justify-center mb-4">
+            <MoviesNetLogo size="lg" href="/" />
           </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight mb-2">Admin Panel</h1>
+          <h1 className="text-2xl font-display font-bold text-white tracking-tight mb-2">Admin Panel</h1>
           <p className="text-sm font-medium text-gray-300">Sign in to access MoviesNet management</p>
         </div>
 

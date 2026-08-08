@@ -49,6 +49,7 @@ export const metadata: Metadata = {
     title: 'MoviesNet — Search Once. Find Everywhere.',
     description:
       'Discover content across multiple websites instantly. Search once, find everywhere.',
+    images: [{ url: '/logo.svg', width: 320, height: 64, alt: 'MoviesNet' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -60,10 +61,14 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [{ url: '/logo-mark.svg', type: 'image/svg+xml' }],
+    apple: [{ url: '/logo-mark.svg', type: 'image/svg+xml' }],
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#050505',
+  themeColor: '#03050a',
   width: 'device-width',
   initialScale: 1,
 };
@@ -76,7 +81,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${syne.variable} ${instrumentSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

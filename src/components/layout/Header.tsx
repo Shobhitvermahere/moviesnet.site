@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { MoviesNetLogo } from '@/components/brand/MoviesNetLogo';
 
 export function Header() {
   const pathname = usePathname();
@@ -98,18 +99,7 @@ export function Header() {
           <div className="page-shell mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
             <div className="flex items-center justify-between h-[4.25rem]">
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-2.5 group">
-                <div className="relative w-8 h-8 rounded-lg border border-[#e8b86d]/35 bg-[#e8b86d]/10 flex items-center justify-center">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e8b86d" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <path d="M21 21l-4.35-4.35" />
-                  </svg>
-                </div>
-                <span className="font-display text-base sm:text-lg font-bold tracking-tight whitespace-nowrap">
-                  <span className="text-white">Movies</span>
-                  <span className="text-[#e8b86d]">Net</span>
-                </span>
-              </Link>
+              <MoviesNetLogo size="md" className="transition-opacity hover:opacity-90" />
 
               {/* Desktop Nav - Matching exact font & styling for all items */}
               <nav className="hidden md:flex items-center gap-1.5" aria-label="Main navigation">
