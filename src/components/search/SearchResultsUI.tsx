@@ -184,7 +184,7 @@ function SourceRowDetailed({
             {source.subtitles.length > 0 && (
               <p>
                 <span className="text-white/35">Subs · </span>
-                {source.subtitles.map(formatLanguageLabel).join(', ')}
+                {source.subtitles.map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join(', ')}
               </p>
             )}
           </div>
