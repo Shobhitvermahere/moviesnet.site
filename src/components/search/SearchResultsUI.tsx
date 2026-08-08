@@ -117,57 +117,6 @@ export function useSiteHandoff() {
 
 export const SOURCES_INITIAL_VISIBLE = 15;
 
-function SourceRowCompact({
-  source,
-  rank,
-  onVisit,
-}: {
-  source: StreamingSource;
-  rank: number;
-  onVisit: (source: StreamingSource) => void;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={() => onVisit(source)}
-      className="search-source-card group text-left flex items-center gap-3 p-3 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-[#e8b86d]/35 transition-all"
-    >
-      <span className="text-[10px] font-mono text-white/25 w-5 shrink-0">{rank}</span>
-      <div className="w-9 h-9 rounded-lg bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
-        {source.websiteLogo ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={source.websiteLogo} alt="" className="w-full h-full object-cover" />
-        ) : (
-          <span className="text-xs font-bold text-[#e8b86d]">{source.websiteName.charAt(0)}</span>
-        )}
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="text-sm font-bold text-white truncate group-hover:text-[#e8b86d] transition-colors">
-          {source.websiteName}
-        </p>
-        <div className="flex flex-wrap gap-1 mt-1">
-          {source.quality.slice(0, 2).map((q) => (
-            <span
-              key={q}
-              className={cn(
-                'text-[9px] font-bold px-1.5 py-0.5 rounded border',
-                QUALITY_COLORS[q] || 'bg-white/10 text-white/60 border-white/15'
-              )}
-            >
-              {q === '4k' ? '4K' : q.toUpperCase()}
-            </span>
-          ))}
-        </div>
-      </div>
-      <span className="shrink-0 w-8 h-8 rounded-lg bg-[#e8b86d]/15 border border-[#e8b86d]/30 flex items-center justify-center text-[#e8b86d] group-hover:bg-[#e8b86d] group-hover:text-[#1a1208] transition-colors">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <path d="M5 12h14M13 6l6 6-6 6" />
-        </svg>
-      </span>
-    </button>
-  );
-}
-
 function SourceRowDetailed({
   source,
   rank,
@@ -188,36 +137,38 @@ function SourceRowDetailed({
     <button
       type="button"
       onClick={() => onVisit(source)}
-      className="search-source-card group text-left w-full p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-[#e8b86d]/35 transition-all"
+      className="search-source-card search-source-card-full group text-left w-full p-5 sm:p-6 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.06] hover:border-[#e8b86d]/35 transition-all"
     >
-      <div className="flex items-start gap-4">
-        <span className="text-xs font-mono text-white/30 pt-1 w-6 shrink-0">#{rank}</span>
-        <div className="w-12 h-12 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+      <div className="flex items-center gap-4 sm:gap-5">
+        <span className="text-sm font-mono font-bold text-[#e8b86d]/60 w-8 shrink-0 text-center">
+          {rank}
+        </span>
+        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 shadow-lg">
           {source.websiteLogo ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={source.websiteLogo} alt="" className="w-full h-full object-cover" />
           ) : (
-            <span className="text-sm font-bold text-[#e8b86d]">{source.websiteName.charAt(0)}</span>
+            <span className="text-lg font-bold text-[#e8b86d]">{source.websiteName.charAt(0)}</span>
           )}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="flex flex-wrap items-center gap-2 mb-1">
-            <p className="text-base font-display font-bold text-white group-hover:text-[#e8b86d] transition-colors">
+          <div className="flex flex-wrap items-center gap-2.5 mb-1.5">
+            <p className="text-lg sm:text-xl font-display font-bold text-white group-hover:text-[#e8b86d] transition-colors">
               {source.websiteName}
             </p>
             {source.verified && (
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
+              <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
                 Verified
               </span>
             )}
           </div>
-          <p className="text-xs text-white/40 mb-3 truncate">{hostname}</p>
-          <div className="flex flex-wrap gap-1.5 mb-2">
+          <p className="text-sm text-white/40 mb-3">{hostname}</p>
+          <div className="flex flex-wrap gap-2 mb-2.5">
             {source.quality.map((q) => (
               <span
                 key={q}
                 className={cn(
-                  'text-[10px] font-bold px-2 py-0.5 rounded-md border',
+                  'text-xs font-bold px-2.5 py-1 rounded-lg border',
                   QUALITY_COLORS[q] || 'bg-white/10 text-white/60 border-white/15'
                 )}
               >
@@ -225,13 +176,21 @@ function SourceRowDetailed({
               </span>
             ))}
           </div>
-          <p className="text-xs text-white/55">
-            <span className="text-white/35">Audio · </span>
-            {source.languages.map(formatLanguageLabel).join(', ')}
-          </p>
+          <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/55">
+            <p>
+              <span className="text-white/35">Audio · </span>
+              {source.languages.map(formatLanguageLabel).join(', ')}
+            </p>
+            {source.subtitles.length > 0 && (
+              <p>
+                <span className="text-white/35">Subs · </span>
+                {source.subtitles.map(formatLanguageLabel).join(', ')}
+              </p>
+            )}
+          </div>
         </div>
-        <span className="shrink-0 w-11 h-11 rounded-xl bg-[#e8b86d] text-[#1a1208] flex items-center justify-center group-hover:bg-[#f0c987] transition-colors mt-1">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+        <span className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#e8b86d] text-[#1a1208] flex items-center justify-center group-hover:bg-[#f0c987] transition-colors shadow-lg shadow-[#e8b86d]/20">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </span>
@@ -268,28 +227,24 @@ export function StreamingSourcesPanel({
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="font-display text-lg font-bold text-white">Available on your sites</h3>
+        <h3 className="font-display text-xl font-bold text-white">Available on your sites</h3>
         <p className="text-sm text-white/45 mt-1">
-          Showing {visible.length} of {sources.length} category-matched {sources.length === 1 ? 'site' : 'sites'} · admin priority order
+          Top {visible.length} of {sources.length} category-matched {sources.length === 1 ? 'site' : 'sites'} · priority order
         </p>
       </div>
 
-      <div className={cn('grid gap-2.5', expanded ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2')}>
+      <div className="flex flex-col gap-3">
         <AnimatePresence mode="popLayout">
           {visible.map((source, idx) => (
             <motion.div
               key={source.websiteId}
               layout
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2, delay: expanded ? idx * 0.02 : 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.22, delay: idx > initialVisible - 1 ? (idx - initialVisible) * 0.03 : 0 }}
             >
-              {expanded ? (
-                <SourceRowDetailed source={source} rank={idx + 1} onVisit={onVisit} />
-              ) : (
-                <SourceRowCompact source={source} rank={idx + 1} onVisit={onVisit} />
-              )}
+              <SourceRowDetailed source={source} rank={idx + 1} onVisit={onVisit} />
             </motion.div>
           ))}
         </AnimatePresence>
@@ -305,10 +260,10 @@ export function StreamingSourcesPanel({
           <span className="search-sources-expand-btn-inner">
             <span className="flex flex-col items-start sm:items-center sm:flex-row sm:gap-3">
               <span className="font-display text-base sm:text-lg font-bold text-white group-hover:text-[#e8b86d] transition-colors">
-                {expanded ? 'Show fewer sites' : `Load ${remaining} more with full details`}
+                {expanded ? 'Show fewer sites' : `Load ${remaining} more sites`}
               </span>
               <span className="text-xs text-white/45 mt-0.5 sm:mt-0">
-                {expanded ? 'Back to compact view' : 'Quality, audio & direct links'}
+                {expanded ? 'Collapse to top 15' : `See all ${sources.length} available sources`}
               </span>
             </span>
             <span
@@ -357,8 +312,8 @@ export function SearchHeroResult({
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a0c12]/95 via-[#0d1018]/92 to-[#080a10]/95 pointer-events-none" />
 
       <div className="relative z-10 p-5 sm:p-8">
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
-          <div className="relative w-36 sm:w-44 mx-auto lg:mx-0 shrink-0">
+        <div className="flex flex-col gap-6">
+          <div className="relative w-40 sm:w-48 mx-auto shrink-0">
             <div className="aspect-[2/3] rounded-xl overflow-hidden border border-white/15 shadow-2xl bg-black/50">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -377,8 +332,8 @@ export function SearchHeroResult({
             )}
           </div>
 
-          <div className="flex-1 min-w-0 text-center lg:text-left">
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-3">
+          <div className="flex-1 min-w-0 text-center">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
               {result.confidenceScore && (
                 <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
                   IMDb verified · {result.confidenceScore}%
@@ -398,7 +353,7 @@ export function SearchHeroResult({
               {result.title}
             </h1>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1 text-sm text-white/55 mb-4">
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-white/55 mb-4">
               {result.year && <span>{result.year}</span>}
               {result.runtime && (
                 <>
@@ -427,12 +382,12 @@ export function SearchHeroResult({
             </div>
 
             {result.overview && (
-              <p className="text-sm text-white/60 leading-relaxed line-clamp-3 mb-5 max-w-2xl mx-auto lg:mx-0">
+              <p className="text-sm sm:text-base text-white/60 leading-relaxed line-clamp-4 mb-5 max-w-3xl mx-auto">
                 {result.overview}
               </p>
             )}
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-6">
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-2">
               {result.trailerKey && onTrailer && (
                 <button
                   type="button"
