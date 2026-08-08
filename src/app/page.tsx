@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { formatNumber, DIRECTORY_CATEGORIES, cn } from '@/lib/utils';
 import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
+import { WebsiteLogo } from '@/components/WebsiteLogo';
 import { buildSearchUrlFromSuggestion } from '@/lib/search-navigation';
 import type { ContentCategory } from '@/types';
 
@@ -717,15 +718,11 @@ export default function HomePage() {
                 >
                   <div className="flex items-start gap-3 mb-3">
                     <div className="w-11 h-11 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center p-1.5 shrink-0 overflow-hidden">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={site.logoUrl}
-                        alt=""
-                        className="w-full h-full object-contain"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = `https://www.google.com/s2/favicons?domain=${site.homepageUrl}&sz=64`;
-                        }}
+                      <WebsiteLogo
+                        homepageUrl={site.homepageUrl}
+                        logoUrl={site.logoUrl}
+                        name={site.name}
+                        imgClassName="w-full h-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">

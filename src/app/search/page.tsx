@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchStore } from '@/stores';
 import { cn, CATEGORIES } from '@/lib/utils';
+import { WebsiteLogo } from '@/components/WebsiteLogo';
 import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
 import { SearchHeroResult, SiteHandoffModal, useSiteHandoff } from '@/components/search/SearchResultsUI';
 import { SearchTrendingPicks } from '@/components/search/SearchTrendingPicks';
@@ -252,8 +253,13 @@ function FilterPanel({
                     )}
                   >
                     <span className="flex items-center gap-2 truncate">
-                      <span className="w-3.5 h-3.5 rounded bg-white/10 flex items-center justify-center text-[9px] font-black text-cyan-300 overflow-hidden">
-                        {site.logoUrl ? <img src={site.logoUrl} alt="" className="w-full h-full object-cover" /> : site.name.charAt(0)}
+                      <span className="w-4 h-4 rounded bg-white/10 flex items-center justify-center overflow-hidden p-0.5 shrink-0">
+                        <WebsiteLogo
+                          homepageUrl={site.homepageUrl}
+                          logoUrl={site.logoUrl}
+                          name={site.name}
+                          imgClassName="w-full h-full"
+                        />
                       </span>
                       <span className="truncate">{site.name}</span>
                     </span>
@@ -856,8 +862,13 @@ function SearchContent() {
                         filters.website === source.websiteId ? 'search-category-pill-active' : 'search-category-pill-inactive'
                       )}
                     >
-                      <span className="w-3.5 h-3.5 rounded bg-black/30 flex items-center justify-center text-[9px] font-bold overflow-hidden">
-                        {source.websiteLogo ? <img src={source.websiteLogo} alt="" className="w-full h-full object-cover" /> : source.websiteName.charAt(0)}
+                      <span className="w-3.5 h-3.5 rounded bg-black/30 flex items-center justify-center overflow-hidden p-0.5">
+                        <WebsiteLogo
+                          homepageUrl={source.url}
+                          logoUrl={source.websiteLogo}
+                          name={source.websiteName}
+                          imgClassName="w-full h-full"
+                        />
                       </span>
                       <span>{source.websiteName}</span>
                     </button>

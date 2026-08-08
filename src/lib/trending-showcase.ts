@@ -1,4 +1,5 @@
 import type { Website } from '@/types';
+import { resolveWebsiteLogoUrl } from './website-logo';
 
 export interface LiveShowcaseItem {
   title: string;
@@ -13,7 +14,7 @@ export interface LiveShowcaseItem {
 }
 
 export interface DirectoryTrendingPick extends LiveShowcaseItem {
-  featuredSites: { id: string; name: string; logoUrl: string }[];
+  featuredSites: { id: string; name: string; logoUrl: string; homepageUrl: string }[];
 }
 
 const FALLBACK_MOVIES: LiveShowcaseItem[] = [
@@ -179,7 +180,8 @@ function pickFeaturedSites(websites: Website[], category: LiveShowcaseItem['cate
   return pool.slice(0, count).map((site) => ({
     id: site.id,
     name: site.name,
-    logoUrl: site.logoUrl,
+    logoUrl: resolveWebsiteLogoUrl(site.homepageUrl, site.logoUrl),
+    homepageUrl: site.homepageUrl,
   }));
 }
 

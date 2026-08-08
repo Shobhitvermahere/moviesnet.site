@@ -5,11 +5,10 @@ import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import type { Website, ContentCategory } from '@/types';
 import { CATEGORIES } from '@/lib/utils';
+import { WebsiteLogo } from '@/components/WebsiteLogo';
 
 // --- Sleek Row-Based Website Item ---
 function WebsiteRowItem({ website, index }: { website: Partial<Website>; index: number }) {
-  const [logoError, setLogoError] = useState(false);
-
   return (
     <motion.div
       initial={{ opacity: 0, x: -15 }}
@@ -20,14 +19,13 @@ function WebsiteRowItem({ website, index }: { website: Partial<Website>; index: 
       {/* Left: Favicon + Info */}
       <div className="flex items-center gap-4 min-w-0 flex-1">
         {/* Favicon Icon */}
-        <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0 overflow-hidden shadow-inner group-hover:scale-110 group-hover:border-purple-500/40 transition-all duration-300">
-          {website.logoUrl && !logoError ? (
-            <img
-              src={website.logoUrl}
-              alt=""
-              className="w-full h-full object-cover rounded-xl"
-              loading="lazy"
-              onError={() => setLogoError(true)}
+        <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center flex-shrink-0 overflow-hidden shadow-inner group-hover:scale-110 group-hover:border-purple-500/40 transition-all duration-300 p-1.5">
+          {website.homepageUrl && website.name ? (
+            <WebsiteLogo
+              homepageUrl={website.homepageUrl}
+              logoUrl={website.logoUrl}
+              name={website.name}
+              imgClassName="w-full h-full"
             />
           ) : (
             <span className="text-xl font-black text-white/30">{website.name?.charAt(0) || '?'}</span>

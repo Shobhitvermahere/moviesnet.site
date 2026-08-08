@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn, QUALITY_COLORS, resolveMoviePoster } from '@/lib/utils';
 import { formatLanguageLabel } from '@/lib/website-capabilities';
+import { WebsiteLogo } from '@/components/WebsiteLogo';
 import type { SearchResult, StreamingSource } from '@/types';
 
 export interface SiteHandoffTarget {
@@ -51,13 +52,13 @@ export function SiteHandoffModal({
           className="relative w-full max-w-md search-handoff-card rounded-2xl p-6 sm:p-8 shadow-2xl"
         >
           <div className="flex items-center gap-4 mb-5">
-            <div className="w-14 h-14 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center overflow-hidden shrink-0">
-              {target.websiteLogo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={target.websiteLogo} alt="" className="w-full h-full object-cover" />
-              ) : (
-                <span className="text-lg font-bold text-[#e8b86d]">{target.websiteName.charAt(0)}</span>
-              )}
+            <div className="w-14 h-14 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center overflow-hidden shrink-0 p-2">
+              <WebsiteLogo
+                homepageUrl={target.url}
+                logoUrl={target.websiteLogo}
+                name={target.websiteName}
+                imgClassName="w-full h-full"
+              />
             </div>
             <div className="min-w-0">
               <p className="text-[10px] font-bold uppercase tracking-widest text-[#e8b86d]/80">Leaving MoviesNet</p>
@@ -143,13 +144,13 @@ function SourceRowDetailed({
         <span className="text-sm font-mono font-bold text-[#e8b86d]/60 w-8 shrink-0 text-center">
           {rank}
         </span>
-        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 shadow-lg">
-          {source.websiteLogo ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={source.websiteLogo} alt="" className="w-full h-full object-cover" />
-          ) : (
-            <span className="text-lg font-bold text-[#e8b86d]">{source.websiteName.charAt(0)}</span>
-          )}
+        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 shadow-lg p-1.5">
+          <WebsiteLogo
+            homepageUrl={source.url}
+            logoUrl={source.websiteLogo}
+            name={source.websiteName}
+            imgClassName="w-full h-full"
+          />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-2.5 mb-1.5">

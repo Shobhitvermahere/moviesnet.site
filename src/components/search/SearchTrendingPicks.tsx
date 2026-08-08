@@ -3,6 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import type { DirectoryTrendingPick } from '@/lib/trending-showcase';
+import { WebsiteLogo } from '@/components/WebsiteLogo';
 
 async function fetchDirectoryTrending(): Promise<{
   picks: DirectoryTrendingPick[];
@@ -86,14 +87,14 @@ export function SearchTrendingPicks({ onSelect }: { onSelect: (title: string) =>
                       className="inline-flex items-center gap-1 text-[9px] font-semibold px-1.5 py-0.5 rounded-md bg-white/[0.05] border border-white/10 text-white/55"
                       title={site.name}
                     >
-                      {site.logoUrl ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={site.logoUrl} alt="" className="w-3 h-3 rounded object-cover" />
-                      ) : (
-                        <span className="w-3 h-3 rounded bg-[#e8b86d]/20 text-[#e8b86d] flex items-center justify-center text-[8px]">
-                          {site.name.charAt(0)}
-                        </span>
-                      )}
+                      <span className="w-3.5 h-3.5 rounded overflow-hidden shrink-0">
+                        <WebsiteLogo
+                          homepageUrl={site.homepageUrl}
+                          logoUrl={site.logoUrl}
+                          name={site.name}
+                          imgClassName="w-full h-full"
+                        />
+                      </span>
                       <span className="max-w-[72px] truncate">{site.name}</span>
                     </span>
                   ))}

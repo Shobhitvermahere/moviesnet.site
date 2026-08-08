@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
         description: req.notes?.trim() || `Community-requested portal for ${req.siteName}.`,
         homepageUrl: homepage,
         searchUrl: `${homepage}/search?q={query}`,
-        logoUrl: `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
+        logoUrl: `https://www.google.com/s2/favicons?domain=${domain}&sz=128`,
         categories: mapRequestCategory(req.category),
         languages: ['english', 'multi-audio'],
         country: 'US',

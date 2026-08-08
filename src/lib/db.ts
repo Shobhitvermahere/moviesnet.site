@@ -207,7 +207,7 @@ export function publishFmhySource(sourceId: string): Website | null {
     description: `Stream on ${source.name} — curated from FMHY (${source.section}).`,
     homepageUrl: source.url,
     searchUrl: `${source.url}/search?q={query}`,
-    logoUrl: `https://www.google.com/s2/favicons?domain=${host}&sz=64`,
+    logoUrl: `https://www.google.com/s2/favicons?domain=${host}&sz=128`,
     categories: source.categories,
     languages: ['english', 'multi-audio'],
     country: 'US',

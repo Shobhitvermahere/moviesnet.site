@@ -6,6 +6,7 @@ import { getPublicWebsites, addSearchQuery, getWebsiteById } from './db';
 import { cache } from './cache';
 import { findClosestMatch, resolveMoviePoster, slugify } from './utils';
 import { websiteToStreamingSource, websitesForCategory } from './website-capabilities';
+import { resolveWebsiteLogoUrl } from './website-logo';
 
 // Search dictionary for spell correction
 const COMMON_TITLES = [
@@ -115,7 +116,9 @@ export async function executeSearch(
         poster,
         websiteId: primarySite?.id || 'unknown',
         websiteName: primarySite?.name || 'Unknown',
-        websiteLogo: primarySite?.logoUrl || '',
+        websiteLogo: primarySite?.logoUrl
+          ? resolveWebsiteLogoUrl(primarySite.homepageUrl, primarySite.logoUrl)
+          : '',
         url: primarySite?.searchUrl
           ? primarySite.searchUrl.replace('{query}', encodeURIComponent(item.title))
           : `${primarySite?.homepageUrl || '#'}/search?q=${encodeURIComponent(item.title)}`,

@@ -4,6 +4,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getWebsites, createWebsite, updateWebsite, deleteWebsite, getWebsiteById, getPublicWebsites } from '@/lib/db';
 import { verifyToken } from '@/lib/auth';
+import { enrichWebsiteLogo } from '@/lib/website-logo';
 
 // Verify admin auth helper
 async function checkAuth(request: NextRequest): Promise<boolean> {
@@ -25,7 +26,7 @@ export async function GET(request: NextRequest) {
 
   // Public view: AllSiteHub directory only (FMHY catalog stays in admin backend)
   const publicWebsites = getPublicWebsites()
-    .map((w) => ({
+    .map((w) => enrichWebsiteLogo({
       id: w.id,
       name: w.name,
       slug: w.slug,

@@ -1,4 +1,5 @@
 import type { Website, Language, Quality, StreamingSource, ContentCategory } from '@/types';
+import { resolveWebsiteLogoUrl } from './website-logo';
 
 const POPULARITY_4K_THRESHOLD = 90;
 const POPULARITY_1080_THRESHOLD = 70;
@@ -52,7 +53,7 @@ export function websiteToStreamingSource(website: Website, title: string): Strea
   return {
     websiteId: website.id,
     websiteName: website.name,
-    websiteLogo: website.logoUrl,
+    websiteLogo: resolveWebsiteLogoUrl(website.homepageUrl, website.logoUrl),
     url: buildWebsiteSearchUrl(website, title),
     languages,
     subtitles: ['english'],
