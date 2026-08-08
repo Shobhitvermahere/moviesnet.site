@@ -129,7 +129,7 @@ export function Header() {
                 size="sm"
                 variant="full"
                 compact
-                className="transition-opacity hover:opacity-90 shrink min-w-0 max-w-[58%] min-[380px]:max-w-[62%] sm:max-w-none"
+                className="transition-opacity hover:opacity-90 shrink min-w-0 max-w-[62%] min-[380px]:max-w-[66%] sm:max-w-none"
               />
 
               <nav className="hidden md:flex items-center gap-0.5 lg:gap-1" aria-label="Main navigation">

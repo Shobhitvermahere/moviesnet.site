@@ -13,6 +13,14 @@ import type { ContentCategory } from '@/types';
 const DISCORD_URL = 'https://discord.gg/ATGRvAjBr';
 const REDDIT_URL = 'https://www.reddit.com/user/allsitehub/';
 
+const MOTION_EASE = [0.16, 1, 0.3, 1] as const;
+const SCROLL_REVEAL = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-48px' as const },
+  transition: { duration: 0.55, ease: MOTION_EASE },
+};
+
 const SEARCH_PLACEHOLDERS = [
   'Search movies across every indexed site…',
   'Find anime titles in one query…',
@@ -316,6 +324,10 @@ export default function HomePage() {
   };
 
   useEffect(() => {
+    showcaseScrollRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
+  }, [showcaseTab]);
+
+  useEffect(() => {
     async function fetchSites() {
       try {
         const res = await fetch('/api/websites');
@@ -559,7 +571,7 @@ export default function HomePage() {
 
       <div className="home-content-below page-shell mx-auto page-gutter space-y-16 sm:space-y-24 pb-20 sm:pb-28 pt-4 sm:pt-6">
         {/* TRENDING */}
-        <section id="trending" className="scroll-mt-28">
+        <motion.section id="trending" className="scroll-mt-28 home-section-reveal" {...SCROLL_REVEAL}>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
               <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white">
@@ -571,21 +583,33 @@ export default function HomePage() {
             </div>
 
             <div className="flex items-center gap-2">
-              <div className="flex p-1 rounded-xl border border-white/10 bg-white/[0.03]">
-                {(['movies', 'anime'] as const).map((tab) => (
-                  <button
-                    key={tab}
-                    type="button"
-                    onClick={() => setShowcaseTab(tab)}
-                    className={`px-4 py-2 rounded-lg text-sm font-semibold capitalize transition-colors ${
-                      showcaseTab === tab
-                        ? 'bg-[#e8b86d] text-[#1a1208]'
-                        : 'text-white/55 hover:text-white'
-                    }`}
-                  >
-                    {tab === 'movies' ? 'Movies & shows' : 'Anime'}
-                  </button>
-                ))}
+              <div className="segment-toggle">
+                {(['movies', 'anime'] as const).map((tab) => {
+                  const isActive = showcaseTab === tab;
+                  return (
+                    <button
+                      key={tab}
+                      type="button"
+                      onClick={() => setShowcaseTab(tab)}
+                      className={cn(
+                        'segment-toggle-btn px-4 py-2 text-sm capitalize',
+                        isActive ? 'text-[#1a1208]' : 'text-white/55 hover:text-white'
+                      )}
+                      aria-pressed={isActive}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="home-showcase-pill"
+                          className="segment-toggle-pill"
+                          transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                        />
+                      )}
+                      <span className="relative z-10">
+                        {tab === 'movies' ? 'Movies & shows' : 'Anime'}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
               <div className="hidden sm:flex gap-1">
                 <button
@@ -612,57 +636,69 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div
-            ref={showcaseScrollRef}
-            className="home-rail-scroll flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-2"
-          >
-            {showcaseItems.map((item, idx) => (
-              <article
-                key={item.title}
-                className="home-rail-item group relative min-w-[180px] w-[180px] sm:min-w-[220px] sm:w-[220px] shrink-0 snap-start rounded-2xl overflow-hidden border border-white/10 bg-[#0a0d14]/70"
-              >
-                <div className="relative aspect-[2/3] overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={item.poster}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src =
-                        showcaseTab === 'movies'
-                          ? 'https://image.tmdb.org/t/p/w500/1pdfLPoL6VFi8B8RFiMfaUtM3Zg.jpg'
-                          : 'https://cdn.myanimelist.net/images/anime/1015/138006l.jpg';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#03050a] via-transparent to-transparent opacity-90" />
-                  <div className="absolute top-3 left-3 font-display text-xs font-bold text-[#e8b86d]">
-                    #{idx + 1}
-                  </div>
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <div className="flex items-center gap-2 text-[11px] text-white/70 mb-1">
-                      <span>{item.year}</span>
-                      <span className="text-white/30">·</span>
-                      <span>{item.rating}</span>
-                    </div>
-                    <h3 className="font-display text-sm font-semibold text-white leading-snug line-clamp-2">
-                      {item.title}
-                    </h3>
-                  </div>
-                </div>
-                <Link
-                  href={`/search?q=${encodeURIComponent(item.title)}`}
-                  className="block text-center py-3 text-xs font-semibold tracking-wide text-white/70 hover:text-[#e8b86d] border-t border-white/10 transition-colors"
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={showcaseTab}
+              ref={showcaseScrollRef}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.28, ease: MOTION_EASE }}
+              className="home-rail-scroll flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-2"
+            >
+              {showcaseItems.map((item, idx) => (
+                <article
+                  key={item.title}
+                  className="home-rail-item group relative min-w-[180px] w-[180px] sm:min-w-[220px] sm:w-[220px] shrink-0 snap-start rounded-2xl overflow-hidden border border-white/10 bg-[#0a0d14]/70"
                 >
-                  Find sources
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
+                  <div className="relative aspect-[2/3] overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={item.poster}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          showcaseTab === 'movies'
+                            ? 'https://image.tmdb.org/t/p/w500/1pdfLPoL6VFi8B8RFiMfaUtM3Zg.jpg'
+                            : 'https://cdn.myanimelist.net/images/anime/1015/138006l.jpg';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#03050a] via-transparent to-transparent opacity-90" />
+                    <div className="absolute top-3 left-3 font-display text-xs font-bold text-[#e8b86d]">
+                      #{idx + 1}
+                    </div>
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <div className="flex items-center gap-2 text-[11px] text-white/70 mb-1">
+                        <span>{item.year}</span>
+                        <span className="text-white/30">·</span>
+                        <span>{item.rating}</span>
+                      </div>
+                      <h3 className="font-display text-sm font-semibold text-white leading-snug line-clamp-2">
+                        {item.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <Link
+                    href={`/search?q=${encodeURIComponent(item.title)}`}
+                    className="block text-center py-3 text-xs font-semibold tracking-wide text-white/70 hover:text-[#e8b86d] border-t border-white/10 transition-colors"
+                  >
+                    Find sources
+                  </Link>
+                </article>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </motion.section>
 
         {/* DIRECTORY */}
-        <section id="directory" className="scroll-mt-28">
+        <motion.section
+          id="directory"
+          className="scroll-mt-28 home-section-reveal"
+          {...SCROLL_REVEAL}
+          transition={{ ...SCROLL_REVEAL.transition, delay: 0.05 }}
+        >
           <div className="mb-6 sm:mb-10">
             <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
               Site directory
@@ -673,7 +709,8 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-col gap-3 sm:gap-4 mb-5 sm:mb-6">
-            <div className="websites-filter-rail flex gap-1.5 overflow-x-auto no-scrollbar p-1 rounded-xl border border-white/10 bg-white/[0.03]">
+            <div className="websites-filter-rail overflow-x-auto no-scrollbar">
+              <div className="segment-toggle w-max min-w-full">
               {DIRECTORY_CATEGORIES.map((cat) => {
                 const isActive = activeCategory === cat.id;
                 return (
@@ -681,19 +718,29 @@ export default function HomePage() {
                     key={cat.id}
                     type="button"
                     onClick={() => setActiveCategory(cat.slug)}
-                    className={`px-3.5 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-colors ${
-                      isActive
-                        ? 'bg-[#e8b86d] text-[#1a1208]'
-                        : 'text-white/55 hover:text-white'
-                    }`}
+                    className={cn(
+                      'segment-toggle-btn px-3.5 py-2 text-sm whitespace-nowrap',
+                      isActive ? 'text-[#1a1208]' : 'text-white/55 hover:text-white'
+                    )}
+                    aria-pressed={isActive}
                   >
-                    {cat.label}
-                    <span className={`ml-1.5 text-[11px] ${isActive ? 'text-[#1a1208]/70' : 'text-white/35'}`}>
-                      {categoryCounts[cat.id] || 0}
+                    {isActive && (
+                      <motion.span
+                        layoutId="home-directory-pill"
+                        className="segment-toggle-pill"
+                        transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                      />
+                    )}
+                    <span className="relative z-10">
+                      {cat.label}
+                      <span className={cn('ml-1.5 text-[11px]', isActive ? 'text-[#1a1208]/70' : 'text-white/35')}>
+                        {categoryCounts[cat.id] || 0}
+                      </span>
                     </span>
                   </button>
                 );
               })}
+              </div>
             </div>
 
             <div className="relative w-full lg:max-w-sm lg:ml-auto">
@@ -738,7 +785,13 @@ export default function HomePage() {
               </button>
             </div>
           ) : (
-            <div className="home-directory-grid">
+            <motion.div
+              key={activeCategory}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.32, ease: MOTION_EASE }}
+              className="home-directory-grid"
+            >
               {filteredWebsites.map((site) => (
                 <a
                   key={site.id}
@@ -791,12 +844,17 @@ export default function HomePage() {
                   </div>
                 </a>
               ))}
-            </div>
+            </motion.div>
           )}
-        </section>
+        </motion.section>
 
         {/* FAQ */}
-        <section id="faq" className="scroll-mt-28 max-w-4xl">
+        <motion.section
+          id="faq"
+          className="scroll-mt-28 max-w-4xl home-section-reveal"
+          {...SCROLL_REVEAL}
+          transition={{ ...SCROLL_REVEAL.transition, delay: 0.08 }}
+        >
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
             Questions
           </h2>
@@ -839,7 +897,7 @@ export default function HomePage() {
               );
             })}
           </div>
-        </section>
+        </motion.section>
       </div>
     </div>
   );

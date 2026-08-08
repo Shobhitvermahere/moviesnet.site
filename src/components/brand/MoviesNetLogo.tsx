@@ -5,7 +5,7 @@ import { LogoMark } from './LogoMark';
 type LogoSize = 'sm' | 'md' | 'lg';
 
 const SIZE_MAP: Record<LogoSize, { mark: number; text: string; compactText: string }> = {
-  sm: { mark: 28, text: 'text-sm', compactText: 'text-xs sm:text-sm md:text-base' },
+  sm: { mark: 30, text: 'text-sm', compactText: 'text-sm sm:text-sm md:text-base' },
   md: { mark: 34, text: 'text-base sm:text-lg', compactText: 'text-sm sm:text-base md:text-lg' },
   lg: { mark: 44, text: 'text-xl sm:text-2xl', compactText: 'text-base sm:text-xl md:text-2xl' },
 };
@@ -32,7 +32,7 @@ export function MoviesNetLogo({
 
   const content = (
     <>
-      <LogoMark size={compact ? Math.max(mark - 4, 22) : mark} />
+      <LogoMark size={compact ? Math.max(mark - 2, 26) : mark} />
       {variant === 'full' && (
         <span
           className={cn(
@@ -47,7 +47,7 @@ export function MoviesNetLogo({
     </>
   );
 
-  const classes = cn('inline-flex items-center gap-1.5 sm:gap-2.5 group min-w-0', className);
+  const classes = cn('inline-flex items-center gap-2 sm:gap-2.5 group min-w-0', className);
 
   if (href && !onClick) {
     return (
