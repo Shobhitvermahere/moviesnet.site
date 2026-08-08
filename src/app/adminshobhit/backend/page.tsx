@@ -100,7 +100,7 @@ export default function BackendPage() {
                 <a href="https://fmhy.net/video" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">
                   fmhy.net/video
                 </a>
-                {' · '}{data?.publishedCount || 0} live in directory
+                {' · '}Backend only — not shown on the public site unless you publish
               </p>
             </div>
           </div>

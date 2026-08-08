@@ -166,30 +166,9 @@ async function main() {
   console.log(`Parsed ${fmhySites.length} FMHY streaming sites`);
 
   const fmhyPath = join(root, 'data', 'fmhy-sources.json');
-  writeFileSync(fmhyPath, JSON.stringify(fmhySites, null, 2));
-
-  const websitesPath = join(root, 'data', 'websites.json');
-  const existing = JSON.parse(readFileSync(websitesPath, 'utf-8'));
-  const existingHosts = new Set(existing.map((w) => hostnameFromUrl(w.homepageUrl)));
-
-  let maxPriority = Math.max(0, ...existing.map((w) => w.priority || 0));
-  let added = 0;
-
-  for (const site of fmhySites) {
-    const host = hostnameFromUrl(site.url);
-    if (existingHosts.has(host)) continue;
-    maxPriority += 1;
-    existing.push(makeWebsite(site, maxPriority));
-    existingHosts.add(host);
-    added += 1;
-    site.published = true;
-  }
-
-  existing.sort((a, b) => b.priority - a.priority);
-  writeFileSync(websitesPath, JSON.stringify(existing, null, 2));
-  writeFileSync(fmhyPath, JSON.stringify(fmhySites, null, 2));
-
-  console.log(`Added ${added} new sites to websites.json (total: ${existing.length})`);
+  const fmhyWithMeta = fmhySites.map((s) => ({ ...s, source: 'fmhy', published: false }));
+  writeFileSync(fmhyPath, JSON.stringify(fmhyWithMeta, null, 2));
+  console.log(`FMHY catalog: ${fmhyWithMeta.length} sites saved to backend only (not added to public directory)`);
 }
 
 main().catch(console.error);

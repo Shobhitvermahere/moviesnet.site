@@ -61,6 +61,15 @@ export function getWebsites(): Website[] {
   );
 }
 
+export function isFmhyWebsite(website: Website): boolean {
+  const tags = (website as Website & { tags?: string[] }).tags || [];
+  return tags.includes('FMHY') || website.description?.includes('FMHY') === true;
+}
+
+export function getPublicWebsites(): Website[] {
+  return getEnabledWebsites().filter((w) => !isFmhyWebsite(w));
+}
+
 export function getEnabledWebsites(): Website[] {
   return getWebsites().filter((w) => w.enabled);
 }

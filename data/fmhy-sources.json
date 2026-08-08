@@ -11,7 +11,7 @@
     "featured": false,
     "meta": "TV / Sports / [Mirrors](https://tvhub.surge.sh/) / [.onion](http://e3ngcokw7hqbtbylcnwdomxt3mkmbqwbtrr7yecgafpqyj3sygxt7ead.onion) / [Discord](https://discord.com/invite/EFKNtQvUMF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "0xdb-org",
@@ -25,7 +25,7 @@
     "featured": false,
     "meta": "Rare Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "123animes-ru",
@@ -38,7 +38,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "123movie-app",
@@ -53,7 +53,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Mirrors](https://moviebox.co/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "123wrestling-com",
@@ -66,7 +66,7 @@
     "featured": false,
     "meta": "Wrestling Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "1anime-app",
@@ -92,7 +92,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next / [Discord](https://discord.com/invite/jUjSeCrmQt)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "1ball-pk",
@@ -105,7 +105,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Discord](https://discord.gg/CG8NzyX2hU)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "1flex-org",
@@ -133,7 +133,7 @@
     "featured": true,
     "meta": "MMA / Wrestling / Boxing Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "1primeshow-online",
@@ -148,7 +148,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/7JKJSbnHqf)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "1shows-org",
@@ -193,7 +193,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/5CETfHBD7R)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "67movies-net",
@@ -208,7 +208,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/4SJ5c9gZUQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "67movies-nl",
@@ -223,7 +223,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/4SJ5c9gZUQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "7plus-com-au",
@@ -237,7 +237,7 @@
     "featured": false,
     "meta": "Movies / TV / US + AU Only",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "7movies-in",
@@ -267,7 +267,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/qaZbfrUV48)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "90minutes-pro",
@@ -281,7 +281,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "acestrlms-pages-dev",
@@ -294,7 +294,7 @@
     "featured": false,
     "meta": "Motorsports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "adultswim-com",
@@ -307,7 +307,7 @@
     "featured": false,
     "meta": "Full Adult Swim Episodes",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "playlists-at",
@@ -321,7 +321,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "aether-bar",
@@ -336,7 +336,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / 4K / [Discord](https://discord.gg/MadMF7xb5q)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "aether-cx",
@@ -351,7 +351,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / 4K / [Discord](https://discord.gg/MadMF7xb5q)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "afterstream-org",
@@ -366,7 +366,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [GitHub](https://github.com/thingfoil/afterstream)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "alienflix-net",
@@ -381,7 +381,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.com/invite/AGsGU5KUYy)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "allmanga-to",
@@ -394,7 +394,7 @@
     "featured": true,
     "meta": "Sub / Dub / [Discord](https://discord.com/invite/6nce6cyJyM)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "allyoucanwatch-net",
@@ -409,7 +409,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Telegram](https://t.me/allyoucanwatchh) / [Discord](https://discord.gg/allyoucanwatch)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "allthebestfights-com",
@@ -422,7 +422,7 @@
     "featured": false,
     "meta": "MMA / Boxing / Kickboxing Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "allwrestling24-com",
@@ -435,7 +435,7 @@
     "featured": false,
     "meta": "MMA / Wrestling Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "amberflix-xyz",
@@ -450,7 +450,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/Q7Nq6GHfxQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anianimax-dpdns-org",
@@ -463,7 +463,7 @@
     "featured": false,
     "meta": "Hard Sub / Dub / Auto-Next / [Status](https://status.animaxanime.dpdns.org/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anicine-xyz",
@@ -478,7 +478,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/2GYMjGuh3)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anidap-lol",
@@ -491,7 +491,7 @@
     "featured": true,
     "meta": "Sub / Dub / Auto-Next / [Discord](https://discord.com/invite/btsMTSsBM7)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anidoor-me",
@@ -504,7 +504,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anify-to",
@@ -517,7 +517,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Discord](https://discord.com/invite/79GgUXYwey)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anihq-cc",
@@ -530,7 +530,7 @@
     "featured": false,
     "meta": "Sub / Dub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anikitty-moe",
@@ -543,7 +543,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anikototv-to",
@@ -569,7 +569,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Status](https://anikuro.site/) / [Telegram](https://t.me/+DrD7eAO7R69mZGM0) / [Discord](https://discord.com/invite/Svc9yFjQBq)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anikuro-site",
@@ -582,7 +582,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Status](https://anikuro.site/) / [Telegram](https://t.me/+DrD7eAO7R69mZGM0) / [Discord](https://discord.com/invite/Svc9yFjQBq)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anikuro-to",
@@ -595,7 +595,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Status](https://anikuro.site/) / [Telegram](https://t.me/+DrD7eAO7R69mZGM0) / [Discord](https://discord.com/invite/Svc9yFjQBq)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anilight-live",
@@ -608,7 +608,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next / [Discord](https://discord.com/invite/RFN93sMwdW )",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animaxanime-dpdns-org",
@@ -621,7 +621,7 @@
     "featured": false,
     "meta": "Hard Sub / Dub / Auto-Next / [Status](https://status.animaxanime.dpdns.org/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anime-nexus",
@@ -634,7 +634,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Discord](https://discord.gg/AfMau96ppt)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animesilo-cc",
@@ -647,7 +647,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Discord](https://discord.gg/5myNNCqx8)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animedex-fun",
@@ -660,7 +660,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Discord](https://discord.gg/animedex)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animekhor-org",
@@ -673,7 +673,7 @@
     "featured": false,
     "meta": "Donghua / Sub / [Telegram](https://t.me/AnimeKhorOfficial)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animelok-live",
@@ -686,7 +686,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Mirrors](https://animelok.to/) / [Telegram](https://t.me/animerulz_xyz) / [Discord](https://discord.gg/32taxtj5BC)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animelok-to",
@@ -699,7 +699,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Mirrors](https://animelok.to/) / [Telegram](https://t.me/animerulz_xyz) / [Discord](https://discord.gg/32taxtj5BC)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animenosub-to",
@@ -712,7 +712,7 @@
     "featured": false,
     "meta": "Sub / Dub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animeonsen-xyz",
@@ -725,7 +725,7 @@
     "featured": false,
     "meta": "Sub / 720p / [Discord](https://discord.com/invite/U56ZMrD)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animepahe-pw",
@@ -738,7 +738,7 @@
     "featured": true,
     "meta": "Hard Sub / Dub / Some NSFW / [Enhancements](https://update.greasyfork.org/scripts/520048/AnimePahe%20Improvements.user.js) / [Downloader](https://github.com/KevCui/animepahe-dl)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animeparadise-moe",
@@ -751,7 +751,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Discord](https://discord.com/invite/q3N6eWMMNP)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anime-uniquestream-net",
@@ -764,7 +764,7 @@
     "featured": false,
     "meta": "Sub / 720p",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animesuge-cz",
@@ -777,7 +777,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next / [Backups](https://animesuge.bid/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animex-one",
@@ -790,7 +790,7 @@
     "featured": true,
     "meta": "Sub / Dub / Auto-Next / [Discord](https://discord.com/invite/xNZcSQRbTm)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animexin-dev",
@@ -803,7 +803,7 @@
     "featured": false,
     "meta": "Donghua / Sub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "aninami-site",
@@ -816,7 +816,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Discord](https://discord.gg/J2V2skvMBk)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anisnatch-p1y-top",
@@ -829,7 +829,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Telegram](https://t.me/anisnatch) / [Discord](https://discord.com/invite/3zrNYqeT4e)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anisnatch-top",
@@ -842,7 +842,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Telegram](https://t.me/anisnatch) / [Discord](https://discord.com/invite/3zrNYqeT4e)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anistream-one",
@@ -868,7 +868,7 @@
     "featured": true,
     "meta": "Desktop Streaming Apps",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "aniwaves-ru",
@@ -881,7 +881,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anixx-fun",
@@ -896,7 +896,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://anixtv.pro/) / [Discord](https://discord.com/invite/AGsGU5KUYy)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anixtv-us-cc",
@@ -911,7 +911,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://anixtv.pro/) / [Discord](https://discord.com/invite/AGsGU5KUYy)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anixtv-in",
@@ -926,7 +926,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://anixtv.pro/) / [Discord](https://discord.com/invite/AGsGU5KUYy)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anixtv-pro",
@@ -941,7 +941,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://anixtv.pro/) / [Discord](https://discord.com/invite/AGsGU5KUYy)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anizone-to",
@@ -954,7 +954,7 @@
     "featured": false,
     "meta": "Sub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anton-likesyou-org",
@@ -969,7 +969,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "anymex-vercel-app",
@@ -982,7 +982,7 @@
     "featured": true,
     "meta": "Desktop Streaming Apps",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "apexmovies-net",
@@ -997,7 +997,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "app-lgwebos-pluto-tv",
@@ -1011,7 +1011,7 @@
     "featured": false,
     "meta": "TV / Sports / US Only",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "archive-org",
@@ -1025,7 +1025,7 @@
     "featured": false,
     "meta": "Ephemeral Films / [Archive](https://archive.org/details/prelinger)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "web-watchargo-com",
@@ -1039,7 +1039,7 @@
     "featured": true,
     "meta": "Short Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "arrowtv-net",
@@ -1068,7 +1068,7 @@
     "featured": false,
     "meta": "Movies / TV / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "asiaflix-net",
@@ -1082,7 +1082,7 @@
     "featured": false,
     "meta": "TV / Movies / [Subreddit](https://www.reddit.com/r/Asiaflix/) / [Telegram](https://t.me/asiaflixapp) / [Discord](https://discord.com/invite/JTxEVkZWhc)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "asiaflix-in",
@@ -1096,7 +1096,7 @@
     "featured": false,
     "meta": "TV / Movies / [Subreddit](https://www.reddit.com/r/Asiaflix/) / [Telegram](https://t.me/asiaflixapp) / [Discord](https://discord.com/invite/JTxEVkZWhc)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "asiancrush-com",
@@ -1110,7 +1110,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "audiovault-net",
@@ -1124,7 +1124,7 @@
     "featured": false,
     "meta": "Descriptive Audio for Blind Users",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "aurorascreen-org",
@@ -1139,7 +1139,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/kPUWwAQCzk)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "corporate-tubitv-com",
@@ -1153,7 +1153,7 @@
     "featured": true,
     "meta": "Movies / TV / 720p / [Downloader](https://github.com/warren-bank/node-hls-downloader-tubitv) / [Available Countries](https://corporate.tubitv.com/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "awardstreams-link",
@@ -1166,7 +1166,7 @@
     "featured": false,
     "meta": "Live Award Show Replays / [Mirrors](https://awardstreams.link/) / [X](https://x.com/AwardStreamLive) / [Telegram](https://t.me/+i7T1CzmIYL00Mjhh)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "awardstreams-pages-dev",
@@ -1179,7 +1179,7 @@
     "featured": false,
     "meta": "Live Award Show Replays / [Mirrors](https://awardstreams.link/) / [X](https://x.com/AwardStreamLive) / [Telegram](https://t.me/+i7T1CzmIYL00Mjhh)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "azseries-org",
@@ -1192,7 +1192,7 @@
     "featured": false,
     "meta": "TV / 3rd Party Hosts",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "azmovies-to",
@@ -1207,7 +1207,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Some 3rd Party Hosts",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "b98-tv",
@@ -1221,7 +1221,7 @@
     "featured": false,
     "meta": "Classic / TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "babyanime-top",
@@ -1234,7 +1234,7 @@
     "featured": false,
     "meta": "Sub / Dub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animesuge-bid",
@@ -1247,7 +1247,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next / [Backups](https://animesuge.bid/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "baked-live",
@@ -1260,7 +1260,7 @@
     "featured": false,
     "meta": "Random Streams / [Discord](https://discord.com/invite/baked)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "basementx-xyz",
@@ -1275,7 +1275,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/bWYUqEg7Xq) / [GitHub](https://github.com/xp-technologies-dev/p-stream)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "basementx-pro",
@@ -1290,7 +1290,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/bWYUqEg7Xq) / [GitHub](https://github.com/xp-technologies-dev/p-stream)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "basketball-video-com",
@@ -1303,7 +1303,7 @@
     "featured": true,
     "meta": "Basketball Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "basketballreplays-net",
@@ -1316,7 +1316,7 @@
     "featured": false,
     "meta": "Basketball Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bbc-co-uk",
@@ -1330,7 +1330,7 @@
     "featured": false,
     "meta": "Movies / TV / Requires UK VPN (windscribe) / [Downloader](https://github.com/get-iplayer/get_iplayer)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bcine-ru",
@@ -1345,7 +1345,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/6ZXNmPedkG)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "beacons-ai",
@@ -1358,7 +1358,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bstsrs-in",
@@ -1371,7 +1371,7 @@
     "featured": true,
     "meta": "TV / 3rd Party Hosts",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bflix-sh",
@@ -1385,7 +1385,7 @@
     "featured": false,
     "meta": "Movies / TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bilibili-com",
@@ -1399,7 +1399,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bilibili-tv",
@@ -1413,7 +1413,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bingebang-tv",
@@ -1428,7 +1428,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bingebox-to",
@@ -1443,7 +1443,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/JAxTMkmcpd)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bingeflix-tv",
@@ -1458,7 +1458,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.com/invite/ajRY6Bn3rr)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bingr-one",
@@ -1473,7 +1473,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / [Discord](https://discord.com/invite/Dxq6bFv4FP)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bintv-link",
@@ -1486,7 +1486,7 @@
     "featured": true,
     "meta": "Stream Aggregator / [Status](https://www.bintv.link/) / [Telegram](https://t.me/+PiQ1lsDtjoU5NmFl) / [Discord](https://discord.com/invite/fp3EQjFAJQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "bintv-cc",
@@ -1499,7 +1499,7 @@
     "featured": true,
     "meta": "Stream Aggregator / [Status](https://www.bintv.link/) / [Telegram](https://t.me/+PiQ1lsDtjoU5NmFl) / [Discord](https://discord.com/invite/fp3EQjFAJQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "boredflix-tv",
@@ -1514,7 +1514,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/VHDedCcbGY)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "brokensilenze-net",
@@ -1527,7 +1527,7 @@
     "featured": false,
     "meta": "Reality TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamsports99-su",
@@ -1541,7 +1541,7 @@
     "featured": true,
     "meta": "TV / Sports / [Mirrors](https://streamsports99.website/) / [Bypass Blocks](https://streamsports99.su/vpns) / [Discord](https://discord.gg/sUwU528aRn)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "byutv-org",
@@ -1554,7 +1554,7 @@
     "featured": false,
     "meta": "TV / Family-Friendly",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "candlestream-xyz",
@@ -1569,7 +1569,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "pracdev-org",
@@ -1582,7 +1582,7 @@
     "featured": false,
     "meta": "Random Streams",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "channelsurfer-tv",
@@ -1596,7 +1596,7 @@
     "featured": false,
     "meta": "Random TV Style YouTube / Custom Channels",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "chillflix-lol",
@@ -1611,7 +1611,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Telegram](https://t.me/+jXrFnrO-TYA4ZGMy) / [Discord](https://discord.gg/6r5KTZgqXV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cine-su",
@@ -1626,7 +1626,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/Ss2x86nsvK)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cineapse-net",
@@ -1641,7 +1641,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinebolt-org",
@@ -1656,7 +1656,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/7ZbCzMPt6f)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cineby-at",
@@ -1671,7 +1671,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/C2zGTdUbHE)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinebytv-com",
@@ -1686,7 +1686,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Note](https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/cinebytv-note.md)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cineflix-fstream-app",
@@ -1701,7 +1701,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinego-co",
@@ -1715,7 +1715,7 @@
     "featured": false,
     "meta": "Movies / TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinegram-tv",
@@ -1730,7 +1730,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinehd-app",
@@ -1745,7 +1745,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://vidbox.xyz/) / [Discord](https://discord.gg/VGQKGPM9Ej)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinehub-one",
@@ -1760,7 +1760,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/wp5SkSWHW5)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinejoy-to",
@@ -1775,7 +1775,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/TWKxstBuv9)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinelove-live",
@@ -1790,7 +1790,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/NCH4rzxJ36)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinema-bz",
@@ -1805,7 +1805,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Telegram](https://t.me/cinemabz)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinemacity-cc",
@@ -1820,7 +1820,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Requires Sign-Up",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinemaos-tech",
@@ -1835,7 +1835,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/38yFnFCJnA)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinemaos-me",
@@ -1850,7 +1850,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/38yFnFCJnA)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinemaos-live",
@@ -1865,7 +1865,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/38yFnFCJnA)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinemora-ru",
@@ -1880,7 +1880,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/the-raven)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinemove-cc",
@@ -1895,7 +1895,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cine-nest-nine-vercel-app",
@@ -1910,7 +1910,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cineplay-to",
@@ -1925,7 +1925,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/C2zGTdUbHE)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinepro-fstream-app",
@@ -1940,7 +1940,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinestream-kje-us",
@@ -1955,7 +1955,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / [Discord](https://discord.com/invite/2cG7pyvq38)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinetaro-to",
@@ -1970,7 +1970,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/4yGUxdz3h9)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinetimes-org",
@@ -1983,7 +1983,7 @@
     "featured": false,
     "meta": "Public Domain Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinevaro-app",
@@ -1998,7 +1998,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinevibe-to",
@@ -2013,7 +2013,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-cinewave-qzz-io",
@@ -2028,7 +2028,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cinezo-org",
@@ -2043,7 +2043,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/yWWKfMbtm3)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cksub-org",
@@ -2056,7 +2056,7 @@
     "featured": false,
     "meta": "Donghua / Sub / [Telegram](https://t.me/CKSubORG)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kissanime-help",
@@ -2069,7 +2069,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next / [Clones](https://kissanime.help/) / [Discord](https://discord.com/invite/w5ghWQG8uM)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "commons-wikimedia-org",
@@ -2082,7 +2082,7 @@
     "featured": false,
     "meta": "Wiki Commons Video Files",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "coreflix-tv",
@@ -2097,7 +2097,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/FkaeFU32nr)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "corsflix-net",
@@ -2112,7 +2112,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://rentry.co/rivestream) / [Discord](https://discord.gg/6xJmJja8fV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-corsflix-net",
@@ -2127,7 +2127,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://rentry.co/rivestream) / [Discord](https://discord.gg/6xJmJja8fV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cosectv-com",
@@ -2140,7 +2140,7 @@
     "featured": true,
     "meta": "Stream Aggregator / [Status](https://www.bintv.link/) / [Telegram](https://t.me/+PiQ1lsDtjoU5NmFl) / [Discord](https://discord.com/invite/fp3EQjFAJQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "crichd-com-co",
@@ -2153,7 +2153,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "crichd-at",
@@ -2166,7 +2166,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "crimsonfansubs-com",
@@ -2179,7 +2179,7 @@
     "featured": false,
     "meta": "Donghua / Sub / [Discord](https://discord.gg/PmYn97vtue)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cubeflix-org",
@@ -2194,7 +2194,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/Rj54xaWxR7)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cubeflix-pages-dev",
@@ -2209,7 +2209,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/Rj54xaWxR7)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cubiktv-com",
@@ -2223,7 +2223,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cxtvlive-com",
@@ -2237,7 +2237,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "cytu-be",
@@ -2250,7 +2250,7 @@
     "featured": false,
     "meta": "Random Streams",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "daddylive-pk",
@@ -2264,7 +2264,7 @@
     "featured": true,
     "meta": "TV / Sports / [Telegram](https://t.me/+8uBUT1-0B741NTll)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "daddylive-nl",
@@ -2277,7 +2277,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Mirrors](https://daddylive.nl/) / [Telegram]( https://t.me/daddylive8) / [Discord](https://discord.gg/qc4jksxk7a)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "dlhd-st",
@@ -2291,7 +2291,7 @@
     "featured": true,
     "meta": "TV / Sports / [Telegram](https://t.me/+8uBUT1-0B741NTll)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "daddylive-mov",
@@ -2304,7 +2304,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Mirrors](https://daddylive.nl/) / [Telegram]( https://t.me/daddylive8) / [Discord](https://discord.gg/qc4jksxk7a)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "dailycommercials-com",
@@ -2317,7 +2317,7 @@
     "featured": false,
     "meta": "Commercial / TV Promo Archives",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "dailymotion-com",
@@ -2331,7 +2331,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "damitv-st",
@@ -2345,7 +2345,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "damitvsports-com",
@@ -2359,7 +2359,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "stumfilm-dk",
@@ -2372,7 +2372,7 @@
     "featured": false,
     "meta": "Silent Danish Film Archive",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "darkroom-film",
@@ -2386,7 +2386,7 @@
     "featured": false,
     "meta": "Movies / TV / US Only / Requires Sign-Up",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "deafvideo-tv",
@@ -2400,7 +2400,7 @@
     "featured": false,
     "meta": "ASL Vlogs + Videos / YouTube Style Site for Deaf Content",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "diostream-cc",
@@ -2415,7 +2415,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://nomorflix.com/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ppv-to",
@@ -2428,7 +2428,7 @@
     "featured": true,
     "meta": "Live Events / [Mirrors](https://ppv.domains/) / [Discord](https://ppv.to/discord)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "disneynow-com",
@@ -2441,7 +2441,7 @@
     "featured": false,
     "meta": "Full Disney Episodes / US Only",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "distro-tv",
@@ -2454,7 +2454,7 @@
     "featured": false,
     "meta": "TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "deafmovie-org",
@@ -2468,7 +2468,7 @@
     "featured": false,
     "meta": "Deaf Entertainment / News",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "downloads-anymovies-co",
@@ -2482,7 +2482,7 @@
     "featured": false,
     "meta": "Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "dpan-tv",
@@ -2496,7 +2496,7 @@
     "featured": false,
     "meta": "Deaf Entertainment / News",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wv-dramacool-com-tr",
@@ -2510,7 +2510,7 @@
     "featured": true,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "dramahood-mom",
@@ -2524,7 +2524,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "dramanice-boo",
@@ -2538,7 +2538,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "duafile-net",
@@ -2553,7 +2553,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "download-duafile-com",
@@ -2568,7 +2568,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "zhangboheng-github-io",
@@ -2582,7 +2582,7 @@
     "featured": true,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ee3-me",
@@ -2596,7 +2596,7 @@
     "featured": true,
     "meta": "Movies / Invite Codes: `mpgh` or `1hack` / Requires Sign-Up",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "einthusan-tv",
@@ -2610,7 +2610,7 @@
     "featured": false,
     "meta": "Movies / VPN May Be Required",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "emmau680-driveraudiencej2zeu49-sbs",
@@ -2623,7 +2623,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "emnexmovies-tech",
@@ -2638,7 +2638,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/q3p2j5zbg)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vknext-net",
@@ -2652,7 +2652,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "enma-lol",
@@ -2680,7 +2680,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "everythingmoe-org",
@@ -2693,7 +2693,7 @@
     "featured": false,
     "meta": "Anime Site Index / [Subreddit](https://www.reddit.com/r/everythingmoe/) / [Discord](https://discord.gg/GuueaDgKdS)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "everythingmoe-com",
@@ -2706,7 +2706,7 @@
     "featured": false,
     "meta": "Anime Site Index / [Subreddit](https://www.reddit.com/r/everythingmoe/) / [Discord](https://discord.gg/GuueaDgKdS)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "linktr-ee",
@@ -2719,7 +2719,7 @@
     "featured": false,
     "meta": "Rare / Vintage / Obscure Media Stream",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "f1fullraces-com",
@@ -2732,7 +2732,7 @@
     "featured": false,
     "meta": "Motorsports Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "f1live-dpdns-org",
@@ -2745,7 +2745,7 @@
     "featured": false,
     "meta": "Motorsports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "falconstreams-app",
@@ -2758,7 +2758,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "famelack-com",
@@ -2786,7 +2786,7 @@
     "featured": false,
     "meta": "Movies / TV / US Only",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fantasticsoda-com",
@@ -2799,7 +2799,7 @@
     "featured": false,
     "meta": "Stream Aggregator",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fawanews-sc",
@@ -2812,7 +2812,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fawesome-tv",
@@ -2826,7 +2826,7 @@
     "featured": false,
     "meta": "Movies / TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fbstream-cc",
@@ -2839,7 +2839,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fctv33-lat",
@@ -2852,7 +2852,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "filmcave-ru",
@@ -2867,7 +2867,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Telegram](https://t.me/fmcave) / [Discord](https://discord.gg/BtpYzMbDjH)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "filmo-to",
@@ -2881,7 +2881,7 @@
     "featured": false,
     "meta": "Movies / 3rd Party Host",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "filmzie-com",
@@ -2908,7 +2908,7 @@
     "featured": false,
     "meta": "Sub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fireflix-pages-dev",
@@ -2923,7 +2923,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flickermini-pages-dev",
@@ -2938,7 +2938,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Proxy](https://flickerminiproxy.pages.dev/) / [Subreddit](https://www.reddit.com/r/flickermini/) / [Note](https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/flicker-pr",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flickystream-dad",
@@ -2953,7 +2953,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/the-raven)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fliker-freebuff-app",
@@ -2968,7 +2968,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flikhub-net",
@@ -2983,7 +2983,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/yWWKfMbtm3)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flixer-gd",
@@ -2998,7 +2998,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flixhouse-com",
@@ -3012,7 +3012,7 @@
     "featured": false,
     "meta": "Indie Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flixtrz-com",
@@ -3027,7 +3027,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flixvo-live",
@@ -3042,7 +3042,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flixvo-fun",
@@ -3057,7 +3057,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flixway-ru",
@@ -3072,7 +3072,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Telegram](https://t.me/fmcave) / [Discord](https://discord.gg/BtpYzMbDjH)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flixzy-pages-dev",
@@ -3087,7 +3087,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/GDfP8S243T)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flnk-fun",
@@ -3102,7 +3102,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fluxtv-co-uk",
@@ -3117,7 +3117,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Status](https://rentry.co/fluxtv) / [Discord](https://discord.gg/xyB8MHGV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fluxtv-qzz-io",
@@ -3132,7 +3132,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Status](https://rentry.co/fluxtv) / [Discord](https://discord.gg/xyB8MHGV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fluxtv-cc",
@@ -3147,7 +3147,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Status](https://rentry.co/fluxtv) / [Discord](https://discord.gg/xyB8MHGV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flyflix-net",
@@ -3162,7 +3162,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/sssvheMsVT)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flystream-net",
@@ -3177,7 +3177,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fmovies-gd",
@@ -3192,7 +3192,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/C2zGTdUbHE)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "footagefarm-com",
@@ -3205,7 +3205,7 @@
     "featured": false,
     "meta": "Public Domain Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "footballia-net",
@@ -3218,7 +3218,7 @@
     "featured": true,
     "meta": "Classic Football Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "footballia-eu",
@@ -3231,7 +3231,7 @@
     "featured": true,
     "meta": "Classic Football Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "footballorgin-com",
@@ -3244,7 +3244,7 @@
     "featured": false,
     "meta": "Football Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "footreplays-com",
@@ -3257,7 +3257,7 @@
     "featured": false,
     "meta": "Football Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "footstreams-co",
@@ -3270,7 +3270,7 @@
     "featured": false,
     "meta": "Stream Aggregator",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-foundtv-com",
@@ -3284,7 +3284,7 @@
     "featured": false,
     "meta": "Found Footage Movies / Requires Sign-Up",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "frameweb-pages-dev",
@@ -3299,7 +3299,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "freegreatmovies-com",
@@ -3313,7 +3313,7 @@
     "featured": false,
     "meta": "YouTube Movie Collections",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "freeintertv-com",
@@ -3327,7 +3327,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "freetvz-com",
@@ -3341,7 +3341,7 @@
     "featured": false,
     "meta": "Random TV Style YouTube / Custom Channels",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fsharetv-co",
@@ -3355,7 +3355,7 @@
     "featured": false,
     "meta": "Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "freestreams-live1a-pk",
@@ -3368,7 +3368,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Discord](https://discord.gg/eXXJzDPchU)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fullmatchshows-com",
@@ -3381,7 +3381,7 @@
     "featured": false,
     "meta": "Football Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "fullraces-com",
@@ -3394,7 +3394,7 @@
     "featured": true,
     "meta": "Motorsport Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "funniermoments-net",
@@ -3407,7 +3407,7 @@
     "featured": false,
     "meta": "TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "gaiaflix-live",
@@ -3422,7 +3422,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/XyMuMpnvF4)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ggflix-live",
@@ -3437,7 +3437,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/eEmGSZ98cP)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "globalfreetv-com",
@@ -3450,7 +3450,7 @@
     "featured": false,
     "meta": "TV / [Discord](https://discord.com/invite/pPaerCghRN)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "globalshakespeares-mit-edu",
@@ -3464,7 +3464,7 @@
     "featured": false,
     "meta": "Shakespeare Performance Recordings",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "goated-cx",
@@ -3479,7 +3479,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / 4K / [Discord](https://discord.gg/b5SKRgX5Br)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "modsyndicate-com",
@@ -3492,7 +3492,7 @@
     "featured": false,
     "meta": "Sub / Dub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "goplay-su",
@@ -3506,7 +3506,7 @@
     "featured": true,
     "meta": "TV / Movies / [Discord](https://discord.com/invite/yY2P3DQR8S)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "guzes-surge-sh",
@@ -3520,7 +3520,7 @@
     "featured": false,
     "meta": "TV / Sports / [Mirrors](https://tvhub.surge.sh/) / [.onion](http://e3ngcokw7hqbtbylcnwdomxt3mkmbqwbtrr7yecgafpqyj3sygxt7ead.onion) / [Discord](https://discord.com/invite/EFKNtQvUMF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "hdclump-com",
@@ -3533,7 +3533,7 @@
     "featured": false,
     "meta": "Documentaries / Cooking / Gardening",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "heartivetv-pages-dev",
@@ -3548,7 +3548,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "hexa-su",
@@ -3563,7 +3563,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "hexawatch-cc",
@@ -3578,7 +3578,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.com/invite/AGsGU5KUYy)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "historicfilms-com",
@@ -3591,7 +3591,7 @@
     "featured": false,
     "meta": "Historic Footage / Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "play-history-com",
@@ -3604,7 +3604,7 @@
     "featured": false,
     "meta": "Full History / A+E Episodes",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "hollymoviehd-cc",
@@ -3619,7 +3619,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "homemovies100-it",
@@ -3633,7 +3633,7 @@
     "featured": false,
     "meta": "Home Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "hoofoot-com",
@@ -3646,7 +3646,7 @@
     "featured": false,
     "meta": "Football Highlights",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "hoofoot-ru",
@@ -3660,7 +3660,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "hoopladigital-com",
@@ -3689,7 +3689,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://vidbox.xyz/) / [Discord](https://discord.gg/VGQKGPM9Ej)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "huhu-to",
@@ -3703,7 +3703,7 @@
     "featured": false,
     "meta": "TV / Sports / European",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "hydrahd-ru",
@@ -3718,7 +3718,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://hydrahd.info/) / [Telegram](https://t.me/HDHYDRAHD)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "hydrahd-info",
@@ -3733,7 +3733,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://hydrahd.info/) / [Telegram](https://t.me/HDHYDRAHD)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "hydrahd-com",
@@ -3748,7 +3748,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://hydrahd.info/) / [Telegram](https://t.me/HDHYDRAHD)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "icefy-top",
@@ -3763,7 +3763,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "iptv-web-app",
@@ -3777,7 +3777,7 @@
     "featured": true,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "animation-filmarchives-jp",
@@ -3790,7 +3790,7 @@
     "featured": false,
     "meta": "Japanese Animation Archive",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "jp-films-com",
@@ -3804,7 +3804,7 @@
     "featured": true,
     "meta": "Japanese Movies / TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "justanime-site",
@@ -3817,7 +3817,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next / [Mirrors](https://justanime.site/) / [Telegram](https://t.me/JustAnimeZone) / [Discord](https://discord.gg/P3yqksmGun)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "justanime-to",
@@ -3843,7 +3843,7 @@
     "featured": false,
     "meta": "Free w/ Ads Directory",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kaitovault-com",
@@ -3858,7 +3858,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kanopy-com",
@@ -3885,7 +3885,7 @@
     "featured": false,
     "meta": "Sub / Dub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kazora-cc",
@@ -3898,7 +3898,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kcnawatch-us",
@@ -3912,7 +3912,7 @@
     "featured": false,
     "meta": "North Korean Live TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kaa-lt",
@@ -3940,7 +3940,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kissanime-com-ru",
@@ -3953,7 +3953,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next / [Clones](https://kissanime.help/) / [Discord](https://discord.com/invite/w5ghWQG8uM)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ww14-kissasian-com-lv",
@@ -3967,7 +3967,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kissasian-video",
@@ -3981,7 +3981,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kisskh-fr",
@@ -3995,7 +3995,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kisskh-id",
@@ -4009,7 +4009,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kisskh-red",
@@ -4023,7 +4023,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kisskh-ovh",
@@ -4037,7 +4037,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kisskh-dk",
@@ -4051,7 +4051,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kool-to",
@@ -4065,7 +4065,7 @@
     "featured": false,
     "meta": "TV / Sports / European",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "koryo-tv",
@@ -4079,7 +4079,7 @@
     "featured": false,
     "meta": "North Korean Live TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kuroanime-lol",
@@ -4092,7 +4092,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next / [Discord](https://discord.gg/UsPMHMnXAy)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kuroiru-co",
@@ -4118,7 +4118,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next / [Telegram](https://t.me/kuudere0to) / [Discord](https://discord.gg/h9v9Vfzp7B)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "kyren-moe",
@@ -4131,7 +4131,7 @@
     "featured": false,
     "meta": "Sub / Dub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "latestmovies-net",
@@ -4146,7 +4146,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/FsbU2BQcjQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "lecinemaclub-com",
@@ -4160,7 +4160,7 @@
     "featured": false,
     "meta": "Hand-Picked Indie Film Stream / [Archive](https://www.lecinemaclub.com/archives/index/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "levidia-ch",
@@ -4175,7 +4175,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "lightcone-org",
@@ -4189,7 +4189,7 @@
     "featured": false,
     "meta": "Short / Experimental Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "li-ma-nl",
@@ -4203,7 +4203,7 @@
     "featured": false,
     "meta": "Short / Experimental Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "livelive24-com",
@@ -4217,7 +4217,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "livetv-sx",
@@ -4230,7 +4230,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "livextv-hybrows-workers-dev",
@@ -4243,7 +4243,7 @@
     "featured": false,
     "meta": "Sports Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "lmanime-com",
@@ -4256,7 +4256,7 @@
     "featured": false,
     "meta": "Donghua / Sub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "lookmovie2-to",
@@ -4284,7 +4284,7 @@
     "featured": false,
     "meta": "Movies / TV / Auto-Next / 480p",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "luciferdonghua-in",
@@ -4297,7 +4297,7 @@
     "featured": false,
     "meta": "Donghua / Sub / [Telegram](https://telegram.me/luciferdonghuaz)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "lumotv-co-uk",
@@ -4311,7 +4311,7 @@
     "featured": false,
     "meta": "Deaf Entertainment / News",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "luna-stream-me",
@@ -4324,7 +4324,7 @@
     "featured": false,
     "meta": "Sub / Dub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "lunaranime-ru",
@@ -4337,7 +4337,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Discord](https://discord.com/invite/NBBnhbFHBT)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "m-zone-org",
@@ -4352,7 +4352,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.com/invite/PFvCNcZCQC)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "m2box-org",
@@ -4367,7 +4367,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Mirrors](https://moviebox.co/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "m4uhd-vip",
@@ -4382,7 +4382,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Clones](https://rentry.co/sflix#streamm4u-clones)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "mainportal66-com",
@@ -4395,7 +4395,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "mappl-tv",
@@ -4410,7 +4410,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/V8XUhQb2MZ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "megacartoons-net",
@@ -4423,7 +4423,7 @@
     "featured": false,
     "meta": "TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "meowly-qzz-io",
@@ -4438,7 +4438,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "meowtv-ru",
@@ -4453,7 +4453,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/the-raven)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "mirror-awardstreams-link",
@@ -4466,7 +4466,7 @@
     "featured": false,
     "meta": "Live Award Show Replays / [Mirrors](https://awardstreams.link/) / [X](https://x.com/AwardStreamLive) / [Telegram](https://t.me/+i7T1CzmIYL00Mjhh)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "miru-js-org",
@@ -4479,7 +4479,7 @@
     "featured": true,
     "meta": "Desktop Streaming Apps",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "miruro-com",
@@ -4492,7 +4492,7 @@
     "featured": true,
     "meta": "Hard Subs / Soft Subs / Dub / Auto-Next / [Status](https://status.miruro.com/) / [Subreddit](https://www.reddit.com/r/miruro/) / [Discord](https://discord.com/invite/pjsdJp96mY) / [GitHub](https://git",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "miruro-tv",
@@ -4505,7 +4505,7 @@
     "featured": true,
     "meta": "Hard Subs / Soft Subs / Dub / Auto-Next / [Status](https://status.miruro.com/) / [Subreddit](https://www.reddit.com/r/miruro/) / [Discord](https://discord.com/invite/pjsdJp96mY) / [GitHub](https://git",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "miruro-bz",
@@ -4518,7 +4518,7 @@
     "featured": true,
     "meta": "Hard Subs / Soft Subs / Dub / Auto-Next / [Status](https://status.miruro.com/) / [Subreddit](https://www.reddit.com/r/miruro/) / [Discord](https://discord.com/invite/pjsdJp96mY) / [GitHub](https://git",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "miruro-ru",
@@ -4531,7 +4531,7 @@
     "featured": true,
     "meta": "Hard Subs / Soft Subs / Dub / Auto-Next / [Status](https://status.miruro.com/) / [Subreddit](https://www.reddit.com/r/miruro/) / [Discord](https://discord.com/invite/pjsdJp96mY) / [GitHub](https://git",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "miruro-to",
@@ -4544,7 +4544,7 @@
     "featured": true,
     "meta": "Hard Subs / Soft Subs / Dub / Auto-Next / [Status](https://status.miruro.com/) / [Subreddit](https://www.reddit.com/r/miruro/) / [Discord](https://discord.com/invite/pjsdJp96mY) / [GitHub](https://git",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "mkissa-to",
@@ -4557,7 +4557,7 @@
     "featured": true,
     "meta": "Sub / Dub / [Discord](https://discord.com/invite/6nce6cyJyM)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "mlblive-net",
@@ -4570,7 +4570,7 @@
     "featured": false,
     "meta": "Baseball Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-mometu-com",
@@ -4584,7 +4584,7 @@
     "featured": false,
     "meta": "Movies / TV / US Only",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "moonflix-website",
@@ -4599,7 +4599,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Telegram](https://t.me/Moonflix_official_Channel)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "moovie-fun",
@@ -4614,7 +4614,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "omega-gg",
@@ -4628,7 +4628,7 @@
     "featured": false,
     "meta": "Online Video Aggregation App",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "mov-cli-github-io",
@@ -4642,7 +4642,7 @@
     "featured": false,
     "meta": "Streaming CLI / [Plugins](https://github.com/topics/mov-cli-plugin) / [Discord](https://discord.gg/BMzC7ePsBV) / [GitHub](https://github.com/mov-cli/mov-cli)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "movienig-ht",
@@ -4657,7 +4657,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/kPJ2yJxYng)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "moviebite-cc",
@@ -4672,7 +4672,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Telegram](https://t.me/+8Wluy50R049kMmVk) / [Discord](https://discord.gg/ygexZUCXVa)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "moviebox-co",
@@ -4687,7 +4687,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Mirrors](https://moviebox.co/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "movieboxonline-net",
@@ -4702,7 +4702,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Mirrors](https://moviebox.co/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "player-xtra-wtf",
@@ -4717,7 +4717,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "movienestbd-pics",
@@ -4732,7 +4732,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Telegram](https://t.me/+NeX_XEezm5ozODk1)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "moviepire-org",
@@ -4747,7 +4747,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Telegram](https://t.me/hdoboxapk2)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "moviestowatch-top",
@@ -4762,7 +4762,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "moviesfoundonline-com",
@@ -4776,7 +4776,7 @@
     "featured": false,
     "meta": "YouTube Movie Collections",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "movish-to",
@@ -4791,7 +4791,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/FsbU2BQcjQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "multishows-top",
@@ -4806,7 +4806,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Telegram](https://t.me/multishowsfun)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "myanime-live",
@@ -4819,7 +4819,7 @@
     "featured": false,
     "meta": "Donghua / Sub",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "myrunningman-com",
@@ -4832,7 +4832,7 @@
     "featured": false,
     "meta": "My Running Man Episodes / [Subreddit](https://www.reddit.com/r/runningman/) / [Telegram](https://t.me/myrunningmancom) / [Discord](https://discord.gg/ARvZ4rwZzh)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "mysoccerpulse-com",
@@ -4845,7 +4845,7 @@
     "featured": false,
     "meta": "Football Highlights",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "plus-nasa-gov",
@@ -4858,7 +4858,7 @@
     "featured": false,
     "meta": "Official NASA Streaming Service",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "classics-nascar-com",
@@ -4871,7 +4871,7 @@
     "featured": true,
     "meta": "Nascar Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "filmpreservation-org",
@@ -4884,7 +4884,7 @@
     "featured": false,
     "meta": "Historic Footage / Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tv-naver-com",
@@ -4898,7 +4898,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nbamonster-com",
@@ -4911,7 +4911,7 @@
     "featured": false,
     "meta": "Basketball / Aggregator",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nekowatch-xyz",
@@ -4924,7 +4924,7 @@
     "featured": false,
     "meta": "Sub / Dub / [Discord](https://discord.gg/52UrTJ3ytT)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nepu-io",
@@ -4939,7 +4939,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / 4K / [Status](https://rar.to/) / [Discord](https://discord.gg/nepu)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nepu-net",
@@ -4954,7 +4954,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / 4K / [Status](https://rar.to/) / [Discord](https://discord.gg/nepu)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nepu-app",
@@ -4969,7 +4969,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / 4K / [Status](https://rar.to/) / [Discord](https://discord.gg/nepu)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nepu-is",
@@ -4984,7 +4984,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / 4K / [Status](https://rar.to/) / [Discord](https://discord.gg/nepu)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nepu-to",
@@ -4999,7 +4999,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / 4K / [Status](https://rar.to/) / [Discord](https://discord.gg/nepu)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "netnaija-film",
@@ -5014,7 +5014,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Mirrors](https://moviebox.co/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "netplayz-top",
@@ -5029,7 +5029,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/NCH4rzxJ36)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "netshows-xyz",
@@ -5044,7 +5044,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / [Discord](https://discord.com/invite/t2PnzRgKeM)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "next-box-su",
@@ -5059,7 +5059,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://nextwork.cc/) / [Telegram](https://t.me/nextbox_uno) / [Discord](https://discord.gg/UHYrFbvu4z)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nextbox-uno",
@@ -5074,7 +5074,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://nextwork.cc/) / [Telegram](https://t.me/nextbox_uno) / [Discord](https://discord.gg/UHYrFbvu4z)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nextwork-cc",
@@ -5089,7 +5089,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://nextwork.cc/) / [Telegram](https://t.me/nextbox_uno) / [Discord](https://discord.gg/UHYrFbvu4z)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nfl-video-com",
@@ -5102,7 +5102,7 @@
     "featured": false,
     "meta": "American Football Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nfl-replays-com",
@@ -5115,7 +5115,7 @@
     "featured": false,
     "meta": "American Football Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nicovideo-jp",
@@ -5129,7 +5129,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nmovies-cc",
@@ -5144,7 +5144,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "redd-it",
@@ -5157,7 +5157,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "noirx-live",
@@ -5172,7 +5172,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/38yFnFCJnA)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "noirx-me",
@@ -5187,7 +5187,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/38yFnFCJnA)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nomorflix-cc",
@@ -5202,7 +5202,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://nomorflix.com/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "novahd-cc",
@@ -5217,7 +5217,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "novamovie-net",
@@ -5232,7 +5232,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "noxx-to",
@@ -5245,7 +5245,7 @@
     "featured": true,
     "meta": "TV / 3rd Party Hosts",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ntv-cx",
@@ -5259,7 +5259,7 @@
     "featured": true,
     "meta": "TV / Sports / Aggregator / [Mirrors](https://ntvx.link/) / [Discord](https://discord.gg/uY3ud5gcpW)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ntvs-cx",
@@ -5273,7 +5273,7 @@
     "featured": true,
     "meta": "TV / Sports / Aggregator / [Mirrors](https://ntvx.link/) / [Discord](https://discord.gg/uY3ud5gcpW)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ntvx-link",
@@ -5287,7 +5287,7 @@
     "featured": true,
     "meta": "TV / Sports / Aggregator / [Mirrors](https://ntvx.link/) / [Discord](https://discord.gg/uY3ud5gcpW)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nukkard-com",
@@ -5300,7 +5300,7 @@
     "featured": false,
     "meta": "Public Domain Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "nunflix-li",
@@ -5315,7 +5315,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.com/invite/AGsGU5KUYy)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "web-nxsha-app",
@@ -5330,7 +5330,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Telegram](https://telegram.me/+8_u943HkSAY5ODA1)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "odysee-com",
@@ -5344,7 +5344,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "oha-to",
@@ -5358,7 +5358,7 @@
     "featured": false,
     "meta": "TV / Sports / European",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ok-ru",
@@ -5372,7 +5372,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "otcs-minuspoint-com",
@@ -5385,7 +5385,7 @@
     "featured": false,
     "meta": "Live Retro Computer / Game Media Streams",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "olympicstreams-im",
@@ -5398,7 +5398,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ondemandchina-com",
@@ -5412,7 +5412,7 @@
     "featured": false,
     "meta": "TV / Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "onhockey-tv",
@@ -5425,7 +5425,7 @@
     "featured": false,
     "meta": "Hockey / Aggregator",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "onionplay-st",
@@ -5440,7 +5440,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.com/invite/RjJgF755Pa)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "onoflix-ru",
@@ -5455,7 +5455,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/eEmGSZ98cP)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "openculture-com",
@@ -5469,7 +5469,7 @@
     "featured": false,
     "meta": "YouTube Movie Collections",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "opstream-fun",
@@ -5484,7 +5484,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/NNe4htjBV9)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "overlook-cx",
@@ -5499,7 +5499,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.com/invite/rbe9DJNuhH)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "overtakefans-com",
@@ -5512,7 +5512,7 @@
     "featured": false,
     "meta": "Motorsports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "palco-wtf",
@@ -5525,7 +5525,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "pawflix-foo-ng",
@@ -5540,7 +5540,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Invite](https://discord.gg/pXnv7ha5XP)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "joinpeertube-org",
@@ -5554,7 +5554,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "peestream-in",
@@ -5569,7 +5569,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "phantomflix-net",
@@ -5584,7 +5584,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/4SJ5c9gZUQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "piratexplay-com",
@@ -5597,7 +5597,7 @@
     "featured": false,
     "meta": "Sub / [Mirrors](https://piratexplay.com/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "piratexplay-cc",
@@ -5610,7 +5610,7 @@
     "featured": false,
     "meta": "Sub / [Mirrors](https://piratexplay.com/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "pitsport-live",
@@ -5623,7 +5623,7 @@
     "featured": false,
     "meta": "Motorsports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "playary-com",
@@ -5637,7 +5637,7 @@
     "featured": false,
     "meta": "Movies / TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "playtorrio-pages-dev",
@@ -5665,7 +5665,7 @@
     "featured": false,
     "meta": "Streaming Desktop App / Use Streaming Mode / [Subreddit](https://www.reddit.com/r/PlayTorrio/) / [Discord](https://discord.gg/bbkVHRHnRk) / [GitHub](https://github.com/ayman708-UX/PlayTorrioV2)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-plex-tv",
@@ -5679,7 +5679,7 @@
     "featured": true,
     "meta": "Movies / TV / 720p",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "pluto-tv",
@@ -5708,7 +5708,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/JAxTMkmcpd)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ppv-is",
@@ -5721,7 +5721,7 @@
     "featured": true,
     "meta": "Live Events / [Mirrors](https://ppv.domains/) / [Discord](https://ppv.to/discord)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ppv-cx",
@@ -5734,7 +5734,7 @@
     "featured": true,
     "meta": "Live Events / [Mirrors](https://ppv.domains/) / [Discord](https://ppv.to/discord)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ppv-lc",
@@ -5747,7 +5747,7 @@
     "featured": true,
     "meta": "Live Events / [Mirrors](https://ppv.domains/) / [Discord](https://ppv.to/discord)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ppv-domains",
@@ -5760,7 +5760,7 @@
     "featured": true,
     "meta": "Live Events / [Mirrors](https://ppv.domains/) / [Discord](https://ppv.to/discord)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ppv-st",
@@ -5773,7 +5773,7 @@
     "featured": true,
     "meta": "Live Events / [Mirrors](https://ppv.domains/) / [Discord](https://ppv.to/discord)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "amazon-com",
@@ -5787,7 +5787,7 @@
     "featured": false,
     "meta": "Movies / TV / US Only",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "primeshows-org",
@@ -5817,7 +5817,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Mostly 3rd Party Hosts / [Status / Mirrors](https://primewire.nexus/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "primewire-mov",
@@ -5832,7 +5832,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Mostly 3rd Party Hosts / [Status / Mirrors](https://primewire.nexus/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "projectfreetv-sx",
@@ -5847,7 +5847,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / 3rd Party Hosts",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "flickerminiproxy-pages-dev",
@@ -5862,7 +5862,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Proxy](https://flickerminiproxy.pages.dev/) / [Subreddit](https://www.reddit.com/r/flickermini/) / [Note](https://github.com/fmhy/edit/blob/main/docs/.vitepress/notes/flicker-pr",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "sync-coconono-org",
@@ -5875,7 +5875,7 @@
     "featured": false,
     "meta": "Random Streams",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "pstream-site",
@@ -5890,7 +5890,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/5eWu9Vz6tQ) / [GitHub](https://github.com/steveyout/streamwatch)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "publicdomainmovie-net",
@@ -5903,7 +5903,7 @@
     "featured": false,
     "meta": "Public Domain Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "puffer-stanford-edu",
@@ -5917,7 +5917,7 @@
     "featured": false,
     "meta": "San Fran TV / Requires Sign-Up",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "pwrestling-com",
@@ -5930,7 +5930,7 @@
     "featured": false,
     "meta": "MMA / Wrestling Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rar-to",
@@ -5945,7 +5945,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / 4K / [Status](https://rar.to/) / [Discord](https://discord.gg/nepu)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rarefilmm-com",
@@ -5959,7 +5959,7 @@
     "featured": true,
     "meta": "Rare Movies",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ravenflix-net",
@@ -5974,7 +5974,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/4SJ5c9gZUQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "reanime-to",
@@ -6000,7 +6000,7 @@
     "featured": false,
     "meta": "Random Streams",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "realfight-top",
@@ -6013,7 +6013,7 @@
     "featured": true,
     "meta": "MMA / Wrestling / Boxing Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "redflix-one",
@@ -6028,7 +6028,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/wp5SkSWHW5)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "redflix-club",
@@ -6058,7 +6058,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Telegram](https://t.me/streamvaultscrew)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "refooty-com",
@@ -6071,7 +6071,7 @@
     "featured": false,
     "meta": "Football Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "replay-exc-pages-dev",
@@ -6084,7 +6084,7 @@
     "featured": false,
     "meta": "Sports Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "retroflix-org",
@@ -6097,7 +6097,7 @@
     "featured": false,
     "meta": "Classic Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "retrostrange-com",
@@ -6110,7 +6110,7 @@
     "featured": false,
     "meta": "Live Retro Streams",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ridomovies-is",
@@ -6124,7 +6124,7 @@
     "featured": false,
     "meta": "Movies / TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "twitch-tv",
@@ -6138,7 +6138,7 @@
     "featured": true,
     "meta": "RiffTrax Live Streams",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rips-cc",
@@ -6152,7 +6152,7 @@
     "featured": true,
     "meta": "Movies / Invite Codes: `mpgh` or `1hack` / Requires Sign-Up",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rivestream-app",
@@ -6167,7 +6167,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://rentry.co/rivestream) / [Discord](https://discord.gg/6xJmJja8fV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rivestream-ru",
@@ -6182,7 +6182,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://rentry.co/rivestream) / [Discord](https://discord.gg/6xJmJja8fV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rivestream-vip",
@@ -6197,7 +6197,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://rentry.co/rivestream) / [Discord](https://discord.gg/6xJmJja8fV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rivestream-top",
@@ -6211,7 +6211,7 @@
     "featured": false,
     "meta": "TV / Sports / [Discord](https://discord.com/invite/6xJmJja8fV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rizzking-xo-je",
@@ -6226,7 +6226,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rizzking-vercel-app",
@@ -6241,7 +6241,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rizzking-org",
@@ -6256,7 +6256,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "therokuchannel-roku-com",
@@ -6270,7 +6270,7 @@
     "featured": false,
     "meta": "Movies / TV / US Only",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "roxiestreams-info",
@@ -6283,7 +6283,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "roxiestreams-cc",
@@ -6296,7 +6296,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "roxiestreams-su",
@@ -6309,7 +6309,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rugby24-net",
@@ -6322,7 +6322,7 @@
     "featured": false,
     "meta": "Rugby Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rumble-com",
@@ -6336,7 +6336,7 @@
     "featured": false,
     "meta": "Requires VPN in Some Countries",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rutracker-org",
@@ -6349,7 +6349,7 @@
     "featured": false,
     "meta": "Sports Replays / Torrents / [Tools](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/torrent#wiki_.25BA_torrent_sites)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "rutube-ru",
@@ -6363,7 +6363,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "sanuflix2-pages-dev",
@@ -6378,7 +6378,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "score808hd-tv",
@@ -6391,7 +6391,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Discord](https://discord.com/invite/mdEsarNMyF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "screenscape-me",
@@ -6406,7 +6406,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Telegram](https://t.me/ScreenScapee)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "seanime-app",
@@ -6419,7 +6419,7 @@
     "featured": true,
     "meta": "Desktop Streaming Apps",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "senshi-live",
@@ -6432,7 +6432,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next / [Discord](https://discord.com/invite/bFvtjQuwjy)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "diva-sfsu-edu",
@@ -6445,7 +6445,7 @@
     "featured": false,
     "meta": "San Francisco TV Archive",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "shiopa-com",
@@ -6460,7 +6460,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/RTmqHSDReh)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "shortoftheweek-com",
@@ -6474,7 +6474,7 @@
     "featured": true,
     "meta": "Short Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "shortverse-com",
@@ -6488,7 +6488,7 @@
     "featured": true,
     "meta": "Short Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "shout-tv-com",
@@ -6502,7 +6502,7 @@
     "featured": false,
     "meta": "Movies / TV / US + CA Only / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "showbox-media",
@@ -6517,7 +6517,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Use [Throwaway Gmail](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/internet-tools/#wiki_.25B7_temp_mail)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "showroom-live-com",
@@ -6530,7 +6530,7 @@
     "featured": false,
     "meta": "Live Performance Broadcasts",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "shows-st",
@@ -6545,7 +6545,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/4SJ5c9gZUQ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "shuttletv-pk",
@@ -6560,7 +6560,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/wsPmVB7ZJZ)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "shuttletv-su",
@@ -6588,7 +6588,7 @@
     "featured": false,
     "meta": "Silent Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "xullys-xyz",
@@ -6603,7 +6603,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/WHyuYVS6UG)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-sling-com",
@@ -6617,7 +6617,7 @@
     "featured": false,
     "meta": "Movies / TV / Live News / US Only",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "smashystream-xyz",
@@ -6647,7 +6647,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "snowstream-vercel-app",
@@ -6662,7 +6662,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/fXBhvRzFKY) / [Telegram](https://t.me/snowstreamchat)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "soccerfull-net",
@@ -6675,7 +6675,7 @@
     "featured": false,
     "meta": "Football Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "sotproxy-ext-io",
@@ -6689,7 +6689,7 @@
     "featured": false,
     "meta": "TV / Sports / [Discord](https://discord.gg/YhQPSSMps2) / [Mirrors](https://sotproxy.ext.io)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-spencerdevs-xyz",
@@ -6704,7 +6704,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://rentry.co/spenflix)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "split-tv-co-il",
@@ -6717,7 +6717,7 @@
     "featured": false,
     "meta": "News",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "sport-video-org-ua",
@@ -6730,7 +6730,7 @@
     "featured": false,
     "meta": "Sports Replays / Torrents",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "sportera-fans",
@@ -6743,7 +6743,7 @@
     "featured": false,
     "meta": "Football",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "sportontv-click",
@@ -6757,7 +6757,7 @@
     "featured": false,
     "meta": "TV / Sports / [Discord](https://discord.gg/YhQPSSMps2) / [Mirrors](https://sotproxy.ext.io)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "sportsbite-org",
@@ -6771,7 +6771,7 @@
     "featured": true,
     "meta": "TV / Sports / [Telegram](https://t.me/+Zo7CoigxqRczMjRk) / [Discord](https://discord.gg/Qg7uRXWAhU)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watchreplay-net",
@@ -6784,7 +6784,7 @@
     "featured": false,
     "meta": "Sports Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "v2-sportsurge-net",
@@ -6797,7 +6797,7 @@
     "featured": false,
     "meta": "Stream Aggregator",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "sportsurge-pk",
@@ -6810,7 +6810,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Discord](https://discord.com/invite/mdEsarNMyF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "sportyhunter-site",
@@ -6823,7 +6823,7 @@
     "featured": true,
     "meta": "Stream Aggregator",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "sportyhunter-xyz",
@@ -6836,7 +6836,7 @@
     "featured": true,
     "meta": "Stream Aggregator",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "squidtv-net",
@@ -6849,7 +6849,7 @@
     "featured": false,
     "meta": "TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "srstop-link",
@@ -6862,7 +6862,7 @@
     "featured": true,
     "meta": "TV / 3rd Party Hosts",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "status-miruro-com",
@@ -6875,7 +6875,7 @@
     "featured": true,
     "meta": "Hard Subs / Soft Subs / Dub / Auto-Next / [Status](https://status.miruro.com/) / [Subreddit](https://www.reddit.com/r/miruro/) / [Discord](https://discord.com/invite/pjsdJp96mY) / [GitHub](https://git",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "status-animaxanime-dpdns-org",
@@ -6888,7 +6888,7 @@
     "featured": false,
     "meta": "Hard Sub / Dub / Auto-Next / [Status](https://status.animaxanime.dpdns.org/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "primewire-nexus",
@@ -6903,7 +6903,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Mostly 3rd Party Hosts / [Status / Mirrors](https://primewire.nexus/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "stigstream-ru",
@@ -6931,7 +6931,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamcorner-cloud",
@@ -6944,7 +6944,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamcorner-fun",
@@ -6957,7 +6957,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamcorner-st",
@@ -6970,7 +6970,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streameast-ph",
@@ -6983,7 +6983,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streameast-ga",
@@ -6996,7 +6996,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamed-pk",
@@ -7009,7 +7009,7 @@
     "featured": true,
     "meta": "Stream Aggregator / [Discord](https://discord.gg/KHC4xTYZgv)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamed-st",
@@ -7022,7 +7022,7 @@
     "featured": true,
     "meta": "Stream Aggregator / [Discord](https://discord.gg/KHC4xTYZgv)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamex-ws",
@@ -7037,7 +7037,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamex-sh",
@@ -7052,7 +7052,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamfree-top",
@@ -7065,7 +7065,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamgoblin-com",
@@ -7080,7 +7080,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamic-st",
@@ -7093,7 +7093,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamingunity-dog",
@@ -7108,7 +7108,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamninja-fun",
@@ -7121,7 +7121,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamninja-cloud",
@@ -7134,7 +7134,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamo-pro",
@@ -7149,7 +7149,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / Requires Sign-Up / [Discord](https://discord.gg/2q3bKwsDc)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamr-pages-dev",
@@ -7164,7 +7164,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/tYFjXqx6Wf)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamsports99-website",
@@ -7178,7 +7178,7 @@
     "featured": true,
     "meta": "TV / Sports / [Mirrors](https://streamsports99.website/) / [Bypass Blocks](https://streamsports99.su/vpns) / [Discord](https://discord.gg/sUwU528aRn)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamsports99-ru",
@@ -7192,7 +7192,7 @@
     "featured": true,
     "meta": "TV / Sports / [Mirrors](https://streamsports99.website/) / [Bypass Blocks](https://streamsports99.su/vpns) / [Discord](https://discord.gg/sUwU528aRn)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamvaults-ru",
@@ -7207,7 +7207,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Telegram](https://t.me/streamvaultscrew)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamwatch-pages-dev",
@@ -7222,7 +7222,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/5eWu9Vz6tQ) / [GitHub](https://github.com/steveyout/streamwatch)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "streamwatch-online",
@@ -7237,7 +7237,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/5eWu9Vz6tQ) / [GitHub](https://github.com/steveyout/streamwatch)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "strims24-pl",
@@ -7250,7 +7250,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Status](https://strumyk.domains/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "strmd-link",
@@ -7263,7 +7263,7 @@
     "featured": true,
     "meta": "Stream Aggregator / [Discord](https://discord.gg/KHC4xTYZgv)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "strmfree-link",
@@ -7276,7 +7276,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "strumyk-pk",
@@ -7289,7 +7289,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Status](https://strumyk.domains/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "strumyk-domains",
@@ -7302,7 +7302,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Status](https://strumyk.domains/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "subsl-top",
@@ -7316,7 +7316,7 @@
     "featured": false,
     "meta": "Movies / TV / 720p / [Telegram](https://t.me/Subsl_top)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "supercartoons-net",
@@ -7330,7 +7330,7 @@
     "featured": false,
     "meta": "Classic / TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "supernova-to",
@@ -7345,7 +7345,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watchsurface-stream",
@@ -7360,7 +7360,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tap4sport-nl",
@@ -7373,7 +7373,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Status](http://tap4sport.link/) / [TG](https://t.me/+LWp6SUzrbVUwZjE0)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tap4sport-pw",
@@ -7386,7 +7386,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Status](http://tap4sport.link/) / [TG](https://t.me/+LWp6SUzrbVUwZjE0)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tap4sport-ci",
@@ -7399,7 +7399,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Status](http://tap4sport.link/) / [TG](https://t.me/+LWp6SUzrbVUwZjE0)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tap4sport-link",
@@ -7412,7 +7412,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Status](http://tap4sport.link/) / [TG](https://t.me/+LWp6SUzrbVUwZjE0)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tap4sport-bz",
@@ -7425,7 +7425,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Status](http://tap4sport.link/) / [TG](https://t.me/+LWp6SUzrbVUwZjE0)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tape-xyz",
@@ -7439,7 +7439,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "the-classic-movies-com",
@@ -7452,7 +7452,7 @@
     "featured": false,
     "meta": "Classic Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "theindex-moe",
@@ -7465,7 +7465,7 @@
     "featured": false,
     "meta": "Anime Site Index / [Wiki](https://thewiki.moe/) / [Discord](https://discord.gg/Snackbox)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "thesilentlibrary-com",
@@ -7478,7 +7478,7 @@
     "featured": false,
     "meta": "Japanese Game Shows",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "themoviebox-org",
@@ -7493,7 +7493,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Mirrors](https://moviebox.co/)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvapp-ws",
@@ -7506,7 +7506,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "timesoccertv-com",
@@ -7519,7 +7519,7 @@
     "featured": false,
     "meta": "Football Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "timstreams-st",
@@ -7532,7 +7532,7 @@
     "featured": true,
     "meta": "Live Events / [Discord](https://discord.com/invite/p3aJ7rJGrz)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "titantv-com",
@@ -7546,7 +7546,7 @@
     "featured": false,
     "meta": "Live TV Listings / TV Schedule",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tiz-cycling-tv",
@@ -7559,7 +7559,7 @@
     "featured": false,
     "meta": "Cycling",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tonkacine-xyz",
@@ -7574,7 +7574,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/S7XYrYesr2)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tonkacine-watch",
@@ -7589,7 +7589,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/S7XYrYesr2)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "toontales-net",
@@ -7603,7 +7603,7 @@
     "featured": false,
     "meta": "Classic / TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "topsrs-day",
@@ -7616,7 +7616,7 @@
     "featured": true,
     "meta": "TV / 3rd Party Hosts",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "totalsportek-st",
@@ -7629,7 +7629,7 @@
     "featured": false,
     "meta": "Stream Aggregator / [Discord](https://discord.com/invite/mdEsarNMyF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "toustream-xyz",
@@ -7644,7 +7644,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/us5-and-toustream-1157125685178007672)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tubitv-com",
@@ -7672,7 +7672,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvfreedom-surge-sh",
@@ -7686,7 +7686,7 @@
     "featured": false,
     "meta": "TV / Sports / [Mirrors](https://tvhub.surge.sh/) / [.onion](http://e3ngcokw7hqbtbylcnwdomxt3mkmbqwbtrr7yecgafpqyj3sygxt7ead.onion) / [Discord](https://discord.com/invite/EFKNtQvUMF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tv-jest-one",
@@ -7699,7 +7699,7 @@
     "featured": false,
     "meta": "News",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvnow247-today",
@@ -7713,7 +7713,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvalt-surge-sh",
@@ -7727,7 +7727,7 @@
     "featured": false,
     "meta": "TV / Sports / [Mirrors](https://tvhub.surge.sh/) / [.onion](http://e3ngcokw7hqbtbylcnwdomxt3mkmbqwbtrr7yecgafpqyj3sygxt7ead.onion) / [Discord](https://discord.com/invite/EFKNtQvUMF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvark-org",
@@ -7740,7 +7740,7 @@
     "featured": false,
     "meta": "Commercial / TV Promo Archives",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvatlas-app",
@@ -7753,7 +7753,7 @@
     "featured": false,
     "meta": "TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvchannellists-com",
@@ -7766,7 +7766,7 @@
     "featured": false,
     "meta": "TV Channel Index",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvforfree-surge-sh",
@@ -7780,7 +7780,7 @@
     "featured": false,
     "meta": "TV / Sports / [Mirrors](https://tvhub.surge.sh/) / [.onion](http://e3ngcokw7hqbtbylcnwdomxt3mkmbqwbtrr7yecgafpqyj3sygxt7ead.onion) / [Discord](https://discord.com/invite/EFKNtQvUMF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvfree-surge-sh",
@@ -7794,7 +7794,7 @@
     "featured": false,
     "meta": "TV / Sports / [Mirrors](https://tvhub.surge.sh/) / [.onion](http://e3ngcokw7hqbtbylcnwdomxt3mkmbqwbtrr7yecgafpqyj3sygxt7ead.onion) / [Discord](https://discord.com/invite/EFKNtQvUMF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvhub-surge-sh",
@@ -7808,7 +7808,7 @@
     "featured": false,
     "meta": "TV / Sports / [Mirrors](https://tvhub.surge.sh/) / [.onion](http://e3ngcokw7hqbtbylcnwdomxt3mkmbqwbtrr7yecgafpqyj3sygxt7ead.onion) / [Discord](https://discord.com/invite/EFKNtQvUMF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvids-net",
@@ -7823,7 +7823,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvids-me",
@@ -7838,7 +7838,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvids-to",
@@ -7853,7 +7853,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "tvmirror-surge-sh",
@@ -7867,7 +7867,7 @@
     "featured": false,
     "meta": "TV / Sports / [Mirrors](https://tvhub.surge.sh/) / [.onion](http://e3ngcokw7hqbtbylcnwdomxt3mkmbqwbtrr7yecgafpqyj3sygxt7ead.onion) / [Discord](https://discord.com/invite/EFKNtQvUMF)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "twcclassics-com",
@@ -7880,7 +7880,7 @@
     "featured": false,
     "meta": "Weather Channel Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ubu-com",
@@ -7894,7 +7894,7 @@
     "featured": true,
     "meta": "Short Films / Avant-Garde",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ultimedia-com",
@@ -7908,7 +7908,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "uniquestream-net",
@@ -7923,7 +7923,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / 720p",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "v2-way2movies-live",
@@ -7938,7 +7938,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Telegram](https://t.me/Way2MoviesFun) / [Discord](https://discord.gg/mH4zsaAmv7)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "v2-gostreameast-link",
@@ -7951,7 +7951,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vaughn-live",
@@ -7964,7 +7964,7 @@
     "featured": false,
     "meta": "Random Streams",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vaultplayer-co-uk",
@@ -7979,7 +7979,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vavoo-to",
@@ -7993,7 +7993,7 @@
     "featured": false,
     "meta": "TV / Sports / European",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vegetatv-duckdns-org",
@@ -8008,7 +8008,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "venuevault-live",
@@ -8021,7 +8021,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-versusmedia-com",
@@ -8035,7 +8035,7 @@
     "featured": false,
     "meta": "Independent Film Stream",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vibemax-to",
@@ -8050,7 +8050,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vidbox-vc",
@@ -8065,7 +8065,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://vidbox.xyz/) / [Discord](https://discord.gg/VGQKGPM9Ej)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vidbox-xyz",
@@ -8080,7 +8080,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://vidbox.xyz/) / [Discord](https://discord.gg/VGQKGPM9Ej)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vidbox-dev",
@@ -8094,7 +8094,7 @@
     "featured": false,
     "meta": "TV / Movies / [Status](https://vidbox.xyz/) / [Discord](https://discord.gg/VGQKGPM9Ej)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "viddsee-com",
@@ -8108,7 +8108,7 @@
     "featured": true,
     "meta": "Short Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "videa-hu",
@@ -8122,7 +8122,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "videodictionary-kwebpia-net",
@@ -8136,7 +8136,7 @@
     "featured": false,
     "meta": "YouTube Movie Collections",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vidplay-to",
@@ -8151,7 +8151,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vimeo-com",
@@ -8165,7 +8165,7 @@
     "featured": true,
     "meta": "Short Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "viprow-co",
@@ -8178,7 +8178,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vipotv-com",
@@ -8192,7 +8192,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vivarium-wtf",
@@ -8207,7 +8207,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.gg/jT6daX7q2u)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vkvideo-ru",
@@ -8221,7 +8221,7 @@
     "featured": true,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vole-wtf",
@@ -8235,7 +8235,7 @@
     "featured": false,
     "meta": "YouTube Movie Collections",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vyla-cc",
@@ -8250,7 +8250,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/5eqRhKeywG)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "vyla-qzz-io",
@@ -8265,7 +8265,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Discord](https://discord.com/invite/5eqRhKeywG)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "warflix-nl",
@@ -8280,7 +8280,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Mirrors](https://warflix.cv/) / [Telegram](https://t.me/+b4rS5spUL51hYjU1) / [Discord](https://discord.gg/qc4jksxk7a)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "warflix-im",
@@ -8295,7 +8295,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Mirrors](https://warflix.cv/) / [Telegram](https://t.me/+b4rS5spUL51hYjU1) / [Discord](https://discord.gg/qc4jksxk7a)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "warflix-cv",
@@ -8310,7 +8310,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Mirrors](https://warflix.cv/) / [Telegram](https://t.me/+b4rS5spUL51hYjU1) / [Discord](https://discord.gg/qc4jksxk7a)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-corsflix-dpdns-org",
@@ -8325,7 +8325,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / [Status](https://rentry.co/rivestream) / [Discord](https://discord.gg/6xJmJja8fV)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watchfooty-st",
@@ -8338,7 +8338,7 @@
     "featured": true,
     "meta": "Stream Aggregator / [Mirrors](https://wfty.link/) / [Discord](https://discord.gg/T38kUWZHtB)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-tvseries-net",
@@ -8353,7 +8353,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watch-wrestling-eu",
@@ -8366,7 +8366,7 @@
     "featured": true,
     "meta": "MMA / Wrestling Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watchflux-tv",
@@ -8381,7 +8381,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wfs-lol",
@@ -8396,7 +8396,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Telegram](https://t.me/WatchFreeStreams)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watchott-org",
@@ -8411,7 +8411,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/q3p2j5zbg)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "iptv-watchott-org",
@@ -8425,7 +8425,7 @@
     "featured": false,
     "meta": "TV / Sports / PW: `FREE-MEDIA`",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watchprowrestling-store",
@@ -8438,7 +8438,7 @@
     "featured": false,
     "meta": "MMA / Wrestling / Boxing Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watchsports-st",
@@ -8451,7 +8451,7 @@
     "featured": true,
     "meta": "Stream Aggregator",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watchsports-su",
@@ -8464,7 +8464,7 @@
     "featured": true,
     "meta": "Stream Aggregator",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watchtvs-live",
@@ -8477,7 +8477,7 @@
     "featured": false,
     "meta": "TV",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "watchwrestling-ae",
@@ -8490,7 +8490,7 @@
     "featured": false,
     "meta": "MMA / Wrestling Replays",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "way2movies-live",
@@ -8505,7 +8505,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Telegram](https://t.me/Way2MoviesFun) / [Discord](https://discord.gg/mH4zsaAmv7)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wco-tv",
@@ -8520,7 +8520,7 @@
     "featured": true,
     "meta": "TV / Movies / Anime / [Status](https://www.wcostatus.com/) / [Anti-Adblock Fix](https://github.com/uBlockOrigin/uAssets/issues/29349#issuecomment-3231974507)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wcoanimedub-tv",
@@ -8535,7 +8535,7 @@
     "featured": true,
     "meta": "TV / Movies / Anime / [Status](https://www.wcostatus.com/) / [Anti-Adblock Fix](https://github.com/uBlockOrigin/uAssets/issues/29349#issuecomment-3231974507)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wcoanimesub-tv",
@@ -8550,7 +8550,7 @@
     "featured": true,
     "meta": "TV / Movies / Anime / [Status](https://www.wcostatus.com/) / [Anti-Adblock Fix](https://github.com/uBlockOrigin/uAssets/issues/29349#issuecomment-3231974507)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wcoflix-tv",
@@ -8565,7 +8565,7 @@
     "featured": true,
     "meta": "TV / Movies / Anime / [Status](https://www.wcostatus.com/) / [Anti-Adblock Fix](https://github.com/uBlockOrigin/uAssets/issues/29349#issuecomment-3231974507)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wcoforever-net",
@@ -8580,7 +8580,7 @@
     "featured": true,
     "meta": "TV / Movies / Anime / [Status](https://www.wcostatus.com/) / [Anti-Adblock Fix](https://github.com/uBlockOrigin/uAssets/issues/29349#issuecomment-3231974507)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wcostatus-com",
@@ -8595,7 +8595,7 @@
     "featured": true,
     "meta": "TV / Movies / Anime / [Status](https://www.wcostatus.com/) / [Anti-Adblock Fix](https://github.com/uBlockOrigin/uAssets/issues/29349#issuecomment-3231974507)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wcostream-tv",
@@ -8610,7 +8610,7 @@
     "featured": true,
     "meta": "TV / Movies / Anime / [Status](https://www.wcostatus.com/) / [Anti-Adblock Fix](https://github.com/uBlockOrigin/uAssets/issues/29349#issuecomment-3231974507)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wfty-link",
@@ -8623,7 +8623,7 @@
     "featured": true,
     "meta": "Stream Aggregator / [Mirrors](https://wfty.link/) / [Discord](https://discord.gg/T38kUWZHtB)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "wikiflix-toolforge-org",
@@ -8636,7 +8636,7 @@
     "featured": true,
     "meta": "Classic Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "willowmovies-com",
@@ -8651,7 +8651,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / Auto-Next / [4K Guide](https://rentry.co/willow-guide) / [Telegram](https://t.me/+8OiKICptQwA4YTJk)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "worldnews24-tv",
@@ -8664,7 +8664,7 @@
     "featured": false,
     "meta": "News",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "thewutangcollection-com",
@@ -8677,7 +8677,7 @@
     "featured": false,
     "meta": "Classic Martial Arts Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ww1-goojara-to",
@@ -8692,7 +8692,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ww1-fmovies-com",
@@ -8707,7 +8707,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "play-xumo-com",
@@ -8720,7 +8720,7 @@
     "featured": false,
     "meta": "TV / US Only",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "xtreme-wrestling-downloads-com",
@@ -8733,7 +8733,7 @@
     "featured": false,
     "meta": "Wrestling / Boxing Replays / Signup Required / Use [Translator](https://www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/text-tools/#wiki_.25B7_translators)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "xyzstreams-st",
@@ -8747,7 +8747,7 @@
     "featured": false,
     "meta": "TV / Sports",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "yenime-net",
@@ -8775,7 +8775,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "ww1-yesmovies-ag",
@@ -8789,7 +8789,7 @@
     "featured": false,
     "meta": "Movies / TV / 720p",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "yomi-to",
@@ -8802,7 +8802,7 @@
     "featured": false,
     "meta": "Sub / Dub / Auto-Next",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "youflex-top",
@@ -8817,7 +8817,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "youshows-org",
@@ -8846,7 +8846,7 @@
     "featured": false,
     "meta": "Random TV Style YouTube / Custom Channels",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "zstream-mov",
@@ -8861,7 +8861,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime / Auto-Next / 4K / [Status](https://rentry.co/xpstream) / [Discord](https://discord.gg/mtSMCeTM2z) / [GitHub](https://github.com/xp-technologies-dev/p-stream)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "zencine-org",
@@ -8876,7 +8876,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime / [Discord](https://discord.gg/beWuUrKhHP)",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "zero1cine-com",
@@ -8890,7 +8890,7 @@
     "featured": false,
     "meta": "AI Generated Films",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "zerostream-alwaysdata-net",
@@ -8905,7 +8905,7 @@
     "featured": false,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "zetmoon-live",
@@ -8920,7 +8920,7 @@
     "featured": true,
     "meta": "Movies / TV / Anime",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "zlive-st",
@@ -8933,7 +8933,7 @@
     "featured": false,
     "meta": "",
     "source": "fmhy",
-    "published": true
+    "published": false
   },
   {
     "id": "zxcprime-icu",
@@ -8947,6 +8947,6 @@
     "featured": false,
     "meta": "Movies / TV / [Telegram](https://t.me/zxc_stream) / [Discord](https://discord.gg/yv7wJV97Jd)",
     "source": "fmhy",
-    "published": true
+    "published": false
   }
 ]

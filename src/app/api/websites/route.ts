@@ -2,7 +2,7 @@
 // AllSiteHub Search — Websites CRUD API
 // ============================================================================
 import { NextRequest, NextResponse } from 'next/server';
-import { getWebsites, createWebsite, updateWebsite, deleteWebsite, getWebsiteById } from '@/lib/db';
+import { getWebsites, createWebsite, updateWebsite, deleteWebsite, getWebsiteById, getPublicWebsites } from '@/lib/db';
 import { verifyToken } from '@/lib/auth';
 
 // Verify admin auth helper
@@ -23,9 +23,8 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(websites);
   }
 
-  // Public view: exclude parser configs and sensitive data
-  const publicWebsites = websites
-    .filter((w) => w.enabled)
+  // Public view: AllSiteHub directory only (FMHY catalog stays in admin backend)
+  const publicWebsites = getPublicWebsites()
     .map((w) => ({
       id: w.id,
       name: w.name,
