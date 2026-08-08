@@ -1,8 +1,12 @@
-# MoviesNet
+# MoviesNet (`moviesnet`)
 
 > **Search Once. Find Everywhere.**
 
-A premium content discovery search engine that searches across admin-configured websites and redirects users to the original source. Built with Next.js 15, TypeScript, and Tailwind CSS.
+**Project name:** `moviesnet`  
+**Live site:** [moviesnet.site](https://moviesnet.site)  
+**Repo:** [github.com/Shobhitvermahere/moviesnet.site](https://github.com/Shobhitvermahere/moviesnet.site)
+
+A premium content discovery search engine that searches across admin-configured websites and redirects users to the original source. Built with Next.js, TypeScript, and Tailwind CSS.
 
 ## ⚠️ Legal Notice
 
@@ -37,7 +41,7 @@ A premium content discovery search engine that searches across admin-configured 
 ```bash
 # Clone the repository
 git clone <repo-url>
-cd allsitehub-search
+cd moviesnet
 
 # Install dependencies
 npm install
@@ -126,8 +130,8 @@ thumbnail.url     → Poster image
 ## 🐳 Docker Deployment
 
 ```bash
-docker build -t allsitehub-search .
-docker run -p 3000:3000 allsitehub-search
+docker build -t moviesnet .
+docker run -p 3000:3000 moviesnet
 ```
 
 ---

@@ -1,0 +1,16 @@
+{
+  "name": "moviesnet",
+  "displayName": "MoviesNet",
+  "description": "Search once. Find everywhere. Unified movie, anime, and TV discovery across indexed streaming sites.",
+  "productionUrl": "https://moviesnet.site",
+  "repository": "https://github.com/Shobhitvermahere/moviesnet.site",
+  "stack": ["Next.js", "TypeScript", "Tailwind CSS", "React Query", "Zustand"],
+  "paths": {
+    "home": "src/app/page.tsx",
+    "search": "src/app/search/page.tsx",
+    "admin": "src/app/adminshobhit",
+    "api": "src/app/api",
+    "brand": "src/components/brand",
+    "searchUi": "src/components/search"
+  }
+}
