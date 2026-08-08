@@ -5,7 +5,7 @@ import { MoviesNetLogo } from '@/components/brand/MoviesNetLogo';
 export function Footer() {
   return (
     <footer className="relative z-10 mt-auto border-t border-white/[0.04]">
-      <div className="page-shell mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-16 sm:py-20">
+      <div className="page-shell mx-auto page-gutter py-12 sm:py-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">

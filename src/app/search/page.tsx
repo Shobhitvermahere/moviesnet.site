@@ -554,7 +554,7 @@ function SearchContent() {
   }, []);
 
   return (
-    <div className="search-page min-h-screen py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
+    <div className="search-page min-h-screen py-8 sm:py-10 page-gutter">
       <SiteHandoffModal target={handoffTarget} onClose={clearHandoff} />
       {/* Official YouTube Trailer Modal */}
       <AnimatePresence>
@@ -1007,7 +1007,7 @@ function SearchContent() {
 export default function SearchPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen py-10 page-gutter">
         <div className="page-shell mx-auto">
           <div className="h-16 w-full max-w-4xl skeleton rounded-2xl mb-10" />
           <div className="flex flex-col lg:flex-row gap-8">

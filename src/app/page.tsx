@@ -418,26 +418,31 @@ export default function HomePage() {
       <motion.section
         layout
         className={cn(
-          'home-hero-section relative flex flex-col px-4 sm:px-6 lg:px-10',
+          'home-hero-section relative flex flex-col page-gutter',
           hasHeroSuggestions
             ? 'min-h-0 py-10 sm:py-12 justify-start'
-            : 'min-h-[calc(100svh-var(--header-height))] justify-center pb-16 pt-8 sm:pt-12'
+            : 'min-h-[calc(100svh-var(--header-height))] justify-center pb-12 sm:pb-16 pt-6 sm:pt-12'
         )}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="max-w-6xl mx-auto w-full text-center">
           <div>
-            <h1 className="home-fade-up font-display font-extrabold home-hero-brand mb-6 select-none mx-auto px-1">
+            <h1 className="home-fade-up sm:hidden home-hero-tagline font-display text-2xl font-bold tracking-tight text-white/95 mb-3 px-1">
+              Search once. Find everywhere.
+            </h1>
+
+            <h1 className="home-fade-up hidden sm:block font-display font-extrabold home-hero-brand mb-4 sm:mb-6 select-none mx-auto">
               <span className="brand-solid">Movies</span>
               <span className="brand-accent">Net</span>
             </h1>
 
-            <p className="home-fade-up-delay font-display text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white/95 mb-5">
+            <p className="home-fade-up-delay home-hero-tagline hidden sm:block font-display text-xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white/95 mb-4 sm:mb-5 px-1">
               Search once. Find everywhere.
             </p>
 
-            <p className="home-fade-up-delay-2 text-base sm:text-lg text-white/55 max-w-2xl mx-auto mb-12 leading-relaxed">
-              One query across curated movies, anime, manga, sports, and live TV — then open the original source.
+            <p className="home-fade-up-delay-2 text-sm sm:text-lg text-white/55 max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed px-1">
+              <span className="sm:hidden">One search across movies, anime, manga, sports, and live TV.</span>
+              <span className="hidden sm:inline">One query across curated movies, anime, manga, sports, and live TV — then open the original source.</span>
             </p>
           </div>
 
@@ -519,7 +524,7 @@ export default function HomePage() {
 
       <motion.div
         layout
-        className="home-content-below page-shell mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-24 pb-28 pt-4 sm:pt-6"
+        className="home-content-below page-shell mx-auto page-gutter space-y-16 sm:space-y-24 pb-20 sm:pb-28 pt-4 sm:pt-6"
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       >
         {/* TRENDING */}
@@ -578,7 +583,7 @@ export default function HomePage() {
 
           <div
             ref={showcaseScrollRef}
-            className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-2"
+            className="home-rail-scroll flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-2"
           >
             {showcaseItems.map((item, idx) => (
               <motion.article
@@ -631,17 +636,17 @@ export default function HomePage() {
 
         {/* DIRECTORY */}
         <section id="directory" className="scroll-mt-28">
-          <div className="mb-10">
-            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white">
+          <div className="mb-6 sm:mb-10">
+            <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
               Site directory
             </h2>
-            <p className="mt-3 text-base text-white/50 max-w-xl">
+            <p className="mt-2 sm:mt-3 text-sm sm:text-base text-white/50 max-w-xl">
               {totalSitesCount} curated portals. Filter by category, then visit or search inside a site.
             </p>
           </div>
 
-          <div className="flex flex-col lg:flex-row lg:items-center gap-3 mb-6">
-            <div className="flex gap-1.5 overflow-x-auto no-scrollbar p-1 rounded-xl border border-white/10 bg-white/[0.03]">
+          <div className="flex flex-col gap-3 sm:gap-4 mb-5 sm:mb-6">
+            <div className="websites-filter-rail flex gap-1.5 overflow-x-auto no-scrollbar p-1 rounded-xl border border-white/10 bg-white/[0.03]">
               {DIRECTORY_CATEGORIES.map((cat) => {
                 const isActive = activeCategory === cat.id;
                 return (
@@ -664,7 +669,7 @@ export default function HomePage() {
               })}
             </div>
 
-            <div className="relative flex-1 max-w-sm lg:ml-auto">
+            <div className="relative w-full lg:max-w-sm lg:ml-auto">
               <input
                 type="text"
                 value={siteSearchQuery}
@@ -686,9 +691,9 @@ export default function HomePage() {
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <div className="home-directory-grid">
               {[...Array(8)].map((_, i) => (
-                <div key={i} className="h-40 rounded-2xl bg-white/[0.03] border border-white/8 animate-pulse" />
+                <div key={i} className="h-36 rounded-2xl bg-white/[0.03] border border-white/8 animate-pulse" />
               ))}
             </div>
           ) : filteredWebsites.length === 0 ? (
@@ -706,7 +711,7 @@ export default function HomePage() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <div className="home-directory-grid">
               {filteredWebsites.map((site, index) => (
                 <motion.article
                   key={site.id}
@@ -714,10 +719,10 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: Math.min(index * 0.02, 0.2) }}
-                  className="group flex flex-col rounded-2xl border border-white/10 bg-[#0a0d14]/55 hover:border-[#e8b86d]/25 transition-colors p-5"
+                  className="home-directory-card group flex flex-col rounded-2xl border border-white/10 bg-[#0a0d14]/55 hover:border-[#e8b86d]/25 transition-colors p-4 sm:p-5"
                 >
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="w-11 h-11 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center p-1.5 shrink-0 overflow-hidden">
+                  <div className="flex items-start gap-3 mb-3 min-w-0">
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center p-1.5 shrink-0 overflow-hidden">
                       <WebsiteLogo
                         homepageUrl={site.homepageUrl}
                         logoUrl={site.logoUrl}
@@ -726,36 +731,36 @@ export default function HomePage() {
                       />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h3 className="font-display text-base font-semibold text-white group-hover:text-[#e8b86d] transition-colors truncate">
+                      <h3 className="font-display text-sm sm:text-base font-semibold text-white group-hover:text-[#e8b86d] transition-colors truncate">
                         {site.name}
                       </h3>
-                      <p className="text-xs text-white/40 truncate mt-0.5 font-mono">
+                      <p className="text-[11px] sm:text-xs text-white/40 truncate mt-0.5 font-mono">
                         {site.homepageUrl.replace(/^https?:\/\//, '')}
                       </p>
                     </div>
                   </div>
 
-                  <p className="text-sm text-white/55 leading-relaxed line-clamp-2 mb-4 flex-1">
+                  <p className="text-xs sm:text-sm text-white/55 leading-relaxed line-clamp-2 mb-3 sm:mb-4 flex-1">
                     {site.description || 'Curated portal ready for multi-source discovery.'}
                   </p>
 
-                  <div className="flex items-center justify-between text-[11px] text-white/40 mb-3 pt-3 border-t border-white/8">
+                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-white/40 mb-3 pt-3 border-t border-white/8">
                     <span>{formatNumber(site.totalIndexed || 0)} indexed</span>
                     <span className="text-emerald-400/90">Online</span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-2">
                     <a
                       href={site.homepageUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="py-2.5 rounded-xl border border-white/10 text-center text-xs font-semibold text-white/75 hover:bg-white/[0.05] transition-colors"
+                      className="py-2.5 min-h-[2.75rem] rounded-xl border border-white/10 text-center text-xs font-semibold text-white/75 hover:bg-white/[0.05] transition-colors flex items-center justify-center"
                     >
                       Visit
                     </a>
                     <Link
                       href={`/search?q=${encodeURIComponent(site.name)}`}
-                      className="py-2.5 rounded-xl bg-[#e8b86d]/15 border border-[#e8b86d]/25 text-center text-xs font-semibold text-[#e8b86d] hover:bg-[#e8b86d]/25 transition-colors"
+                      className="py-2.5 min-h-[2.75rem] rounded-xl bg-[#e8b86d]/15 border border-[#e8b86d]/25 text-center text-xs font-semibold text-[#e8b86d] hover:bg-[#e8b86d]/25 transition-colors flex items-center justify-center"
                     >
                       Search
                     </Link>
