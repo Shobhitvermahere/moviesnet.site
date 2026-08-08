@@ -1,0 +1,13 @@
+{
+  "siteName": "MoviesNet",
+  "siteDescription": "Search Once. Find Everywhere. Unified media discovery engine across all configured websites.",
+  "siteUrl": "https://moviesnet.online",
+  "adminPath": "/adminshobhit",
+  "searchDebounceMs": 300,
+  "searchTimeoutMs": 10000,
+  "maxResultsPerPage": 24,
+  "cacheExpiryMs": 300000,
+  "enableAnalytics": true,
+  "enableSpellCorrection": true,
+  "maintenanceMode": false
+}

@@ -1,0 +1,297 @@
+[
+  {
+    "query": "iron man",
+    "count": 13,
+    "lastSearched": "2026-08-05T07:27:18.952Z"
+  },
+  {
+    "query": "avengers",
+    "count": 7,
+    "lastSearched": "2026-08-05T14:39:20.349Z"
+  },
+  {
+    "query": "Interstellar",
+    "count": 6,
+    "lastSearched": "2026-08-05T14:52:24.792Z"
+  },
+  {
+    "query": "Batman",
+    "count": 5,
+    "lastSearched": "2026-08-05T14:52:33.656Z"
+  },
+  {
+    "query": "s",
+    "count": 4,
+    "lastSearched": "2026-08-05T15:38:30.701Z"
+  },
+  {
+    "query": "spi",
+    "count": 4,
+    "lastSearched": "2026-08-05T15:38:31.932Z"
+  },
+  {
+    "query": "spider",
+    "count": 3,
+    "lastSearched": "2026-08-05T04:24:48.897Z"
+  },
+  {
+    "query": "spider m",
+    "count": 3,
+    "lastSearched": "2026-08-05T04:24:49.921Z"
+  },
+  {
+    "query": "spider ma",
+    "count": 3,
+    "lastSearched": "2026-08-05T04:24:50.358Z"
+  },
+  {
+    "query": "spider man",
+    "count": 3,
+    "lastSearched": "2026-08-05T04:24:51.263Z"
+  },
+  {
+    "query": "iron man 3",
+    "count": 3,
+    "lastSearched": "2026-08-05T05:38:17.742Z"
+  },
+  {
+    "query": "Iron Man 2",
+    "count": 3,
+    "lastSearched": "2026-08-05T06:26:22.596Z"
+  },
+  {
+    "query": "one piece",
+    "count": 2,
+    "lastSearched": "2026-08-05T04:18:34.259Z"
+  },
+  {
+    "query": "naruto\\",
+    "count": 2,
+    "lastSearched": "2026-08-05T04:48:57.542Z"
+  },
+  {
+    "query": "interstellar\\",
+    "count": 2,
+    "lastSearched": "2026-08-05T05:37:12.460Z"
+  },
+  {
+    "query": "naruto",
+    "count": 2,
+    "lastSearched": "2026-08-05T14:36:10.375Z"
+  },
+  {
+    "query": "Deadpool & Wolverine",
+    "count": 2,
+    "lastSearched": "2026-08-05T14:42:09.630Z"
+  },
+  {
+    "query": "c",
+    "count": 2,
+    "lastSearched": "2026-08-05T14:47:33.832Z"
+  },
+  {
+    "query": "co",
+    "count": 2,
+    "lastSearched": "2026-08-05T14:47:34.454Z"
+  },
+  {
+    "query": "Obsession",
+    "count": 2,
+    "lastSearched": "2026-08-05T15:34:56.674Z"
+  },
+  {
+    "query": "sp",
+    "count": 2,
+    "lastSearched": "2026-08-05T15:38:31.425Z"
+  },
+  {
+    "query": "Naruto Shippuden",
+    "count": 1,
+    "lastSearched": "2026-08-04T10:34:35.676Z"
+  },
+  {
+    "query": "spiderman",
+    "count": 1,
+    "lastSearched": "2026-08-04T19:52:25.025Z"
+  },
+  {
+    "query": "bengal tiger",
+    "count": 1,
+    "lastSearched": "2026-08-04T20:17:56.104Z"
+  },
+  {
+    "query": "bengal tige",
+    "count": 1,
+    "lastSearched": "2026-08-04T20:18:29.977Z"
+  },
+  {
+    "query": "one piec",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:18:58.807Z"
+  },
+  {
+    "query": "spider-man",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:21:31.475Z"
+  },
+  {
+    "query": "bra",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:27.850Z"
+  },
+  {
+    "query": "brand",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:28.841Z"
+  },
+  {
+    "query": "brand n",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:29.268Z"
+  },
+  {
+    "query": "brand new",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:29.987Z"
+  },
+  {
+    "query": "brand new da",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:30.788Z"
+  },
+  {
+    "query": "brand new day",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:31.285Z"
+  },
+  {
+    "query": "spider man bra",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:52.448Z"
+  },
+  {
+    "query": "spider man brand n",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:53.702Z"
+  },
+  {
+    "query": "spider man brand new",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:54.446Z"
+  },
+  {
+    "query": "spider man brand new da",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:55.165Z"
+  },
+  {
+    "query": "spider man brand new day",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:24:55.616Z"
+  },
+  {
+    "query": "dune\\",
+    "count": 1,
+    "lastSearched": "2026-08-05T04:31:30.866Z"
+  },
+  {
+    "query": "i",
+    "count": 1,
+    "lastSearched": "2026-08-05T05:38:24.930Z"
+  },
+  {
+    "query": "ir",
+    "count": 1,
+    "lastSearched": "2026-08-05T05:38:25.195Z"
+  },
+  {
+    "query": "iro",
+    "count": 1,
+    "lastSearched": "2026-08-05T05:38:25.619Z"
+  },
+  {
+    "query": "iron",
+    "count": 1,
+    "lastSearched": "2026-08-05T05:38:26.024Z"
+  },
+  {
+    "query": "iron m",
+    "count": 1,
+    "lastSearched": "2026-08-05T05:38:29.733Z"
+  },
+  {
+    "query": "iron ma",
+    "count": 1,
+    "lastSearched": "2026-08-05T05:38:30.193Z"
+  },
+  {
+    "query": "Inception",
+    "count": 1,
+    "lastSearched": "2026-08-05T07:02:21.284Z"
+  },
+  {
+    "query": "1FLEX",
+    "count": 1,
+    "lastSearched": "2026-08-05T07:34:00.802Z"
+  },
+  {
+    "query": "com",
+    "count": 1,
+    "lastSearched": "2026-08-05T07:34:25.194Z"
+  },
+  {
+    "query": "de",
+    "count": 1,
+    "lastSearched": "2026-08-05T07:34:35.497Z"
+  },
+  {
+    "query": "dead",
+    "count": 1,
+    "lastSearched": "2026-08-05T07:34:36.139Z"
+  },
+  {
+    "query": "deadpoo",
+    "count": 1,
+    "lastSearched": "2026-08-05T07:34:39.822Z"
+  },
+  {
+    "query": "deadpool",
+    "count": 1,
+    "lastSearched": "2026-08-05T07:34:40.551Z"
+  },
+  {
+    "query": "coc",
+    "count": 1,
+    "lastSearched": "2026-08-05T14:47:35.459Z"
+  },
+  {
+    "query": "cock",
+    "count": 1,
+    "lastSearched": "2026-08-05T14:47:36.604Z"
+  },
+  {
+    "query": "Cocktail 2",
+    "count": 1,
+    "lastSearched": "2026-08-05T14:47:40.287Z"
+  },
+  {
+    "query": "Obsessio",
+    "count": 1,
+    "lastSearched": "2026-08-05T15:38:27.237Z"
+  },
+  {
+    "query": "spide",
+    "count": 1,
+    "lastSearched": "2026-08-05T15:38:32.717Z"
+  },
+  {
+    "query": "Spider-Man: Brand New Day",
+    "count": 1,
+    "lastSearched": "2026-08-05T15:38:36.510Z"
+  },
+  {
+    "query": "Spider-Man: Brand New Da",
+    "count": 1,
+    "lastSearched": "2026-08-05T15:41:44.827Z"
+  }
+]

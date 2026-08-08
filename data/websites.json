@@ -1,0 +1,4903 @@
+﻿[
+  {
+    "id": "1flex",
+    "name": "1FLEX",
+    "slug": "1flex",
+    "description": "Stream Movies & Shows on 1FLEX (1flex.org). Curated site with multi-source playback.",
+    "homepageUrl": "https://1flex.org",
+    "searchUrl": "https://1flex.org/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=1flex.org&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 2,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Trusted"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.684Z",
+    "totalIndexed": 62628,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 99,
+    "createdAt": "2026-08-04T13:55:06.685Z",
+    "updatedAt": "2026-08-04T13:55:06.685Z"
+  },
+  {
+    "id": "1-show",
+    "name": "1 Show",
+    "slug": "1-show",
+    "description": "Stream Movies & Shows on 1 Show (1shows.org). Curated site with multi-source playback.",
+    "homepageUrl": "https://1shows.org",
+    "searchUrl": "https://1shows.org/search?q={query}",
+    "logoUrl": "https://pvrplay.in/pvrplay-icon.png",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 2,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Trusted"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.685Z",
+    "totalIndexed": 66278,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-04T13:55:06.685Z",
+    "updatedAt": "2026-08-04T13:55:06.685Z"
+  },
+  {
+    "id": "1tube",
+    "name": "1TUBE",
+    "slug": "1tube",
+    "description": "Stream Movies & Shows on 1TUBE (1tube.org). Curated site with multi-source playback.",
+    "homepageUrl": "https://1tube.org",
+    "searchUrl": "https://1tube.org/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=1tube.org&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 2,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Trusted"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.685Z",
+    "totalIndexed": 62806,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 97,
+    "createdAt": "2026-08-04T13:55:06.685Z",
+    "updatedAt": "2026-08-04T13:55:06.685Z"
+  },
+  {
+    "id": "7-movies",
+    "name": "7 movies",
+    "slug": "7-movies",
+    "description": "Stream Movies & Shows on 7 movies (7movies.in). Curated site with multi-source playback.",
+    "homepageUrl": "https://7movies.in",
+    "searchUrl": "https://7movies.in/search?q={query}",
+    "logoUrl": "favicon.ico try karo.",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 2,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Trusted"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 22802,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 96,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "cinezo",
+    "name": "CINEZO",
+    "slug": "cinezo",
+    "description": "Stream Movies & Shows on CINEZO (cinezo.net). Curated site with multi-source playback.",
+    "homepageUrl": "https://cinezo.net",
+    "searchUrl": "https://cinezo.net/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=cinezo.net&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 37775,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 95,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "arrow-tv",
+    "name": "ARROW TV",
+    "slug": "arrow-tv",
+    "description": "Stream Movies & Shows on ARROW TV (arrowtv.net). Curated site with multi-source playback.",
+    "homepageUrl": "https://arrowtv.net",
+    "searchUrl": "https://arrowtv.net/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=arrowtv.net&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows",
+      "live-tv"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 1,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Featured"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 41779,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 94,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "redflix",
+    "name": "REDFLIX",
+    "slug": "redflix",
+    "description": "Stream Movies & Shows on REDFLIX (redflix.club). Curated site with multi-source playback.",
+    "homepageUrl": "https://redflix.club",
+    "searchUrl": "https://redflix.club/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=redflix.club&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 50765,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 93,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "shuttle-tv",
+    "name": "SHUTTLE TV",
+    "slug": "shuttle-tv",
+    "description": "Stream Movies & Shows on SHUTTLE TV (shuttletv.su). Curated site with multi-source playback.",
+    "homepageUrl": "https://shuttletv.su",
+    "searchUrl": "https://shuttletv.su/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=shuttletv.su&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows",
+      "live-tv"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 44079,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 92,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "prime-shows",
+    "name": "PRIME SHOWS",
+    "slug": "prime-shows",
+    "description": "Stream Movies & Shows on PRIME SHOWS (primeshows.org). Curated site with multi-source playback.",
+    "homepageUrl": "https://primeshows.org",
+    "searchUrl": "https://primeshows.org/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=primeshows.org&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 37649,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 91,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "you-shows",
+    "name": "YOU SHOWS",
+    "slug": "you-shows",
+    "description": "Stream Movies & Shows on YOU SHOWS (youshows.org). Curated site with multi-source playback.",
+    "homepageUrl": "https://youshows.org",
+    "searchUrl": "https://youshows.org/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=youshows.org&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "New"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 36329,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 90,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "flixhub",
+    "name": "FLIXHUB",
+    "slug": "flixhub",
+    "description": "Stream Movies & Shows on FLIXHUB (flixhub.studio). Curated site with multi-source playback.",
+    "homepageUrl": "https://flixhub.studio",
+    "searchUrl": "https://flixhub.studio/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=flixhub.studio&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 55325,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 89,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "streammovies",
+    "name": "STREAMMOVIES",
+    "slug": "streammovies",
+    "description": "Stream Movies & Shows on STREAMMOVIES (streammovies.live). Curated site with multi-source playback.",
+    "homepageUrl": "https://streammovies.live",
+    "searchUrl": "https://streammovies.live/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=streammovies.live&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 66320,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 88,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "dulo",
+    "name": "DULO",
+    "slug": "dulo",
+    "description": "Stream Movies & Shows on DULO (dulo.cx). Curated site with multi-source playback.",
+    "homepageUrl": "https://dulo.cx",
+    "searchUrl": "https://dulo.cx/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=dulo.cx&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 27525,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 87,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "stigstream",
+    "name": "STIGSTREAM",
+    "slug": "stigstream",
+    "description": "Stream Movies & Shows on STIGSTREAM (stigstream.ru). Curated site with multi-source playback.",
+    "homepageUrl": "https://stigstream.ru",
+    "searchUrl": "https://stigstream.ru/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=stigstream.ru&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 21605,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 86,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "flixeo",
+    "name": "FLIXEO",
+    "slug": "flixeo",
+    "description": "Stream Movies & Shows on FLIXEO (flixeo.tv). Curated site with multi-source playback.",
+    "homepageUrl": "https://flixeo.tv",
+    "searchUrl": "https://flixeo.tv/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=flixeo.tv&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows",
+      "live-tv"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 23186,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 85,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "willow",
+    "name": "WILLOW",
+    "slug": "willow",
+    "description": "Stream Movies & Shows on WILLOW (willow.arlen.icu). Curated site with multi-source playback.",
+    "homepageUrl": "https://willow.arlen.icu",
+    "searchUrl": "https://willow.arlen.icu/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=willow.arlen.icu&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 40145,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 84,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "cinrift",
+    "name": "CINRIFT",
+    "slug": "cinrift",
+    "description": "Stream Movies & Shows on CINRIFT (cinrift.me). Curated site with multi-source playback.",
+    "homepageUrl": "https://cinrift.me",
+    "searchUrl": "https://cinrift.me/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=cinrift.me&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 48528,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 83,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "flixhub-https-flixhub-studio",
+    "name": "FLIXHUB",
+    "slug": "flixhub-https-flixhub-studio",
+    "description": "Stream Movies & Shows on FLIXHUB (flixhub.studio). Curated site with multi-source playback.",
+    "homepageUrl": "https://flixhub.studio",
+    "searchUrl": "https://flixhub.studio/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=flixhub.studio&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 32242,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 82,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "enma",
+    "name": "ENMA",
+    "slug": "enma",
+    "description": "Stream Anime on ENMA (enma.lol). Curated site with multi-source playback.",
+    "homepageUrl": "https://enma.lol",
+    "searchUrl": "https://enma.lol/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=enma.lol&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 2,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Trusted"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 63960,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 81,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "yenime",
+    "name": "YENIME",
+    "slug": "yenime",
+    "description": "Stream Anime on YENIME (yenime.net). Curated site with multi-source playback.",
+    "homepageUrl": "https://yenime.net",
+    "searchUrl": "https://yenime.net/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=yenime.net&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 2,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Trusted"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 53370,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 80,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "any-shows",
+    "name": "ANY SHOWS",
+    "slug": "any-shows",
+    "description": "Stream Anime on ANY SHOWS (anishows.org). Curated site with multi-source playback.",
+    "homepageUrl": "https://anishows.org",
+    "searchUrl": "https://anishows.org/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=anishows.org&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 34244,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 79,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "reanime",
+    "name": "REANIME",
+    "slug": "reanime",
+    "description": "Stream Anime on REANIME (reanime.to). Curated site with multi-source playback.",
+    "homepageUrl": "https://reanime.to",
+    "searchUrl": "https://reanime.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=reanime.to&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 47435,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 78,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "anikoto-tv",
+    "name": "ANIKOTO TV",
+    "slug": "anikoto-tv",
+    "description": "Stream Anime on ANIKOTO TV (anikototv.to). Curated site with multi-source playback.",
+    "homepageUrl": "https://anikototv.to",
+    "searchUrl": "https://anikototv.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=anikototv.to&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 20717,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 77,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "1anime",
+    "name": "1ANIME",
+    "slug": "1anime",
+    "description": "Stream Anime on 1ANIME (1anime.app). Curated site with multi-source playback.",
+    "homepageUrl": "https://1anime.app",
+    "searchUrl": "https://1anime.app/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=1anime.app&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 40072,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 76,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "anistream",
+    "name": "ANISTREAM",
+    "slug": "anistream",
+    "description": "Stream Anime on ANISTREAM (anistream.one). Curated site with multi-source playback.",
+    "homepageUrl": "https://anistream.one",
+    "searchUrl": "https://anistream.one/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=anistream.one&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 64579,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 75,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "kaa",
+    "name": "KAA",
+    "slug": "kaa",
+    "description": "Stream Anime on KAA (kaa.lt). Curated site with multi-source playback.",
+    "homepageUrl": "https://kaa.lt",
+    "searchUrl": "https://kaa.lt/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=kaa.lt&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 48266,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 74,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "just-anime",
+    "name": "JUST ANIME",
+    "slug": "just-anime",
+    "description": "Stream Anime on JUST ANIME (justanime.to). Curated site with multi-source playback.",
+    "homepageUrl": "https://justanime.to",
+    "searchUrl": "https://justanime.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=justanime.to&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 41334,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 73,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "anime-salt",
+    "name": "ANIME SALT",
+    "slug": "anime-salt",
+    "description": "Stream Anime on ANIME SALT (animesalt.link). Curated site with multi-source playback.",
+    "homepageUrl": "https://animesalt.link",
+    "searchUrl": "https://animesalt.link/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=animesalt.link&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 46679,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 72,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "senpai-flix",
+    "name": "SENPAI FLIX",
+    "slug": "senpai-flix",
+    "description": "Stream Anime on SENPAI FLIX (senpaiflix.fun). Curated site with multi-source playback.",
+    "homepageUrl": "https://senpaiflix.fun",
+    "searchUrl": "https://senpaiflix.fun/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=senpaiflix.fun&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 61743,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 71,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "animextrons",
+    "name": "ANIMEXTRONS",
+    "slug": "animextrons",
+    "description": "Stream Anime on ANIMEXTRONS (animextrons.co.in). Curated site with multi-source playback.",
+    "homepageUrl": "https://animextrons.co.in",
+    "searchUrl": "https://animextrons.co.in/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=animextrons.co.in&amp;sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 23146,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 70,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "mangaball",
+    "name": "MANGABALL",
+    "slug": "mangaball",
+    "description": "Stream Manga on MANGABALL (mangaball.net). Curated site with multi-source playback.",
+    "homepageUrl": "https://mangaball.net",
+    "searchUrl": "https://mangaball.net/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=mangaball.net&amp;sz=64",
+    "categories": [
+      "manga"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 67969,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 69,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "comick",
+    "name": "COMICK",
+    "slug": "comick",
+    "description": "Stream Manga on COMICK (comick.dev). Curated site with multi-source playback.",
+    "homepageUrl": "https://comick.dev",
+    "searchUrl": "https://comick.dev/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=comick.dev&amp;sz=64",
+    "categories": [
+      "manga"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 57747,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 68,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "q-toon",
+    "name": "Q TOON",
+    "slug": "q-toon",
+    "description": "Stream Manga on Q TOON (qtoon.org). Curated site with multi-source playback.",
+    "homepageUrl": "https://qtoon.org",
+    "searchUrl": "https://qtoon.org/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=qtoon.org&amp;sz=64",
+    "categories": [
+      "manga"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 21072,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 67,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "weeb-central",
+    "name": "WEEB CENTRAL",
+    "slug": "weeb-central",
+    "description": "Stream Manga on WEEB CENTRAL (weebcentral.com). Curated site with multi-source playback.",
+    "homepageUrl": "https://weebcentral.com",
+    "searchUrl": "https://weebcentral.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=weebcentral.com&amp;sz=64",
+    "categories": [
+      "manga"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 41787,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 66,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "king-of-shojo",
+    "name": "KING OF SHOJO",
+    "slug": "king-of-shojo",
+    "description": "Stream Manga on KING OF SHOJO (kingofshojo.com). Curated site with multi-source playback.",
+    "homepageUrl": "https://kingofshojo.com",
+    "searchUrl": "https://kingofshojo.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=kingofshojo.com&amp;sz=64",
+    "categories": [
+      "manga"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 63337,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 65,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "webtoon",
+    "name": "WEBTOON",
+    "slug": "webtoon",
+    "description": "Stream Manga on WEBTOON (webtoons.com). Curated site with multi-source playback.",
+    "homepageUrl": "https://webtoons.com",
+    "searchUrl": "https://webtoons.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=webtoons.com&amp;sz=64",
+    "categories": [
+      "manga"
+    ],
+    "languages": [
+      "japanese",
+      "english"
+    ],
+    "country": "US",
+    "priority": 1,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Featured"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 47300,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 64,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "ondemand",
+    "name": "ONDEMAND",
+    "slug": "ondemand",
+    "description": "Stream Live TV & Sports on ONDEMAND (ondemand.st). Curated site with multi-source playback.",
+    "homepageUrl": "https://ondemand.st",
+    "searchUrl": "https://ondemand.st/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=ondemand.st&amp;sz=64",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 59384,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 63,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "stream-east",
+    "name": "STREAM EAST",
+    "slug": "stream-east",
+    "description": "Stream Live TV & Sports on STREAM EAST (thestreameast.top). Curated site with multi-source playback.",
+    "homepageUrl": "https://thestreameast.top",
+    "searchUrl": "https://thestreameast.top/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=thestreameast.top&amp;sz=64",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 27985,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 62,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "stmify",
+    "name": "STMIFY",
+    "slug": "stmify",
+    "description": "Stream Live TV & Sports on STMIFY (stmify.com). Curated site with multi-source playback.",
+    "homepageUrl": "https://stmify.com",
+    "searchUrl": "https://stmify.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=stmify.com&amp;sz=64",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 33265,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 61,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "famelack",
+    "name": "FAMELACK",
+    "slug": "famelack",
+    "description": "Stream Live TV & Sports on FAMELACK (famelack.com). Curated site with multi-source playback.",
+    "homepageUrl": "https://famelack.com",
+    "searchUrl": "https://famelack.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=famelack.com&amp;sz=64",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 29412,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 60,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "public-iptv",
+    "name": "PUBLIC IPTV",
+    "slug": "public-iptv",
+    "description": "Stream Live TV & Sports on PUBLIC IPTV (publiciptv.com). Curated site with multi-source playback.",
+    "homepageUrl": "https://publiciptv.com",
+    "searchUrl": "https://publiciptv.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=publiciptv.com&amp;sz=64",
+    "categories": [
+      "sports",
+      "live-tv"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 21773,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 59,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "sportplus",
+    "name": "SPORTPLUS",
+    "slug": "sportplus",
+    "description": "Stream Live TV & Sports on SPORTPLUS (en97.sportplus.watch). Curated site with multi-source playback.",
+    "homepageUrl": "https://en97.sportplus.watch",
+    "searchUrl": "https://en97.sportplus.watch/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=en97.sportplus.watch&amp;sz=64",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 57347,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 58,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "stream-east-https-streameastnow-net",
+    "name": "STREAM EAST",
+    "slug": "stream-east-https-streameastnow-net",
+    "description": "Stream Live TV & Sports on STREAM EAST (streameastnow.net). Curated site with multi-source playback.",
+    "homepageUrl": "https://streameastnow.net",
+    "searchUrl": "https://streameastnow.net/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=streameastnow.net&amp;sz=64",
+    "categories": [
+      "sports"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 60531,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 57,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "net-mirror",
+    "name": "NET MIRROR",
+    "slug": "net-mirror",
+    "description": "Stream Apps on NET MIRROR (netmirror.gg). Curated site with multi-source playback.",
+    "homepageUrl": "https://netmirror.gg",
+    "searchUrl": "https://netmirror.gg/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=netmirror.gg&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 2,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Trusted"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 27272,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 43,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "movies-box",
+    "name": "MOVIES BOX",
+    "slug": "movies-box",
+    "description": "Stream Apps on MOVIES BOX (moviesbox.com.co). Curated site with multi-source playback.",
+    "homepageUrl": "https://moviesbox.com.co",
+    "searchUrl": "https://moviesbox.com.co/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=moviesbox.com.co&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 2,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Trusted"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 21621,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 42,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "pikashows",
+    "name": "PIKASHOWS",
+    "slug": "pikashows",
+    "description": "Stream Apps on PIKASHOWS (pikashowtv.in). Curated site with multi-source playback.",
+    "homepageUrl": "https://pikashowtv.in",
+    "searchUrl": "https://pikashowtv.in/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=pikashowtv.in&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows",
+      "live-tv"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 2,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "Trusted"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 53123,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 41,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "play-torrio",
+    "name": "PLAY TORRIO",
+    "slug": "play-torrio",
+    "description": "Stream Apps on PLAY TORRIO (playtorrio.pages.dev). Curated site with multi-source playback.",
+    "homepageUrl": "https://playtorrio.pages.dev",
+    "searchUrl": "https://playtorrio.pages.dev/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=playtorrio.pages.dev&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 54528,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 40,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "you-cine",
+    "name": "YOU CINE",
+    "slug": "you-cine",
+    "description": "Stream Apps on YOU CINE (youcineapkpro.com). Curated site with multi-source playback.",
+    "homepageUrl": "https://youcineapkpro.com",
+    "searchUrl": "https://youcineapkpro.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=youcineapkpro.com&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 65069,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 39,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "onstream",
+    "name": "ONSTREAM",
+    "slug": "onstream",
+    "description": "Stream Apps on ONSTREAM (onstreamapks.app). Curated site with multi-source playback.",
+    "homepageUrl": "https://onstreamapks.app",
+    "searchUrl": "https://onstreamapks.app/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=onstreamapks.app&amp;sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://api.tvmaze.com/search/shows?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "show.name",
+      "posterSelector": "show.image.original",
+      "linkSelector": "show.url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-04T13:55:06.686Z",
+    "totalIndexed": 31250,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 38,
+    "createdAt": "2026-08-04T13:55:06.686Z",
+    "updatedAt": "2026-08-04T13:55:06.686Z"
+  },
+  {
+    "id": "fboxz",
+    "name": "Fbox",
+    "slug": "fboxz",
+    "description": "Stream on Fbox (fboxz.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://fboxz.to",
+    "searchUrl": "https://fboxz.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=fboxz.to&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://fboxz.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.905Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "flixhq",
+    "name": "FlixHQ",
+    "slug": "flixhq",
+    "description": "Stream on FlixHQ (flixhq.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://flixhq.to",
+    "searchUrl": "https://flixhq.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=flixhq.to&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://flixhq.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "himovies",
+    "name": "HiMovies",
+    "slug": "himovies",
+    "description": "Stream on HiMovies (himovies.sx). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://himovies.sx",
+    "searchUrl": "https://himovies.sx/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=himovies.sx&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://himovies.sx/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "solarmovie",
+    "name": "SolarMovie",
+    "slug": "solarmovie",
+    "description": "Stream on SolarMovie (solarmovie.pe). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://solarmovie.pe",
+    "searchUrl": "https://solarmovie.pe/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=solarmovie.pe&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://solarmovie.pe/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "movieweb",
+    "name": "MovieWeb",
+    "slug": "movieweb",
+    "description": "Stream on MovieWeb (movieweb.app). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://movieweb.app",
+    "searchUrl": "https://movieweb.app/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=movieweb.app&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://movieweb.app/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "sflix",
+    "name": "Sflix",
+    "slug": "sflix",
+    "description": "Stream on Sflix (sflix.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://sflix.to",
+    "searchUrl": "https://sflix.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=sflix.to&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://sflix.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "bflix",
+    "name": "Bflix",
+    "slug": "bflix",
+    "description": "Stream on Bflix (bflix.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://bflix.to",
+    "searchUrl": "https://bflix.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=bflix.to&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://bflix.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "hdtoday",
+    "name": "HDToday",
+    "slug": "hdtoday",
+    "description": "Stream on HDToday (hdtoday.cc). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://hdtoday.cc",
+    "searchUrl": "https://hdtoday.cc/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=hdtoday.cc&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://hdtoday.cc/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "lookmovie",
+    "name": "LookMovie",
+    "slug": "lookmovie",
+    "description": "Stream on LookMovie (lookmovie2.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://lookmovie2.to",
+    "searchUrl": "https://lookmovie2.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=lookmovie2.to&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://lookmovie2.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "movies7",
+    "name": "Movies7",
+    "slug": "movies7",
+    "description": "Stream on Movies7 (movies7.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://movies7.to",
+    "searchUrl": "https://movies7.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=movies7.to&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://movies7.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "vumoo",
+    "name": "Vumoo",
+    "slug": "vumoo",
+    "description": "Stream on Vumoo (vumoo.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://vumoo.to",
+    "searchUrl": "https://vumoo.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=vumoo.to&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://vumoo.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "fmovies",
+    "name": "FMovies",
+    "slug": "fmovies",
+    "description": "Stream on FMovies (fmovies.ps). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://fmovies.ps",
+    "searchUrl": "https://fmovies.ps/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=fmovies.ps&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://fmovies.ps/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "gomovies",
+    "name": "GoMovies",
+    "slug": "gomovies",
+    "description": "Stream on GoMovies (gomovies.sx). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://gomovies.sx",
+    "searchUrl": "https://gomovies.sx/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=gomovies.sx&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://gomovies.sx/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "yesmovies",
+    "name": "YesMovies",
+    "slug": "yesmovies",
+    "description": "Stream on YesMovies (yesmovies.ag). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://yesmovies.ag",
+    "searchUrl": "https://yesmovies.ag/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=yesmovies.ag&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://yesmovies.ag/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "soap2day",
+    "name": "Soap2Day",
+    "slug": "soap2day",
+    "description": "Stream on Soap2Day (soap2day.rs). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://soap2day.rs",
+    "searchUrl": "https://soap2day.rs/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=soap2day.rs&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://soap2day.rs/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "cineb",
+    "name": "Cineb",
+    "slug": "cineb",
+    "description": "Stream on Cineb (cineb.rs). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://cineb.rs",
+    "searchUrl": "https://cineb.rs/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=cineb.rs&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://cineb.rs/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "filmzie",
+    "name": "Filmzie",
+    "slug": "filmzie",
+    "description": "Stream on Filmzie (filmzie.com). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://filmzie.com",
+    "searchUrl": "https://filmzie.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=filmzie.com&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://filmzie.com/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "plutotv",
+    "name": "Pluto TV",
+    "slug": "plutotv",
+    "description": "Stream on Pluto TV (pluto.tv). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://pluto.tv",
+    "searchUrl": "https://pluto.tv/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=pluto.tv&sz=64",
+    "categories": [
+      "movies",
+      "live-tv"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://pluto.tv/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "tubitv",
+    "name": "Tubi",
+    "slug": "tubitv",
+    "description": "Stream on Tubi (tubitv.com). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://tubitv.com",
+    "searchUrl": "https://tubitv.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=tubitv.com&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://tubitv.com/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "crackle",
+    "name": "Crackle",
+    "slug": "crackle",
+    "description": "Stream on Crackle (crackle.com). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://crackle.com",
+    "searchUrl": "https://crackle.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=crackle.com&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://crackle.com/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "plextv",
+    "name": "Plex",
+    "slug": "plextv",
+    "description": "Stream on Plex (plex.tv). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://plex.tv",
+    "searchUrl": "https://plex.tv/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=plex.tv&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://plex.tv/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "popcornflix",
+    "name": "Popcornflix",
+    "slug": "popcornflix",
+    "description": "Stream on Popcornflix (popcornflix.com). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://popcornflix.com",
+    "searchUrl": "https://popcornflix.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=popcornflix.com&sz=64",
+    "categories": [
+      "movies"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://popcornflix.com/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "kanopy",
+    "name": "Kanopy",
+    "slug": "kanopy",
+    "description": "Stream on Kanopy (kanopy.com). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://kanopy.com",
+    "searchUrl": "https://kanopy.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=kanopy.com&sz=64",
+    "categories": [
+      "movies"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://kanopy.com/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "hoopla",
+    "name": "Hoopla",
+    "slug": "hoopla",
+    "description": "Stream on Hoopla (hoopladigital.com). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://hoopladigital.com",
+    "searchUrl": "https://hoopladigital.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=hoopladigital.com&sz=64",
+    "categories": [
+      "movies"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://hoopladigital.com/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "stremio",
+    "name": "Stremio",
+    "slug": "stremio",
+    "description": "Stream on Stremio (stremio.com). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://stremio.com",
+    "searchUrl": "https://stremio.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=stremio.com&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://stremio.com/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "braflix",
+    "name": "Braflix",
+    "slug": "braflix",
+    "description": "Stream on Braflix (braflix.video). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://braflix.video",
+    "searchUrl": "https://braflix.video/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=braflix.video&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://braflix.video/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "vidsrc",
+    "name": "VidSrc",
+    "slug": "vidsrc",
+    "description": "Stream on VidSrc (vidsrc.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://vidsrc.to",
+    "searchUrl": "https://vidsrc.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=vidsrc.to&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://vidsrc.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "vidplay",
+    "name": "VidPlay",
+    "slug": "vidplay",
+    "description": "Stream on VidPlay (vidplay.online). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://vidplay.online",
+    "searchUrl": "https://vidplay.online/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=vidplay.online&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://vidplay.online/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "superstream",
+    "name": "SuperStream",
+    "slug": "superstream",
+    "description": "Stream on SuperStream (superstream.net). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://superstream.net",
+    "searchUrl": "https://superstream.net/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=superstream.net&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://superstream.net/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.910Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.910Z",
+    "updatedAt": "2026-08-05T07:02:15.910Z"
+  },
+  {
+    "id": "rive",
+    "name": "Rive Stream",
+    "slug": "rive",
+    "description": "Stream on Rive Stream (rive.stream). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://rive.stream",
+    "searchUrl": "https://rive.stream/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=rive.stream&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://rive.stream/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "viewvault",
+    "name": "ViewVault",
+    "slug": "viewvault",
+    "description": "Stream on ViewVault (viewvault.org). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://viewvault.org",
+    "searchUrl": "https://viewvault.org/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=viewvault.org&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://viewvault.org/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "hydrahd",
+    "name": "HydraHD",
+    "slug": "hydrahd",
+    "description": "Stream on HydraHD (hydrahd.is). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://hydrahd.is",
+    "searchUrl": "https://hydrahd.is/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=hydrahd.is&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://hydrahd.is/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "cinematics",
+    "name": "Cinematics",
+    "slug": "cinematics",
+    "description": "Stream on Cinematics (cinematics.me). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://cinematics.me",
+    "searchUrl": "https://cinematics.me/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=cinematics.me&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://cinematics.me/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "binged",
+    "name": "Binged Live",
+    "slug": "binged",
+    "description": "Stream on Binged Live (binged.live). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://binged.live",
+    "searchUrl": "https://binged.live/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=binged.live&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://binged.live/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "smashystream",
+    "name": "SmashyStream",
+    "slug": "smashystream",
+    "description": "Stream on SmashyStream (smashystream.xyz). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://smashystream.xyz",
+    "searchUrl": "https://smashystream.xyz/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=smashystream.xyz&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://smashystream.xyz/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "hianime",
+    "name": "HiAnime",
+    "slug": "hianime",
+    "description": "Stream on HiAnime (hianime.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://hianime.to",
+    "searchUrl": "https://hianime.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=hianime.to&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://hianime.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "aniwave",
+    "name": "AniWave",
+    "slug": "aniwave",
+    "description": "Stream on AniWave (aniwave.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://aniwave.to",
+    "searchUrl": "https://aniwave.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=aniwave.to&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://aniwave.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "9anime",
+    "name": "9Anime",
+    "slug": "9anime",
+    "description": "Stream on 9Anime (9animetv.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://9animetv.to",
+    "searchUrl": "https://9animetv.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=9animetv.to&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://9animetv.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "gogoanime",
+    "name": "Gogoanime",
+    "slug": "gogoanime",
+    "description": "Stream on Gogoanime (gogoanime3.co). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://gogoanime3.co",
+    "searchUrl": "https://gogoanime3.co/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=gogoanime3.co&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://gogoanime3.co/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "zoro",
+    "name": "Zoro Anime",
+    "slug": "zoro",
+    "description": "Stream on Zoro Anime (zoro.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://zoro.to",
+    "searchUrl": "https://zoro.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=zoro.to&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://zoro.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "kuroiru",
+    "name": "Kuroiru",
+    "slug": "kuroiru",
+    "description": "Stream on Kuroiru (kuroiru.co). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://kuroiru.co",
+    "searchUrl": "https://kuroiru.co/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=kuroiru.co&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://kuroiru.co/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "marin",
+    "name": "Marin Anime",
+    "slug": "marin",
+    "description": "Stream on Marin Anime (marin.moe). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://marin.moe",
+    "searchUrl": "https://marin.moe/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=marin.moe&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://marin.moe/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "animepahe",
+    "name": "AnimePahe",
+    "slug": "animepahe",
+    "description": "Stream on AnimePahe (animepahe.ru). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://animepahe.ru",
+    "searchUrl": "https://animepahe.ru/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=animepahe.ru&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://animepahe.ru/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.911Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.911Z",
+    "updatedAt": "2026-08-05T07:02:15.911Z"
+  },
+  {
+    "id": "kaas",
+    "name": "KickassAnime",
+    "slug": "kaas",
+    "description": "Stream on KickassAnime (kaas.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://kaas.to",
+    "searchUrl": "https://kaas.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=kaas.to&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://kaas.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.912Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.912Z",
+    "updatedAt": "2026-08-05T07:02:15.912Z"
+  },
+  {
+    "id": "animeflv",
+    "name": "AnimeFLV",
+    "slug": "animeflv",
+    "description": "Stream on AnimeFLV (animeflv.net). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://animeflv.net",
+    "searchUrl": "https://animeflv.net/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=animeflv.net&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://animeflv.net/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.912Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.912Z",
+    "updatedAt": "2026-08-05T07:02:15.912Z"
+  },
+  {
+    "id": "animesamurai",
+    "name": "AnimeSamurai",
+    "slug": "animesamurai",
+    "description": "Stream on AnimeSamurai (animesamurai.net). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://animesamurai.net",
+    "searchUrl": "https://animesamurai.net/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=animesamurai.net&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://animesamurai.net/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.912Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.912Z",
+    "updatedAt": "2026-08-05T07:02:15.912Z"
+  },
+  {
+    "id": "yugenanime",
+    "name": "YugenAnime",
+    "slug": "yugenanime",
+    "description": "Stream on YugenAnime (yugenanime.tv). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://yugenanime.tv",
+    "searchUrl": "https://yugenanime.tv/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=yugenanime.tv&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://yugenanime.tv/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.912Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.912Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "allmovieland",
+    "name": "AllMovieLand",
+    "slug": "allmovieland",
+    "description": "Stream on AllMovieLand (allmovieland.fun). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://allmovieland.fun",
+    "searchUrl": "https://allmovieland.fun/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=allmovieland.fun&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://allmovieland.fun/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "fsharetv",
+    "name": "FshareTV",
+    "slug": "fsharetv",
+    "description": "Stream on FshareTV (fsharetv.com). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://fsharetv.com",
+    "searchUrl": "https://fsharetv.com/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=fsharetv.com&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://fsharetv.com/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "netfilm",
+    "name": "NetFilm",
+    "slug": "netfilm",
+    "description": "Stream on NetFilm (netfilm.app). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://netfilm.app",
+    "searchUrl": "https://netfilm.app/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=netfilm.app&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://netfilm.app/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "rivestream",
+    "name": "RiveStream",
+    "slug": "rivestream",
+    "description": "Stream on RiveStream (rivestream.live). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://rivestream.live",
+    "searchUrl": "https://rivestream.live/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=rivestream.live&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://rivestream.live/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "vidsrcpro",
+    "name": "VidSrc Pro",
+    "slug": "vidsrcpro",
+    "description": "Stream on VidSrc Pro (vidsrc.pro). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://vidsrc.pro",
+    "searchUrl": "https://vidsrc.pro/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=vidsrc.pro&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://vidsrc.pro/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "movieffm",
+    "name": "MovieFFM",
+    "slug": "movieffm",
+    "description": "Stream on MovieFFM (movieffm.net). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://movieffm.net",
+    "searchUrl": "https://movieffm.net/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=movieffm.net&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://movieffm.net/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "cinecalidad",
+    "name": "CineCalidad",
+    "slug": "cinecalidad",
+    "description": "Stream on CineCalidad (cinecalidad.rs). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://cinecalidad.rs",
+    "searchUrl": "https://cinecalidad.rs/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=cinecalidad.rs&sz=64",
+    "categories": [
+      "movies"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://cinecalidad.rs/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "gnula",
+    "name": "Gnula",
+    "slug": "gnula",
+    "description": "Stream on Gnula (gnula.nu). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://gnula.nu",
+    "searchUrl": "https://gnula.nu/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=gnula.nu&sz=64",
+    "categories": [
+      "movies"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://gnula.nu/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "cuevana3",
+    "name": "Cuevana3",
+    "slug": "cuevana3",
+    "description": "Stream on Cuevana3 (cuevana3.ch). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://cuevana3.ch",
+    "searchUrl": "https://cuevana3.ch/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=cuevana3.ch&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://cuevana3.ch/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "pelisplus",
+    "name": "PelisPlus",
+    "slug": "pelisplus",
+    "description": "Stream on PelisPlus (pelisplus.lat). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://pelisplus.lat",
+    "searchUrl": "https://pelisplus.lat/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=pelisplus.lat&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://pelisplus.lat/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "pobretv",
+    "name": "PobreTV",
+    "slug": "pobretv",
+    "description": "Stream on PobreTV (pobre.tv). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://pobre.tv",
+    "searchUrl": "https://pobre.tv/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=pobre.tv&sz=64",
+    "categories": [
+      "movies",
+      "tv-shows"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://pobre.tv/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "aniwatch",
+    "name": "AniWatch",
+    "slug": "aniwatch",
+    "description": "Stream on AniWatch (aniwatch.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://aniwatch.to",
+    "searchUrl": "https://aniwatch.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=aniwatch.to&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://aniwatch.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  },
+  {
+    "id": "animesuge",
+    "name": "AnimeSuge",
+    "slug": "animesuge",
+    "description": "Stream on AnimeSuge (animesuge.to). Indexed from FMHY Video Directory.",
+    "homepageUrl": "https://animesuge.to",
+    "searchUrl": "https://animesuge.to/search?q={query}",
+    "logoUrl": "https://www.google.com/s2/favicons?domain=animesuge.to&sz=64",
+    "categories": [
+      "anime"
+    ],
+    "languages": [
+      "english",
+      "multi-audio"
+    ],
+    "country": "US",
+    "priority": 3,
+    "enabled": true,
+    "rateLimit": 60,
+    "timeout": 10000,
+    "retryCount": 2,
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    },
+    "cookies": "",
+    "userAgent": "MoviesNet/1.0",
+    "tags": [
+      "FMHY Verified"
+    ],
+    "parserConfig": {
+      "type": "json",
+      "searchUrlTemplate": "https://animesuge.to/search?q={query}",
+      "resultSelector": ".",
+      "titleSelector": "name",
+      "posterSelector": "image",
+      "linkSelector": "url"
+    },
+    "healthStatus": "healthy",
+    "lastHealthCheck": "2026-08-05T07:02:15.913Z",
+    "totalIndexed": 85000,
+    "averageUpdateFrequency": "Hourly",
+    "popularity": 98,
+    "createdAt": "2026-08-05T07:02:15.913Z",
+    "updatedAt": "2026-08-05T07:02:15.913Z"
+  }
+]
