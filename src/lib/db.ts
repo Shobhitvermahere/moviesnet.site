@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import websitesSeed from '../../data/websites.json';
 import settingsSeed from '../../data/settings.json';
 import adminsSeed from '../../data/admins.json';
+import fmhySourcesSeed from '../../data/fmhy-sources.json';
 import type {
   Website,
   AdminUser,
@@ -14,7 +15,9 @@ import type {
   AppSettings,
   TrendingItem,
   SiteRequest,
+  FmhySource,
 } from '@/types';
+import { parseFmhyVideoMarkdown, hostnameFromUrl } from '@/lib/fmhy-parser';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -128,6 +131,135 @@ export function reorderWebsites(orderedIds: string[]): Website[] {
 
   writeJson('websites.json', reordered);
   return reordered;
+}
+
+// --- FMHY Sources ---
+
+export function getFmhySources(): FmhySource[] {
+  return readJson<FmhySource[]>('fmhy-sources.json', fmhySourcesSeed as unknown as FmhySource[]);
+}
+
+function defaultParserConfig(homepage: string) {
+  return {
+    type: 'css' as const,
+    searchUrlTemplate: `${homepage}/search?q={query}`,
+    resultSelector: '.result',
+    titleSelector: '.title',
+    posterSelector: 'img',
+    linkSelector: 'a',
+    qualitySelector: '',
+    languageSelector: '',
+    subtitleSelector: '',
+    episodeSelector: '',
+    seasonSelector: '',
+    statusSelector: '',
+    genreSelector: '',
+    ratingSelector: '',
+    yearSelector: '',
+    runtimeSelector: '',
+    lastUpdatedSelector: '',
+    paginationSelector: '',
+    apiEndpoint: '',
+    apiMethod: 'GET' as const,
+    apiHeaders: {},
+    apiBodyTemplate: '',
+    responseMapping: {},
+  };
+}
+
+export function publishFmhySource(sourceId: string): Website | null {
+  const sources = getFmhySources();
+  const source = sources.find((s) => s.id === sourceId);
+  if (!source) return null;
+
+  const host = hostnameFromUrl(source.url);
+  const existing = getWebsites().find((w) => hostnameFromUrl(w.homepageUrl) === host);
+  if (existing) {
+    source.published = true;
+    writeJson('fmhy-sources.json', sources);
+    return existing;
+  }
+
+  const maxPriority = Math.max(0, ...getWebsites().map((w) => w.priority));
+  const slug =
+    source.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || source.id;
+
+  const website = createWebsite({
+    name: source.name,
+    slug,
+    description: `Stream on ${source.name} — curated from FMHY (${source.section}).`,
+    homepageUrl: source.url,
+    searchUrl: `${source.url}/search?q={query}`,
+    logoUrl: `https://www.google.com/s2/favicons?domain=${host}&sz=64`,
+    categories: source.categories,
+    languages: ['english', 'multi-audio'],
+    country: 'US',
+    priority: maxPriority + 1,
+    enabled: true,
+    rateLimit: 60,
+    timeout: 10000,
+    retryCount: 2,
+    headers: { Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' },
+    cookies: '',
+    userAgent: 'MoviesNet/1.0',
+    parserConfig: defaultParserConfig(source.url),
+    healthStatus: 'unknown',
+    lastHealthCheck: new Date().toISOString(),
+    totalIndexed: 0,
+    averageUpdateFrequency: 'daily',
+    popularity: source.featured ? 85 : 50,
+  });
+
+  source.published = true;
+  writeJson('fmhy-sources.json', sources);
+  return website;
+}
+
+export function publishAllFmhySources(): { added: number; skipped: number } {
+  let added = 0;
+  let skipped = 0;
+  const sources = getFmhySources();
+
+  for (const source of sources) {
+    const host = hostnameFromUrl(source.url);
+    const exists = getWebsites().some((w) => hostnameFromUrl(w.homepageUrl) === host);
+    if (exists || source.published) {
+      skipped += 1;
+      source.published = true;
+      continue;
+    }
+    publishFmhySource(source.id);
+    added += 1;
+  }
+
+  writeJson('fmhy-sources.json', sources);
+  return { added, skipped };
+}
+
+export async function refreshFmhySourcesFromRemote(): Promise<FmhySource[]> {
+  const res = await fetch('https://raw.githubusercontent.com/fmhy/edit/main/docs/video.md');
+  if (!res.ok) throw new Error('Failed to fetch FMHY source list');
+  const markdown = await res.text();
+  const parsed = parseFmhyVideoMarkdown(markdown);
+  const existing = getFmhySources();
+  const publishedHosts = new Set(
+    getWebsites()
+      .filter((w) => w.description?.includes('FMHY'))
+      .map((w) => hostnameFromUrl(w.homepageUrl))
+  );
+
+  const merged: FmhySource[] = parsed.map((site) => {
+    const host = hostnameFromUrl(site.url);
+    const prev = existing.find((e) => hostnameFromUrl(e.url) === host);
+    return {
+      ...site,
+      source: 'fmhy' as const,
+      published: prev?.published || publishedHosts.has(host),
+    };
+  });
+
+  writeJson('fmhy-sources.json', merged);
+  return merged;
 }
 
 // --- Site Requests ---

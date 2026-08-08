@@ -67,6 +67,14 @@ export default function AdminDashboard() {
               </svg>
               Site Requests
             </Link>
+            <Link href="/adminshobhit/backend" className="px-4 py-2.5 rounded-xl bg-cyan-600/20 hover:bg-cyan-600/40 border border-cyan-400/40 text-white text-sm font-semibold flex items-center gap-2 shadow-lg shadow-cyan-500/20 transition-all hover:scale-[1.02]">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+              </svg>
+              Backend
+            </Link>
             <button onClick={() => { logout(); router.push('/adminshobhit/login'); }} className="px-4 py-2.5 rounded-xl bg-red-500/15 hover:bg-red-500/30 border border-red-500/30 text-red-300 text-sm font-semibold transition-all hover:scale-[1.02]">
               Sign Out
             </button>
@@ -224,6 +232,10 @@ export default function AdminDashboard() {
           <Link href="/adminshobhit/requests" className="p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-2xl shadow-xl hover:border-amber-500/50 hover:bg-black/80 transition-all group">
             <h3 className="text-base font-bold text-white group-hover:text-amber-300 transition-colors mb-1">Site Requests</h3>
             <p className="text-xs font-medium text-gray-300">Review community submissions to add new sites</p>
+          </Link>
+          <Link href="/adminshobhit/backend" className="p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-2xl shadow-xl hover:border-cyan-500/50 hover:bg-black/80 transition-all group">
+            <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors mb-1">Backend (FMHY)</h3>
+            <p className="text-xs font-medium text-gray-300">640+ streaming sites from fmhy.net/video catalog</p>
           </Link>
           <Link href="/adminshobhit/analytics" className="p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-2xl shadow-xl hover:border-blue-500/50 hover:bg-black/80 transition-all group">
             <h3 className="text-base font-bold text-white group-hover:text-blue-300 transition-colors mb-1">Analytics</h3>

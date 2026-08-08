@@ -307,3 +307,17 @@ export interface SiteRequest {
   createdAt: string;
   reviewedAt?: string;
 }
+
+// --- FMHY Backend Sources ---
+
+export interface FmhySource {
+  id: string;
+  name: string;
+  url: string;
+  section: string;
+  categories: ContentCategory[];
+  featured: boolean;
+  meta: string;
+  source: 'fmhy';
+  published: boolean;
+}
