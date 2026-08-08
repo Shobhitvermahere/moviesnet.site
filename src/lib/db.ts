@@ -4,6 +4,9 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
+import websitesSeed from '../../data/websites.json';
+import settingsSeed from '../../data/settings.json';
+import adminsSeed from '../../data/admins.json';
 import type {
   Website,
   AdminUser,
@@ -25,11 +28,17 @@ function readJson<T>(filename: string, defaultValue: T): T {
   ensureDataDir();
   const filepath = path.join(DATA_DIR, filename);
   if (!existsSync(filepath)) {
-    writeFileSync(filepath, JSON.stringify(defaultValue, null, 2));
+    if (!process.env.VERCEL) {
+      writeFileSync(filepath, JSON.stringify(defaultValue, null, 2));
+    }
     return defaultValue;
   }
   try {
-    return JSON.parse(readFileSync(filepath, 'utf-8'));
+    const parsed = JSON.parse(readFileSync(filepath, 'utf-8')) as T;
+    if (Array.isArray(parsed) && parsed.length === 0 && Array.isArray(defaultValue) && defaultValue.length > 0) {
+      return defaultValue;
+    }
+    return parsed;
   } catch {
     return defaultValue;
   }
@@ -44,7 +53,9 @@ function writeJson<T>(filename: string, data: T): void {
 // --- Websites ---
 
 export function getWebsites(): Website[] {
-  return readJson<Website[]>('websites.json', []).sort((a, b) => b.priority - a.priority);
+  return readJson<Website[]>('websites.json', websitesSeed as unknown as Website[]).sort(
+    (a, b) => b.priority - a.priority
+  );
 }
 
 export function getEnabledWebsites(): Website[] {
@@ -172,7 +183,7 @@ const DEFAULT_ADMIN: AdminUser = {
 };
 
 export function getAdminUsers(): AdminUser[] {
-  return readJson<AdminUser[]>('admins.json', [DEFAULT_ADMIN]);
+  return readJson<AdminUser[]>('admins.json', adminsSeed as AdminUser[]);
 }
 
 export function getAdminByUsername(username: string): AdminUser | undefined {
@@ -265,7 +276,7 @@ const DEFAULT_SETTINGS: AppSettings = {
 };
 
 export function getSettings(): AppSettings {
-  return readJson<AppSettings>('settings.json', DEFAULT_SETTINGS);
+  return readJson<AppSettings>('settings.json', settingsSeed as AppSettings);
 }
 
 export function updateSettings(data: Partial<AppSettings>): AppSettings {
