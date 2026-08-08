@@ -253,7 +253,7 @@ export function getTrendingSearches(period: 'today' | 'week' | 'month'): Trendin
 const DEFAULT_SETTINGS: AppSettings = {
   siteName: 'MoviesNet',
   siteDescription: 'Search Once. Find Everywhere. Unified media discovery engine across all configured websites.',
-  siteUrl: 'https://moviesnet.online',
+  siteUrl: 'https://moviesnet.site',
   adminPath: '/adminshobhit',
   searchDebounceMs: 300,
   searchTimeoutMs: 10000,

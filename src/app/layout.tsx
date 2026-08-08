@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://moviesnet.online',
+    url: 'https://moviesnet.site',
     siteName: 'MoviesNet',
     title: 'MoviesNet — Search Once. Find Everywhere.',
     description:
@@ -84,13 +84,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@context': 'https://schema.org',
               '@type': 'WebSite',
               name: 'MoviesNet',
-              url: 'https://moviesnet.online',
+              url: 'https://moviesnet.site',
               description: 'Unified content discovery search engine',
               potentialAction: {
                 '@type': 'SearchAction',
                 target: {
                   '@type': 'EntryPoint',
-                  urlTemplate: 'https://moviesnet.online/search?q={search_term_string}',
+                  urlTemplate: 'https://moviesnet.site/search?q={search_term_string}',
                 },
                 'query-input': 'required name=search_term_string',
               },

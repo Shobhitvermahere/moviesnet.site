@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/adminshobhit/', '/api/'],
       },
     ],
-    sitemap: 'https://moviesnet.online/sitemap.xml',
+    sitemap: 'https://moviesnet.site/sitemap.xml',
   };
 }

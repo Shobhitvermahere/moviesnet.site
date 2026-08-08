@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://moviesnet.online';
+  const baseUrl = 'https://moviesnet.site';
 
   const categories = [
     'anime', 'movies', 'tv-shows', 'cartoons', 'documentaries', 'sports', 'live-tv'
