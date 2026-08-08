@@ -71,6 +71,7 @@ export const viewport: Viewport = {
   themeColor: '#03050a',
   width: 'device-width',
   initialScale: 1,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -107,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ThemeContainer />
           <div className="relative z-10 flex flex-col min-h-screen">
             <Header />
-            <main className="flex-1 pt-[4.25rem]">{children}</main>
+            <main className="flex-1 pt-[var(--header-height)]">{children}</main>
             <Footer />
           </div>
         </Providers>

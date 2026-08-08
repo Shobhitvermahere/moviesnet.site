@@ -28,6 +28,7 @@
 
 /* --- CSS Custom Properties --- */
 :root {
+  --header-height: 4.25rem;
   --aurora-1: rgba(139, 92, 246, 0.15);
   --aurora-2: rgba(59, 130, 246, 0.12);
   --aurora-3: rgba(6, 182, 212, 0.10);
@@ -39,6 +40,31 @@
   --gradient-primary: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4);
   --gradient-accent: linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6);
   --gradient-subtle: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-height: 3.75rem;
+  }
+}
+
+.site-header {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.support-dropdown {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 767px) {
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .search-page {
+    padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

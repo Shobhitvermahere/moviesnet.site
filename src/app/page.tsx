@@ -421,7 +421,7 @@ export default function HomePage() {
           'home-hero-section relative flex flex-col px-4 sm:px-6 lg:px-10',
           hasHeroSuggestions
             ? 'min-h-0 py-10 sm:py-12 justify-start'
-            : 'min-h-[calc(100svh-4.25rem)] justify-center pb-16 pt-8 sm:pt-12'
+            : 'min-h-[calc(100svh-var(--header-height))] justify-center pb-16 pt-8 sm:pt-12'
         )}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       >
