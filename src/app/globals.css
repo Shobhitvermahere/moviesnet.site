@@ -393,6 +393,64 @@ body {
   position: relative;
 }
 
+.home-community-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 1rem;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home-community-toggle:active {
+  transform: scale(0.98);
+}
+
+.home-community-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.5rem;
+}
+
+.home-community-toggle-discord {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.home-community-toggle-discord .home-community-toggle-icon {
+  background: rgba(88, 101, 242, 0.18);
+  color: #5865f2;
+}
+
+.home-community-toggle-discord:hover {
+  border-color: rgba(88, 101, 242, 0.45);
+  background: rgba(88, 101, 242, 0.12);
+  color: #fff;
+}
+
+.home-community-toggle-reddit {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.home-community-toggle-reddit .home-community-toggle-icon {
+  background: rgba(255, 69, 0, 0.15);
+  color: #ff4500;
+}
+
+.home-community-toggle-reddit:hover {
+  border-color: rgba(255, 69, 0, 0.45);
+  background: rgba(255, 69, 0, 0.1);
+  color: #fff;
+}
+
 .home-content-below {
   position: relative;
 }
