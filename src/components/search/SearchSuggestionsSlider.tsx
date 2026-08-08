@@ -9,6 +9,7 @@ export interface SearchSuggestionItem {
   year: number | null;
   category: string;
   poster: string | null;
+  imdbId?: string;
 }
 
 interface SearchSuggestionsSliderProps {

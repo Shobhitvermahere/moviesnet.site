@@ -19,6 +19,8 @@ export async function GET(request: NextRequest) {
     const status = searchParams.get('status');
     const sort = searchParams.get('sort');
     const website = searchParams.get('website');
+    const imdbId = searchParams.get('imdbId');
+    const poster = searchParams.get('poster');
 
     if (category) filters.category = category as SearchFilters['category'];
     if (language) filters.language = language as SearchFilters['language'];
@@ -26,6 +28,8 @@ export async function GET(request: NextRequest) {
     if (status) filters.status = status as SearchFilters['status'];
     if (sort) filters.sort = sort as SearchFilters['sort'];
     if (website) filters.website = website;
+    if (imdbId) filters.imdbId = imdbId;
+    if (poster) filters.posterHint = poster;
 
     const results = await executeSearch(query, filters, page);
 

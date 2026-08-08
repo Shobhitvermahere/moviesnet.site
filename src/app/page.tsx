@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { formatNumber, DIRECTORY_CATEGORIES, cn } from '@/lib/utils';
 import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
+import { buildSearchUrlFromSuggestion } from '@/lib/search-navigation';
 import type { ContentCategory } from '@/types';
 
 const SEARCH_PLACEHOLDERS = [
@@ -482,12 +483,12 @@ export default function HomePage() {
                   suggestions={heroSuggestions}
                   variant="home"
                   layout="inline"
-                  onSelect={(item) => {
-                    setSearchQuery(item.title);
-                    setShowHeroSuggestions(false);
-                    setHeroSuggestions([]);
-                    router.push(`/search?q=${encodeURIComponent(item.title)}`);
-                  }}
+                onSelect={(item) => {
+                  setSearchQuery(item.title);
+                  setShowHeroSuggestions(false);
+                  setHeroSuggestions([]);
+                  router.push(buildSearchUrlFromSuggestion(item));
+                }}
                 />
               )}
             </AnimatePresence>

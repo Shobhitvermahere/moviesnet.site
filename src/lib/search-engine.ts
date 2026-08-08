@@ -51,7 +51,7 @@ export async function executeSearch(
   const normalizedQ = normalizeQuery(query);
 
   // Check cache first
-  const cacheKey = `search-v6:${normalizedQ}:${JSON.stringify(filters)}:${page}:${pageSize}`;
+  const cacheKey = `search-v7:${normalizedQ}:${filters.imdbId || ''}:${JSON.stringify(filters)}:${page}:${pageSize}`;
   const cached = cache.get<SearchResponse>(cacheKey);
   if (cached) {
     return cached;
@@ -78,14 +78,19 @@ export async function executeSearch(
   // ---------------------------------------------------------------------------
   // 1. Fetch Verified TMDB Authoritative Metadata
   // ---------------------------------------------------------------------------
-  const verifiedMediaList = await fetchAuthoritativeMetadata(normalizedQ, filters.category);
+  const verifiedMediaList = await fetchAuthoritativeMetadata(
+    normalizedQ,
+    filters.category,
+    filters.imdbId,
+    filters.posterHint
+  );
 
   let allResults: SearchResult[] = [];
 
   if (verifiedMediaList.length > 0) {
     for (let mIdx = 0; mIdx < verifiedMediaList.length; mIdx++) {
       const media = verifiedMediaList[mIdx];
-      allResults.push(buildUnifiedResult(media, websites, mIdx, filters.category));
+      allResults.push(buildUnifiedResult(media, websites, mIdx, filters.category, filters.posterHint));
     }
   }
 
@@ -303,13 +308,6 @@ async function fetchFallbackMedia(query: string, category?: string): Promise<Fal
   return sortedItems;
 }
 
-function getRelevantWebsites(websites: Website[], category: string): Website[] {
-  const relevant = websites.filter((w) =>
-    w.categories.some((cat) => cat === category || cat === 'movies' || cat === 'tv-shows')
-  );
-  return relevant.length > 0 ? relevant : websites;
-}
-
 function aggregateLanguages(sources: StreamingSource[]): Language[] {
   const langs = new Set<Language>();
   for (const s of sources) s.languages.forEach((l) => langs.add(l));
@@ -327,13 +325,14 @@ function buildUnifiedResult(
   media: VerifiedMetadata,
   websites: Website[],
   mIdx: number,
-  filterCategory?: string
+  filterCategory?: string,
+  posterHint?: string
 ): SearchResult {
   const category = media.category || filterCategory || 'movies';
-  const sitesToUse = getRelevantWebsites(websites, category);
-  const sources = sitesToUse.map((w) => websiteToStreamingSource(w, media.title));
+  // Search every site in the directory (admin priority order)
+  const sources = websites.map((w) => websiteToStreamingSource(w, media.title));
   const primary = sources[0];
-  const poster = media.poster || resolveMoviePoster(media.title, category, mIdx);
+  const poster = media.poster || posterHint || resolveMoviePoster(media.title, category, mIdx);
 
   return {
     id: `tmdb-${media.tmdbId || mIdx}-${slugify(media.title)}`,

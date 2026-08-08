@@ -8,6 +8,7 @@ import { useSearchStore } from '@/stores';
 import { cn, CATEGORIES, QUALITY_COLORS, STATUS_COLORS, resolveMoviePoster } from '@/lib/utils';
 import { formatLanguageLabel } from '@/lib/website-capabilities';
 import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
+import { buildSearchUrlFromSuggestion } from '@/lib/search-navigation';
 import type { SearchResponse, SearchFilters, SearchResult, ContentCategory, Language, Quality, ContentStatus, SortOption, Website } from '@/types';
 
 // --- Filter Options ---
@@ -45,6 +46,8 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: 'most-sources', label: 'Most Sources' },
 ];
 
+const MAGIC_LOADING_DELAY_MS = 1800;
+
 // --- Fetch search results ---
 async function fetchSearch(query: string, filters: SearchFilters, page: number): Promise<SearchResponse> {
   const params = new URLSearchParams();
@@ -55,6 +58,8 @@ async function fetchSearch(query: string, filters: SearchFilters, page: number):
   if (filters.status) params.set('status', filters.status);
   if (filters.sort) params.set('sort', filters.sort);
   if (filters.website) params.set('website', filters.website);
+  if (filters.imdbId) params.set('imdbId', filters.imdbId);
+  if (filters.posterHint) params.set('poster', filters.posterHint);
   params.set('page', page.toString());
 
   const res = await fetch(`/api/search?${params.toString()}`);
@@ -316,8 +321,8 @@ function MagicLoadingOverlay({ query }: { query: string }) {
 
   const steps = [
     { label: 'Identifying content & title', icon: '🔍' },
-    { label: 'Gathering IMDb / TMDB verified metadata', icon: '🎬' },
-    { label: 'Checking supported providers (109+ portals)', icon: '⚡' },
+    { label: 'Fetching IMDb poster & metadata', icon: '🎬' },
+    { label: 'Searching all directory websites', icon: '⚡' },
     { label: 'Preparing unified results', icon: '✨' },
   ];
 
@@ -648,11 +653,15 @@ function SearchContent() {
 
   const initialQuery = searchParams.get('q') || '';
   const initialCategory = searchParams.get('category') as SearchFilters['category'] | null;
+  const initialImdbId = searchParams.get('imdbId') || undefined;
+  const initialPoster = searchParams.get('poster') || undefined;
   const [query, setQuery] = useState(initialQuery);
   const [debouncedQuery, setDebouncedQuery] = useState(initialQuery);
   const [filters, setFilters] = useState<SearchFilters>(() => {
     const f: SearchFilters = {};
     if (initialCategory) f.category = initialCategory;
+    if (initialImdbId) f.imdbId = initialImdbId;
+    if (initialPoster) f.posterHint = initialPoster;
     return f;
   });
   const [mounted, setMounted] = useState(false);
@@ -665,7 +674,26 @@ function SearchContent() {
     setMounted(true);
   }, []);
 
-  // Debounce search query
+  // Sync URL params when navigating from suggestion click
+  useEffect(() => {
+    const q = searchParams.get('q') || '';
+    const imdbId = searchParams.get('imdbId') || undefined;
+    const poster = searchParams.get('poster') || undefined;
+    if (q && q !== debouncedQuery) {
+      setQuery(q);
+      setDebouncedQuery(q);
+      setPage(1);
+    }
+    if (imdbId || poster) {
+      setFilters((prev) => ({
+        ...prev,
+        ...(imdbId ? { imdbId } : {}),
+        ...(poster ? { posterHint: poster } : {}),
+      }));
+    }
+  }, [searchParams, debouncedQuery]);
+
+  // Debounce search query (skip delay when picking a suggestion with imdbId)
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(query);
@@ -684,6 +712,9 @@ function SearchContent() {
       if (filters.quality) params.set('quality', filters.quality);
       if (filters.status) params.set('status', filters.status);
       if (filters.sort) params.set('sort', filters.sort);
+      if (filters.website) params.set('website', filters.website);
+      if (filters.imdbId) params.set('imdbId', filters.imdbId);
+      if (filters.posterHint) params.set('poster', filters.posterHint);
       router.replace(`/search?${params.toString()}`, { scroll: false });
       addRecentSearch(debouncedQuery);
     }
@@ -697,19 +728,18 @@ function SearchContent() {
     placeholderData: (prev) => prev,
   });
 
-  // Only show magic loading card if fetching takes longer than 350ms; otherwise show direct results
+  // Show "Magic begins" only when search takes longer than ~1.8s
   useEffect(() => {
-    if ((isLoading || isFetching) && debouncedQuery.trim().length >= 2) {
-      const timer = setTimeout(() => {
-        setIsMagicLoading(true);
-      }, 350);
-      return () => {
-        clearTimeout(timer);
-        setIsMagicLoading(false);
-      };
-    } else {
+    if (!isLoading && !isFetching) {
       setIsMagicLoading(false);
+      return;
     }
+    if (debouncedQuery.trim().length < 2) {
+      setIsMagicLoading(false);
+      return;
+    }
+    const timer = setTimeout(() => setIsMagicLoading(true), MAGIC_LOADING_DELAY_MS);
+    return () => clearTimeout(timer);
   }, [isLoading, isFetching, debouncedQuery]);
 
   const handleFilterChange = useCallback((newFilters: SearchFilters) => {
@@ -719,7 +749,7 @@ function SearchContent() {
 
   // Fetch live IMDb/TMDB autocomplete suggestions
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const { data: suggestionData } = useQuery<{ suggestions: { title: string; year: number | null; category: string; poster: string | null }[] }>({
+  const { data: suggestionData } = useQuery<{ suggestions: { title: string; year: number | null; category: string; poster: string | null; imdbId?: string }[] }>({
     queryKey: ['suggestions', query],
     queryFn: async () => {
       if (!query || query.trim().length < 2) return { suggestions: [] };
@@ -839,6 +869,14 @@ function SearchContent() {
                 const val = e.target.value;
                 setQuery(val);
                 setShowSuggestions(val.trim().length >= 2);
+                if (filters.imdbId || filters.posterHint) {
+                  setFilters((prev) => {
+                    const next = { ...prev };
+                    delete next.imdbId;
+                    delete next.posterHint;
+                    return next;
+                  });
+                }
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
@@ -870,9 +908,16 @@ function SearchContent() {
                   variant="search"
                   layout="inline"
                   onSelect={(item) => {
+                    setShowSuggestions(false);
                     setQuery(item.title);
                     setDebouncedQuery(item.title);
-                    setShowSuggestions(false);
+                    setPage(1);
+                    setFilters((prev) => ({
+                      ...prev,
+                      imdbId: item.imdbId,
+                      posterHint: item.poster || undefined,
+                    }));
+                    router.push(buildSearchUrlFromSuggestion(item));
                   }}
                 />
               )}

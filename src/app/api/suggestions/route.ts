@@ -48,7 +48,9 @@ export async function GET(request: NextRequest) {
 
             const year = item.y || null;
             const category = item.q === 'feature' || item.q === 'movie' ? 'Movie' : item.q ? 'TV Series' : 'Media';
-            const poster = item.i?.imageUrl ? item.i.imageUrl.replace('._V1_.jpg', '._V1_QL75_UX200_.jpg') : null;
+            const poster = item.i?.imageUrl
+              ? item.i.imageUrl.replace(/\._V1[^.]*\.jpg$/i, '._V1_QL75_UX500_.jpg')
+              : null;
 
             suggestions.push({
               title,

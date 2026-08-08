@@ -196,6 +196,51 @@ async function getOMDbDetail(imdbId: string): Promise<OMDbDetail | null> {
   return null;
 }
 
+function omdbDetailToVerifiedMetadata(
+  detail: OMDbDetail,
+  queryTitle: string,
+  confidenceScore: number
+): VerifiedMetadata {
+  const yearNum = parseInt(detail.Year) || null;
+  const isMovie = detail.Type === 'movie';
+  const genres = detail.Genre && detail.Genre !== 'N/A'
+    ? detail.Genre.split(',').map((g: string) => g.trim())
+    : [];
+  const rating = detail.imdbRating && detail.imdbRating !== 'N/A'
+    ? parseFloat(detail.imdbRating)
+    : null;
+  const runtime = formatRuntimeStr(detail.Runtime);
+  const seasonCount = detail.totalSeasons && detail.totalSeasons !== 'N/A'
+    ? parseInt(detail.totalSeasons, 10)
+    : null;
+  const cast: CastMember[] = detail.Actors && detail.Actors !== 'N/A'
+    ? detail.Actors.split(',').map((name: string) => ({
+        name: name.trim(),
+        character: 'Cast',
+        profilePath: null,
+      }))
+    : [];
+
+  return {
+    imdbId: detail.imdbID,
+    title: detail.Title,
+    originalTitle: detail.Title,
+    year: yearNum,
+    type: (isMovie ? 'movie' : 'series') as ContentStatus,
+    category: (isMovie ? 'movies' : 'tv-shows') as ContentCategory,
+    poster: detail.Poster && detail.Poster !== 'N/A' ? detail.Poster : '',
+    backdrop: null,
+    overview: detail.Plot && detail.Plot !== 'N/A' ? detail.Plot : '',
+    genres,
+    runtime,
+    seasonCount,
+    episodeCount: null,
+    rating,
+    confidenceScore,
+    cast,
+  };
+}
+
 // ---------------------------------------------------------------------------
 // TMDB Search (secondary — only used if TMDB_API_KEY is configured)
 // ---------------------------------------------------------------------------
@@ -302,10 +347,28 @@ async function searchTVMaze(query: string): Promise<VerifiedMetadata[]> {
 // ---------------------------------------------------------------------------
 export async function fetchAuthoritativeMetadata(
   query: string,
-  categoryFilter?: ContentCategory
+  categoryFilter?: ContentCategory,
+  imdbId?: string,
+  posterHint?: string
 ): Promise<VerifiedMetadata[]> {
   const normalized = normalizeQuery(query);
-  if (!normalized) return [];
+  if (!normalized && !imdbId) return [];
+
+  // Fast path: exact IMDb ID from suggestion click
+  if (imdbId) {
+    const imdbCacheKey = `metadata-v3:imdb:${imdbId}`;
+    const imdbCached = cache.get<VerifiedMetadata[]>(imdbCacheKey);
+    if (imdbCached && imdbCached.length > 0) return imdbCached;
+
+    const detail = await getOMDbDetail(imdbId);
+    if (detail) {
+      const meta = omdbDetailToVerifiedMetadata(detail, normalized || detail.Title, 100);
+      if (!meta.poster && posterHint) meta.poster = posterHint;
+      const result = [meta];
+      cache.set(imdbCacheKey, result, 30 * 60 * 1000);
+      return result;
+    }
+  }
 
   const cacheKey = `metadata-v3:${normalized.toLowerCase()}:${categoryFilter || 'all'}`;
   const cached = cache.get<VerifiedMetadata[]>(cacheKey);
@@ -348,47 +411,7 @@ export async function fetchAuthoritativeMetadata(
         } as VerifiedMetadata;
       }
 
-      // Parse real metadata from OMDb detail
-      const yearNum = parseInt(detail.Year) || null;
-      const isMovie = detail.Type === 'movie';
-      const genres = detail.Genre && detail.Genre !== 'N/A'
-        ? detail.Genre.split(',').map((g: string) => g.trim())
-        : [];
-      const rating = detail.imdbRating && detail.imdbRating !== 'N/A'
-        ? parseFloat(detail.imdbRating)
-        : null;
-      const runtime = formatRuntimeStr(detail.Runtime);
-      const seasonCount = detail.totalSeasons && detail.totalSeasons !== 'N/A'
-        ? parseInt(detail.totalSeasons, 10)
-        : null;
-
-      // Parse cast into CastMember objects
-      const cast: CastMember[] = detail.Actors && detail.Actors !== 'N/A'
-        ? detail.Actors.split(',').map((name: string) => ({
-            name: name.trim(),
-            character: 'Cast',
-            profilePath: null,
-          }))
-        : [];
-
-      return {
-        imdbId: detail.imdbID,
-        title: detail.Title,
-        originalTitle: detail.Title,
-        year: yearNum,
-        type: (isMovie ? 'movie' : 'series') as ContentStatus,
-        category: (isMovie ? 'movies' : 'tv-shows') as ContentCategory,
-        poster: detail.Poster && detail.Poster !== 'N/A' ? detail.Poster : '',
-        backdrop: null,
-        overview: detail.Plot && detail.Plot !== 'N/A' ? detail.Plot : '',
-        genres,
-        runtime,
-        seasonCount,
-        episodeCount: null,
-        rating,
-        confidenceScore: confidence,
-        cast,
-      } as VerifiedMetadata;
+      return omdbDetailToVerifiedMetadata(detail, normalized, confidence);
     });
 
     const settled = await Promise.allSettled(detailPromises);

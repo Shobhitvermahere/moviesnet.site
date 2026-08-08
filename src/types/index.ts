@@ -161,6 +161,8 @@ export interface SearchFilters {
   status?: ContentStatus;
   website?: string;
   sort?: SortOption;
+  imdbId?: string;
+  posterHint?: string;
 }
 
 export interface MediaCandidate {
