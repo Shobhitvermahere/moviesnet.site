@@ -4,7 +4,8 @@ import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { formatNumber, DIRECTORY_CATEGORIES } from '@/lib/utils';
+import { formatNumber, DIRECTORY_CATEGORIES, cn } from '@/lib/utils';
+import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
 import type { ContentCategory } from '@/types';
 
 const SEARCH_PLACEHOLDERS = [
@@ -407,24 +408,36 @@ export default function HomePage() {
   const activeCategoryLabel =
     DIRECTORY_CATEGORIES.find((c) => c.id === activeCategory)?.label || 'Streaming';
   const showcaseItems = showcaseTab === 'movies' ? liveMovies : liveAnime;
+  const hasHeroSuggestions = showHeroSuggestions && heroSuggestions.length > 0;
 
   return (
     <div className="relative min-h-screen bg-transparent text-[#f4f1ea] overflow-x-hidden">
-      {/* HERO — brand + headline + search + cinematic BG as visual */}
-      <section className="relative min-h-[calc(100svh-4.25rem)] flex flex-col justify-center px-4 sm:px-6 lg:px-10 pb-16 pt-8 sm:pt-12">
+      {/* HERO + search (suggestions expand inline and push trending down) */}
+      <motion.section
+        layout
+        className={cn(
+          'home-hero-section relative flex flex-col px-4 sm:px-6 lg:px-10',
+          hasHeroSuggestions
+            ? 'min-h-0 py-10 sm:py-12 justify-start'
+            : 'min-h-[calc(100svh-4.25rem)] justify-center pb-16 pt-8 sm:pt-12'
+        )}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="max-w-6xl mx-auto w-full text-center">
-          <h1 className="home-fade-up font-display font-extrabold home-hero-brand mb-6 select-none mx-auto px-1">
-            <span className="brand-solid">Movies</span>
-            <span className="brand-accent">Net</span>
-          </h1>
+          <div>
+            <h1 className="home-fade-up font-display font-extrabold home-hero-brand mb-6 select-none mx-auto px-1">
+              <span className="brand-solid">Movies</span>
+              <span className="brand-accent">Net</span>
+            </h1>
 
-          <p className="home-fade-up-delay font-display text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white/95 mb-5">
-            Search once. Find everywhere.
-          </p>
+            <p className="home-fade-up-delay font-display text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white/95 mb-5">
+              Search once. Find everywhere.
+            </p>
 
-          <p className="home-fade-up-delay-2 text-base sm:text-lg text-white/55 max-w-2xl mx-auto mb-12 leading-relaxed">
-            One query across curated movies, anime, manga, sports, and live TV — then open the original source.
-          </p>
+            <p className="home-fade-up-delay-2 text-base sm:text-lg text-white/55 max-w-2xl mx-auto mb-12 leading-relaxed">
+              One query across curated movies, anime, manga, sports, and live TV — then open the original source.
+            </p>
+          </div>
 
           <form
             onSubmit={(e) => {
@@ -432,7 +445,7 @@ export default function HomePage() {
               setHeroSuggestions([]);
               handleSearchSubmit(e);
             }}
-            className="home-fade-up-delay-2 relative max-w-3xl mx-auto hero-search-wrapper z-30"
+            className="home-fade-up-delay-2 max-w-3xl mx-auto hero-search-wrapper"
           >
             <div className="home-search-shell rounded-2xl p-1.5 sm:p-2 flex items-center gap-2">
               <div className="pl-3 text-white/45 shrink-0" aria-hidden>
@@ -463,62 +476,50 @@ export default function HomePage() {
               </button>
             </div>
 
-            {showHeroSuggestions && heroSuggestions.length > 0 && (
-              <div className="absolute left-0 right-0 top-full mt-2 home-panel rounded-2xl overflow-hidden z-50 p-2 text-left shadow-2xl">
-                <p className="px-3 py-2 text-[11px] uppercase tracking-[0.14em] text-white/40 font-medium">
-                  Suggested titles
-                </p>
-                {heroSuggestions.map((item, idx) => (
-                  <button
-                    key={`${item.title}-${idx}`}
-                    type="button"
-                    onMouseDown={() => {
-                      setSearchQuery(item.title);
-                      setShowHeroSuggestions(false);
-                      setHeroSuggestions([]);
-                      router.push(`/search?q=${encodeURIComponent(item.title)}`);
-                    }}
-                    className="w-full flex items-center gap-3 p-2.5 rounded-xl hover:bg-white/[0.06] transition-colors text-left"
-                  >
-                    <div className="w-9 h-12 rounded-md bg-black/50 overflow-hidden shrink-0 border border-white/10">
-                      {item.poster ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={item.poster} alt="" className="w-full h-full object-cover" />
-                      ) : null}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="text-sm font-semibold text-white truncate">{item.title}</div>
-                      <div className="text-xs text-white/45 mt-0.5">
-                        {[item.year, item.category].filter(Boolean).join(' · ')}
-                      </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
+            <AnimatePresence initial={false}>
+              {hasHeroSuggestions && (
+                <SearchSuggestionsSlider
+                  suggestions={heroSuggestions}
+                  variant="home"
+                  layout="inline"
+                  onSelect={(item) => {
+                    setSearchQuery(item.title);
+                    setShowHeroSuggestions(false);
+                    setHeroSuggestions([]);
+                    router.push(`/search?q=${encodeURIComponent(item.title)}`);
+                  }}
+                />
+              )}
+            </AnimatePresence>
           </form>
 
-          <div className="home-fade-up-delay-2 mt-6 flex items-center justify-center gap-5 text-sm">
-            <a
-              href="#trending"
-              className="text-white/55 hover:text-[#e8b86d] transition-colors underline-offset-4 hover:underline"
-            >
-              See what’s trending
-            </a>
-            <span className="text-white/20" aria-hidden>
-              ·
-            </span>
-            <a
-              href="#directory"
-              className="text-white/55 hover:text-[#e8b86d] transition-colors underline-offset-4 hover:underline"
-            >
-              Browse directory
-            </a>
-          </div>
+          {!hasHeroSuggestions && (
+            <div className="home-fade-up-delay-2 mt-6 flex items-center justify-center gap-5 text-sm">
+              <a
+                href="#trending"
+                className="text-white/55 hover:text-[#e8b86d] transition-colors underline-offset-4 hover:underline"
+              >
+                See what’s trending
+              </a>
+              <span className="text-white/20" aria-hidden>
+                ·
+              </span>
+              <a
+                href="#directory"
+                className="text-white/55 hover:text-[#e8b86d] transition-colors underline-offset-4 hover:underline"
+              >
+                Browse directory
+              </a>
+            </div>
+          )}
         </div>
-      </section>
+      </motion.section>
 
-      <div className="page-shell mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-24 pb-28">
+      <motion.div
+        layout
+        className="home-content-below page-shell mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 space-y-24 pb-28 pt-4 sm:pt-6"
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      >
         {/* TRENDING */}
         <section id="trending" className="scroll-mt-28">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
@@ -812,7 +813,7 @@ export default function HomePage() {
             })}
           </div>
         </section>
-      </div>
+      </motion.div>
     </div>
   );
 }

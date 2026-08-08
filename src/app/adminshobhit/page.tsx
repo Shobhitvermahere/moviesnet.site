@@ -237,6 +237,10 @@ export default function AdminDashboard() {
             <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors mb-1">Backend (FMHY)</h3>
             <p className="text-xs font-medium text-gray-300">640+ streaming sites from fmhy.net/video catalog</p>
           </Link>
+          <Link href="/adminshobhit/search-order" className="p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-2xl shadow-xl hover:border-emerald-500/50 hover:bg-black/80 transition-all group">
+            <h3 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors mb-1">Search Order</h3>
+            <p className="text-xs font-medium text-gray-300">Drag to control which sites appear first in search</p>
+          </Link>
           <Link href="/adminshobhit/analytics" className="p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-2xl shadow-xl hover:border-blue-500/50 hover:bg-black/80 transition-all group">
             <h3 className="text-base font-bold text-white group-hover:text-blue-300 transition-colors mb-1">Analytics</h3>
             <p className="text-xs font-medium text-gray-300">View detailed search and click analytics</p>

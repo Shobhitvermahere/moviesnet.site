@@ -6,7 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import { useSearchStore } from '@/stores';
 import { cn, CATEGORIES, QUALITY_COLORS, STATUS_COLORS, resolveMoviePoster } from '@/lib/utils';
-import type { SearchResponse, SearchFilters, SearchResult, ContentCategory, Language, Quality, ContentStatus, SortOption } from '@/types';
+import { formatLanguageLabel } from '@/lib/website-capabilities';
+import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
+import type { SearchResponse, SearchFilters, SearchResult, ContentCategory, Language, Quality, ContentStatus, SortOption, Website } from '@/types';
 
 // --- Filter Options ---
 const LANGUAGE_OPTIONS: { value: Language; label: string }[] = [
@@ -60,14 +62,78 @@ async function fetchSearch(query: string, filters: SearchFilters, page: number):
   return res.json();
 }
 
+function SourceListTable({ sources, showAll = false }: { sources: NonNullable<SearchResult['sources']>; showAll?: boolean }) {
+  const [expanded, setExpanded] = useState(showAll);
+  const visible = expanded ? sources : sources.slice(0, 8);
+
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-bold text-cyan-300">
+          Streaming Sites ({sources.length}) — ranked by admin priority
+        </span>
+        {sources.length > 8 && !showAll && (
+          <button onClick={() => setExpanded(!expanded)} className="text-[11px] font-black text-purple-400 hover:underline">
+            {expanded ? 'Show Less' : `+ ${sources.length - 8} More`}
+          </button>
+        )}
+      </div>
+      <div className="rounded-xl border border-white/10 overflow-hidden">
+        <div className="hidden sm:grid grid-cols-[1fr_120px_140px_80px] gap-2 px-3 py-2 bg-white/[0.04] text-[10px] font-black text-white/40 uppercase tracking-wider border-b border-white/10">
+          <span>Website</span>
+          <span>Video Quality</span>
+          <span>Audio</span>
+          <span className="text-right">Watch</span>
+        </div>
+        {visible.map((source, idx) => (
+          <a
+            key={source.websiteId}
+            href={source.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col sm:grid sm:grid-cols-[1fr_120px_140px_80px] gap-2 px-3 py-2.5 border-b border-white/[0.06] last:border-0 hover:bg-cyan-500/10 transition-colors group"
+          >
+            <div className="flex items-center gap-2.5 min-w-0">
+              <span className="text-[10px] font-mono text-white/30 w-4">{idx + 1}</span>
+              <div className="w-6 h-6 rounded-md bg-white/10 flex items-center justify-center overflow-hidden flex-shrink-0">
+                {source.websiteLogo ? (
+                  <img src={source.websiteLogo} alt="" className="w-full h-full object-cover" />
+                ) : (
+                  <span className="text-[9px] font-black text-cyan-300">{source.websiteName.charAt(0)}</span>
+                )}
+              </div>
+              <span className="text-sm font-bold text-white group-hover:text-cyan-300 truncate">{source.websiteName}</span>
+              {source.verified && (
+                <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex-shrink-0">✓</span>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-1 pl-6 sm:pl-0">
+              {source.quality.slice(0, 3).map((q) => (
+                <span key={q} className={cn('text-[10px] font-black px-2 py-0.5 rounded-full border', QUALITY_COLORS[q] || 'bg-white/10 text-white/70 border-white/20')}>
+                  {q === '4k' ? '4K' : q.toUpperCase()}
+                </span>
+              ))}
+            </div>
+            <div className="text-xs text-white/70 font-semibold pl-6 sm:pl-0 truncate">
+              {source.languages.map(formatLanguageLabel).join(', ')}
+            </div>
+            <div className="pl-6 sm:pl-0 sm:text-right">
+              <span className="inline-flex items-center gap-1 text-xs font-black text-cyan-400 group-hover:text-cyan-300">
+                Open →
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function SearchResultCard({ result, index }: { result: SearchResult; index: number }) {
   const [imgError, setImgError] = useState(false);
-  const [logoError, setLogoError] = useState(false);
-  const [showSources, setShowSources] = useState(false);
   const fallbackPoster = resolveMoviePoster(result.title, result.category, index);
 
   const sourcesList = result.sources || [];
-  const displaySources = sourcesList.slice(0, showSources ? sourcesList.length : 4);
 
   return (
     <motion.div
@@ -130,22 +196,12 @@ function SearchResultCard({ result, index }: { result: SearchResult; index: numb
         {/* Content */}
         <div className="flex-1 p-5 sm:p-6 flex flex-col justify-between">
           <div>
-            {/* Category & Website Portal Row */}
+            {/* Category row */}
             <div className="flex items-center justify-between gap-2 mb-2.5">
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-md bg-white/10 border border-white/20 flex items-center justify-center overflow-hidden flex-shrink-0">
-                  {result.websiteLogo && !logoError ? (
-                    <img src={result.websiteLogo} alt="" className="w-full h-full object-cover" loading="lazy" onError={() => setLogoError(true)} />
-                  ) : (
-                    <span className="text-[9px] font-black text-cyan-300">{result.websiteName.charAt(0)}</span>
-                  )}
-                </div>
-                <span className="text-xs font-black text-cyan-300 tracking-wide uppercase">
-                  {result.websiteName}
-                </span>
                 {sourcesList.length > 0 && (
                   <span className="text-[10.5px] font-bold text-amber-300 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full">
-                    ⚡ {sourcesList.length} Mirrors
+                    {sourcesList.length} streaming {sourcesList.length === 1 ? 'site' : 'sites'}
                   </span>
                 )}
               </div>
@@ -220,36 +276,10 @@ function SearchResultCard({ result, index }: { result: SearchResult; index: numb
               </div>
             </div>
 
-            {/* Consolidated Streaming Sources List */}
+            {/* Ranked streaming sources */}
             {sourcesList.length > 0 && (
-              <div className="space-y-2 mb-2">
-                <div className="flex items-center justify-between text-xs text-white/70">
-                  <span className="font-bold text-cyan-300">Available Streaming Mirrors ({sourcesList.length})</span>
-                  {sourcesList.length > 4 && (
-                    <button
-                      onClick={() => setShowSources(!showSources)}
-                      className="text-[11px] font-black text-purple-400 hover:underline"
-                    >
-                      {showSources ? 'Show Less' : `+ ${sourcesList.length - 4} More Sites`}
-                    </button>
-                  )}
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {displaySources.map((source) => (
-                    <a
-                      key={source.websiteId}
-                      href={source.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 p-2 rounded-xl bg-white/[0.06] hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-500/40 transition-all text-xs text-white font-bold group/src"
-                    >
-                      <div className="w-4 h-4 rounded bg-white/10 flex items-center justify-center text-[9px] font-black text-cyan-300">
-                        {source.websiteName.charAt(0)}
-                      </div>
-                      <span className="truncate group-hover/src:text-cyan-300">{source.websiteName}</span>
-                    </a>
-                  ))}
-                </div>
+              <div className="mb-2">
+                <SourceListTable sources={sourcesList} />
               </div>
             )}
           </div>
@@ -257,7 +287,7 @@ function SearchResultCard({ result, index }: { result: SearchResult; index: numb
           {/* Action Row */}
           <div className="flex items-center justify-between pt-3 border-t border-white/10 mt-2">
             <span className="text-[11px] font-bold text-white/40">
-              Primary Mirror: <span className="text-cyan-300 font-black">{result.websiteName}</span>
+              Top site: <span className="text-cyan-300 font-black">{result.websiteName}</span>
             </span>
             <a
               href={result.url}
@@ -385,11 +415,13 @@ function FilterPanel({
   onFilterChange,
   isOpen,
   onToggle,
+  websites,
 }: {
   filters: SearchFilters;
   onFilterChange: (filters: SearchFilters) => void;
   isOpen: boolean;
   onToggle: () => void;
+  websites: Website[];
 }) {
   return (
     <>
@@ -442,30 +474,12 @@ function FilterPanel({
                 >
                   <span className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-cyan-400" />
-                    All Websites (49)
+                    All Websites ({websites.length})
                   </span>
                   {!filters.website && <span className="text-cyan-400">✓</span>}
                 </button>
 
-                {[
-                  { id: '1flex', name: '1FLEX' },
-                  { id: '1-show', name: '1 Show' },
-                  { id: '1tube', name: '1TUBE' },
-                  { id: '7-movies', name: '7 movies' },
-                  { id: 'cinezo', name: 'CINEZO' },
-                  { id: 'arrow-tv', name: 'ARROW TV' },
-                  { id: 'redflix', name: 'REDFLIX' },
-                  { id: 'shuttle-tv', name: 'SHUTTLE TV' },
-                  { id: 'prime-shows', name: 'PRIME SHOWS' },
-                  { id: 'you-shows', name: 'YOU SHOWS' },
-                  { id: 'flixhub', name: 'FLIXHUB' },
-                  { id: 'streammovies', name: 'STREAMMOVIES' },
-                  { id: 'dulo', name: 'DULO' },
-                  { id: 'stigstream', name: 'STIGSTREAM' },
-                  { id: 'flixeo', name: 'FLIXEO' },
-                  { id: 'willow', name: 'WILLOW' },
-                  { id: 'cinrift', name: 'CINRIFT' },
-                ].map((site) => (
+                {websites.map((site) => (
                   <button
                     key={site.id}
                     onClick={() => onFilterChange({
@@ -480,8 +494,8 @@ function FilterPanel({
                     )}
                   >
                     <span className="flex items-center gap-2 truncate">
-                      <span className="w-3.5 h-3.5 rounded bg-white/10 flex items-center justify-center text-[9px] font-black text-cyan-300">
-                        {site.name.charAt(0)}
+                      <span className="w-3.5 h-3.5 rounded bg-white/10 flex items-center justify-center text-[9px] font-black text-cyan-300 overflow-hidden">
+                        {site.logoUrl ? <img src={site.logoUrl} alt="" className="w-full h-full object-cover" /> : site.name.charAt(0)}
                       </span>
                       <span className="truncate">{site.name}</span>
                     </span>
@@ -718,6 +732,17 @@ function SearchContent() {
 
   const suggestionsList = suggestionData?.suggestions || [];
 
+  const { data: websitesData } = useQuery<Website[]>({
+    queryKey: ['public-websites'],
+    queryFn: async () => {
+      const res = await fetch('/api/websites');
+      if (!res.ok) return [];
+      return res.json();
+    },
+    staleTime: 5 * 60 * 1000,
+  });
+  const websites = websitesData || [];
+
   // Hide suggestions when clicking outside search input or clicking page content
   useEffect(() => {
     const handleDocumentClick = (e: MouseEvent) => {
@@ -800,7 +825,7 @@ function SearchContent() {
 
         {/* Search Header */}
         <div className="mb-10">
-          <div className="relative max-w-4xl search-input-container">
+          <div className="relative max-w-4xl search-input-container hero-search-wrapper">
             <div className="absolute left-5 top-1/2 -translate-y-1/2 text-purple-400">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8" />
@@ -838,53 +863,20 @@ function SearchContent() {
             )}
 
             {/* Live IMDb / TMDB Autocomplete Suggestions Dropdown */}
-            {showSuggestions && suggestionsList.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 5 }}
-                className="absolute left-0 right-0 top-full mt-2.5 bg-[#0e1020]/95 backdrop-blur-2xl border border-purple-500/30 rounded-2xl shadow-2xl overflow-hidden z-50 p-2 space-y-1"
-              >
-                <div className="px-3 py-1.5 text-[10.5px] font-black text-purple-400 uppercase tracking-wider flex items-center justify-between border-b border-white/10 mb-1">
-                  <span>⚡ Instant IMDb / TMDB Verified Suggestions</span>
-                  <span className="text-white/40 font-normal">Press enter or click</span>
-                </div>
-                {suggestionsList.map((item, idx) => (
-                  <button
-                    key={`${item.title}-${idx}`}
-                    onMouseDown={() => {
-                      setQuery(item.title);
-                      setDebouncedQuery(item.title);
-                      setShowSuggestions(false);
-                    }}
-                    className="w-full flex items-center justify-between p-2.5 rounded-xl hover:bg-purple-500/20 hover:border-purple-500/40 border border-transparent transition-all group text-left"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-12 rounded-lg bg-black/50 overflow-hidden flex-shrink-0 border border-white/10 flex items-center justify-center">
-                        {item.poster ? (
-                          <img src={item.poster} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-                        ) : (
-                          <span className="text-[9px] font-black text-purple-300">IMDb</span>
-                        )}
-                      </div>
-                      <div>
-                        <div className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-1">
-                          {item.title}
-                        </div>
-                        {item.year && (
-                          <div className="text-xs text-white/50 font-semibold mt-0.5">
-                            Released in {item.year}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <span className="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 flex-shrink-0">
-                      {item.category}
-                    </span>
-                  </button>
-                ))}
-              </motion.div>
-            )}
+            <AnimatePresence initial={false}>
+              {showSuggestions && suggestionsList.length > 0 && (
+                <SearchSuggestionsSlider
+                  suggestions={suggestionsList}
+                  variant="search"
+                  layout="inline"
+                  onSelect={(item) => {
+                    setQuery(item.title);
+                    setDebouncedQuery(item.title);
+                    setShowSuggestions(false);
+                  }}
+                />
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Spell correction */}
@@ -921,7 +913,7 @@ function SearchContent() {
         </div>
 
         {/* Content Area */}
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="home-content-below flex flex-col lg:flex-row gap-8">
           {/* Sticky Filters Sidebar */}
           <div className="w-full lg:w-72 flex-shrink-0 lg:sticky lg:top-24 self-start max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar">
             <FilterPanel
@@ -929,6 +921,7 @@ function SearchContent() {
               onFilterChange={handleFilterChange}
               isOpen={isFilterOpen}
               onToggle={() => setFilterOpen(!isFilterOpen)}
+              websites={websites}
             />
           </div>
 
@@ -1035,25 +1028,9 @@ function SearchContent() {
                         : 'bg-white/[0.04] text-white/60 hover:text-white hover:bg-white/[0.08] border border-white/10'
                     )}
                   >
-                    <span>🌐 All {data.websitesSearched || 109} Websites</span>
+                    <span>🌐 All {data.websitesSearched || websites.length} Websites</span>
                   </button>
-                  {[
-                    { id: '1flex', name: '1FLEX' },
-                    { id: '1-show', name: '1 Show' },
-                    { id: '1tube', name: '1TUBE' },
-                    { id: '7-movies', name: '7 movies' },
-                    { id: 'cinezo', name: 'CINEZO' },
-                    { id: 'arrow-tv', name: 'ARROW TV' },
-                    { id: 'redflix', name: 'REDFLIX' },
-                    { id: 'shuttle-tv', name: 'SHUTTLE TV' },
-                    { id: 'prime-shows', name: 'PRIME SHOWS' },
-                    { id: 'you-shows', name: 'YOU SHOWS' },
-                    { id: 'flixhub', name: 'FLIXHUB' },
-                    { id: 'streammovies', name: 'STREAMMOVIES' },
-                    { id: 'dulo', name: 'DULO' },
-                    { id: 'stigstream', name: 'STIGSTREAM' },
-                    { id: 'flixeo', name: 'FLIXEO' },
-                  ].map((site) => (
+                  {websites.slice(0, 20).map((site) => (
                     <button
                       key={site.id}
                       onClick={() => setFilters({ ...filters, website: filters.website === site.id ? undefined : site.id })}
@@ -1064,8 +1041,8 @@ function SearchContent() {
                           : 'bg-white/[0.04] text-white/60 hover:text-white hover:bg-white/[0.08] border-white/10'
                       )}
                     >
-                      <span className="w-3.5 h-3.5 rounded bg-white/10 flex items-center justify-center text-[9px] font-black text-cyan-300">
-                        {site.name.charAt(0)}
+                      <span className="w-3.5 h-3.5 rounded bg-white/10 flex items-center justify-center text-[9px] font-black text-cyan-300 overflow-hidden">
+                        {site.logoUrl ? <img src={site.logoUrl} alt="" className="w-full h-full object-cover" /> : site.name.charAt(0)}
                       </span>
                       <span>{site.name}</span>
                     </button>
@@ -1290,23 +1267,34 @@ function SearchContent() {
                               </div>
                             </div>
                           )}
+
+                          {/* Ranked directory sources for top match */}
+                          {data.results[0].sources && data.results[0].sources.length > 0 && (
+                            <div className="pt-4 border-t border-white/10 w-full">
+                              <SourceListTable sources={data.results[0].sources} showAll />
+                            </div>
+                          )}
                         </div>
                       </div>
                     </motion.div>
 
-                    {/* Results Cards List */}
-                    <div className="flex items-center justify-between px-2 py-1 text-xs font-extrabold text-cyan-300 border-b border-white/10 pb-2">
-                      <span className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                        {data.totalResults} verified {data.totalResults === 1 ? 'title' : 'titles'} found across {data.websitesSearched} portals
-                      </span>
-                      <span className="text-white/40 font-normal">TMDB Verified Metadata</span>
-                    </div>
-                    <div className="space-y-4">
-                      {data.results.map((result, idx) => (
-                        <SearchResultCard key={result.id} result={result} index={idx} />
-                      ))}
-                    </div>
+                    {/* Additional title matches */}
+                    {data.results.length > 1 && (
+                      <>
+                        <div className="flex items-center justify-between px-2 py-1 text-xs font-extrabold text-cyan-300 border-b border-white/10 pb-2">
+                          <span className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                            {data.totalResults - 1} more {data.totalResults - 1 === 1 ? 'match' : 'matches'}
+                          </span>
+                          <span className="text-white/40 font-normal">IMDb / TMDB Verified</span>
+                        </div>
+                        <div className="space-y-4">
+                          {data.results.slice(1).map((result, idx) => (
+                            <SearchResultCard key={result.id} result={result} index={idx + 1} />
+                          ))}
+                        </div>
+                      </>
+                    )}
                   </div>
                 ) : (
                   debouncedQuery && (

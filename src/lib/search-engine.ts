@@ -1,10 +1,11 @@
 // ============================================================================
 // AllSiteHub Search — Core Search Engine
 // ============================================================================
-import type { SearchResult, SearchFilters, SearchResponse, Website, Language, SubtitleLanguage, Quality } from '@/types';
-import { getEnabledWebsites, addSearchQuery, getWebsiteById } from './db';
+import type { SearchResult, SearchFilters, SearchResponse, Website, Language, SubtitleLanguage, Quality, StreamingSource } from '@/types';
+import { getPublicWebsites, addSearchQuery, getWebsiteById } from './db';
 import { cache } from './cache';
 import { findClosestMatch, resolveMoviePoster, slugify } from './utils';
+import { websiteToStreamingSource } from './website-capabilities';
 
 // Search dictionary for spell correction
 const COMMON_TITLES = [
@@ -59,8 +60,8 @@ export async function executeSearch(
   // Track search query
   addSearchQuery(query.trim());
 
-  // Get enabled websites (all portals)
-  let websites = getEnabledWebsites();
+  // Public directory websites sorted by admin priority (search order)
+  let websites = getPublicWebsites().sort((a, b) => a.priority - b.priority);
 
   // Filter by website if specified
   if (filters.website) {
@@ -82,65 +83,9 @@ export async function executeSearch(
   let allResults: SearchResult[] = [];
 
   if (verifiedMediaList.length > 0) {
-    // ---------------------------------------------------------------------------
-    // 2. Create a SEPARATE result card for EACH website per verified title
-    //    so users see maximum results across all indexed websites
-    // ---------------------------------------------------------------------------
     for (let mIdx = 0; mIdx < verifiedMediaList.length; mIdx++) {
       const media = verifiedMediaList[mIdx];
-      const category = media.category || filters.category || 'movies';
-
-      // Filter websites relevant to this content's category
-      const relevantSites = websites.filter((w) =>
-        w.categories.some((cat) => cat === category || cat === 'movies' || cat === 'tv-shows')
-      );
-      const sitesToUse = relevantSites.length > 0 ? relevantSites : websites;
-
-      // Poster: Always from verified metadata
-      const poster = media.poster || resolveMoviePoster(media.title, category, mIdx);
-
-      // Create one result card per website
-      for (let wIdx = 0; wIdx < sitesToUse.length; wIdx++) {
-        const website = sitesToUse[wIdx];
-
-        const siteSearchUrl = website.searchUrl
-          ? website.searchUrl.replace('{query}', encodeURIComponent(media.title))
-          : `${website.homepageUrl}/search?q=${encodeURIComponent(media.title)}`;
-
-        allResults.push({
-          id: `tmdb-${media.tmdbId || mIdx}-${website.id}-${slugify(media.title)}`,
-          title: media.title,
-          originalTitle: media.originalTitle,
-          poster,
-          backdrop: media.backdrop,
-          websiteId: website.id,
-          websiteName: website.name,
-          websiteLogo: website.logoUrl,
-          url: siteSearchUrl,
-          sources: [], // Individual card, no consolidated sources
-          languages: website.languages.length > 0 ? website.languages : (['english'] as Language[]),
-          subtitles: ['english'] as SubtitleLanguage[],
-          quality: ['1080p', '720p'] as Quality[],
-          episodeCount: media.episodeCount,
-          seasonCount: media.seasonCount,
-          runtime: media.runtime,
-          status: media.type,
-          genres: media.genres,
-          rating: media.rating,
-          year: media.year,
-          overview: media.overview,
-          tmdbId: media.tmdbId,
-          imdbId: media.imdbId,
-          confidenceScore: media.confidenceScore,
-          cast: media.cast,
-          trailerKey: media.trailerKey,
-          similarTitles: media.similarTitles,
-          officialProviders: media.officialProviders,
-          lastUpdated: new Date().toISOString().split('T')[0],
-          verified: true,
-          category,
-        });
-      }
+      allResults.push(buildUnifiedResult(media, websites, mIdx, filters.category));
     }
   }
 
@@ -152,17 +97,7 @@ export async function executeSearch(
       const category = filters.category || 'movies';
       const poster = item.poster || resolveMoviePoster(item.title, category, mIdx);
 
-      const sources = websites.map((w) => ({
-        websiteId: w.id,
-        websiteName: w.name,
-        websiteLogo: w.logoUrl,
-        url: w.searchUrl ? w.searchUrl.replace('{query}', encodeURIComponent(item.title)) : `${w.homepageUrl}/search?q=${encodeURIComponent(item.title)}`,
-        languages: w.languages.length > 0 ? w.languages : (['english'] as Language[]),
-        subtitles: ['english'] as SubtitleLanguage[],
-        quality: ['1080p', '720p'] as Quality[],
-        verified: true,
-      }));
-
+      const sources = websites.map((w) => websiteToStreamingSource(w, item.title));
       const primarySite = websites[0];
 
       allResults.push({
@@ -176,9 +111,9 @@ export async function executeSearch(
           ? primarySite.searchUrl.replace('{query}', encodeURIComponent(item.title))
           : `${primarySite?.homepageUrl || '#'}/search?q=${encodeURIComponent(item.title)}`,
         sources,
-        languages: ['english'] as Language[],
+        languages: aggregateLanguages(sources),
         subtitles: ['english'] as SubtitleLanguage[],
-        quality: ['1080p', '720p'] as Quality[],
+        quality: aggregateQualities(sources),
         episodeCount: null,
         seasonCount: null,
         runtime: null,
@@ -368,31 +303,129 @@ async function fetchFallbackMedia(query: string, category?: string): Promise<Fal
   return sortedItems;
 }
 
-// Apply filters to results
-function applyFilters(results: SearchResult[], filters: SearchFilters): SearchResult[] {
-  return results.filter((r) => {
-    if (filters.language && !r.languages.includes(filters.language)) return false;
-    if (filters.subtitle && !r.subtitles.includes(filters.subtitle)) return false;
-    if (filters.quality && !r.quality.includes(filters.quality)) return false;
-    if (filters.status && r.status !== filters.status) return false;
-    if (filters.category) {
-      if (r.category !== filters.category) {
-        const site = getWebsiteById(r.websiteId);
-        if (!site || !site.categories.includes(filters.category)) return false;
-      }
-    }
-    return true;
-  });
+function getRelevantWebsites(websites: Website[], category: string): Website[] {
+  const relevant = websites.filter((w) =>
+    w.categories.some((cat) => cat === category || cat === 'movies' || cat === 'tv-shows')
+  );
+  return relevant.length > 0 ? relevant : websites;
 }
 
-// Remove duplicate results by title + website (allow multiple website results for the same title)
+function aggregateLanguages(sources: StreamingSource[]): Language[] {
+  const langs = new Set<Language>();
+  for (const s of sources) s.languages.forEach((l) => langs.add(l));
+  return langs.size > 0 ? [...langs] : (['english'] as Language[]);
+}
+
+function aggregateQualities(sources: StreamingSource[]): Quality[] {
+  const order: Quality[] = ['4k', '2k', '1080p', '720p', '480p'];
+  const found = new Set<Quality>();
+  for (const s of sources) s.quality.forEach((q) => found.add(q));
+  return order.filter((q) => found.has(q));
+}
+
+function buildUnifiedResult(
+  media: VerifiedMetadata,
+  websites: Website[],
+  mIdx: number,
+  filterCategory?: string
+): SearchResult {
+  const category = media.category || filterCategory || 'movies';
+  const sitesToUse = getRelevantWebsites(websites, category);
+  const sources = sitesToUse.map((w) => websiteToStreamingSource(w, media.title));
+  const primary = sources[0];
+  const poster = media.poster || resolveMoviePoster(media.title, category, mIdx);
+
+  return {
+    id: `tmdb-${media.tmdbId || mIdx}-${slugify(media.title)}`,
+    title: media.title,
+    originalTitle: media.originalTitle,
+    poster,
+    backdrop: media.backdrop,
+    websiteId: primary?.websiteId || 'unknown',
+    websiteName: primary?.websiteName || 'Unknown',
+    websiteLogo: primary?.websiteLogo || '',
+    url: primary?.url || '#',
+    sources,
+    languages: aggregateLanguages(sources),
+    subtitles: ['english'] as SubtitleLanguage[],
+    quality: aggregateQualities(sources),
+    episodeCount: media.episodeCount,
+    seasonCount: media.seasonCount,
+    runtime: media.runtime,
+    status: media.type,
+    genres: media.genres,
+    rating: media.rating,
+    year: media.year,
+    overview: media.overview,
+    tmdbId: media.tmdbId,
+    imdbId: media.imdbId,
+    confidenceScore: media.confidenceScore,
+    cast: media.cast,
+    trailerKey: media.trailerKey,
+    similarTitles: media.similarTitles,
+    officialProviders: media.officialProviders,
+    lastUpdated: new Date().toISOString().split('T')[0],
+    verified: true,
+    category,
+  };
+}
+
+// Apply filters to results
+function applyFilters(results: SearchResult[], filters: SearchFilters): SearchResult[] {
+  return results
+    .map((r) => {
+      let sources = r.sources || [];
+
+      if (filters.website) {
+        sources = sources.filter(
+          (s) => s.websiteId === filters.website || s.websiteName.toLowerCase() === filters.website?.toLowerCase()
+        );
+      }
+      if (filters.language) {
+        sources = sources.filter((s) => s.languages.includes(filters.language!));
+      }
+      if (filters.quality) {
+        sources = sources.filter((s) => s.quality.includes(filters.quality!));
+      }
+
+      if (filters.website || filters.language || filters.quality) {
+        if (sources.length === 0) return null;
+        const primary = sources[0];
+        return {
+          ...r,
+          sources,
+          websiteId: primary.websiteId,
+          websiteName: primary.websiteName,
+          websiteLogo: primary.websiteLogo,
+          url: primary.url,
+          languages: aggregateLanguages(sources),
+          quality: aggregateQualities(sources),
+        };
+      }
+      return r;
+    })
+    .filter((r): r is SearchResult => {
+      if (!r) return false;
+      if (filters.subtitle && !r.subtitles.includes(filters.subtitle)) return false;
+      if (filters.status && r.status !== filters.status) return false;
+      if (filters.category && r.category !== filters.category) {
+        const hasCategorySite = (r.sources || []).some((s) => {
+          const site = getWebsiteById(s.websiteId);
+          return site?.categories.includes(filters.category!);
+        });
+        if (!hasCategorySite) return false;
+      }
+      return true;
+    });
+}
+
+// One result per unique title
 function deduplicateResults(results: SearchResult[]): SearchResult[] {
   const seen = new Set<string>();
   const unique: SearchResult[] = [];
 
   for (const result of results) {
-    const titleKey = result.title.toLowerCase().replace(/[^a-z0-9]/g, '');
-    const key = `${titleKey}-${result.websiteId}`;
+    const key = result.title.toLowerCase().replace(/[^a-z0-9]/g, '');
     if (!seen.has(key)) {
       seen.add(key);
       unique.push(result);
