@@ -477,6 +477,117 @@ body {
   background: linear-gradient(155deg, rgba(12, 14, 22, 0.98), rgba(8, 10, 16, 0.96));
 }
 
+/* Mobile search result — compact rectangle card */
+@media (max-width: 767px) {
+  .search-result-detail-card {
+    border-radius: 0.875rem;
+  }
+
+  .search-result-mobile-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .search-result-poster {
+    width: 4.25rem;
+    height: 6.375rem;
+  }
+
+  .search-result-mobile-body {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .search-result-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .search-result-meta-item {
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.5rem 0.625rem;
+    min-width: 0;
+  }
+
+  .search-result-meta-label {
+    font-size: 0.5625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 0.125rem;
+  }
+
+  .search-result-meta-value {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-transform: capitalize;
+  }
+
+  .search-result-overview {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.58);
+    margin-bottom: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .search-result-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .search-result-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.5rem 0.375rem;
+    border-radius: 0.625rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .search-result-action-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .search-result-action-primary {
+    border: 1px solid transparent;
+    color: #1a1208;
+    background: #e8b86d;
+  }
+
+  .search-result-detail-card .search-source-card-full {
+    border-radius: 0.75rem;
+  }
+}
+
 .search-handoff-card {
   background: linear-gradient(165deg, #12151f, #0a0c14);
   border: 1px solid rgba(232, 184, 109, 0.25);

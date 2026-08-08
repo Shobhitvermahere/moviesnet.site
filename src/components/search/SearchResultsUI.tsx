@@ -313,19 +313,61 @@ export function SearchHeroResult({
     <motion.article
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      className="search-result-detail-card search-hero-card relative overflow-hidden rounded-2xl border border-white/10 shadow-xl"
+      className="search-result-detail-card search-hero-card relative w-full max-w-full overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 shadow-xl"
     >
       {result.backdrop && (
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-15 blur-2xl scale-110 pointer-events-none"
+          className="absolute inset-0 bg-cover bg-center opacity-15 blur-2xl scale-110 pointer-events-none hidden sm:block"
           style={{ backgroundImage: `url(${result.backdrop})` }}
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a0c12]/96 via-[#0d1018]/94 to-[#080a10]/96 pointer-events-none" />
 
-      <div className="relative z-10 p-4 sm:p-6 lg:p-8">
-        <div className="flex flex-row gap-4 sm:gap-6">
-          <div className="relative w-28 sm:w-36 lg:w-44 shrink-0">
+      <div className="relative z-10 p-3 sm:p-6 lg:p-8">
+        {/* Mobile: compact rectangle header (poster + title) */}
+        <div className="search-result-mobile-head md:hidden">
+          <div className="search-result-poster shrink-0 rounded-lg overflow-hidden border border-white/15 bg-black/50">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={poster}
+              alt={result.title}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = resolveMoviePoster(result.title, result.category);
+              }}
+            />
+          </div>
+          <div className="search-result-mobile-head-text min-w-0 flex-1">
+            <div className="flex flex-wrap gap-1 mb-1.5">
+              {result.category && (
+                <span className="text-[8px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full bg-white/5 text-white/55 border border-white/10 capitalize">
+                  {result.category.replace('-', ' ')}
+                </span>
+              )}
+              <span className="text-[8px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full bg-[#e8b86d]/10 text-[#e8b86d] border border-[#e8b86d]/25">
+                {availableCount} {availableCount === 1 ? 'site' : 'sites'}
+              </span>
+              {result.rating && (
+                <span className="text-[8px] font-bold px-1.5 py-0.5 rounded-full bg-[#e8b86d] text-[#1a1208]">
+                  ★ {result.rating.toFixed(1)}
+                </span>
+              )}
+            </div>
+            <h2 className="font-display text-base font-bold text-white leading-snug line-clamp-2 mb-1">
+              {result.title}
+            </h2>
+            {result.genres && result.genres.length > 0 && (
+              <p className="text-[11px] text-white/45 line-clamp-1">
+                {result.genres.slice(0, 3).join(' · ')}
+                {result.year ? ` · ${result.year}` : ''}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* Desktop / tablet: horizontal layout */}
+        <div className="hidden md:flex flex-row gap-6">
+          <div className="relative w-36 lg:w-44 shrink-0">
             <div className="aspect-[2/3] rounded-xl overflow-hidden border border-white/15 shadow-2xl bg-black/50">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -338,30 +380,30 @@ export function SearchHeroResult({
               />
             </div>
             {result.rating && (
-              <div className="absolute -bottom-2 -right-2 px-2 py-1 rounded-lg bg-[#e8b86d] text-[#1a1208] text-[10px] sm:text-xs font-black shadow-lg">
+              <div className="absolute -bottom-2 -right-2 px-2 py-1 rounded-lg bg-[#e8b86d] text-[#1a1208] text-xs font-black shadow-lg">
                 ★ {result.rating.toFixed(1)}
               </div>
             )}
           </div>
 
           <div className="flex-1 min-w-0 text-left">
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+            <div className="flex flex-wrap items-center gap-2 mb-3">
               {result.confidenceScore && (
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">
                   IMDb {result.confidenceScore}%
                 </span>
               )}
               {result.category && (
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-white/5 text-white/55 border border-white/10 capitalize">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/5 text-white/55 border border-white/10 capitalize">
                   {result.category.replace('-', ' ')}
                 </span>
               )}
-              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-[#e8b86d]/10 text-[#e8b86d] border border-[#e8b86d]/25">
+              <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#e8b86d]/10 text-[#e8b86d] border border-[#e8b86d]/25">
                 {availableCount} {availableCount === 1 ? 'site' : 'sites'}
               </span>
             </div>
 
-            <h2 className="font-display text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight mb-1.5 sm:mb-2 leading-tight">
+            <h2 className="font-display text-2xl lg:text-3xl font-bold text-white tracking-tight mb-2 leading-tight">
               {result.title}
             </h2>
 
@@ -370,32 +412,32 @@ export function SearchHeroResult({
             )}
 
             {result.genres && result.genres.length > 0 && (
-              <p className="text-xs sm:text-sm text-white/50 mb-2 sm:mb-3 line-clamp-2">
+              <p className="text-sm text-white/50 mb-3 line-clamp-2">
                 {result.genres.slice(0, 4).join(' · ')}
               </p>
             )}
 
             {detailItems.length > 0 && (
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+              <div className="search-result-meta-grid grid grid-cols-3 gap-2 mb-4">
                 {detailItems.map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-lg border border-white/8 bg-white/[0.03] px-2 py-1.5 sm:px-2.5 sm:py-2"
+                    className="search-result-meta-item rounded-lg border border-white/8 bg-white/[0.03] px-2.5 py-2"
                   >
                     <p className="text-[9px] uppercase tracking-wide text-white/35 font-semibold">{item.label}</p>
-                    <p className="text-[11px] sm:text-xs font-semibold text-white/80 capitalize truncate">{item.value}</p>
+                    <p className="text-xs font-semibold text-white/80 capitalize truncate">{item.value}</p>
                   </div>
                 ))}
               </div>
             )}
 
             {result.overview && (
-              <p className="text-xs sm:text-sm text-white/60 leading-relaxed line-clamp-3 sm:line-clamp-4 mb-3 sm:mb-4">
+              <p className="text-sm text-white/60 leading-relaxed line-clamp-4 mb-4">
                 {result.overview}
               </p>
             )}
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="search-result-actions flex flex-wrap items-center gap-2">
               {result.trailerKey && onTrailer && (
                 <button
                   type="button"
@@ -419,7 +461,7 @@ export function SearchHeroResult({
                 <button
                   type="button"
                   onClick={() => onVisitSource(sources[0])}
-                  className="px-4 py-2 rounded-xl bg-[#e8b86d] text-[#1a1208] font-display font-bold text-xs sm:text-sm hover:bg-[#f0c987] transition-colors inline-flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-xl bg-[#e8b86d] text-[#1a1208] font-display font-bold text-sm hover:bg-[#f0c987] transition-colors inline-flex items-center gap-1.5"
                 >
                   Watch
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden>
@@ -431,8 +473,57 @@ export function SearchHeroResult({
           </div>
         </div>
 
+        {/* Mobile: body block (details, synopsis, actions) */}
+        <div className="search-result-mobile-body md:hidden">
+          {detailItems.length > 0 && (
+            <div className="search-result-meta-grid">
+              {detailItems.map((item) => (
+                <div key={item.label} className="search-result-meta-item">
+                  <p className="search-result-meta-label">{item.label}</p>
+                  <p className="search-result-meta-value">{item.value}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {result.overview && (
+            <p className="search-result-overview">{result.overview}</p>
+          )}
+
+          <div className="search-result-actions">
+            {result.trailerKey && onTrailer && (
+              <button
+                type="button"
+                onClick={() => onTrailer(result.trailerKey!)}
+                className="search-result-action-btn search-result-action-secondary"
+              >
+                Trailer
+              </button>
+            )}
+            {result.imdbId && (
+              <a
+                href={`https://www.imdb.com/title/${result.imdbId}/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="search-result-action-btn search-result-action-secondary"
+              >
+                IMDb
+              </a>
+            )}
+            {sources[0] && (
+              <button
+                type="button"
+                onClick={() => onVisitSource(sources[0])}
+                className="search-result-action-btn search-result-action-primary"
+              >
+                Watch
+              </button>
+            )}
+          </div>
+        </div>
+
         {sources.length > 0 && (
-          <div className="mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-white/10">
+          <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/10">
             <StreamingSourcesPanel sources={sources} onVisit={onVisitSource} />
           </div>
         )}
