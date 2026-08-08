@@ -63,7 +63,8 @@ export function getWebsites(): Website[] {
 
 export function isFmhyWebsite(website: Website): boolean {
   const tags = (website as Website & { tags?: string[] }).tags || [];
-  return tags.includes('FMHY') || website.description?.includes('FMHY') === true;
+  // Bulk-imported catalog entries only — not original "FMHY Verified" curated sites
+  return tags.includes('FMHY');
 }
 
 export function getPublicWebsites(): Website[] {
