@@ -595,13 +595,12 @@ function SearchContent() {
       <div className="page-shell mx-auto">
         {/* Page header */}
         <div className="search-page-hero">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#e8b86d]/70 mb-2">MoviesNet Search</p>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-white mb-6">
+          <p className="search-page-eyebrow text-xs font-bold uppercase tracking-widest text-[#e8b86d]/70 mb-2">MoviesNet Search</p>
+          <h1 className="search-page-title font-display text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">
             Find your title across every indexed site
           </h1>
 
-          {/* Category pills — real filters only */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 mb-6 no-scrollbar">
+          <div className="search-page-category-rail websites-filter-rail flex items-center gap-2 overflow-x-auto pb-1 mb-5 sm:mb-6 no-scrollbar">
             {[
               { id: undefined, label: 'All' },
               { id: 'movies' as const, label: 'Movies' },
@@ -627,10 +626,10 @@ function SearchContent() {
         </div>
 
         {/* Search input */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <div className="relative max-w-3xl search-input-container hero-search-wrapper search-page-input-wrap">
-            <div className="absolute left-5 top-1/2 -translate-y-1/2 text-purple-400">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <div className="search-page-input-icon absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 text-[#e8b86d]/80 pointer-events-none">
+              <svg className="w-5 h-5 sm:w-[22px] sm:h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <circle cx="11" cy="11" r="8" />
                 <path d="M21 21l-4.35-4.35" />
               </svg>
@@ -656,15 +655,15 @@ function SearchContent() {
                   setShowSuggestions(false);
                 }
               }}
-              placeholder="Search movies, anime, TV shows…"
-              className="search-input text-base py-4 pl-12 pr-12"
+              placeholder="Search movies, anime, TV…"
+              className="search-input w-full text-base py-3.5 sm:py-4 pl-11 sm:pl-12 pr-11 sm:pr-12"
               autoFocus
               aria-label="Search"
             />
             {query && (
               <button
                 onClick={() => { setQuery(''); setDebouncedQuery(''); setShowSuggestions(false); }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-1.5 rounded-xl hover:bg-white/[0.08] text-white/40 hover:text-white transition-all"
+                className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 p-2 rounded-xl hover:bg-white/[0.08] text-white/40 hover:text-white transition-all"
                 aria-label="Clear search"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -717,7 +716,7 @@ function SearchContent() {
 
           {/* Search telemetry meta */}
           {data && debouncedQuery && (
-            <div className="mt-3.5 flex items-center gap-3 text-xs text-white/40">
+            <div className="search-page-meta mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-white/40">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] font-mono">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 {data.totalResults} results found

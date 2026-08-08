@@ -452,30 +452,32 @@ export default function HomePage() {
             }}
             className="home-fade-up-delay-2 max-w-3xl mx-auto hero-search-wrapper"
           >
-            <div className="home-search-shell rounded-2xl p-1.5 sm:p-2 flex items-center gap-2">
-              <div className="pl-3 text-white/45 shrink-0" aria-hidden>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="11" cy="11" r="8" />
-                  <path d="M21 21l-4.35-4.35" />
-                </svg>
+            <div className="home-search-shell home-search-shell-mobile rounded-2xl p-2 sm:p-2">
+              <div className="home-search-row flex items-center gap-2 min-w-0 flex-1">
+                <div className="pl-1 sm:pl-3 text-white/45 shrink-0" aria-hidden>
+                  <svg className="w-[18px] h-[18px] sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="M21 21l-4.35-4.35" />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setSearchQuery(val);
+                    setShowHeroSuggestions(val.trim().length >= 2);
+                  }}
+                  placeholder={typingText || 'Search titles…'}
+                  suppressHydrationWarning
+                  className="w-full min-w-0 bg-transparent text-white font-medium text-base sm:text-base py-2.5 sm:py-3 outline-none placeholder:text-white/35"
+                  aria-label="Search content across all websites"
+                  autoComplete="off"
+                />
               </div>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setSearchQuery(val);
-                  setShowHeroSuggestions(val.trim().length >= 2);
-                }}
-                placeholder={typingText || 'Search titles…'}
-                suppressHydrationWarning
-                className="w-full bg-transparent text-white font-medium text-sm sm:text-base py-3 outline-none placeholder:text-white/35"
-                aria-label="Search content across all websites"
-                autoComplete="off"
-              />
               <button
                 type="submit"
-                className="shrink-0 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-[#e8b86d] text-[#1a1208] font-display font-bold text-sm tracking-wide hover:bg-[#f0c987] transition-colors active:scale-[0.98]"
+                className="home-search-submit shrink-0 w-full lg:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-[#e8b86d] text-[#1a1208] font-display font-bold text-sm tracking-wide hover:bg-[#f0c987] transition-colors active:scale-[0.98]"
               >
                 Search
               </button>
@@ -499,7 +501,7 @@ export default function HomePage() {
           </form>
 
           {!hasHeroSuggestions && (
-            <div className="home-fade-up-delay-2 mt-6 flex items-center justify-center gap-5 text-sm">
+            <div className="home-fade-up-delay-2 mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs sm:text-sm px-1">
               <a
                 href="#trending"
                 className="text-white/55 hover:text-[#e8b86d] transition-colors underline-offset-4 hover:underline"

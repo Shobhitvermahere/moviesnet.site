@@ -128,8 +128,8 @@ export function Header() {
               <MoviesNetLogo
                 size="sm"
                 variant="full"
-                responsive
-                className="transition-opacity hover:opacity-90 shrink-0 min-w-0 lg:gap-2.5 [&_svg]:lg:w-[34px] [&_svg]:lg:h-[34px] [&_.logo-wordmark]:lg:text-base"
+                compact
+                className="transition-opacity hover:opacity-90 shrink min-w-0 max-w-[58%] min-[380px]:max-w-[62%] sm:max-w-none"
               />
 
               <nav className="hidden md:flex items-center gap-0.5 lg:gap-1" aria-label="Main navigation">

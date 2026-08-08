@@ -222,6 +222,105 @@ body {
   -webkit-backdrop-filter: blur(28px) saturate(160%);
 }
 
+.home-search-shell-mobile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 1023px) {
+  .home-search-shell-mobile {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.625rem;
+    padding: 0.75rem;
+    border-radius: 1.25rem;
+  }
+
+  .home-search-shell-mobile .home-search-row {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.875rem;
+    padding: 0.15rem 0.5rem 0.15rem 0.25rem;
+  }
+
+  .home-search-shell-mobile .home-search-submit {
+    width: 100%;
+    min-height: 2.75rem;
+  }
+
+  .search-page {
+    padding-top: 1.25rem;
+  }
+
+  .search-page-hero {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .search-page-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-page-title {
+    font-size: 1.35rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .search-page-category-rail {
+    margin-bottom: 1rem;
+    padding-top: 0.15rem;
+    padding-bottom: 0.35rem;
+  }
+
+  .search-page-category-rail .search-category-pill {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.7rem;
+    min-height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .search-page-input-wrap {
+    border-radius: 1.15rem;
+    padding: 0.4rem;
+  }
+
+  .search-page-input-wrap .search-input {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .search-page-meta span:nth-child(even) {
+    display: none;
+  }
+
+  .search-page-meta {
+    row-gap: 0.35rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-search-shell-mobile {
+    flex-direction: row;
+  }
+
+  .home-search-shell-mobile .home-search-row {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .home-search-shell-mobile .home-search-submit {
+    width: auto;
+  }
+}
+
 .home-panel {
   background: linear-gradient(165deg, rgba(14,18,28,0.72), rgba(6,8,14,0.55));
   border: 1px solid rgba(255,255,255,0.10);
@@ -362,7 +461,6 @@ body {
   background: transparent;
   border: none;
   box-shadow: none;
-  padding-left: 3rem;
 }
 
 .search-page-input-wrap .search-input:focus {

@@ -4,17 +4,17 @@ import { LogoMark } from './LogoMark';
 
 type LogoSize = 'sm' | 'md' | 'lg';
 
-const SIZE_MAP: Record<LogoSize, { mark: number; text: string }> = {
-  sm: { mark: 28, text: 'text-sm' },
-  md: { mark: 34, text: 'text-base sm:text-lg' },
-  lg: { mark: 44, text: 'text-xl sm:text-2xl' },
+const SIZE_MAP: Record<LogoSize, { mark: number; text: string; compactText: string }> = {
+  sm: { mark: 28, text: 'text-sm', compactText: 'text-[11px] sm:text-xs md:text-sm' },
+  md: { mark: 34, text: 'text-base sm:text-lg', compactText: 'text-xs sm:text-sm md:text-base' },
+  lg: { mark: 44, text: 'text-xl sm:text-2xl', compactText: 'text-sm sm:text-lg md:text-xl' },
 };
 
 interface MoviesNetLogoProps {
   size?: LogoSize;
   variant?: 'full' | 'mark';
-  /** Hide wordmark below lg breakpoint (header mobile/tablet) */
-  responsive?: boolean;
+  /** Tighter icon + text for header on small screens */
+  compact?: boolean;
   href?: string;
   className?: string;
   onClick?: () => void;
@@ -23,22 +23,21 @@ interface MoviesNetLogoProps {
 export function MoviesNetLogo({
   size = 'md',
   variant = 'full',
-  responsive = false,
+  compact = false,
   href = '/',
   className,
   onClick,
 }: MoviesNetLogoProps) {
-  const { mark, text } = SIZE_MAP[size];
+  const { mark, text, compactText } = SIZE_MAP[size];
 
   const content = (
     <>
-      <LogoMark size={mark} />
+      <LogoMark size={compact ? Math.max(mark - 4, 22) : mark} />
       {variant === 'full' && (
         <span
           className={cn(
             'logo-wordmark font-display font-bold tracking-tight whitespace-nowrap',
-            text,
-            responsive && 'hidden lg:inline'
+            compact ? compactText : text
           )}
         >
           <span className="text-white">Movies</span>
@@ -48,7 +47,7 @@ export function MoviesNetLogo({
     </>
   );
 
-  const classes = cn('inline-flex items-center gap-2.5 group', className);
+  const classes = cn('inline-flex items-center gap-1.5 sm:gap-2.5 group min-w-0', className);
 
   if (href && !onClick) {
     return (
