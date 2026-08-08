@@ -33,12 +33,16 @@ export async function GET(request: NextRequest) {
 
     const results = await executeSearch(query, filters, page);
 
-    // Track analytics
+    // Track analytics (non-blocking — never fail the search response)
     if (query) {
-      addAnalyticsEvent({
-        type: 'search',
-        query,
-      });
+      try {
+        addAnalyticsEvent({
+          type: 'search',
+          query,
+        });
+      } catch (analyticsError) {
+        console.warn('Analytics tracking skipped:', analyticsError);
+      }
     }
 
     return NextResponse.json(results);

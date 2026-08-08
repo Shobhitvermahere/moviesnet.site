@@ -48,9 +48,16 @@ function readJson<T>(filename: string, defaultValue: T): T {
 }
 
 function writeJson<T>(filename: string, data: T): void {
+  // Vercel serverless has a read-only filesystem — skip persistent writes in production
+  if (process.env.VERCEL) return;
+
   ensureDataDir();
   const filepath = path.join(DATA_DIR, filename);
-  writeFileSync(filepath, JSON.stringify(data, null, 2));
+  try {
+    writeFileSync(filepath, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.warn(`writeJson failed for ${filename}:`, error);
+  }
 }
 
 // --- Websites ---

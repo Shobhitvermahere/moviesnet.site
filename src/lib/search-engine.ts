@@ -57,8 +57,12 @@ export async function executeSearch(
     return cached;
   }
 
-  // Track search query
-  addSearchQuery(query.trim());
+  // Track search query (non-blocking on serverless)
+  try {
+    addSearchQuery(query.trim());
+  } catch (trackError) {
+    console.warn('Search history tracking skipped:', trackError);
+  }
 
   // Public directory websites sorted by admin priority (search order)
   let websites = getPublicWebsites().sort((a, b) => a.priority - b.priority);

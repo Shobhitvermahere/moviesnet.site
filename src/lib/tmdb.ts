@@ -167,7 +167,7 @@ async function searchOMDb(query: string): Promise<OMDbSearchResult[]> {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 4000);
     const res = await fetch(
-      `http://www.omdbapi.com/?s=${encodeURIComponent(query)}&apikey=${OMDB_API_KEY}`,
+      `https://www.omdbapi.com/?s=${encodeURIComponent(query)}&apikey=${OMDB_API_KEY}`,
       { signal: controller.signal }
     );
     clearTimeout(timer);
@@ -185,7 +185,7 @@ async function getOMDbDetail(imdbId: string): Promise<OMDbDetail | null> {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 4000);
     const res = await fetch(
-      `http://www.omdbapi.com/?i=${encodeURIComponent(imdbId)}&plot=full&apikey=${OMDB_API_KEY}`,
+      `https://www.omdbapi.com/?i=${encodeURIComponent(imdbId)}&plot=full&apikey=${OMDB_API_KEY}`,
       { signal: controller.signal }
     );
     clearTimeout(timer);
