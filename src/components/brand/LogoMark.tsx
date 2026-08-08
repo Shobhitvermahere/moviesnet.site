@@ -1,3 +1,6 @@
+'use client';
+
+import { useId } from 'react';
 import { cn } from '@/lib/utils';
 
 interface LogoMarkProps {
@@ -5,8 +8,12 @@ interface LogoMarkProps {
   className?: string;
 }
 
-/** MoviesNet icon — cinema play + discovery hub */
+/** MoviesNet mark — bold M inside a magnifying glass */
 export function LogoMark({ size = 32, className }: LogoMarkProps) {
+  const uid = useId().replace(/:/g, '');
+  const goldId = `mn-gold-${uid}`;
+  const plateId = `mn-plate-${uid}`;
+
   return (
     <svg
       width={size}
@@ -18,62 +25,41 @@ export function LogoMark({ size = 32, className }: LogoMarkProps) {
       aria-hidden
     >
       <defs>
-        <linearGradient id="mn-gold" x1="8" y1="6" x2="40" y2="42" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#f5d49a" />
-          <stop offset="0.45" stopColor="#e8b86d" />
-          <stop offset="1" stopColor="#b8893f" />
+        <linearGradient id={goldId} x1="10" y1="8" x2="38" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#f2cc8a" />
+          <stop offset="0.5" stopColor="#e8b86d" />
+          <stop offset="1" stopColor="#c49a4a" />
         </linearGradient>
-        <linearGradient id="mn-plate" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#161a24" />
-          <stop offset="1" stopColor="#090c12" />
+        <linearGradient id={plateId} x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#141820" />
+          <stop offset="1" stopColor="#0a0d12" />
         </linearGradient>
-        <filter id="mn-glow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="1.2" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
       </defs>
 
-      {/* Plate */}
-      <rect x="3" y="3" width="42" height="42" rx="11" fill="url(#mn-plate)" stroke="url(#mn-gold)" strokeWidth="1.4" />
-      <rect x="5.5" y="5.5" width="37" height="37" rx="9" stroke="url(#mn-gold)" strokeWidth="0.5" opacity="0.35" />
+      {/* App tile */}
+      <rect x="2" y="2" width="44" height="44" rx="12" fill={`url(#${plateId})`} />
 
-      {/* Network arcs — "find everywhere" */}
-      <path
-        d="M24 11.5c5.8 0 10.5 4.2 10.5 9.5"
-        stroke="url(#mn-gold)"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        opacity="0.45"
+      {/* Search lens */}
+      <circle
+        cx="19.5"
+        cy="19.5"
+        r="11.25"
+        stroke={`url(#${goldId})`}
+        strokeWidth="2.6"
+        fill="rgba(232, 184, 109, 0.07)"
       />
-      <path
-        d="M24 36.5c-4.2 0-7.5-2.8-7.5-6.2"
-        stroke="url(#mn-gold)"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        opacity="0.35"
-      />
-      <circle cx="35" cy="13.5" r="1.6" fill="#e8b86d" opacity="0.85" />
-      <circle cx="15.5" cy="33" r="1.3" fill="#e8b86d" opacity="0.55" />
-      <circle cx="37" cy="24" r="1.1" fill="#e8b86d" opacity="0.4" />
 
-      {/* Lens ring */}
-      <circle cx="21.5" cy="21.5" r="10.5" stroke="url(#mn-gold)" strokeWidth="2.1" />
-
-      {/* Play — cinema */}
+      {/* M — centered in lens */}
       <path
-        d="M18.2 16.8v9.4l7.8-4.7-7.8-4.7z"
-        fill="url(#mn-gold)"
-        filter="url(#mn-glow)"
+        d="M13.8 25.2V14.8h2.65l3.05 4.75 3.05-4.75h2.65v10.4h-2.35v-6.1l-2.75 4.2h-1.6l-2.75-4.2v6.1H13.8Z"
+        fill="#f8f4ec"
       />
 
       {/* Search handle */}
       <path
-        d="M29.2 29.2l7.3 7.3"
-        stroke="url(#mn-gold)"
-        strokeWidth="2.6"
+        d="M27.8 27.8L36.2 36.2"
+        stroke={`url(#${goldId})`}
+        strokeWidth="3"
         strokeLinecap="round"
       />
     </svg>
