@@ -5,17 +5,10 @@ import {
   publishAllFmhySources,
   refreshFmhySourcesFromRemote,
 } from '@/lib/db';
-import { verifyToken } from '@/lib/auth';
-
-async function checkAuth(request: NextRequest): Promise<boolean> {
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader?.startsWith('Bearer ')) return false;
-  const payload = await verifyToken(authHeader.slice(7));
-  return payload !== null;
-}
+import { requireAdmin } from '@/lib/api-auth';
 
 export async function GET(request: NextRequest) {
-  if (!(await checkAuth(request))) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -41,7 +34,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await checkAuth(request))) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

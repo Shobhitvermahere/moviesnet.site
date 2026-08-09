@@ -25,6 +25,7 @@ export function Header() {
   const [siteUrl, setSiteUrl] = useState('');
   const [siteCategory, setSiteCategory] = useState('movies');
   const [requestNotes, setRequestNotes] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -97,6 +98,7 @@ export function Header() {
           siteUrl: siteUrl.trim(),
           category: siteCategory,
           notes: requestNotes.trim(),
+          website: honeypot,
         }),
       });
       if (!res.ok) throw new Error('Failed');
@@ -501,6 +503,16 @@ export function Header() {
                 </div>
               ) : (
                 <form onSubmit={handleRequestSiteSubmit} className="space-y-4">
+                  <input
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    className="hidden"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                  />
                   <div>
                     <label className="block text-xs font-bold text-white/80 mb-1.5">
                       Site Name <span className="text-rose-400">*</span>

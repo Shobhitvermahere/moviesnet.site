@@ -4,12 +4,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { executeSearch } from '@/lib/search-engine';
 import { addAnalyticsEvent } from '@/lib/db';
+import { sanitizeSearchQuery } from '@/lib/security';
+import { isValidPosterUrl } from '@/lib/poster-utils';
+import { enforceRateLimit } from '@/lib/api-rate-limit';
 import type { SearchFilters } from '@/types';
 
 export async function GET(request: NextRequest) {
+  const limited = enforceRateLimit(request, 'search', 60, 60_000);
+  if (limited) return limited;
+
   try {
     const { searchParams } = new URL(request.url);
-    const query = searchParams.get('q') || '';
+    const query = sanitizeSearchQuery(searchParams.get('q') || '');
     const page = parseInt(searchParams.get('page') || '1', 10);
 
     const filters: SearchFilters = {};
@@ -28,8 +34,8 @@ export async function GET(request: NextRequest) {
     if (status) filters.status = status as SearchFilters['status'];
     if (sort) filters.sort = sort as SearchFilters['sort'];
     if (website) filters.website = website;
-    if (imdbId) filters.imdbId = imdbId;
-    if (poster) filters.posterHint = poster;
+    if (imdbId) filters.imdbId = imdbId.slice(0, 20);
+    if (poster && isValidPosterUrl(poster)) filters.posterHint = poster;
 
     const results = await executeSearch(query, filters, page);
 

@@ -4,14 +4,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cache } from '@/lib/cache';
 import { getTrendingSearches } from '@/lib/db';
+import { sanitizeSearchQuery } from '@/lib/security';
 import { rankAndMergeSuggestions, type SearchSuggestionItem } from '@/lib/suggestion-rank';
+import { enforceRateLimit } from '@/lib/api-rate-limit';
 
 export type { SearchSuggestionItem };
 
 export async function GET(request: NextRequest) {
+  const limited = enforceRateLimit(request, 'suggestions', 40, 60_000);
+  if (limited) return limited;
+
   try {
     const { searchParams } = new URL(request.url);
-    const query = (searchParams.get('q') || '').trim();
+    const query = sanitizeSearchQuery(searchParams.get('q') || '', 120);
 
     if (!query || query.length < 2) {
       return NextResponse.json({ suggestions: [] });

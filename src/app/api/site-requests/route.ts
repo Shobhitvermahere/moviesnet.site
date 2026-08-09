@@ -7,15 +7,10 @@ import {
   createWebsite,
   getWebsites,
 } from '@/lib/db';
-import { verifyToken } from '@/lib/auth';
+import { requireAdmin } from '@/lib/api-auth';
+import { isHoneypotTriggered } from '@/lib/security';
+import { enforceRateLimit } from '@/lib/api-rate-limit';
 import type { ContentCategory } from '@/types';
-
-async function checkAuth(request: NextRequest): Promise<boolean> {
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader?.startsWith('Bearer ')) return false;
-  const payload = await verifyToken(authHeader.slice(7));
-  return payload !== null;
-}
 
 function mapRequestCategory(category: string): ContentCategory[] {
   switch (category) {
@@ -47,7 +42,7 @@ function slugify(value: string) {
 
 // GET — admin list
 export async function GET(request: NextRequest) {
-  if (!(await checkAuth(request))) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   return NextResponse.json(getSiteRequests());
@@ -55,9 +50,16 @@ export async function GET(request: NextRequest) {
 
 // POST — public submit OR admin approve action via body.action
 export async function POST(request: NextRequest) {
+  const limited = enforceRateLimit(request, 'site-requests', 5, 60 * 60 * 1000);
+  if (limited) return limited;
+
   try {
     const body = await request.json();
-    const isAdmin = await checkAuth(request);
+    const isAdmin = await requireAdmin(request);
+
+    if (isHoneypotTriggered(body.website)) {
+      return NextResponse.json({ success: true }, { status: 201 });
+    }
 
     if (body.action === 'approve' && isAdmin) {
       const { id } = body;
@@ -155,7 +157,7 @@ export async function POST(request: NextRequest) {
 
 // DELETE — admin remove request
 export async function DELETE(request: NextRequest) {
-  if (!(await checkAuth(request))) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

@@ -70,10 +70,9 @@ export const useUIStore = create<UIState>((set) => ({
 // --- Admin Store ---
 interface AdminState {
   isAuthenticated: boolean;
-  token: string | null;
   username: string | null;
   selectedWebsite: string | null;
-  login: (token: string, username: string) => void;
+  login: (username: string) => void;
   logout: () => void;
   setSelectedWebsite: (id: string | null) => void;
 }
@@ -82,18 +81,16 @@ export const useAdminStore = create<AdminState>()(
   persist(
     (set) => ({
       isAuthenticated: false,
-      token: null,
       username: null,
       selectedWebsite: null,
-      login: (token, username) => set({ isAuthenticated: true, token, username }),
-      logout: () => set({ isAuthenticated: false, token: null, username: null }),
+      login: (username) => set({ isAuthenticated: true, username }),
+      logout: () => set({ isAuthenticated: false, username: null }),
       setSelectedWebsite: (id) => set({ selectedWebsite: id }),
     }),
     {
       name: 'allsitehub-admin',
-      partialize: (state) => ({ 
+      partialize: (state) => ({
         isAuthenticated: state.isAuthenticated,
-        token: state.token,
         username: state.username,
       }),
     }

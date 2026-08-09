@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import type { SiteRequest } from '@/types';
 import { CATEGORIES } from '@/lib/utils';
+import { adminFetch } from '@/lib/admin-api';
 
 type FilterStatus = 'all' | 'pending' | 'approved' | 'rejected';
 
@@ -18,32 +19,30 @@ function categoryLabel(slug: string) {
 export default function SiteRequestsPage() {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { isAuthenticated, token } = useAdminStore();
+  const { isAuthenticated } = useAdminStore();
   const [statusFilter, setStatusFilter] = useState<FilterStatus>('pending');
 
   useEffect(() => {
-    if (!isAuthenticated || !token) {
+    if (!isAuthenticated) {
       router.push('/adminshobhit/login');
     }
-  }, [isAuthenticated, token, router]);
+  }, [isAuthenticated, router]);
 
   const { data: requests, isLoading } = useQuery<SiteRequest[]>({
     queryKey: ['admin-site-requests'],
     queryFn: async () => {
-      const res = await fetch('/api/site-requests', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await adminFetch('/api/site-requests');
       if (!res.ok) throw new Error('Failed to fetch');
       return res.json();
     },
-    enabled: !!token,
+    enabled: isAuthenticated,
   });
 
   const actionMutation = useMutation({
     mutationFn: async ({ action, id }: { action: 'approve' | 'reject'; id: string }) => {
-      const res = await fetch('/api/site-requests', {
+      const res = await adminFetch('/api/site-requests', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action, id }),
       });
       if (!res.ok) throw new Error('Action failed');
@@ -57,9 +56,8 @@ export default function SiteRequestsPage() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      const res = await fetch(`/api/site-requests?id=${id}`, {
+      const res = await adminFetch(`/api/site-requests?id=${id}`, {
         method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error('Failed to delete');
       return res.json();

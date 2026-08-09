@@ -2,6 +2,7 @@ import { useRef, useState, useCallback } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { Website } from '@/types';
 import { moveWebsiteToRank } from '@/lib/website-reorder';
+import { adminFetch } from '@/lib/admin-api';
 
 const DRAG_INDEX_KEY = 'application/x-website-index';
 
@@ -9,7 +10,7 @@ function sortByPriority(websites: Website[]) {
   return [...websites].sort((a, b) => b.priority - a.priority);
 }
 
-export function useWebsiteReorder(token: string | null, websites: Website[] | undefined) {
+export function useWebsiteReorder(websites: Website[] | undefined) {
   const queryClient = useQueryClient();
   const dragIndexRef = useRef<number | null>(null);
   const [dragIndex, setDragIndex] = useState<number | null>(null);
@@ -17,9 +18,9 @@ export function useWebsiteReorder(token: string | null, websites: Website[] | un
 
   const reorderMutation = useMutation({
     mutationFn: async (orderedIds: string[]) => {
-      const res = await fetch('/api/websites/reorder', {
+      const res = await adminFetch('/api/websites/reorder', {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ orderedIds }),
       });
       if (!res.ok) throw new Error('Failed to reorder');

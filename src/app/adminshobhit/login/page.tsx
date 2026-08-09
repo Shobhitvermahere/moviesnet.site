@@ -28,13 +28,14 @@ export default function AdminLoginPage() {
       const res = await fetch('/api/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ password }),
       });
 
       const data = await res.json();
 
-      if (data.success && data.token) {
-        login(data.token, data.username);
+      if (data.success && data.username) {
+        login(data.username);
         router.push('/adminshobhit');
       } else {
         setError(data.error || 'Login failed');

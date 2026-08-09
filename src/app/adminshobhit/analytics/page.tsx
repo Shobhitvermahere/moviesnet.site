@@ -8,25 +8,24 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import type { DashboardStats } from '@/types';
 import { formatNumber } from '@/lib/utils';
+import { adminFetch } from '@/lib/admin-api';
 
 export default function AdminAnalyticsPage() {
   const router = useRouter();
-  const { isAuthenticated, token } = useAdminStore();
+  const { isAuthenticated } = useAdminStore();
 
   useEffect(() => {
-    if (!isAuthenticated || !token) router.push('/adminshobhit/login');
-  }, [isAuthenticated, token, router]);
+    if (!isAuthenticated) router.push('/adminshobhit/login');
+  }, [isAuthenticated, router]);
 
   const { data: stats, isLoading } = useQuery<DashboardStats>({
     queryKey: ['admin-analytics-detail'],
     queryFn: async () => {
-      const res = await fetch('/api/analytics', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await adminFetch('/api/analytics');
       if (!res.ok) throw new Error('Failed to fetch');
       return res.json();
     },
-    enabled: !!token,
+    enabled: isAuthenticated,
   });
 
   if (!isAuthenticated) return null;

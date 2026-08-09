@@ -9,6 +9,7 @@ import Link from 'next/link';
 import type { Website, ParserType, ContentCategory, Language } from '@/types';
 import { CATEGORIES } from '@/lib/utils';
 import { WebsiteRankControl } from '@/components/admin/WebsiteRankControl';
+import { adminFetch } from '@/lib/admin-api';
 import { WebsiteDragHandle } from '@/components/admin/WebsiteDragHandle';
 import { useWebsiteReorder } from '@/hooks/use-website-reorder';
 
@@ -66,36 +67,34 @@ const DEFAULT_WEBSITE: Partial<Website> = {
 export default function WebsiteManagerPage() {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { isAuthenticated, token, logout } = useAdminStore();
+  const { isAuthenticated, logout } = useAdminStore();
   const [editingWebsite, setEditingWebsite] = useState<Partial<Website> | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState<ContentCategory | 'all'>('all');
 
   useEffect(() => {
-    if (!isAuthenticated || !token) {
+    if (!isAuthenticated) {
       router.push('/adminshobhit/login');
     }
-  }, [isAuthenticated, token, router]);
+  }, [isAuthenticated, router]);
 
   // Fetch websites
   const { data: websites, isLoading } = useQuery<Website[]>({
     queryKey: ['admin-websites'],
     queryFn: async () => {
-      const res = await fetch('/api/websites', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await adminFetch('/api/websites');
       if (!res.ok) throw new Error('Failed to fetch');
       return res.json();
     },
-    enabled: !!token,
+    enabled: isAuthenticated,
   });
 
   // Create mutation
   const createMutation = useMutation({
     mutationFn: async (data: Partial<Website>) => {
-      const res = await fetch('/api/websites', {
+      const res = await adminFetch('/api/websites', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error('Failed to create');
@@ -111,9 +110,9 @@ export default function WebsiteManagerPage() {
   // Update mutation
   const updateMutation = useMutation({
     mutationFn: async (data: Partial<Website>) => {
-      const res = await fetch('/api/websites', {
+      const res = await adminFetch('/api/websites', {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error('Failed to update');
@@ -128,9 +127,8 @@ export default function WebsiteManagerPage() {
   // Delete mutation
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      const res = await fetch(`/api/websites?id=${id}`, {
+      const res = await adminFetch(`/api/websites?id=${id}`, {
         method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error('Failed to delete');
       return res.json();
@@ -156,7 +154,7 @@ export default function WebsiteManagerPage() {
     handleDragEnd,
     placeAtRank,
     getGlobalRank,
-  } = useWebsiteReorder(token, websites);
+  } = useWebsiteReorder(websites);
 
   // Toggle enabled
   const toggleEnabled = (website: Website) => {

@@ -11,24 +11,25 @@ import { CATEGORIES } from '@/lib/utils';
 import { WebsiteRankControl } from '@/components/admin/WebsiteRankControl';
 import { WebsiteDragHandle } from '@/components/admin/WebsiteDragHandle';
 import { useWebsiteReorder } from '@/hooks/use-website-reorder';
+import { adminFetch } from '@/lib/admin-api';
 
 export default function SearchOrderPage() {
   const router = useRouter();
-  const { isAuthenticated, token } = useAdminStore();
+  const { isAuthenticated } = useAdminStore();
   const [categoryFilter, setCategoryFilter] = useState<ContentCategory | 'all'>('all');
 
   useEffect(() => {
-    if (!isAuthenticated || !token) router.push('/adminshobhit/login');
-  }, [isAuthenticated, token, router]);
+    if (!isAuthenticated) router.push('/adminshobhit/login');
+  }, [isAuthenticated, router]);
 
   const { data: websites, isLoading } = useQuery<Website[]>({
     queryKey: ['admin-websites'],
     queryFn: async () => {
-      const res = await fetch('/api/websites', { headers: { Authorization: `Bearer ${token}` } });
+      const res = await adminFetch('/api/websites');
       if (!res.ok) throw new Error('Failed');
       return res.json();
     },
-    enabled: !!token,
+    enabled: isAuthenticated,
   });
 
   const displayed = websites
@@ -47,7 +48,7 @@ export default function SearchOrderPage() {
     handleDragEnd,
     placeAtRank,
     getGlobalRank,
-  } = useWebsiteReorder(token, websites);
+  } = useWebsiteReorder(websites);
 
   if (!isAuthenticated) return null;
 

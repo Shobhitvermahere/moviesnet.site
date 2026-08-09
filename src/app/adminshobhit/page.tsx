@@ -8,27 +8,26 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import type { DashboardStats } from '@/types';
 import { formatNumber } from '@/lib/utils';
+import { adminFetch, adminLogout } from '@/lib/admin-api';
 
 export default function AdminDashboard() {
   const router = useRouter();
-  const { isAuthenticated, token, logout } = useAdminStore();
+  const { isAuthenticated, logout } = useAdminStore();
 
   useEffect(() => {
-    if (!isAuthenticated || !token) {
+    if (!isAuthenticated) {
       router.push('/adminshobhit/login');
     }
-  }, [isAuthenticated, token, router]);
+  }, [isAuthenticated, router]);
 
   const { data: stats, isLoading } = useQuery<DashboardStats>({
     queryKey: ['admin-analytics'],
     queryFn: async () => {
-      const res = await fetch('/api/analytics', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await adminFetch('/api/analytics');
       if (!res.ok) throw new Error('Failed to fetch');
       return res.json();
     },
-    enabled: !!token,
+    enabled: isAuthenticated,
     refetchInterval: 30000,
   });
 
@@ -91,7 +90,14 @@ export default function AdminDashboard() {
               </svg>
               Backend
             </Link>
-            <button onClick={() => { logout(); router.push('/adminshobhit/login'); }} className="px-4 py-2.5 rounded-xl bg-red-500/15 hover:bg-red-500/30 border border-red-500/30 text-red-300 text-sm font-semibold transition-all hover:scale-[1.02]">
+            <button
+              onClick={async () => {
+                await adminLogout();
+                logout();
+                router.push('/adminshobhit/login');
+              }}
+              className="px-4 py-2.5 rounded-xl bg-red-500/15 hover:bg-red-500/30 border border-red-500/30 text-red-300 text-sm font-semibold transition-all hover:scale-[1.02]"
+            >
               Sign Out
             </button>
           </div>

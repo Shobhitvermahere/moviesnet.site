@@ -7,6 +7,7 @@ import { useAdminStore } from '@/stores';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import type { FmhySource } from '@/types';
+import { adminFetch } from '@/lib/admin-api';
 
 type BackendResponse = {
   sources: FmhySource[];
@@ -18,16 +19,16 @@ type BackendResponse = {
 export default function BackendPage() {
   const router = useRouter();
   const queryClient = useQueryClient();
-  const { isAuthenticated, token } = useAdminStore();
+  const { isAuthenticated } = useAdminStore();
   const [sectionFilter, setSectionFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'unpublished'>('all');
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    if (!isAuthenticated || !token) {
+    if (!isAuthenticated) {
       router.push('/adminshobhit/login');
     }
-  }, [isAuthenticated, token, router]);
+  }, [isAuthenticated, router]);
 
   const { data, isLoading } = useQuery<BackendResponse>({
     queryKey: ['admin-fmhy-sources', sectionFilter, statusFilter],
@@ -36,20 +37,18 @@ export default function BackendPage() {
       if (sectionFilter !== 'all') params.set('section', sectionFilter);
       if (statusFilter === 'published') params.set('published', 'true');
       if (statusFilter === 'unpublished') params.set('published', 'false');
-      const res = await fetch(`/api/fmhy-sources?${params}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await adminFetch(`/api/fmhy-sources?${params}`);
       if (!res.ok) throw new Error('Failed to fetch');
       return res.json();
     },
-    enabled: !!token,
+    enabled: isAuthenticated,
   });
 
   const actionMutation = useMutation({
     mutationFn: async (payload: { action: string; id?: string }) => {
-      const res = await fetch('/api/fmhy-sources', {
+      const res = await adminFetch('/api/fmhy-sources', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error('Action failed');

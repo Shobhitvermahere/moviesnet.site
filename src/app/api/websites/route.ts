@@ -2,22 +2,13 @@
 // AllSiteHub Search — Websites CRUD API
 // ============================================================================
 import { NextRequest, NextResponse } from 'next/server';
-import { getWebsites, createWebsite, updateWebsite, deleteWebsite, getWebsiteById, getPublicWebsites } from '@/lib/db';
-import { verifyToken } from '@/lib/auth';
+import { getWebsites, createWebsite, updateWebsite, deleteWebsite, getPublicWebsites } from '@/lib/db';
 import { enrichWebsiteLogo } from '@/lib/website-logo';
-
-// Verify admin auth helper
-async function checkAuth(request: NextRequest): Promise<boolean> {
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader?.startsWith('Bearer ')) return false;
-  const token = authHeader.slice(7);
-  const payload = await verifyToken(token);
-  return payload !== null;
-}
+import { requireAdmin } from '@/lib/api-auth';
 
 // GET /api/websites — List all websites (public, but limited info)
 export async function GET(request: NextRequest) {
-  const isAdmin = await checkAuth(request);
+  const isAdmin = await requireAdmin(request);
   const websites = getWebsites().sort((a, b) => b.priority - a.priority);
 
   if (isAdmin) {
@@ -49,7 +40,7 @@ export async function GET(request: NextRequest) {
 
 // POST /api/websites — Create a website (admin only)
 export async function POST(request: NextRequest) {
-  if (!(await checkAuth(request))) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -64,7 +55,7 @@ export async function POST(request: NextRequest) {
 
 // PUT /api/websites — Update a website (admin only)
 export async function PUT(request: NextRequest) {
-  if (!(await checkAuth(request))) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -84,7 +75,7 @@ export async function PUT(request: NextRequest) {
 
 // DELETE /api/websites — Delete a website (admin only)
 export async function DELETE(request: NextRequest) {
-  if (!(await checkAuth(request))) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

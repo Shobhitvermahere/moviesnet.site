@@ -1,13 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { reorderWebsites } from '@/lib/db';
-import { verifyToken } from '@/lib/auth';
+import { requireAdmin } from '@/lib/api-auth';
 
 export async function PUT(request: NextRequest) {
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader?.startsWith('Bearer ')) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-  const payload = await verifyToken(authHeader.slice(7));
+  const payload = await requireAdmin(request);
   if (!payload) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   try {

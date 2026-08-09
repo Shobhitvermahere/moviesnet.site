@@ -3,19 +3,12 @@
 // ============================================================================
 import { NextRequest, NextResponse } from 'next/server';
 import { getAnalyticsEvents, getSearchHistory, getWebsites } from '@/lib/db';
-import { verifyToken } from '@/lib/auth';
+import { requireAdmin } from '@/lib/api-auth';
 import { cache } from '@/lib/cache';
 import type { DashboardStats } from '@/types';
 
 export async function GET(request: NextRequest) {
-  // Admin only
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader?.startsWith('Bearer ')) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-  const token = authHeader.slice(7);
-  const payload = await verifyToken(token);
-  if (!payload) {
+  if (!(await requireAdmin(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
