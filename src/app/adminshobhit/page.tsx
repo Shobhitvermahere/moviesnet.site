@@ -11,7 +11,7 @@ import { formatNumber } from '@/lib/utils';
 
 export default function AdminDashboard() {
   const router = useRouter();
-  const { isAuthenticated, token, username, logout } = useAdminStore();
+  const { isAuthenticated, token, logout } = useAdminStore();
 
   useEffect(() => {
     if (!isAuthenticated || !token) {
@@ -48,8 +48,24 @@ export default function AdminDashboard() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8 p-6 rounded-2xl bg-black/65 border border-white/15 backdrop-blur-2xl shadow-xl">
           <div>
-            <h1 className="text-3xl font-extrabold text-white mb-1 tracking-tight">Admin Dashboard</h1>
-            <p className="text-sm font-medium text-gray-300">Welcome back, <span className="text-purple-300 font-bold">{username}</span></p>
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+              className="text-3xl sm:text-4xl font-display font-bold text-white mb-2 tracking-tight"
+            >
+              <span className="bg-gradient-to-r from-white via-purple-200 to-[#e8b86d] bg-clip-text text-transparent">
+                welcome back shobhit
+              </span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+              className="text-sm font-medium text-gray-300"
+            >
+              MoviesNet admin dashboard
+            </motion.p>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/adminshobhit/websites" className="px-4 py-2.5 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/40 text-white text-sm font-semibold flex items-center gap-2 shadow-lg shadow-purple-500/20 transition-all hover:scale-[1.02]">

@@ -2,7 +2,7 @@
   {
     "id": "admin-001",
     "username": "admin",
-    "passwordHash": "444c65011347a3c87ce6c364fa999a44f8fb498e7fca5af41bff4812b9b815a7",
+    "passwordHash": "49e05b418faf1823d4c5fae8e37d92d6c863d363b87a86cd055cc43ddb629c88",
     "role": "superadmin",
     "createdAt": "2026-08-04T00:00:00.000Z",
     "lastLogin": "2026-08-04T21:06:24.424Z"

@@ -8,12 +8,13 @@ import { authenticateAdmin, verifyToken } from '@/lib/auth';
 export async function POST(request: NextRequest) {
   try {
     const { username, password } = await request.json();
+    const adminUsername = username || process.env.ADMIN_USERNAME || 'admin';
 
-    if (!username || !password) {
-      return NextResponse.json({ error: 'Username and password required' }, { status: 400 });
+    if (!password) {
+      return NextResponse.json({ error: 'Password required' }, { status: 400 });
     }
 
-    const result = await authenticateAdmin(username, password);
+    const result = await authenticateAdmin(adminUsername, password);
 
     if (!result.success) {
       return NextResponse.json({ error: result.error }, { status: 401 });
@@ -22,7 +23,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       token: result.token,
-      username,
+      username: adminUsername,
     });
   } catch (error) {
     return NextResponse.json({ error: 'Authentication failed' }, { status: 500 });

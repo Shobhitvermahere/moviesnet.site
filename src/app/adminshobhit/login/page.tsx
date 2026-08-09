@@ -9,7 +9,6 @@ import { MoviesNetLogo } from '@/components/brand/MoviesNetLogo';
 export default function AdminLoginPage() {
   const router = useRouter();
   const { isAuthenticated, login } = useAdminStore();
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +28,7 @@ export default function AdminLoginPage() {
       const res = await fetch('/api/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ password }),
       });
 
       const data = await res.json();
@@ -49,7 +48,6 @@ export default function AdminLoginPage() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden bg-black text-white">
-      {/* Background Aurora Orbs & Blur */}
       <div className="aurora-bg">
         <div className="aurora-orb-1" />
         <div className="aurora-orb-2" />
@@ -63,33 +61,15 @@ export default function AdminLoginPage() {
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 w-full max-w-md p-8 rounded-3xl bg-black/70 border border-white/20 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
       >
-        {/* Logo */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <MoviesNetLogo size="lg" href="/" />
           </div>
           <h1 className="text-2xl font-display font-bold text-white tracking-tight mb-2">Admin Panel</h1>
-          <p className="text-sm font-medium text-gray-300">Sign in to access MoviesNet management</p>
+          <p className="text-sm font-medium text-gray-300">Enter your password to continue</p>
         </div>
 
-        {/* Login Form */}
         <form onSubmit={handleLogin} className="space-y-5">
-          <div>
-            <label htmlFor="username" className="block text-xs font-semibold text-gray-200 uppercase tracking-wider mb-2">
-              Username
-            </label>
-            <input
-              id="username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white text-sm placeholder-white/40 focus:outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-500/20 transition-all font-medium"
-              placeholder="admin"
-              required
-              autoComplete="username"
-            />
-          </div>
-
           <div>
             <label htmlFor="password" className="block text-xs font-semibold text-gray-200 uppercase tracking-wider mb-2">
               Password
@@ -103,6 +83,7 @@ export default function AdminLoginPage() {
               placeholder="••••••••"
               required
               autoComplete="current-password"
+              autoFocus
             />
           </div>
 
