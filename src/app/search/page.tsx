@@ -49,7 +49,7 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: 'most-sources', label: 'Most Sources' },
 ];
 
-const MAGIC_LOADING_DELAY_MS = 1800;
+const SEARCH_DEBOUNCE_MS = 280;
 
 function dismissMobileKeyboard() {
   if (typeof document === 'undefined') return;
@@ -79,84 +79,6 @@ async function fetchSearch(
   const res = await fetch(`/api/search?${params.toString()}`, { signal });
   if (!res.ok) throw new Error('Search failed');
   return res.json();
-}
-
-// --- Magic Loading Overlay Component (In-Page) ---
-function MagicLoadingOverlay({ query }: { query: string }) {
-  const [step, setStep] = useState(0);
-
-  const steps = [
-    { label: 'Identifying content & title', icon: '🔍' },
-    { label: 'Fetching IMDb poster & metadata', icon: '🎬' },
-    { label: 'Searching all directory websites', icon: '⚡' },
-    { label: 'Preparing unified results', icon: '✨' },
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev));
-    }, 280);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
-      className="my-8 w-full max-w-xl mx-auto p-8 rounded-2xl search-handoff-card text-center space-y-6 relative overflow-hidden"
-    >
-      <div className="absolute -top-12 -left-12 w-36 h-36 bg-cyan-500/20 rounded-full blur-3xl" />
-      <div className="absolute -bottom-12 -right-12 w-36 h-36 bg-purple-500/20 rounded-full blur-3xl" />
-
-      <div className="relative">
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 p-0.5 mx-auto mb-4 shadow-xl shadow-purple-500/30 animate-pulse flex items-center justify-center">
-          <div className="w-full h-full bg-[#070914] rounded-[14px] flex items-center justify-center text-2xl">
-            ✨
-          </div>
-        </div>
-        <h3 className="text-xl font-display font-bold text-white tracking-tight">
-          Searching across all sites…
-        </h3>
-        <p className="text-xs font-semibold text-cyan-300 mt-1">
-          Searching across trusted sources for &ldquo;{query}&rdquo;
-        </p>
-      </div>
-
-      {/* Progress steps */}
-      <div className="space-y-3 text-left bg-white/[0.03] p-4 rounded-2xl border border-white/10">
-        {steps.map((s, idx) => (
-          <div key={idx} className="flex items-center gap-3 text-xs font-bold transition-all">
-            <div
-              className={cn(
-                'w-5 h-5 rounded-full flex items-center justify-center text-[10px] transition-all',
-                idx <= step
-                  ? 'bg-emerald-500 text-black font-black shadow-md shadow-emerald-500/40'
-                  : 'bg-white/10 text-white/40'
-              )}
-            >
-              {idx <= step ? '✓' : idx + 1}
-            </div>
-            <span className={idx <= step ? 'text-white font-extrabold' : 'text-white/40'}>
-              {s.label}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      <div className="space-y-2">
-        <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 rounded-full transition-all duration-300"
-            style={{ width: `${((step + 1) / steps.length) * 100}%` }}
-          />
-        </div>
-        <p className="text-[11px] font-bold text-white/50 animate-pulse">
-          Gathering content across all websites...
-        </p>
-      </div>
-    </motion.div>
-  );
 }
 
 // --- Skeleton Card ---
@@ -438,7 +360,6 @@ function SearchContent() {
   const [mounted, setMounted] = useState(false);
   const [page, setPage] = useState(1);
   const [activeTrailerKey, setActiveTrailerKey] = useState<string | null>(null);
-  const [isMagicLoading, setIsMagicLoading] = useState(false);
   const [isFilterOpen, setFilterOpen] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const lastWrittenUrlRef = useRef<string | null>(null);
@@ -496,7 +417,7 @@ function SearchContent() {
     debounceTimerRef.current = setTimeout(() => {
       setDebouncedQuery(query);
       setPage(1);
-    }, 350);
+    }, SEARCH_DEBOUNCE_MS);
     return () => {
       if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
     };
@@ -527,26 +448,15 @@ function SearchContent() {
     queryKey: ['search', debouncedQuery, filters, page],
     queryFn: ({ signal }) => fetchSearch(debouncedQuery, filters, page, signal),
     enabled: debouncedQuery.trim().length > 0,
-    staleTime: 0,
+    staleTime: 2 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
   });
 
   const isTypingPending = query.trim() !== debouncedQuery.trim();
   const isSearchPending = isFetching || fetchStatus === 'fetching' || isTypingPending;
   const resultsData =
     debouncedQuery.trim() && !isSearchPending && data ? data : null;
-
-  useEffect(() => {
-    if (!isSearchPending) {
-      setIsMagicLoading(false);
-      return;
-    }
-    if (debouncedQuery.trim().length < 2) {
-      setIsMagicLoading(false);
-      return;
-    }
-    const timer = setTimeout(() => setIsMagicLoading(true), MAGIC_LOADING_DELAY_MS);
-    return () => clearTimeout(timer);
-  }, [isSearchPending, debouncedQuery]);
+  const showLoadingState = Boolean(debouncedQuery.trim() && isSearchPending);
 
   const { target: handoffTarget, requestHandoff, clearHandoff } = useSiteHandoff();
 
@@ -711,10 +621,17 @@ function SearchContent() {
                 }
               }}
               placeholder="Search movies, anime, TV…"
-              className="search-input w-full text-base py-3.5 sm:py-4 pl-11 sm:pl-12 pr-11 sm:pr-12"
+              className="search-input w-full text-base py-3.5 sm:py-4 pl-11 sm:pl-12 pr-16 sm:pr-16"
               autoFocus
+              aria-busy={isFetching && !isTypingPending}
               aria-label="Search"
             />
+            {isFetching && !isTypingPending && debouncedQuery.trim() && (
+              <span
+                className="absolute right-11 sm:right-12 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-[#e8b86d]/30 border-t-[#e8b86d] animate-spin"
+                aria-hidden
+              />
+            )}
             {query && (
               <button
                 type="button"
@@ -843,19 +760,13 @@ function SearchContent() {
               </div>
             )}
 
-            {/* Magic Loading Overlay */}
-            <AnimatePresence>
-              {isMagicLoading && debouncedQuery.trim().length >= 2 && !isTypingPending && (
-                <MagicLoadingOverlay query={debouncedQuery} />
-              )}
-            </AnimatePresence>
-
-            {/* Loading while typing or fetching — don't show stale results */}
-            {(isSearchPending || isLoading) && debouncedQuery.trim() && !isMagicLoading && (
+            {/* Compact loading — no full-screen magic overlay */}
+            {showLoadingState && (
               <div className="space-y-4">
-                {[...Array(3)].map((_, i) => (
-                  <SkeletonCard key={i} />
-                ))}
+                <div className="h-0.5 w-full max-w-3xl bg-white/[0.06] rounded-full overflow-hidden">
+                  <div className="search-progress-bar h-full w-1/3 bg-gradient-to-r from-transparent via-[#e8b86d] to-transparent" />
+                </div>
+                <SkeletonCard />
               </div>
             )}
 

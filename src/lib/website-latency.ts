@@ -1,10 +1,10 @@
 import type { Website } from '@/types';
 import { cache } from './cache';
 
-const LATENCY_CACHE_TTL_MS = 10 * 60 * 1000;
-const LATENCY_FAIL_TTL_MS = 2 * 60 * 1000;
-const PROBE_CONCURRENCY = 8;
-const MAX_PROBE_MS = 5000;
+const LATENCY_CACHE_TTL_MS = 15 * 60 * 1000;
+const LATENCY_FAIL_TTL_MS = 3 * 60 * 1000;
+const PROBE_CONCURRENCY = 10;
+const MAX_PROBE_MS = 2500;
 
 interface LatencyEntry {
   ms: number | null;
@@ -58,7 +58,22 @@ export async function probeWebsiteLatency(website: Website): Promise<number | nu
   }
 }
 
-/** Probe all websites in parallel batches; returns websiteId → response time (ms) or null if unreachable. */
+/** Read cached latencies only — instant, never blocks on network. */
+export function getCachedWebsiteLatencies(websites: Website[]): Map<string, number | null> {
+  const map = new Map<string, number | null>();
+  for (const website of websites) {
+    const cached = cache.get<LatencyEntry>(`latency:v1:${website.id}`);
+    map.set(website.id, cached?.ms ?? null);
+  }
+  return map;
+}
+
+/** Warm latency cache without blocking the caller. */
+export function refreshWebsiteLatenciesInBackground(websites: Website[]): void {
+  if (websites.length === 0) return;
+  void probeWebsitesLatency(websites);
+}
+
 export async function probeWebsitesLatency(websites: Website[]): Promise<Map<string, number | null>> {
   const map = new Map<string, number | null>();
 

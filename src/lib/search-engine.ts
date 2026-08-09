@@ -7,7 +7,7 @@ import { cache } from './cache';
 import { findClosestMatch, resolveMoviePoster, slugify } from './utils';
 import { websiteToStreamingSource, websitesForCategory, sortSourcesBySpeed, buildPriorityIndex } from './website-capabilities';
 import { resolveWebsiteLogoUrl } from './website-logo';
-import { probeWebsitesLatency } from './website-latency';
+import { getCachedWebsiteLatencies, refreshWebsiteLatenciesInBackground } from './website-latency';
 
 // Search dictionary for spell correction
 const COMMON_TITLES = [
@@ -53,7 +53,7 @@ export async function executeSearch(
   const normalizedQ = normalizeQuery(query);
 
   // Check cache first
-  const cacheKey = `search-v9:${normalizedQ}:${filters.imdbId || ''}:${JSON.stringify(filters)}:${page}:${pageSize}`;
+  const cacheKey = `search-v10:${normalizedQ}:${filters.imdbId || ''}:${JSON.stringify(filters)}:${page}:${pageSize}`;
   const cached = cache.get<SearchResponse>(cacheKey);
   if (cached) {
     return cached;
@@ -81,17 +81,15 @@ export async function executeSearch(
 
   const websitesSearched = websites.length;
   const priorityIndex = buildPriorityIndex(websites);
+  const latencyMap = getCachedWebsiteLatencies(websites);
+  refreshWebsiteLatenciesInBackground(websites);
 
-  // Probe site speed in parallel with metadata fetch
-  const [verifiedMediaList, latencyMap] = await Promise.all([
-    fetchAuthoritativeMetadata(
-      normalizedQ,
-      filters.category,
-      filters.imdbId,
-      filters.posterHint
-    ),
-    probeWebsitesLatency(websites),
-  ]);
+  const verifiedMediaList = await fetchAuthoritativeMetadata(
+    normalizedQ,
+    filters.category,
+    filters.imdbId,
+    filters.posterHint
+  );
 
   let allResults: SearchResult[] = [];
 
