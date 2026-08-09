@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import type { Website, ParserType, ContentCategory, Language } from '@/types';
 import { CATEGORIES } from '@/lib/utils';
+import { moveWebsiteToRank } from '@/lib/website-reorder';
+import { WebsiteRankControl } from '@/components/admin/WebsiteRankControl';
 
 const EMPTY_PARSER_CONFIG = {
   type: 'css' as ParserType,
@@ -197,6 +199,18 @@ export default function WebsiteManagerPage() {
     setOverIndex(null);
   };
 
+  const placeAtRank = (siteId: string, targetRank: number) => {
+    if (!websites) return;
+    const allIds = websites.map((w) => w.id);
+    reorderMutation.mutate(moveWebsiteToRank(allIds, siteId, targetRank));
+  };
+
+  const getGlobalRank = (siteId: string) => {
+    if (!websites) return 1;
+    const index = websites.findIndex((w) => w.id === siteId);
+    return index === -1 ? 1 : index + 1;
+  };
+
   // Toggle enabled
   const toggleEnabled = (website: Website) => {
     updateMutation.mutate({ id: website.id, enabled: !website.enabled });
@@ -223,6 +237,13 @@ export default function WebsiteManagerPage() {
             </Link>
             <h1 className="text-3xl font-extrabold text-white tracking-tight">Website Manager</h1>
           </div>
+          <div className="flex items-center gap-3">
+          <Link
+            href="/adminshobhit/search-order"
+            className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-sm font-semibold text-gray-200 hover:text-white transition-all"
+          >
+            Search Order
+          </Link>
           <button
             onClick={() => { setEditingWebsite({ ...DEFAULT_WEBSITE }); setIsCreating(true); }}
             className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-semibold text-sm shadow-lg shadow-purple-500/30 flex items-center gap-2 transition-all hover:scale-[1.02]"
@@ -232,6 +253,7 @@ export default function WebsiteManagerPage() {
             </svg>
             Add Website
           </button>
+          </div>
         </div>
 
         {/* Category filter + drag hint */}
@@ -266,7 +288,7 @@ export default function WebsiteManagerPage() {
               );
             })}
           </div>
-          <p className="text-xs text-white/40">Drag rows to reorder display priority</p>
+          <p className="text-xs text-white/40">Drag rows or set rank to control search order</p>
         </div>
 
         {/* Website List */}
@@ -327,7 +349,7 @@ export default function WebsiteManagerPage() {
                     </span>
                   </div>
                   <p className="text-xs font-medium text-purple-300/90 truncate">{website.homepageUrl}</p>
-                  <p className="text-[10px] text-white/30 mt-0.5">Priority: {website.priority}</p>
+                  <p className="text-[10px] text-white/30 mt-0.5">Search rank: #{getGlobalRank(website.id)}</p>
                 </div>
 
                 {/* Categories */}
@@ -343,6 +365,14 @@ export default function WebsiteManagerPage() {
                 <span className="hidden lg:inline text-xs font-bold px-2.5 py-1 rounded-lg bg-white/10 border border-white/15 text-gray-200 font-mono uppercase">
                   {website.parserConfig.type}
                 </span>
+
+                <WebsiteRankControl
+                  rank={getGlobalRank(website.id)}
+                  maxRank={websites?.length || 1}
+                  onApply={(rank) => placeAtRank(website.id, rank)}
+                  disabled={reorderMutation.isPending}
+                  compact
+                />
 
                 {/* Actions */}
                 <div className="flex items-center gap-2">
@@ -671,9 +701,6 @@ function WebsiteEditorModal({
                   <textarea value={form.cookies || ''} onChange={(e) => updateField('cookies', e.target.value)} className="form-input font-mono text-xs min-h-[60px] resize-y" placeholder="cookie1=value1; cookie2=value2" />
                 </FormField>
                 <div className="grid grid-cols-2 gap-4">
-                  <FormField label="Priority">
-                    <input type="number" value={form.priority || 0} onChange={(e) => updateField('priority', parseInt(e.target.value))} className="form-input" />
-                  </FormField>
                   <FormField label="Country">
                     <input type="text" value={form.country || ''} onChange={(e) => updateField('country', e.target.value)} className="form-input" placeholder="IN" />
                   </FormField>

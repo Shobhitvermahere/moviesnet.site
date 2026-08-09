@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import type { Website, ContentCategory } from '@/types';
 import { CATEGORIES } from '@/lib/utils';
+import { moveWebsiteToRank } from '@/lib/website-reorder';
+import { WebsiteRankControl } from '@/components/admin/WebsiteRankControl';
 
 export default function SearchOrderPage() {
   const router = useRouter();
@@ -72,6 +74,18 @@ export default function SearchOrderPage() {
     reorderMutation.mutate(result);
   };
 
+  const placeAtRank = (siteId: string, targetRank: number) => {
+    if (!websites) return;
+    const allIds = websites.map((w) => w.id);
+    reorderMutation.mutate(moveWebsiteToRank(allIds, siteId, targetRank));
+  };
+
+  const getGlobalRank = (siteId: string) => {
+    if (!websites) return 1;
+    const index = websites.findIndex((w) => w.id === siteId);
+    return index === -1 ? 1 : index + 1;
+  };
+
   if (!isAuthenticated) return null;
 
   return (
@@ -91,7 +105,7 @@ export default function SearchOrderPage() {
             </Link>
             <div>
               <h1 className="text-2xl font-extrabold">Search Order</h1>
-              <p className="text-sm text-gray-400">Drag to set which websites appear first in search results</p>
+              <p className="text-sm text-gray-400">Drag or enter a rank to set which websites appear first in search</p>
             </div>
           </div>
         </div>
@@ -135,7 +149,7 @@ export default function SearchOrderPage() {
                   overIndex === index && dragIndex !== index ? 'border-purple-400 bg-purple-500/10' : 'border-white/10 bg-black/65'
                 }`}
               >
-                <span className="text-xs font-mono text-white/30 w-6">{index + 1}</span>
+                <span className="text-xs font-mono text-white/30 w-6">{getGlobalRank(site.id)}</span>
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center overflow-hidden flex-shrink-0">
                   {site.logoUrl ? <img src={site.logoUrl} alt="" className="w-full h-full object-cover" /> : <span className="text-xs font-bold">{site.name.charAt(0)}</span>}
                 </div>
@@ -143,7 +157,13 @@ export default function SearchOrderPage() {
                   <p className="font-bold text-white truncate">{site.name}</p>
                   <p className="text-xs text-white/40 truncate">{site.homepageUrl}</p>
                 </div>
-                <span className="text-xs text-purple-300 font-mono">P{site.priority}</span>
+                <WebsiteRankControl
+                  rank={getGlobalRank(site.id)}
+                  maxRank={websites?.length || 1}
+                  onApply={(rank) => placeAtRank(site.id, rank)}
+                  disabled={reorderMutation.isPending}
+                  compact
+                />
               </motion.div>
             ))}
           </div>
