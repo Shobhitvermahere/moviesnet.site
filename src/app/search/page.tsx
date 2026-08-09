@@ -58,7 +58,12 @@ function dismissMobileKeyboard() {
 }
 
 // --- Fetch search results ---
-async function fetchSearch(query: string, filters: SearchFilters, page: number): Promise<SearchResponse> {
+async function fetchSearch(
+  query: string,
+  filters: SearchFilters,
+  page: number,
+  signal?: AbortSignal
+): Promise<SearchResponse> {
   const params = new URLSearchParams();
   if (query) params.set('q', query);
   if (filters.category) params.set('category', filters.category);
@@ -71,7 +76,7 @@ async function fetchSearch(query: string, filters: SearchFilters, page: number):
   if (filters.posterHint) params.set('poster', filters.posterHint);
   params.set('page', page.toString());
 
-  const res = await fetch(`/api/search?${params.toString()}`);
+  const res = await fetch(`/api/search?${params.toString()}`, { signal });
   if (!res.ok) throw new Error('Search failed');
   return res.json();
 }
@@ -436,68 +441,102 @@ function SearchContent() {
   const [isMagicLoading, setIsMagicLoading] = useState(false);
   const [isFilterOpen, setFilterOpen] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const lastWrittenUrlRef = useRef<string | null>(null);
+  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const flushSearch = useCallback((nextQuery: string) => {
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+      debounceTimerRef.current = null;
+    }
+    setQuery(nextQuery);
+    setDebouncedQuery(nextQuery);
+    setPage(1);
+  }, []);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Sync URL params when navigating from suggestion click
+  // Sync from URL only on external navigation (back/forward, deep link) — not our own router.replace
   useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    const urlKey = params.toString();
+    if (urlKey === lastWrittenUrlRef.current) return;
+
     const q = searchParams.get('q') || '';
     const imdbId = searchParams.get('imdbId') || undefined;
     const poster = searchParams.get('poster') || undefined;
-    if (q && q !== debouncedQuery) {
-      setQuery(q);
-      setDebouncedQuery(q);
-      setPage(1);
-    }
-    if (imdbId || poster) {
-      setFilters((prev) => ({
-        ...prev,
-        ...(imdbId ? { imdbId } : {}),
-        ...(poster ? { posterHint: poster } : {}),
-      }));
-    }
-  }, [searchParams, debouncedQuery]);
+    const category = searchParams.get('category') as SearchFilters['category'] | null;
 
-  // Debounce search query (skip delay when picking a suggestion with imdbId)
+    setQuery(q);
+    setDebouncedQuery(q);
+    setPage(1);
+    setFilters((prev) => {
+      const next: SearchFilters = {};
+      if (category) next.category = category;
+      if (imdbId) next.imdbId = imdbId;
+      if (poster) next.posterHint = poster;
+      const language = searchParams.get('language') as SearchFilters['language'] | null;
+      const quality = searchParams.get('quality') as SearchFilters['quality'] | null;
+      const status = searchParams.get('status') as SearchFilters['status'] | null;
+      const sort = searchParams.get('sort') as SearchFilters['sort'] | null;
+      const website = searchParams.get('website') || undefined;
+      if (language) next.language = language;
+      if (quality) next.quality = quality;
+      if (status) next.status = status;
+      if (sort) next.sort = sort;
+      if (website) next.website = website;
+      return next;
+    });
+  }, [searchParams]);
+
+  // Debounce typing — never fight the input while user edits
   useEffect(() => {
-    const timer = setTimeout(() => {
+    debounceTimerRef.current = setTimeout(() => {
       setDebouncedQuery(query);
       setPage(1);
-    }, 300);
-    return () => clearTimeout(timer);
+    }, 350);
+    return () => {
+      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
+    };
   }, [query]);
 
-  // Update URL when query or filters change
+  // Keep URL in sync with committed search state
   useEffect(() => {
-    if (debouncedQuery) {
-      const params = new URLSearchParams();
-      params.set('q', debouncedQuery);
-      if (filters.category) params.set('category', filters.category);
-      if (filters.language) params.set('language', filters.language);
-      if (filters.quality) params.set('quality', filters.quality);
-      if (filters.status) params.set('status', filters.status);
-      if (filters.sort) params.set('sort', filters.sort);
-      if (filters.website) params.set('website', filters.website);
-      if (filters.imdbId) params.set('imdbId', filters.imdbId);
-      if (filters.posterHint) params.set('poster', filters.posterHint);
-      router.replace(`/search?${params.toString()}`, { scroll: false });
-      addRecentSearch(debouncedQuery);
-    }
+    const params = new URLSearchParams();
+    if (debouncedQuery) params.set('q', debouncedQuery);
+    if (filters.category) params.set('category', filters.category);
+    if (filters.language) params.set('language', filters.language);
+    if (filters.quality) params.set('quality', filters.quality);
+    if (filters.status) params.set('status', filters.status);
+    if (filters.sort) params.set('sort', filters.sort);
+    if (filters.website) params.set('website', filters.website);
+    if (filters.imdbId) params.set('imdbId', filters.imdbId);
+    if (filters.posterHint) params.set('poster', filters.posterHint);
+
+    const urlKey = params.toString();
+    lastWrittenUrlRef.current = urlKey;
+    router.replace(urlKey ? `/search?${urlKey}` : '/search', { scroll: false });
+
+    if (debouncedQuery) addRecentSearch(debouncedQuery);
   }, [debouncedQuery, filters, router, addRecentSearch]);
 
   // Fetch search results
-  const { data, isLoading, isFetching, error } = useQuery({
+  const { data, isLoading, isFetching, error, fetchStatus } = useQuery({
     queryKey: ['search', debouncedQuery, filters, page],
-    queryFn: () => fetchSearch(debouncedQuery, filters, page),
-    enabled: debouncedQuery.length > 0,
-    placeholderData: (prev) => prev,
+    queryFn: ({ signal }) => fetchSearch(debouncedQuery, filters, page, signal),
+    enabled: debouncedQuery.trim().length > 0,
+    staleTime: 0,
   });
 
-  // Show "Magic begins" only when search takes longer than ~1.8s
+  const isTypingPending = query.trim() !== debouncedQuery.trim();
+  const isSearchPending = isFetching || fetchStatus === 'fetching' || isTypingPending;
+  const resultsData =
+    debouncedQuery.trim() && !isSearchPending && data ? data : null;
+
   useEffect(() => {
-    if (!isLoading && !isFetching) {
+    if (!isSearchPending) {
       setIsMagicLoading(false);
       return;
     }
@@ -507,7 +546,7 @@ function SearchContent() {
     }
     const timer = setTimeout(() => setIsMagicLoading(true), MAGIC_LOADING_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [isLoading, isFetching, debouncedQuery]);
+  }, [isSearchPending, debouncedQuery]);
 
   const { target: handoffTarget, requestHandoff, clearHandoff } = useSiteHandoff();
 
@@ -538,12 +577,7 @@ function SearchContent() {
 
   const suggestionsList = suggestionData?.suggestions || [];
 
-  useEffect(() => {
-    if (debouncedQuery.trim().length >= 2 && data && !isLoading && !isFetching) {
-      setShowSuggestions(false);
-      dismissMobileKeyboard();
-    }
-  }, [debouncedQuery, data, isLoading, isFetching]);
+  // Only dismiss keyboard after user picks a suggestion or presses Enter — not while editing
 
   const { data: websitesData } = useQuery<Website[]>({
     queryKey: ['public-websites'],
@@ -668,8 +702,12 @@ function SearchContent() {
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
+                  flushSearch(query);
                   setShowSuggestions(false);
                   dismissMobileKeyboard();
+                }
+                if (e.key === 'Escape') {
+                  setShowSuggestions(false);
                 }
               }}
               placeholder="Search movies, anime, TV…"
@@ -679,7 +717,13 @@ function SearchContent() {
             />
             {query && (
               <button
-                onClick={() => { setQuery(''); setDebouncedQuery(''); setShowSuggestions(false); }}
+                type="button"
+                onClick={() => {
+                  setQuery('');
+                  flushSearch('');
+                  setShowSuggestions(false);
+                  searchInputRef.current?.focus();
+                }}
                 className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 p-2 rounded-xl hover:bg-white/[0.08] text-white/40 hover:text-white transition-all"
                 aria-label="Clear search"
               >
@@ -699,9 +743,7 @@ function SearchContent() {
                   onSelect={(item) => {
                     setShowSuggestions(false);
                     dismissMobileKeyboard();
-                    setQuery(item.title);
-                    setDebouncedQuery(item.title);
-                    setPage(1);
+                    flushSearch(item.title);
                     setFilters((prev) => ({
                       ...prev,
                       imdbId: item.imdbId,
@@ -723,7 +765,8 @@ function SearchContent() {
             >
               Did you mean{' '}
               <button
-                onClick={() => setQuery(data.correction!)}
+                type="button"
+                onClick={() => flushSearch(data.correction!)}
                 className="text-[#e8b86d] hover:text-[#f0c987] font-semibold underline underline-offset-4"
               >
                 {data.correction}
@@ -733,16 +776,16 @@ function SearchContent() {
           )}
 
           {/* Search telemetry meta */}
-          {data && debouncedQuery && (
+          {resultsData && debouncedQuery && (
             <div className="search-page-meta mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-white/40">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] font-mono">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                {data.totalResults} results found
+                {resultsData.totalResults} results found
               </span>
               <span>•</span>
-              <span>{data.results[0]?.sources?.length || 0} sites available</span>
+              <span>{resultsData.results[0]?.sources?.length || 0} sites available</span>
               <span>•</span>
-              <span>{data.searchTime}ms</span>
+              <span>{resultsData.searchTime}ms</span>
             </div>
           )}
         </div>
@@ -786,7 +829,7 @@ function SearchContent() {
                         <button
                           key={term}
                           type="button"
-                          onClick={() => setQuery(term)}
+                          onClick={() => flushSearch(term)}
                           className="search-category-pill search-category-pill-inactive hover:text-white"
                         >
                           {term}
@@ -796,21 +839,21 @@ function SearchContent() {
                   </div>
                 )}
 
-                <SearchTrendingPicks onSelect={(title) => setQuery(title)} />
+                <SearchTrendingPicks onSelect={(title) => flushSearch(title)} />
               </div>
             )}
 
-            {/* Magic Loading Overlay — Rendered inside the Search Results Section */}
+            {/* Magic Loading Overlay */}
             <AnimatePresence>
-              {isMagicLoading && debouncedQuery.length >= 2 && (
+              {isMagicLoading && debouncedQuery.trim().length >= 2 && !isTypingPending && (
                 <MagicLoadingOverlay query={debouncedQuery} />
               )}
             </AnimatePresence>
 
-            {/* Loading state skeletons (shown if magic loading is not active) */}
-            {isLoading && !isMagicLoading && debouncedQuery && (
+            {/* Loading while typing or fetching — don't show stale results */}
+            {(isSearchPending || isLoading) && debouncedQuery.trim() && !isMagicLoading && (
               <div className="space-y-4">
-                {[...Array(5)].map((_, i) => (
+                {[...Array(3)].map((_, i) => (
                   <SkeletonCard key={i} />
                 ))}
               </div>
@@ -825,10 +868,10 @@ function SearchContent() {
             )}
 
             {/* Results List */}
-            {data && !isLoading && (
+            {resultsData && (
               <>
                 {/* Disambiguation Selector ("Did you mean?") */}
-                {data.candidates && data.candidates.length > 1 && (
+                {resultsData.candidates && resultsData.candidates.length > 1 && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -839,10 +882,10 @@ function SearchContent() {
                       Did you mean? (Select Specific Title)
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {data.candidates.map((candidate) => (
+                      {resultsData.candidates.map((candidate) => (
                         <button
                           key={`${candidate.tmdbId || candidate.title}-${candidate.year}`}
-                          onClick={() => setQuery(`${candidate.title} ${candidate.year || ''}`.trim())}
+                          onClick={() => flushSearch(`${candidate.title} ${candidate.year || ''}`.trim())}
                           className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-purple-500/30 border border-white/20 hover:border-purple-400 transition-all text-xs font-bold text-white shadow-md group"
                         >
                           <span>{candidate.title}</span>
@@ -857,7 +900,7 @@ function SearchContent() {
                 )}
 
                 {/* Website filter — only sites where this title is available */}
-                {data.results[0]?.sources && data.results[0].sources.length > 0 && (
+                {resultsData.results[0]?.sources && resultsData.results[0].sources.length > 0 && (
                 <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-6 no-scrollbar">
                   <button
                     type="button"
@@ -867,9 +910,9 @@ function SearchContent() {
                       !filters.website ? 'search-category-pill-active' : 'search-category-pill-inactive'
                     )}
                   >
-                    All {data.results[0].sources.length} available
+                    All {resultsData.results[0].sources.length} available
                   </button>
-                  {data.results[0].sources.slice(0, 20).map((source) => (
+                  {resultsData.results[0].sources.slice(0, 20).map((source) => (
                     <button
                       key={source.websiteId}
                       type="button"
@@ -893,20 +936,20 @@ function SearchContent() {
                 </div>
                 )}
 
-                {data.results.length > 0 ? (
+                {resultsData.results.length > 0 ? (
                   <div className="space-y-6">
                     <SearchHeroResult
-                      result={data.results[0]}
-                      onVisitSource={(source) => handleVisitSource(source, data.results[0].title)}
+                      result={resultsData.results[0]}
+                      onVisitSource={(source) => handleVisitSource(source, resultsData.results[0].title)}
                       onTrailer={setActiveTrailerKey}
                     />
 
                     {/* Official licensed providers */}
-                    {data.results[0].officialProviders && data.results[0].officialProviders.length > 0 && (
+                    {resultsData.results[0].officialProviders && resultsData.results[0].officialProviders.length > 0 && (
                       <div className="search-hero-card rounded-2xl border border-white/10 p-5 sm:p-6">
                         <h3 className="font-display text-sm font-bold text-white mb-3">Official streaming providers</h3>
                         <div className="flex flex-wrap gap-2">
-                          {data.results[0].officialProviders.map((provider) => (
+                          {resultsData.results[0].officialProviders.map((provider) => (
                             <a
                               key={provider.id}
                               href={provider.url}
@@ -928,11 +971,11 @@ function SearchContent() {
                     )}
 
                     {/* Cast */}
-                    {data.results[0].cast && data.results[0].cast.length > 0 && (
+                    {resultsData.results[0].cast && resultsData.results[0].cast.length > 0 && (
                       <div className="search-hero-card rounded-2xl border border-white/10 p-5 sm:p-6">
                         <h3 className="font-display text-sm font-bold text-white mb-3">Top cast</h3>
                         <div className="flex flex-wrap gap-3">
-                          {data.results[0].cast.map((actor, aIdx) => (
+                          {resultsData.results[0].cast.map((actor, aIdx) => (
                             <div key={aIdx} className="flex items-center gap-2 bg-white/[0.03] p-1.5 pr-3 rounded-xl border border-white/10">
                               <div className="w-8 h-8 rounded-full bg-white/5 overflow-hidden flex-shrink-0 border border-white/10 flex items-center justify-center">
                                 {actor.profilePath ? (
@@ -952,15 +995,15 @@ function SearchContent() {
                     )}
 
                     {/* Similar titles */}
-                    {data.results[0].similarTitles && data.results[0].similarTitles.length > 0 && (
+                    {resultsData.results[0].similarTitles && resultsData.results[0].similarTitles.length > 0 && (
                       <div className="search-hero-card rounded-2xl border border-white/10 p-5 sm:p-6">
                         <h3 className="font-display text-sm font-bold text-white mb-3">Similar titles</h3>
                         <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
-                          {data.results[0].similarTitles.map((sim) => (
+                          {resultsData.results[0].similarTitles.map((sim) => (
                             <button
                               key={sim.id}
                               type="button"
-                              onClick={() => setQuery(sim.title)}
+                              onClick={() => flushSearch(sim.title)}
                               className="flex items-center gap-2 p-1.5 pr-3 rounded-xl bg-white/[0.03] hover:bg-[#e8b86d]/10 border border-white/10 hover:border-[#e8b86d]/25 transition-all text-left flex-shrink-0 group"
                             >
                               <div className="w-7 h-10 rounded bg-black/50 overflow-hidden flex-shrink-0 border border-white/10">
@@ -991,14 +1034,14 @@ function SearchContent() {
                       <p className="text-sm text-white/40 max-w-md mx-auto mb-6">
                         No configured website returned results for &ldquo;{debouncedQuery}&rdquo;. Try another term or clear your filters.
                       </p>
-                      {data.suggestions.length > 0 && (
+                      {resultsData.suggestions.length > 0 && (
                         <div>
                           <p className="text-xs text-white/30 mb-3 uppercase tracking-wider font-semibold">Suggested Titles:</p>
                           <div className="flex flex-wrap gap-2 justify-center">
-                            {data.suggestions.map((s) => (
+                            {resultsData.suggestions.map((s) => (
                               <button
                                 key={s}
-                                onClick={() => setQuery(s)}
+                                onClick={() => flushSearch(s)}
                                 className="px-4 py-2 rounded-xl bg-purple-500/10 border border-purple-500/20 text-xs font-semibold text-purple-300 hover:bg-purple-500/20 transition-all"
                               >
                                 {s}
