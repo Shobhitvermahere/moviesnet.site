@@ -1,34 +1,13 @@
 'use client';
 
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { formatNumber, DIRECTORY_CATEGORIES, cn } from '@/lib/utils';
 import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
 import { WebsiteLogo } from '@/components/WebsiteLogo';
 import { buildSearchUrlFromSuggestion } from '@/lib/search-navigation';
-import type { LiveShowcaseItem } from '@/lib/trending-showcase';
 import type { ContentCategory } from '@/types';
-import { isValidPosterUrl } from '@/lib/poster-utils';
-
-function showcaseItemKey(item: Pick<LiveShowcaseItem, 'title' | 'poster'>) {
-  return `${item.title}::${item.poster}`;
-}
-
-function buildShowcaseSearchUrl(item: {
-  title: string;
-  poster: string;
-  imdbId?: string;
-}): string {
-  return buildSearchUrlFromSuggestion({
-    title: item.title,
-    year: null,
-    category: 'Movie',
-    poster: item.poster || null,
-    imdbId: item.imdbId,
-  });
-}
 
 const DISCORD_URL = 'https://discord.gg/ATGRvAjBr';
 const REDDIT_URL = 'https://www.reddit.com/user/allsitehub/';
@@ -47,212 +26,6 @@ const SEARCH_PLACEHOLDERS = [
   'Look up manga from trusted sources…',
   'Discover live sports streams…',
   'Browse live TV channels…',
-];
-
-const TOP_RANK_MOVIES = [
-  {
-    title: 'Dune: Part Two',
-    year: 2024,
-    rating: '8.6',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/1pdfLPoL6VFi8B8RFiMfaUtM3Zg.jpg',
-    genres: ['Sci-Fi', 'Adventure'],
-    synopsis: 'Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators.',
-    sourcesCount: 18,
-  },
-  {
-    title: 'Oppenheimer',
-    year: 2023,
-    rating: '8.9',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGvjW71vKWc.jpg',
-    genres: ['Biography', 'Drama'],
-    synopsis: 'The story of J. Robert Oppenheimer and his role in developing the atomic bomb.',
-    sourcesCount: 16,
-  },
-  {
-    title: 'The Dark Knight',
-    year: 2008,
-    rating: '9.0',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg',
-    genres: ['Action', 'Crime'],
-    synopsis: 'Batman faces his greatest challenge against the chaotic Joker in Gotham City.',
-    sourcesCount: 22,
-  },
-  {
-    title: 'Interstellar',
-    year: 2014,
-    rating: '8.7',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg',
-    genres: ['Sci-Fi', 'Drama'],
-    synopsis: 'Explorers travel through a wormhole in space to ensure humanity’s survival.',
-    sourcesCount: 19,
-  },
-  {
-    title: 'Deadpool & Wolverine',
-    year: 2024,
-    rating: '8.0',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg',
-    genres: ['Action', 'Comedy'],
-    synopsis: 'Deadpool teams up with a reluctant Wolverine on a mission that reshapes the MCU.',
-    sourcesCount: 15,
-  },
-  {
-    title: 'Spider-Man: Across the Spider-Verse',
-    year: 2023,
-    rating: '8.7',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj7sFm8.jpg',
-    genres: ['Animation', 'Action'],
-    synopsis: 'Miles Morales catapults across the Multiverse and meets other Spider-People.',
-    sourcesCount: 14,
-  },
-  {
-    title: 'Severance',
-    year: 2022,
-    rating: '8.7',
-    quality: '4K',
-    poster: 'https://static.tvmaze.com/uploads/images/medium_portrait/397/993132.jpg',
-    genres: ['Sci-Fi', 'Thriller'],
-    synopsis: 'Office workers whose memories are surgically split between work and home.',
-    sourcesCount: 12,
-  },
-  {
-    title: 'Gladiator II',
-    year: 2024,
-    rating: '7.9',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg',
-    genres: ['Action', 'Drama'],
-    synopsis: 'Lucius returns to the Colosseum after Rome falls under tyrannical rule.',
-    sourcesCount: 11,
-  },
-  {
-    title: 'House of the Dragon',
-    year: 2024,
-    rating: '8.5',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/1X4h40fcB4WWUmIBK0auT4zRBAV.jpg',
-    genres: ['Action', 'Fantasy'],
-    synopsis: 'House Targaryen two centuries before Game of Thrones.',
-    sourcesCount: 17,
-  },
-  {
-    title: 'Stranger Things',
-    year: 2024,
-    rating: '8.7',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg',
-    genres: ['Sci-Fi', 'Horror'],
-    synopsis: 'A small town uncovers secrets, experiments, and supernatural forces.',
-    sourcesCount: 21,
-  },
-  {
-    title: 'The Last of Us',
-    year: 2023,
-    rating: '8.8',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg',
-    genres: ['Action', 'Drama'],
-    synopsis: 'Joel and Ellie cross a post-apocalyptic America overrun by the infected.',
-    sourcesCount: 19,
-  },
-  {
-    title: 'Arcane',
-    year: 2024,
-    rating: '9.0',
-    quality: '4K',
-    poster: 'https://image.tmdb.org/t/p/w500/fqld22jKw1abzGlhSolPGwGqZFE.jpg',
-    genres: ['Animation', 'Sci-Fi'],
-    synopsis: 'Piltover and Zaun collide through the story of two iconic champions.',
-    sourcesCount: 16,
-  },
-];
-
-const TOP_RANK_ANIME = [
-  {
-    title: 'Frieren: Beyond Journey’s End',
-    year: 2023,
-    rating: '9.3',
-    quality: '4K',
-    poster: 'https://cdn.myanimelist.net/images/anime/1015/138006l.jpg',
-    genres: ['Fantasy', 'Adventure'],
-    synopsis: 'An elf mage reflects on life after defeating the Demon King.',
-    sourcesCount: 14,
-  },
-  {
-    title: 'Attack on Titan',
-    year: 2013,
-    rating: '9.1',
-    quality: '1080p',
-    poster: 'https://cdn.myanimelist.net/images/anime/10/47347l.jpg',
-    genres: ['Action', 'Dark Fantasy'],
-    synopsis: 'Eren vows to wipe out the Titans after his hometown is destroyed.',
-    sourcesCount: 16,
-  },
-  {
-    title: 'Demon Slayer: Hashira Training',
-    year: 2024,
-    rating: '8.7',
-    quality: '4K',
-    poster: 'https://cdn.myanimelist.net/images/anime/1286/99889l.jpg',
-    genres: ['Action', 'Supernatural'],
-    synopsis: 'Tanjiro trains with the Hashira ahead of the battle against Muzan.',
-    sourcesCount: 15,
-  },
-  {
-    title: 'Solo Leveling',
-    year: 2024,
-    rating: '8.5',
-    quality: '4K',
-    poster: 'https://cdn.myanimelist.net/images/anime/1733/141163l.jpg',
-    genres: ['Action', 'Fantasy'],
-    synopsis: 'The weakest hunter gains a mysterious system that lets him level up.',
-    sourcesCount: 13,
-  },
-  {
-    title: 'Jujutsu Kaisen',
-    year: 2020,
-    rating: '8.6',
-    quality: '4K',
-    poster: 'https://cdn.myanimelist.net/images/anime/1171/109222l.jpg',
-    genres: ['Action', 'Supernatural'],
-    synopsis: 'A boy swallows a cursed relic and joins the fight against dark spirits.',
-    sourcesCount: 14,
-  },
-  {
-    title: 'One Piece',
-    year: 1999,
-    rating: '8.9',
-    quality: '1080p',
-    poster: 'https://cdn.myanimelist.net/images/anime/6/73245l.jpg',
-    genres: ['Action', 'Adventure'],
-    synopsis: 'Luffy and his crew sail the Grand Line in search of One Piece.',
-    sourcesCount: 20,
-  },
-  {
-    title: 'Bleach: Thousand-Year Blood War',
-    year: 2022,
-    rating: '9.0',
-    quality: '4K',
-    poster: 'https://cdn.myanimelist.net/images/anime/1764/126627l.jpg',
-    genres: ['Action', 'Supernatural'],
-    synopsis: 'Ichigo faces a mysterious enemy threatening Soul Society.',
-    sourcesCount: 12,
-  },
-  {
-    title: 'Chainsaw Man',
-    year: 2022,
-    rating: '8.5',
-    quality: '4K',
-    poster: 'https://cdn.myanimelist.net/images/anime/1806/126216l.jpg',
-    genres: ['Action', 'Horror'],
-    synopsis: 'Denji merges with Pochita and becomes Chainsaw Man.',
-    sourcesCount: 11,
-  },
 ];
 
 const FAQS = [
@@ -322,35 +95,15 @@ export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<ContentCategory>('movies');
   const [siteSearchQuery, setSiteSearchQuery] = useState('');
-  const [showcaseTab, setShowcaseTab] = useState<'movies' | 'anime'>('movies');
   const [websites, setWebsites] = useState<SiteData[]>([]);
-  const [liveMovies, setLiveMovies] = useState<LiveShowcaseItem[]>(
-    TOP_RANK_MOVIES.map((item) => ({ ...item, category: 'movies' as const }))
-  );
-  const [liveAnime, setLiveAnime] = useState<LiveShowcaseItem[]>(
-    TOP_RANK_ANIME.map((item) => ({ ...item, category: 'anime' as const }))
-  );
   const [loading, setLoading] = useState(true);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
   const [heroSuggestions, setHeroSuggestions] = useState<
     { title: string; year: number | null; category: string; poster: string | null }[]
   >([]);
   const [showHeroSuggestions, setShowHeroSuggestions] = useState(false);
-  const [hiddenShowcaseKeys, setHiddenShowcaseKeys] = useState<Set<string>>(() => new Set());
 
-  const showcaseScrollRef = useRef<HTMLDivElement>(null);
   const typingText = useTypingAnimation(SEARCH_PLACEHOLDERS);
-
-  const scrollShowcase = (direction: 'left' | 'right') => {
-    showcaseScrollRef.current?.scrollBy({
-      left: direction === 'left' ? -360 : 360,
-      behavior: 'smooth',
-    });
-  };
-
-  useEffect(() => {
-    showcaseScrollRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
-  }, [showcaseTab]);
 
   useEffect(() => {
     async function fetchSites() {
@@ -364,28 +117,7 @@ export default function HomePage() {
       }
     }
 
-    async function fetchLiveTrending() {
-      try {
-        const res = await fetch('/api/trending/live', { cache: 'no-store' });
-        if (res.ok) {
-          const data = await res.json();
-          if (data.movies?.length) {
-            setLiveMovies(data.movies.filter((item: LiveShowcaseItem) => isValidPosterUrl(item.poster)));
-          }
-          if (data.anime?.length) {
-            setLiveAnime(data.anime.filter((item: LiveShowcaseItem) => isValidPosterUrl(item.poster)));
-          }
-        }
-      } catch (err) {
-        console.warn('Live media fetch fallback:', err);
-      }
-    }
-
     fetchSites();
-    fetchLiveTrending();
-
-    const refreshTimer = setInterval(fetchLiveTrending, 30 * 60 * 1000);
-    return () => clearInterval(refreshTimer);
   }, []);
 
   const handleSearchSubmit = useCallback(
@@ -459,33 +191,17 @@ export default function HomePage() {
   const totalSitesCount = websites.length || 109;
   const activeCategoryLabel =
     DIRECTORY_CATEGORIES.find((c) => c.id === activeCategory)?.label || 'Streaming';
-  const markShowcasePosterBroken = useCallback((item: LiveShowcaseItem) => {
-    const key = showcaseItemKey(item);
-    setHiddenShowcaseKeys((prev) => {
-      if (prev.has(key)) return prev;
-      const next = new Set(prev);
-      next.add(key);
-      return next;
-    });
-  }, []);
-
-  const showcaseItems = useMemo(() => {
-    const items = showcaseTab === 'movies' ? liveMovies : liveAnime;
-    return items.filter(
-      (item) => isValidPosterUrl(item.poster) && !hiddenShowcaseKeys.has(showcaseItemKey(item))
-    );
-  }, [showcaseTab, liveMovies, liveAnime, hiddenShowcaseKeys]);
   const hasHeroSuggestions = showHeroSuggestions && heroSuggestions.length > 0;
 
   return (
     <div className="relative min-h-screen bg-transparent text-[#f4f1ea] overflow-x-hidden">
-      {/* HERO + search (suggestions expand inline and push trending down) */}
+      {/* HERO + search */}
       <section
         className={cn(
           'home-hero-section relative flex flex-col page-gutter',
           hasHeroSuggestions
             ? 'min-h-0 py-10 sm:py-12 justify-start'
-            : 'min-h-[calc(100svh-var(--header-height))] justify-center pb-12 sm:pb-16 pt-6 sm:pt-12'
+            : 'min-h-[calc(100svh-var(--header-height))] justify-center pb-8 sm:pb-10 pt-6 sm:pt-12'
         )}
       >
         <div className="max-w-6xl mx-auto w-full text-center">
@@ -595,146 +311,24 @@ export default function HomePage() {
           </div>
 
           {!hasHeroSuggestions && (
-            <div className="home-fade-up-delay-2 mt-4 sm:mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs sm:text-sm px-1">
-              <a
-                href="#trending"
-                className="text-white/55 hover:text-[#e8b86d] transition-colors underline-offset-4 hover:underline"
-              >
-                See what’s trending
-              </a>
-              <span className="text-white/20" aria-hidden>
-                ·
-              </span>
+            <div className="home-fade-up-delay-2 mt-4 sm:mt-5 flex flex-wrap items-center justify-center px-1">
               <a
                 href="#directory"
-                className="text-white/55 hover:text-[#e8b86d] transition-colors underline-offset-4 hover:underline"
+                className="text-xs sm:text-sm text-white/55 hover:text-[#e8b86d] transition-colors underline-offset-4 hover:underline"
               >
-                Browse directory
+                Browse site directory
               </a>
             </div>
           )}
         </div>
       </section>
 
-      <div className="home-content-below page-shell mx-auto page-gutter space-y-16 sm:space-y-24 pb-20 sm:pb-28 pt-4 sm:pt-6">
-        {/* TRENDING */}
-        <motion.section id="trending" className="scroll-mt-28 home-section-reveal" {...SCROLL_REVEAL}>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-            <div>
-              <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white">
-                Trending now
-              </h2>
-              <p className="mt-3 text-base text-white/50 max-w-xl">
-                Daily IMDb Moviemeter picks with verified posters — refreshed every few hours. Tap any title to search sources.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <div className="segment-toggle">
-                {(['movies', 'anime'] as const).map((tab) => {
-                  const isActive = showcaseTab === tab;
-                  return (
-                    <button
-                      key={tab}
-                      type="button"
-                      onClick={() => setShowcaseTab(tab)}
-                      className={cn(
-                        'segment-toggle-btn px-4 py-2 text-sm capitalize',
-                        isActive ? 'text-[#1a1208]' : 'text-white/55 hover:text-white'
-                      )}
-                      aria-pressed={isActive}
-                    >
-                      {isActive && (
-                        <motion.span
-                          layoutId="home-showcase-pill"
-                          className="segment-toggle-pill"
-                          transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                        />
-                      )}
-                      <span className="relative z-10">
-                        {tab === 'movies' ? 'Movies & shows' : 'Anime'}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-              <div className="hidden sm:flex gap-1">
-                <button
-                  type="button"
-                  onClick={() => scrollShowcase('left')}
-                  className="w-10 h-10 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] flex items-center justify-center transition-colors"
-                  aria-label="Scroll left"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollShowcase('right')}
-                  className="w-10 h-10 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.08] flex items-center justify-center transition-colors"
-                  aria-label="Scroll right"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={showcaseTab}
-              ref={showcaseScrollRef}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.28, ease: MOTION_EASE }}
-              className="home-rail-scroll flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-2"
-            >
-              {showcaseItems.map((item, idx) => (
-                <Link
-                  key={`${item.title}-${item.imdbId || idx}`}
-                  href={buildShowcaseSearchUrl(item)}
-                  className="home-rail-item home-rail-card-link group relative min-w-[180px] w-[180px] sm:min-w-[220px] sm:w-[220px] shrink-0 snap-start rounded-2xl overflow-hidden border border-white/10 bg-[#0a0d14]/70"
-                >
-                  <div className="relative aspect-[2/3] overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={item.poster}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                      onError={() => markShowcasePosterBroken(item)}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#03050a] via-transparent to-transparent opacity-90" />
-                    <div className="absolute top-3 left-3 font-display text-xs font-bold text-[#e8b86d]">
-                      #{idx + 1}
-                    </div>
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <div className="flex items-center gap-2 text-[11px] text-white/70 mb-1">
-                        <span>{item.year}</span>
-                        <span className="text-white/30">·</span>
-                        <span>{item.rating}</span>
-                      </div>
-                      <h3 className="font-display text-sm font-semibold text-white leading-snug line-clamp-2 group-hover:text-[#e8b86d] transition-colors">
-                        {item.title}
-                      </h3>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </motion.section>
-
+      <div className="home-content-below page-shell mx-auto page-gutter space-y-16 sm:space-y-24 pb-20 sm:pb-28 pt-0 sm:pt-2">
         {/* DIRECTORY */}
         <motion.section
           id="directory"
           className="scroll-mt-28 home-section-reveal"
           {...SCROLL_REVEAL}
-          transition={{ ...SCROLL_REVEAL.transition, delay: 0.05 }}
         >
           <div className="mb-6 sm:mb-10">
             <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white">
