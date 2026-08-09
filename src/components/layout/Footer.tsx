@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { CATEGORIES } from '@/lib/utils';
 import { MoviesNetLogo } from '@/components/brand/MoviesNetLogo';
+import { SEO_TITLES } from '@/lib/seo-titles';
 
 export function Footer() {
   return (
     <footer className="relative z-10 mt-auto border-t border-white/[0.04]">
       <div className="page-shell mx-auto page-gutter py-12 sm:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="md:col-span-1">
             <MoviesNetLogo size="md" className="mb-4" />
@@ -54,6 +55,23 @@ export function Footer() {
                     className="text-sm text-white/40 hover:text-white/80 transition-colors"
                   >
                     {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Popular titles (SEO internal links) */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/70 uppercase tracking-wider mb-4">Popular titles</h3>
+            <ul className="space-y-3">
+              {SEO_TITLES.slice(0, 8).map((entry) => (
+                <li key={entry.slug}>
+                  <Link
+                    href={`/watch/${entry.slug}`}
+                    className="text-sm text-white/40 hover:text-white/80 transition-colors"
+                  >
+                    Where to watch {entry.title}
                   </Link>
                 </li>
               ))}
