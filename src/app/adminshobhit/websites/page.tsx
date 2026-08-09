@@ -8,8 +8,9 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import type { Website, ParserType, ContentCategory, Language } from '@/types';
 import { CATEGORIES } from '@/lib/utils';
-import { moveWebsiteToRank } from '@/lib/website-reorder';
 import { WebsiteRankControl } from '@/components/admin/WebsiteRankControl';
+import { WebsiteDragHandle } from '@/components/admin/WebsiteDragHandle';
+import { useWebsiteReorder } from '@/hooks/use-website-reorder';
 
 const EMPTY_PARSER_CONFIG = {
   type: 'css' as ParserType,
@@ -69,8 +70,6 @@ export default function WebsiteManagerPage() {
   const [editingWebsite, setEditingWebsite] = useState<Partial<Website> | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState<ContentCategory | 'all'>('all');
-  const [dragIndex, setDragIndex] = useState<number | null>(null);
-  const [overIndex, setOverIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (!isAuthenticated || !token) {
@@ -141,75 +140,23 @@ export default function WebsiteManagerPage() {
     },
   });
 
-  const reorderMutation = useMutation({
-    mutationFn: async (orderedIds: string[]) => {
-      const res = await fetch('/api/websites/reorder', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ orderedIds }),
-      });
-      if (!res.ok) throw new Error('Failed to reorder');
-      return res.json();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['admin-websites'] });
-    },
-  });
-
   const displayedWebsites = websites
     ? categoryFilter === 'all'
       ? websites
       : websites.filter((w) => w.categories.includes(categoryFilter))
     : [];
 
-  const mergeReorder = (fromIndex: number, toIndex: number) => {
-    if (!websites || fromIndex === toIndex) return;
-    const allIds = websites.map((w) => w.id);
-    const filteredIds = displayedWebsites.map((w) => w.id);
-    const filterPositions: number[] = [];
-    const filterIdOrder: string[] = [];
-    allIds.forEach((id, i) => {
-      if (filteredIds.includes(id)) {
-        filterPositions.push(i);
-        filterIdOrder.push(id);
-      }
-    });
-    const newFilterOrder = [...filterIdOrder];
-    const [moved] = newFilterOrder.splice(fromIndex, 1);
-    newFilterOrder.splice(toIndex, 0, moved);
-    const result = [...allIds];
-    filterPositions.forEach((pos, i) => {
-      result[pos] = newFilterOrder[i];
-    });
-    reorderMutation.mutate(result);
-  };
-
-  const handleDragStart = (index: number) => setDragIndex(index);
-  const handleDragOver = (e: React.DragEvent, index: number) => {
-    e.preventDefault();
-    setOverIndex(index);
-  };
-  const handleDrop = (index: number) => {
-    if (dragIndex !== null) mergeReorder(dragIndex, index);
-    setDragIndex(null);
-    setOverIndex(null);
-  };
-  const handleDragEnd = () => {
-    setDragIndex(null);
-    setOverIndex(null);
-  };
-
-  const placeAtRank = (siteId: string, targetRank: number) => {
-    if (!websites) return;
-    const allIds = websites.map((w) => w.id);
-    reorderMutation.mutate(moveWebsiteToRank(allIds, siteId, targetRank));
-  };
-
-  const getGlobalRank = (siteId: string) => {
-    if (!websites) return 1;
-    const index = websites.findIndex((w) => w.id === siteId);
-    return index === -1 ? 1 : index + 1;
-  };
+  const {
+    dragIndex,
+    overIndex,
+    reorderMutation,
+    handleDragStart,
+    handleDragOver,
+    handleDrop,
+    handleDragEnd,
+    placeAtRank,
+    getGlobalRank,
+  } = useWebsiteReorder(token, websites);
 
   // Toggle enabled
   const toggleEnabled = (website: Website) => {
@@ -288,7 +235,7 @@ export default function WebsiteManagerPage() {
               );
             })}
           </div>
-          <p className="text-xs text-white/40">Drag rows or set rank to control search order</p>
+          <p className="text-xs text-white/40">Use the grip handle to drag, or set rank to jump position</p>
         </div>
 
         {/* Website List */}
@@ -301,15 +248,12 @@ export default function WebsiteManagerPage() {
             {displayedWebsites.map((website, index) => (
               <motion.div
                 key={website.id}
-                draggable
-                onDragStart={() => handleDragStart(index)}
                 onDragOver={(e) => handleDragOver(e, index)}
-                onDrop={() => handleDrop(index)}
-                onDragEnd={handleDragEnd}
+                onDrop={handleDrop(displayedWebsites, index)}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.02 }}
-                className={`flex items-center gap-4 p-5 rounded-2xl bg-black/65 border backdrop-blur-2xl shadow-lg transition-all cursor-grab active:cursor-grabbing ${
+                className={`flex items-center gap-4 p-5 rounded-2xl bg-black/65 border backdrop-blur-2xl shadow-lg transition-all ${
                   dragIndex === index ? 'opacity-50 scale-[0.98]' : ''
                 } ${
                   overIndex === index && dragIndex !== index
@@ -317,18 +261,14 @@ export default function WebsiteManagerPage() {
                     : 'border-white/15 hover:border-purple-500/40 hover:bg-black/80'
                 }`}
               >
-                {/* Drag handle */}
-                <div className="flex-shrink-0 text-white/25 hover:text-white/50 cursor-grab" title="Drag to reorder">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <circle cx="9" cy="6" r="1.5" /><circle cx="15" cy="6" r="1.5" />
-                    <circle cx="9" cy="12" r="1.5" /><circle cx="15" cy="12" r="1.5" />
-                    <circle cx="9" cy="18" r="1.5" /><circle cx="15" cy="18" r="1.5" />
-                  </svg>
-                </div>
+                <WebsiteDragHandle
+                  onDragStart={(e) => handleDragStart(e, index)}
+                  onDragEnd={handleDragEnd}
+                />
                 {/* Logo */}
                 <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0 overflow-hidden shadow-inner">
                   {website.logoUrl ? (
-                    <img src={website.logoUrl} alt="" className="w-full h-full object-cover rounded-xl" />
+                    <img src={website.logoUrl} alt="" draggable={false} className="w-full h-full object-cover rounded-xl pointer-events-none" />
                   ) : (
                     <span className="text-lg font-extrabold text-purple-300">{website.name.charAt(0)}</span>
                   )}

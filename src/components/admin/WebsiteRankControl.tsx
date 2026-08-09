@@ -33,8 +33,8 @@ export function WebsiteRankControl({
     <div
       className={`flex items-center gap-1.5 shrink-0 ${compact ? '' : 'flex-col sm:flex-row sm:items-center'}`}
       onClick={(e) => e.stopPropagation()}
-      onMouseDown={(e) => e.stopPropagation()}
-      onDragStart={(e) => e.stopPropagation()}
+      onPointerDown={(e) => e.stopPropagation()}
+      onDragOver={(e) => e.preventDefault()}
     >
       <span className="text-[10px] font-bold uppercase tracking-wide text-white/40 whitespace-nowrap">
         Rank

@@ -2,22 +2,20 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useAdminStore } from '@/stores';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import type { Website, ContentCategory } from '@/types';
 import { CATEGORIES } from '@/lib/utils';
-import { moveWebsiteToRank } from '@/lib/website-reorder';
 import { WebsiteRankControl } from '@/components/admin/WebsiteRankControl';
+import { WebsiteDragHandle } from '@/components/admin/WebsiteDragHandle';
+import { useWebsiteReorder } from '@/hooks/use-website-reorder';
 
 export default function SearchOrderPage() {
   const router = useRouter();
-  const queryClient = useQueryClient();
   const { isAuthenticated, token } = useAdminStore();
   const [categoryFilter, setCategoryFilter] = useState<ContentCategory | 'all'>('all');
-  const [dragIndex, setDragIndex] = useState<number | null>(null);
-  const [overIndex, setOverIndex] = useState<number | null>(null);
 
   useEffect(() => {
     if (!isAuthenticated || !token) router.push('/adminshobhit/login');
@@ -33,58 +31,23 @@ export default function SearchOrderPage() {
     enabled: !!token,
   });
 
-  const reorderMutation = useMutation({
-    mutationFn: async (orderedIds: string[]) => {
-      const res = await fetch('/api/websites/reorder', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ orderedIds }),
-      });
-      if (!res.ok) throw new Error('Failed');
-      return res.json();
-    },
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['admin-websites'] }),
-  });
-
   const displayed = websites
     ? categoryFilter === 'all'
       ? websites
       : websites.filter((w) => w.categories.includes(categoryFilter))
     : [];
 
-  const mergeReorder = (fromIndex: number, toIndex: number) => {
-    if (!websites || fromIndex === toIndex) return;
-    const allIds = websites.map((w) => w.id);
-    const filteredIds = displayed.map((w) => w.id);
-    const filterPositions: number[] = [];
-    const filterIdOrder: string[] = [];
-    allIds.forEach((id, i) => {
-      if (filteredIds.includes(id)) {
-        filterPositions.push(i);
-        filterIdOrder.push(id);
-      }
-    });
-    const newOrder = [...filterIdOrder];
-    const [moved] = newOrder.splice(fromIndex, 1);
-    newOrder.splice(toIndex, 0, moved);
-    const result = [...allIds];
-    filterPositions.forEach((pos, i) => {
-      result[pos] = newOrder[i];
-    });
-    reorderMutation.mutate(result);
-  };
-
-  const placeAtRank = (siteId: string, targetRank: number) => {
-    if (!websites) return;
-    const allIds = websites.map((w) => w.id);
-    reorderMutation.mutate(moveWebsiteToRank(allIds, siteId, targetRank));
-  };
-
-  const getGlobalRank = (siteId: string) => {
-    if (!websites) return 1;
-    const index = websites.findIndex((w) => w.id === siteId);
-    return index === -1 ? 1 : index + 1;
-  };
+  const {
+    dragIndex,
+    overIndex,
+    reorderMutation,
+    handleDragStart,
+    handleDragOver,
+    handleDrop,
+    handleDragEnd,
+    placeAtRank,
+    getGlobalRank,
+  } = useWebsiteReorder(token, websites);
 
   if (!isAuthenticated) return null;
 
@@ -105,7 +68,7 @@ export default function SearchOrderPage() {
             </Link>
             <div>
               <h1 className="text-2xl font-extrabold">Search Order</h1>
-              <p className="text-sm text-gray-400">Drag or enter a rank to set which websites appear first in search</p>
+              <p className="text-sm text-gray-400">Use the grip handle to drag, or enter a rank number and click Set</p>
             </div>
           </div>
         </div>
@@ -140,18 +103,25 @@ export default function SearchOrderPage() {
             {displayed.map((site, index) => (
               <motion.div
                 key={site.id}
-                draggable
-                onDragStart={() => setDragIndex(index)}
-                onDragOver={(e) => { e.preventDefault(); setOverIndex(index); }}
-                onDrop={() => { if (dragIndex !== null) mergeReorder(dragIndex, index); setDragIndex(null); setOverIndex(null); }}
-                onDragEnd={() => { setDragIndex(null); setOverIndex(null); }}
-                className={`flex items-center gap-4 p-4 rounded-xl border backdrop-blur-xl cursor-grab active:cursor-grabbing transition-all ${
+                onDragOver={(e) => handleDragOver(e, index)}
+                onDrop={handleDrop(displayed, index)}
+                className={`flex items-center gap-3 p-4 rounded-xl border backdrop-blur-xl transition-all ${
+                  dragIndex === index ? 'opacity-50' : ''
+                } ${
                   overIndex === index && dragIndex !== index ? 'border-purple-400 bg-purple-500/10' : 'border-white/10 bg-black/65'
                 }`}
               >
-                <span className="text-xs font-mono text-white/30 w-6">{getGlobalRank(site.id)}</span>
+                <WebsiteDragHandle
+                  onDragStart={(e) => handleDragStart(e, index)}
+                  onDragEnd={handleDragEnd}
+                />
+                <span className="text-xs font-mono text-white/30 w-6 shrink-0">#{getGlobalRank(site.id)}</span>
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center overflow-hidden flex-shrink-0">
-                  {site.logoUrl ? <img src={site.logoUrl} alt="" className="w-full h-full object-cover" /> : <span className="text-xs font-bold">{site.name.charAt(0)}</span>}
+                  {site.logoUrl ? (
+                    <img src={site.logoUrl} alt="" draggable={false} className="w-full h-full object-cover pointer-events-none" />
+                  ) : (
+                    <span className="text-xs font-bold">{site.name.charAt(0)}</span>
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-bold text-white truncate">{site.name}</p>

@@ -20,6 +20,9 @@ import type {
 import { parseFmhyVideoMarkdown, hostnameFromUrl } from '@/lib/fmhy-parser';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
+const VERCEL_WEBSITES_TMP = path.join('/tmp', 'websites.json');
+
+let websitesMemoryCache: Website[] | null = null;
 
 function ensureDataDir() {
   if (!existsSync(DATA_DIR)) {
@@ -60,12 +63,44 @@ function writeJson<T>(filename: string, data: T): void {
   }
 }
 
+function loadWebsitesFromDisk(): Website[] {
+  if (process.env.VERCEL && existsSync(VERCEL_WEBSITES_TMP)) {
+    try {
+      return JSON.parse(readFileSync(VERCEL_WEBSITES_TMP, 'utf-8')) as Website[];
+    } catch {
+      // Fall through to bundled seed data.
+    }
+  }
+
+  return readJson<Website[]>('websites.json', websitesSeed as unknown as Website[]);
+}
+
+function getWebsitesRaw(): Website[] {
+  if (!websitesMemoryCache) {
+    websitesMemoryCache = loadWebsitesFromDisk();
+  }
+  return websitesMemoryCache;
+}
+
+function saveWebsites(websites: Website[]): void {
+  websitesMemoryCache = websites;
+
+  if (process.env.VERCEL) {
+    try {
+      writeFileSync(VERCEL_WEBSITES_TMP, JSON.stringify(websites, null, 2));
+    } catch (error) {
+      console.warn('saveWebsites failed on Vercel /tmp:', error);
+    }
+    return;
+  }
+
+  writeJson('websites.json', websites);
+}
+
 // --- Websites ---
 
 export function getWebsites(): Website[] {
-  return readJson<Website[]>('websites.json', websitesSeed as unknown as Website[]).sort(
-    (a, b) => b.priority - a.priority
-  );
+  return [...getWebsitesRaw()].sort((a, b) => b.priority - a.priority);
 }
 
 export function isFmhyWebsite(website: Website): boolean {
@@ -99,7 +134,7 @@ export function createWebsite(data: Omit<Website, 'id' | 'createdAt' | 'updatedA
     updatedAt: new Date().toISOString(),
   };
   websites.push(website);
-  writeJson('websites.json', websites);
+  saveWebsites(websites);
   return website;
 }
 
@@ -108,7 +143,7 @@ export function updateWebsite(id: string, data: Partial<Website>): Website | nul
   const index = websites.findIndex((w) => w.id === id);
   if (index === -1) return null;
   websites[index] = { ...websites[index], ...data, updatedAt: new Date().toISOString() };
-  writeJson('websites.json', websites);
+  saveWebsites(websites);
   return websites[index];
 }
 
@@ -116,7 +151,7 @@ export function deleteWebsite(id: string): boolean {
   const websites = getWebsites();
   const filtered = websites.filter((w) => w.id !== id);
   if (filtered.length === websites.length) return false;
-  writeJson('websites.json', filtered);
+  saveWebsites(filtered);
   return true;
 }
 
@@ -146,8 +181,8 @@ export function reorderWebsites(orderedIds: string[]): Website[] {
     });
   });
 
-  writeJson('websites.json', reordered);
-  return reordered;
+  saveWebsites(reordered);
+  return reordered.sort((a, b) => b.priority - a.priority);
 }
 
 // --- FMHY Sources ---
