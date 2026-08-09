@@ -1,6 +1,7 @@
 import type { Website } from '@/types';
 import { getDailyImdbTrendingMovies } from './imdb-trending';
 import { resolveWebsiteLogoUrl } from './website-logo';
+import { isValidPosterUrl, pickItemsWithVerifiedPosters } from './poster-utils';
 
 export interface LiveShowcaseItem {
   title: string;
@@ -197,39 +198,53 @@ export async function fetchLiveShowcase(): Promise<{ movies: LiveShowcaseItem[];
 
   let liveAnime: LiveShowcaseItem[] = [];
   try {
-    const animeRes = await fetch('https://api.jikan.moe/v4/top/anime?limit=12', { next: { revalidate: 3600 } });
+    const animeRes = await fetch('https://api.jikan.moe/v4/top/anime?limit=25', {
+      next: { revalidate: 14400 },
+    });
     if (animeRes.ok) {
       const animeData = await animeRes.json();
       if (animeData.data && Array.isArray(animeData.data)) {
-        liveAnime = animeData.data.map((ani: {
-          title_english?: string;
-          title: string;
-          year?: number;
-          aired?: { prop?: { from?: { year?: number } } };
-          score?: number;
-          images?: { jpg?: { large_image_url?: string; image_url?: string } };
-          genres?: { name: string }[];
-          synopsis?: string;
-        }) => ({
-          title: ani.title_english || ani.title,
-          year: ani.year || ani.aired?.prop?.from?.year || 2023,
-          rating: ani.score ? ani.score.toFixed(1) : '8.5',
-          quality: '4K UHD',
-          poster: ani.images?.jpg?.large_image_url || ani.images?.jpg?.image_url || FALLBACK_ANIME[0].poster,
-          genres: ani.genres ? ani.genres.map((g) => g.name) : ['Anime', 'Action'],
-          synopsis: ani.synopsis ? ani.synopsis.slice(0, 120) + '...' : 'Top trending anime.',
-          sourcesCount: Math.floor(Math.random() * 8) + 10,
-          category: 'anime' as const,
-        }));
+        const mapped: LiveShowcaseItem[] = animeData.data
+          .map((ani: {
+            title_english?: string;
+            title: string;
+            year?: number;
+            aired?: { prop?: { from?: { year?: number } } };
+            score?: number;
+            images?: { jpg?: { large_image_url?: string; image_url?: string } };
+            genres?: { name: string }[];
+            synopsis?: string;
+          }) => {
+            const poster = ani.images?.jpg?.large_image_url || ani.images?.jpg?.image_url || '';
+            if (!isValidPosterUrl(poster)) return null;
+
+            return {
+              title: ani.title_english || ani.title,
+              year: ani.year || ani.aired?.prop?.from?.year || 2023,
+              rating: ani.score ? ani.score.toFixed(1) : '8.5',
+              quality: '4K UHD',
+              poster,
+              genres: ani.genres ? ani.genres.map((g) => g.name) : ['Anime', 'Action'],
+              synopsis: ani.synopsis ? ani.synopsis.slice(0, 120) + '...' : 'Top trending anime.',
+              sourcesCount: Math.floor(Math.random() * 8) + 10,
+              category: 'anime' as const,
+            };
+          })
+          .filter((item: LiveShowcaseItem | null): item is LiveShowcaseItem => item !== null);
+
+        liveAnime = await pickItemsWithVerifiedPosters(mapped, 12, 25);
       }
     }
   } catch {
     // fall through to fallback
   }
 
+  const verifiedMovies = liveMovies.filter((item) => isValidPosterUrl(item.poster));
+  const verifiedAnime = liveAnime.filter((item) => isValidPosterUrl(item.poster));
+
   return {
-    movies: liveMovies.length >= 4 ? liveMovies : FALLBACK_MOVIES,
-    anime: liveAnime.length >= 4 ? liveAnime : FALLBACK_ANIME,
+    movies: verifiedMovies.length >= 4 ? verifiedMovies : FALLBACK_MOVIES,
+    anime: verifiedAnime.length >= 4 ? verifiedAnime : FALLBACK_ANIME,
   };
 }
 

@@ -1,10 +1,13 @@
 import { cache } from './cache';
 import type { LiveShowcaseItem } from './trending-showcase';
+import { isValidPosterUrl, pickItemsWithVerifiedPosters } from './poster-utils';
 
 const IMDB_CHART_URL = 'https://www.imdb.com/chart/moviemeter/';
 const TMDB_API_KEY = process.env.TMDB_API_KEY || '';
 const OMDB_API_KEY = process.env.OMDB_API_KEY || 'trilogy';
-const DAY_MS = 24 * 60 * 60 * 1000;
+const TRENDING_CACHE_MS = 4 * 60 * 60 * 1000;
+const TRENDING_TARGET = 12;
+const TRENDING_FETCH_POOL = 30;
 
 const FETCH_HEADERS: HeadersInit = {
   'User-Agent':
@@ -23,8 +26,9 @@ interface ImdbChartEntry {
   synopsis: string;
 }
 
-function todayCacheKey(): string {
-  return `imdb-moviemeter:${new Date().toISOString().slice(0, 10)}`;
+function trendingCacheKey(): string {
+  const bucket = Math.floor(Date.now() / TRENDING_CACHE_MS);
+  return `imdb-moviemeter:${bucket}`;
 }
 
 function stripHtml(text: string): string {
@@ -109,14 +113,14 @@ function parseImdbChartHtml(html: string, limit = 12): ImdbChartEntry[] {
   return items;
 }
 
-async function fetchImdbMoviemeterChart(limit = 12): Promise<ImdbChartEntry[]> {
+async function fetchImdbMoviemeterChart(limit = TRENDING_FETCH_POOL): Promise<ImdbChartEntry[]> {
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 12000);
     const res = await fetch(IMDB_CHART_URL, {
       headers: FETCH_HEADERS,
       signal: controller.signal,
-      next: { revalidate: 86400 },
+      next: { revalidate: 14400 },
     });
     clearTimeout(timer);
 
@@ -129,7 +133,7 @@ async function fetchImdbMoviemeterChart(limit = 12): Promise<ImdbChartEntry[]> {
   }
 }
 
-async function fetchTmdbTrendingMovies(limit = 12): Promise<ImdbChartEntry[]> {
+async function fetchTmdbTrendingMovies(limit = TRENDING_FETCH_POOL): Promise<ImdbChartEntry[]> {
   if (!TMDB_API_KEY) return [];
 
   try {
@@ -137,7 +141,7 @@ async function fetchTmdbTrendingMovies(limit = 12): Promise<ImdbChartEntry[]> {
     const timer = setTimeout(() => controller.abort(), 10000);
     const res = await fetch(
       `https://api.themoviedb.org/3/trending/movie/day?api_key=${TMDB_API_KEY}`,
-      { signal: controller.signal, next: { revalidate: 86400 } }
+      { signal: controller.signal, next: { revalidate: 14400 } }
     );
     clearTimeout(timer);
     if (!res.ok) return [];
@@ -155,7 +159,7 @@ async function fetchTmdbTrendingMovies(limit = 12): Promise<ImdbChartEntry[]> {
         try {
           const extRes = await fetch(
             `https://api.themoviedb.org/3/movie/${movie.id}/external_ids?api_key=${TMDB_API_KEY}`,
-            { next: { revalidate: 86400 } }
+            { next: { revalidate: 14400 } }
           );
           if (extRes.ok) {
             const ext = await extRes.json();
@@ -197,7 +201,7 @@ async function enrichFromOmdb(entry: ImdbChartEntry): Promise<ImdbChartEntry> {
     const timer = setTimeout(() => controller.abort(), 5000);
     const res = await fetch(
       `https://www.omdbapi.com/?i=${encodeURIComponent(entry.imdbId)}&plot=short&apikey=${OMDB_API_KEY}`,
-      { signal: controller.signal, next: { revalidate: 86400 } }
+      { signal: controller.signal, next: { revalidate: 14400 } }
     );
     clearTimeout(timer);
     if (!res.ok) return entry;
@@ -228,13 +232,15 @@ async function enrichFromOmdb(entry: ImdbChartEntry): Promise<ImdbChartEntry> {
   }
 }
 
-function toShowcaseItem(entry: ImdbChartEntry, index: number): LiveShowcaseItem {
+function toShowcaseItem(entry: ImdbChartEntry, index: number): LiveShowcaseItem | null {
+  if (!isValidPosterUrl(entry.poster)) return null;
+
   return {
     title: entry.title,
     year: entry.year,
     rating: entry.rating,
     quality: '4K',
-    poster: entry.poster || 'https://image.tmdb.org/t/p/w500/1pdfLPoL6VFi8B8RFiMfaUtM3Zg.jpg',
+    poster: entry.poster,
     genres: entry.genres,
     synopsis: entry.synopsis,
     sourcesCount: Math.max(8, 20 - index),
@@ -243,23 +249,32 @@ function toShowcaseItem(entry: ImdbChartEntry, index: number): LiveShowcaseItem 
   };
 }
 
-export async function getDailyImdbTrendingMovies(limit = 12): Promise<LiveShowcaseItem[]> {
-  const cacheKey = todayCacheKey();
+export async function getDailyImdbTrendingMovies(limit = TRENDING_TARGET): Promise<LiveShowcaseItem[]> {
+  const cacheKey = trendingCacheKey();
   const cached = cache.get<LiveShowcaseItem[]>(cacheKey);
   if (cached && cached.length >= 4) return cached;
 
-  let chartEntries = await fetchImdbMoviemeterChart(limit);
-  if (chartEntries.length < 4) {
-    chartEntries = await fetchTmdbTrendingMovies(limit);
+  let chartEntries = await fetchImdbMoviemeterChart(TRENDING_FETCH_POOL);
+  if (chartEntries.length < 8) {
+    chartEntries = await fetchTmdbTrendingMovies(TRENDING_FETCH_POOL);
   }
 
-  if (chartEntries.length < 4) return [];
+  if (chartEntries.length === 0) return [];
 
   const enriched = await Promise.all(
-    chartEntries.slice(0, limit).map((entry) => enrichFromOmdb(entry))
+    chartEntries.map((entry) => enrichFromOmdb(entry))
   );
 
-  const showcase = enriched.map(toShowcaseItem);
-  cache.set(cacheKey, showcase, DAY_MS);
+  const withPosters = enriched.filter((entry) => isValidPosterUrl(entry.poster));
+  const verified = await pickItemsWithVerifiedPosters(withPosters, limit, TRENDING_FETCH_POOL);
+
+  const showcase = verified
+    .map((entry, index) => toShowcaseItem(entry, index))
+    .filter((item): item is LiveShowcaseItem => item !== null);
+
+  if (showcase.length >= 4) {
+    cache.set(cacheKey, showcase, TRENDING_CACHE_MS);
+  }
+
   return showcase;
 }

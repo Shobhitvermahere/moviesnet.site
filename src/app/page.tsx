@@ -10,6 +10,11 @@ import { WebsiteLogo } from '@/components/WebsiteLogo';
 import { buildSearchUrlFromSuggestion } from '@/lib/search-navigation';
 import type { LiveShowcaseItem } from '@/lib/trending-showcase';
 import type { ContentCategory } from '@/types';
+import { isValidPosterUrl } from '@/lib/poster-utils';
+
+function showcaseItemKey(item: Pick<LiveShowcaseItem, 'title' | 'poster'>) {
+  return `${item.title}::${item.poster}`;
+}
 
 function buildShowcaseSearchUrl(item: {
   title: string;
@@ -331,6 +336,7 @@ export default function HomePage() {
     { title: string; year: number | null; category: string; poster: string | null }[]
   >([]);
   const [showHeroSuggestions, setShowHeroSuggestions] = useState(false);
+  const [hiddenShowcaseKeys, setHiddenShowcaseKeys] = useState<Set<string>>(() => new Set());
 
   const showcaseScrollRef = useRef<HTMLDivElement>(null);
   const typingText = useTypingAnimation(SEARCH_PLACEHOLDERS);
@@ -360,11 +366,15 @@ export default function HomePage() {
 
     async function fetchLiveTrending() {
       try {
-        const res = await fetch('/api/trending/live');
+        const res = await fetch('/api/trending/live', { cache: 'no-store' });
         if (res.ok) {
           const data = await res.json();
-          if (data.movies?.length) setLiveMovies(data.movies);
-          if (data.anime?.length) setLiveAnime(data.anime);
+          if (data.movies?.length) {
+            setLiveMovies(data.movies.filter((item: LiveShowcaseItem) => isValidPosterUrl(item.poster)));
+          }
+          if (data.anime?.length) {
+            setLiveAnime(data.anime.filter((item: LiveShowcaseItem) => isValidPosterUrl(item.poster)));
+          }
         }
       } catch (err) {
         console.warn('Live media fetch fallback:', err);
@@ -373,6 +383,9 @@ export default function HomePage() {
 
     fetchSites();
     fetchLiveTrending();
+
+    const refreshTimer = setInterval(fetchLiveTrending, 30 * 60 * 1000);
+    return () => clearInterval(refreshTimer);
   }, []);
 
   const handleSearchSubmit = useCallback(
@@ -446,7 +459,22 @@ export default function HomePage() {
   const totalSitesCount = websites.length || 109;
   const activeCategoryLabel =
     DIRECTORY_CATEGORIES.find((c) => c.id === activeCategory)?.label || 'Streaming';
-  const showcaseItems = showcaseTab === 'movies' ? liveMovies : liveAnime;
+  const markShowcasePosterBroken = useCallback((item: LiveShowcaseItem) => {
+    const key = showcaseItemKey(item);
+    setHiddenShowcaseKeys((prev) => {
+      if (prev.has(key)) return prev;
+      const next = new Set(prev);
+      next.add(key);
+      return next;
+    });
+  }, []);
+
+  const showcaseItems = useMemo(() => {
+    const items = showcaseTab === 'movies' ? liveMovies : liveAnime;
+    return items.filter(
+      (item) => isValidPosterUrl(item.poster) && !hiddenShowcaseKeys.has(showcaseItemKey(item))
+    );
+  }, [showcaseTab, liveMovies, liveAnime, hiddenShowcaseKeys]);
   const hasHeroSuggestions = showHeroSuggestions && heroSuggestions.length > 0;
 
   return (
@@ -597,7 +625,7 @@ export default function HomePage() {
                 Trending now
               </h2>
               <p className="mt-3 text-base text-white/50 max-w-xl">
-                Daily IMDb Moviemeter picks — tap any title to search sources instantly.
+                Daily IMDb Moviemeter picks with verified posters — refreshed every few hours. Tap any title to search sources.
               </p>
             </div>
 
@@ -678,12 +706,7 @@ export default function HomePage() {
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          showcaseTab === 'movies'
-                            ? 'https://image.tmdb.org/t/p/w500/1pdfLPoL6VFi8B8RFiMfaUtM3Zg.jpg'
-                            : 'https://cdn.myanimelist.net/images/anime/1015/138006l.jpg';
-                      }}
+                      onError={() => markShowcasePosterBroken(item)}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#03050a] via-transparent to-transparent opacity-90" />
                     <div className="absolute top-3 left-3 font-display text-xs font-bold text-[#e8b86d]">
