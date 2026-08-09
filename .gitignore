@@ -33,6 +33,11 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# local / runtime data — do not commit (use Vercel persistence or redeploy seed)
+data/analytics.json
+data/search-history.json
+gcm-diagnose.log
+
 # vercel
 .vercel
 
