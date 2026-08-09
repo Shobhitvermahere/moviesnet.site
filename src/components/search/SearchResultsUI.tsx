@@ -6,6 +6,7 @@ import { cn, QUALITY_COLORS, resolveMoviePoster } from '@/lib/utils';
 import { formatLanguageLabel } from '@/lib/website-capabilities';
 import { WebsiteLogo } from '@/components/WebsiteLogo';
 import type { SearchResult, StreamingSource } from '@/types';
+import { formatLatency } from '@/lib/website-latency';
 
 export interface SiteHandoffTarget {
   websiteName: string;
@@ -162,6 +163,23 @@ function SourceRowDetailed({
                 Verified
               </span>
             )}
+            {formatLatency(source.responseTimeMs) && (
+              <span
+                className={cn(
+                  'text-[9px] font-bold px-1.5 py-0.5 rounded-md border shrink-0',
+                  rank === 1
+                    ? 'bg-[#e8b86d]/15 text-[#e8b86d] border-[#e8b86d]/25'
+                    : 'bg-white/[0.04] text-white/45 border-white/10'
+                )}
+              >
+                {formatLatency(source.responseTimeMs)}
+              </span>
+            )}
+            {source.responseTimeMs == null && source.reachable === false && (
+              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-red-500/10 text-red-300/80 border border-red-500/20 shrink-0">
+                Slow / offline
+              </span>
+            )}
           </div>
           <p className="text-[11px] sm:text-xs text-white/40 mb-2 truncate">{hostname}</p>
           <div className="flex flex-wrap gap-1.5">
@@ -218,7 +236,7 @@ export function StreamingSourcesPanel({
       <div>
         <h3 className="font-display text-xl font-bold text-white">Available on your sites</h3>
         <p className="text-sm text-white/45 mt-1">
-          Top {visible.length} of {sources.length} category-matched {sources.length === 1 ? 'site' : 'sites'} · priority order
+          Top {visible.length} of {sources.length} category-matched {sources.length === 1 ? 'site' : 'sites'} · fastest sites first
         </p>
       </div>
 

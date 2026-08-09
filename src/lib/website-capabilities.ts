@@ -45,7 +45,11 @@ export function buildWebsiteSearchUrl(website: Website, title: string): string {
   return `${base}/search?q=${encodeURIComponent(title)}`;
 }
 
-export function websiteToStreamingSource(website: Website, title: string): StreamingSource {
+export function websiteToStreamingSource(
+  website: Website,
+  title: string,
+  responseTimeMs?: number | null
+): StreamingSource {
   const qualities = inferWebsiteQualities(website);
   const languages: Language[] =
     website.languages.length > 0 ? website.languages : (['english', 'multi-audio'] as Language[]);
@@ -59,5 +63,26 @@ export function websiteToStreamingSource(website: Website, title: string): Strea
     subtitles: ['english'],
     quality: qualities,
     verified: website.healthStatus === 'healthy',
+    responseTimeMs: responseTimeMs ?? null,
+    reachable: responseTimeMs != null,
   };
+}
+
+/** Sort sources fastest-first; unreachable sites sink to the bottom (admin priority as tie-breaker). */
+export function sortSourcesBySpeed(
+  sources: StreamingSource[],
+  priorityIndex: Map<string, number>
+): StreamingSource[] {
+  return [...sources].sort((a, b) => {
+    const aMs = a.responseTimeMs ?? Number.POSITIVE_INFINITY;
+    const bMs = b.responseTimeMs ?? Number.POSITIVE_INFINITY;
+    if (aMs !== bMs) return aMs - bMs;
+    return (priorityIndex.get(a.websiteId) ?? 999) - (priorityIndex.get(b.websiteId) ?? 999);
+  });
+}
+
+export function buildPriorityIndex(websites: Website[]): Map<string, number> {
+  const map = new Map<string, number>();
+  websites.forEach((w, i) => map.set(w.id, i));
+  return map;
 }

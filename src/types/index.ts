@@ -117,6 +117,9 @@ export interface StreamingSource {
   subtitles: SubtitleLanguage[];
   quality: Quality[];
   verified: boolean;
+  /** Live probe latency in ms — lower is faster; null if unreachable. */
+  responseTimeMs?: number | null;
+  reachable?: boolean;
 }
 
 export interface SearchResult {

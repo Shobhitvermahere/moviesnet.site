@@ -5,8 +5,9 @@ import type { SearchResult, SearchFilters, SearchResponse, Website, Language, Su
 import { getPublicWebsites, addSearchQuery, getWebsiteById } from './db';
 import { cache } from './cache';
 import { findClosestMatch, resolveMoviePoster, slugify } from './utils';
-import { websiteToStreamingSource, websitesForCategory } from './website-capabilities';
+import { websiteToStreamingSource, websitesForCategory, sortSourcesBySpeed, buildPriorityIndex } from './website-capabilities';
 import { resolveWebsiteLogoUrl } from './website-logo';
+import { probeWebsitesLatency } from './website-latency';
 
 // Search dictionary for spell correction
 const COMMON_TITLES = [
@@ -52,7 +53,7 @@ export async function executeSearch(
   const normalizedQ = normalizeQuery(query);
 
   // Check cache first
-  const cacheKey = `search-v8:${normalizedQ}:${filters.imdbId || ''}:${JSON.stringify(filters)}:${page}:${pageSize}`;
+  const cacheKey = `search-v9:${normalizedQ}:${filters.imdbId || ''}:${JSON.stringify(filters)}:${page}:${pageSize}`;
   const cached = cache.get<SearchResponse>(cacheKey);
   if (cached) {
     return cached;
@@ -79,23 +80,27 @@ export async function executeSearch(
   }
 
   const websitesSearched = websites.length;
+  const priorityIndex = buildPriorityIndex(websites);
 
-  // ---------------------------------------------------------------------------
-  // 1. Fetch Verified TMDB Authoritative Metadata
-  // ---------------------------------------------------------------------------
-  const verifiedMediaList = await fetchAuthoritativeMetadata(
-    normalizedQ,
-    filters.category,
-    filters.imdbId,
-    filters.posterHint
-  );
+  // Probe site speed in parallel with metadata fetch
+  const [verifiedMediaList, latencyMap] = await Promise.all([
+    fetchAuthoritativeMetadata(
+      normalizedQ,
+      filters.category,
+      filters.imdbId,
+      filters.posterHint
+    ),
+    probeWebsitesLatency(websites),
+  ]);
 
   let allResults: SearchResult[] = [];
 
   if (verifiedMediaList.length > 0) {
     for (let mIdx = 0; mIdx < verifiedMediaList.length; mIdx++) {
       const media = verifiedMediaList[mIdx];
-      allResults.push(buildUnifiedResult(media, websites, mIdx, filters.category, filters.posterHint));
+      allResults.push(
+        buildUnifiedResult(media, websites, mIdx, filters.category, filters.posterHint, latencyMap, priorityIndex)
+      );
     }
   }
 
@@ -106,22 +111,23 @@ export async function executeSearch(
       const item = mediaItems[mIdx];
       const category = filters.category || 'movies';
       const relevantWebsites = websitesForCategory(websites, category);
-      const sources = relevantWebsites.map((w) => websiteToStreamingSource(w, item.title));
-      const primarySite = relevantWebsites[0];
+      const sources = sortSourcesBySpeed(
+        relevantWebsites.map((w) =>
+          websiteToStreamingSource(w, item.title, latencyMap.get(w.id) ?? null)
+        ),
+        priorityIndex
+      );
+      const primary = sources[0];
       const poster = item.poster || resolveMoviePoster(item.title, category, mIdx);
 
       allResults.push({
         id: `fallback-${mIdx}-${slugify(item.title)}`,
         title: item.title,
         poster,
-        websiteId: primarySite?.id || 'unknown',
-        websiteName: primarySite?.name || 'Unknown',
-        websiteLogo: primarySite?.logoUrl
-          ? resolveWebsiteLogoUrl(primarySite.homepageUrl, primarySite.logoUrl)
-          : '',
-        url: primarySite?.searchUrl
-          ? primarySite.searchUrl.replace('{query}', encodeURIComponent(item.title))
-          : `${primarySite?.homepageUrl || '#'}/search?q=${encodeURIComponent(item.title)}`,
+        websiteId: primary?.websiteId || 'unknown',
+        websiteName: primary?.websiteName || 'Unknown',
+        websiteLogo: primary?.websiteLogo || '',
+        url: primary?.url || '#',
         sources,
         languages: aggregateLanguages(sources),
         subtitles: ['english'] as SubtitleLanguage[],
@@ -333,11 +339,18 @@ function buildUnifiedResult(
   websites: Website[],
   mIdx: number,
   filterCategory?: string,
-  posterHint?: string
+  posterHint?: string,
+  latencyMap: Map<string, number | null> = new Map(),
+  priorityIndex: Map<string, number> = new Map()
 ): SearchResult {
   const category = media.category || filterCategory || 'movies';
   const relevantWebsites = websitesForCategory(websites, category);
-  const sources = relevantWebsites.map((w) => websiteToStreamingSource(w, media.title));
+  const sources = sortSourcesBySpeed(
+    relevantWebsites.map((w) =>
+      websiteToStreamingSource(w, media.title, latencyMap.get(w.id) ?? null)
+    ),
+    priorityIndex
+  );
   const primary = sources[0];
   const poster = media.poster || posterHint || resolveMoviePoster(media.title, category, mIdx);
 
@@ -459,6 +472,12 @@ function sortResults(results: SearchResult[], sort: string): SearchResult[] {
     }
     case 'most-sources':
       return results.sort((a, b) => (b.sources?.length || 0) - (a.sources?.length || 0));
+    case 'fastest':
+      return results.sort((a, b) => {
+        const aMs = a.sources?.[0]?.responseTimeMs ?? Number.POSITIVE_INFINITY;
+        const bMs = b.sources?.[0]?.responseTimeMs ?? Number.POSITIVE_INFINITY;
+        return aMs - bMs;
+      });
     case 'popularity':
     default:
       return results.sort((a, b) => (b.rating || 0) - (a.rating || 0));

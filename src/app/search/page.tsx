@@ -43,6 +43,7 @@ const STATUS_OPTIONS: { value: ContentStatus; label: string }[] = [
 
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: 'popularity', label: 'Popularity' },
+  { value: 'fastest', label: 'Fastest Site' },
   { value: 'latest', label: 'Latest' },
   { value: 'highest-quality', label: 'Highest Quality' },
   { value: 'most-sources', label: 'Most Sources' },
