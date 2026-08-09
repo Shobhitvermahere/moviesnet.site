@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { formatNumber, DIRECTORY_CATEGORIES, cn } from '@/lib/utils';
+import { formatNumber, DIRECTORY_CATEGORIES, cn, siteMatchesDirectoryCategory, countSitesInDirectoryCategory, type DirectoryCategoryId } from '@/lib/utils';
 import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
 import { WebsiteLogo } from '@/components/WebsiteLogo';
 import { buildSearchUrlFromSuggestion } from '@/lib/search-navigation';
@@ -93,7 +93,7 @@ function useTypingAnimation(phrases: string[], typingSpeed = 42, deletingSpeed =
 export default function HomePage() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState<ContentCategory>('movies');
+  const [activeCategory, setActiveCategory] = useState<DirectoryCategoryId>('movies-tv');
   const [siteSearchQuery, setSiteSearchQuery] = useState('');
   const [websites, setWebsites] = useState<SiteData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -135,7 +135,7 @@ export default function HomePage() {
 
   const filteredWebsites = useMemo(() => {
     return websites.filter((site) => {
-      const categoryMatch = site.categories.includes(activeCategory);
+      const categoryMatch = siteMatchesDirectoryCategory(site.categories, activeCategory);
       if (!categoryMatch) return false;
       if (!siteSearchQuery.trim()) return true;
 
@@ -151,7 +151,7 @@ export default function HomePage() {
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     DIRECTORY_CATEGORIES.forEach((cat) => {
-      counts[cat.id] = websites.filter((w) => w.categories.includes(cat.slug)).length;
+      counts[cat.id] = countSitesInDirectoryCategory(websites, cat.id);
     });
     return counts;
   }, [websites]);
@@ -348,7 +348,7 @@ export default function HomePage() {
                   <button
                     key={cat.id}
                     type="button"
-                    onClick={() => setActiveCategory(cat.slug)}
+                    onClick={() => setActiveCategory(cat.id)}
                     className={cn(
                       'segment-toggle-btn px-3.5 py-2 text-sm whitespace-nowrap',
                       isActive ? 'text-[#1a1208]' : 'text-white/55 hover:text-white'
@@ -407,7 +407,7 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={() => {
-                  setActiveCategory('movies');
+                  setActiveCategory('movies-tv');
                   setSiteSearchQuery('');
                 }}
                 className="text-sm font-semibold text-[#e8b86d] hover:underline"

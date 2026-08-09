@@ -2,6 +2,7 @@
 // AllSiteHub Search — Utility Functions
 // ============================================================================
 import { type ClassValue, clsx } from 'clsx';
+import type { ContentCategory } from '@/types';
 
 export function cn(...inputs: ClassValue[]) {
   return clsx(inputs);
@@ -164,11 +165,36 @@ export const CATEGORIES = [
   { slug: 'live-tv' as const, name: 'Live TV', icon: '📡', gradient: 'from-cyan-500 to-blue-600', description: 'Live IPTV broadcasting and continuous television streams' },
 ] as const;
 
-export const DIRECTORY_CATEGORIES = CATEGORIES.map((cat) => ({
-  id: cat.slug,
-  label: cat.name,
-  slug: cat.slug,
-}));
+export type DirectoryCategoryId = 'movies-tv' | 'anime' | 'manga' | 'sports' | 'live-tv';
+
+export const DIRECTORY_CATEGORIES: {
+  id: DirectoryCategoryId;
+  label: string;
+  slug: DirectoryCategoryId;
+  matchSlugs: ContentCategory[];
+}[] = [
+  { id: 'movies-tv', label: 'Movies & TV', slug: 'movies-tv', matchSlugs: ['movies', 'tv-shows'] },
+  { id: 'anime', label: 'Anime', slug: 'anime', matchSlugs: ['anime'] },
+  { id: 'manga', label: 'Manga', slug: 'manga', matchSlugs: ['manga'] },
+  { id: 'sports', label: 'Sports', slug: 'sports', matchSlugs: ['sports'] },
+  { id: 'live-tv', label: 'Live TV', slug: 'live-tv', matchSlugs: ['live-tv'] },
+];
+
+export function siteMatchesDirectoryCategory(
+  categories: ContentCategory[],
+  directoryId: DirectoryCategoryId
+): boolean {
+  const def = DIRECTORY_CATEGORIES.find((c) => c.id === directoryId);
+  if (!def) return false;
+  return def.matchSlugs.some((slug) => categories.includes(slug));
+}
+
+export function countSitesInDirectoryCategory(
+  websites: { categories: ContentCategory[] }[],
+  directoryId: DirectoryCategoryId
+): number {
+  return websites.filter((w) => siteMatchesDirectoryCategory(w.categories, directoryId)).length;
+}
 
 // Quality badge colors
 export const QUALITY_COLORS: Record<string, string> = {
