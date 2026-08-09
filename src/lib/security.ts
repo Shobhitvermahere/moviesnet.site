@@ -20,8 +20,11 @@ const BLOCKED_PATHS = [
   /^\/phpmyadmin/i,
   /^\/admin\.php/i,
   /^\/xmlrpc\.php/i,
-  /^\/\.well-known\/security\.txt$/i,
 ];
+
+export function sanitizeText(input: string, maxLength: number): string {
+  return input.replace(/[\x00-\x1F\x7F]/g, '').trim().slice(0, maxLength);
+}
 
 export function getClientIp(request: NextRequest): string {
   const forwarded = request.headers.get('x-forwarded-for');

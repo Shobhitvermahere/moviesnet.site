@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { isSafePublicUrl } from '@/lib/url-validation';
 import { MoviesNetLogo } from '@/components/brand/MoviesNetLogo';
 
 const DISCORD_URL = 'https://discord.gg/ATGRvAjBr';
@@ -28,6 +29,7 @@ export function Header() {
   const [honeypot, setHoneypot] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [requestError, setRequestError] = useState('');
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -88,6 +90,13 @@ export function Header() {
     e.preventDefault();
     if (!siteName.trim() || !siteUrl.trim()) return;
 
+    const urlCheck = isSafePublicUrl(siteUrl);
+    if (!urlCheck.ok) {
+      setRequestError(urlCheck.error);
+      return;
+    }
+    setRequestError('');
+
     setIsSubmitting(true);
     try {
       const res = await fetch('/api/site-requests', {
@@ -95,13 +104,16 @@ export function Header() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           siteName: siteName.trim(),
-          siteUrl: siteUrl.trim(),
+          siteUrl: urlCheck.url,
           category: siteCategory,
           notes: requestNotes.trim(),
           website: honeypot,
         }),
       });
-      if (!res.ok) throw new Error('Failed');
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Failed');
+      }
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
@@ -111,8 +123,8 @@ export function Header() {
         setSiteCategory('movies');
         setRequestNotes('');
       }, 2200);
-    } catch {
-      alert('Could not submit request. Please try again.');
+    } catch (err) {
+      setRequestError(err instanceof Error ? err.message : 'Could not submit request. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -567,6 +579,12 @@ export function Header() {
                       className="w-full px-4 py-2.5 rounded-xl bg-white/[0.06] border border-white/15 text-white text-xs font-medium placeholder-white/40 outline-none focus:border-purple-400 transition-all resize-none"
                     />
                   </div>
+
+                  {requestError && (
+                    <p className="text-xs font-semibold text-red-400/90" role="alert">
+                      {requestError}
+                    </p>
+                  )}
 
                   <div className="pt-2 flex items-center justify-end gap-3">
                     <button

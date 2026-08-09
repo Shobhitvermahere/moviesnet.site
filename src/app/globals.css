@@ -41,6 +41,8 @@
   --gradient-primary: linear-gradient(135deg, #8b5cf6, #3b82f6, #06b6d4);
   --gradient-accent: linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6);
   --gradient-subtle: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.35s var(--ease-smooth);
 }
 
 @media (max-width: 767px) {
@@ -81,6 +83,22 @@
   touch-action: manipulation;
   text-decoration: none;
   color: inherit;
+  will-change: transform;
+  transition:
+    transform var(--transition-smooth),
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow var(--transition-smooth);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-directory-card:hover {
+    transform: translateY(-4px) translateZ(0);
+    box-shadow:
+      0 14px 44px rgba(0, 0, 0, 0.38),
+      0 0 0 1px rgba(232, 184, 109, 0.1);
+    background-color: rgba(14, 18, 28, 0.85);
+  }
 }
 
 .home-content-below > section {
@@ -383,6 +401,7 @@ body {
   border-radius: 0.5rem;
   background: #e8b86d;
   box-shadow: 0 2px 12px rgba(232, 184, 109, 0.25);
+  will-change: transform;
 }
 
 .home-section-reveal {
@@ -418,6 +437,7 @@ body {
 
 .home-directory-card {
   min-width: 0;
+  contain: layout style;
 }
 
 .websites-filter-rail {
@@ -450,8 +470,18 @@ body {
   background: rgba(255, 255, 255, 0.03);
   font-size: 0.875rem;
   font-weight: 600;
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  transition:
+    border-color 0.25s var(--ease-smooth),
+    background 0.25s var(--ease-smooth),
+    color 0.25s var(--ease-smooth),
+    transform 0.2s var(--ease-smooth);
   -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-community-toggle:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .home-community-toggle:active {

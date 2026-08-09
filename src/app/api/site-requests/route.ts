@@ -8,8 +8,9 @@ import {
   getWebsites,
 } from '@/lib/db';
 import { requireAdmin } from '@/lib/api-auth';
-import { isHoneypotTriggered } from '@/lib/security';
+import { isHoneypotTriggered, sanitizeText } from '@/lib/security';
 import { enforceRateLimit } from '@/lib/api-rate-limit';
+import { isSafePublicUrl } from '@/lib/url-validation';
 import type { ContentCategory } from '@/types';
 
 function mapRequestCategory(category: string): ContentCategory[] {
@@ -69,7 +70,11 @@ export async function POST(request: NextRequest) {
       const req = requests.find((r) => r.id === id);
       if (!req) return NextResponse.json({ error: 'Request not found' }, { status: 404 });
 
-      const homepage = req.siteUrl.replace(/\/$/, '');
+      const urlCheck = isSafePublicUrl(req.siteUrl);
+      if (!urlCheck.ok) {
+        return NextResponse.json({ error: urlCheck.error }, { status: 400 });
+      }
+      const homepage = urlCheck.url;
       const domain = homepage.replace(/^https?:\/\//, '').split('/')[0];
       const slug = slugify(req.siteName) || slugify(domain);
       const maxPriority = Math.max(0, ...getWebsites().map((w) => w.priority));
@@ -138,15 +143,22 @@ export async function POST(request: NextRequest) {
 
     // Public submission
     const { siteName, siteUrl, category, notes } = body;
-    if (!siteName?.trim() || !siteUrl?.trim()) {
-      return NextResponse.json({ error: 'Site name and URL are required' }, { status: 400 });
+    const name = sanitizeText(String(siteName ?? ''), 120);
+    const noteText = sanitizeText(String(notes ?? ''), 500);
+    if (!name) {
+      return NextResponse.json({ error: 'Site name is required' }, { status: 400 });
+    }
+
+    const urlCheck = isSafePublicUrl(String(siteUrl ?? ''));
+    if (!urlCheck.ok) {
+      return NextResponse.json({ error: urlCheck.error }, { status: 400 });
     }
 
     const siteRequest = createSiteRequest({
-      siteName: siteName.trim(),
-      siteUrl: siteUrl.trim(),
+      siteName: name,
+      siteUrl: urlCheck.url,
       category: category || 'movies',
-      notes: notes?.trim() || '',
+      notes: noteText,
     });
 
     return NextResponse.json({ success: true, request: siteRequest }, { status: 201 });

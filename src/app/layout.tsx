@@ -25,6 +25,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://moviesnet.site'),
   title: {
     default: 'MoviesNet — Search Once. Find Everywhere.',
     template: '%s | MoviesNet',

@@ -7,18 +7,11 @@ import { formatNumber, DIRECTORY_CATEGORIES, cn, siteMatchesDirectoryCategory, c
 import { SearchSuggestionsSlider } from '@/components/search/SearchSuggestionsSlider';
 import { WebsiteLogo } from '@/components/WebsiteLogo';
 import { buildSearchUrlFromSuggestion } from '@/lib/search-navigation';
+import { SCROLL_REVEAL, STAGGER_GRID, STAGGER_CARD, FAQ_CONTENT } from '@/lib/motion';
 import type { ContentCategory } from '@/types';
 
 const DISCORD_URL = 'https://discord.gg/ATGRvAjBr';
 const REDDIT_URL = 'https://www.reddit.com/user/allsitehub/';
-
-const MOTION_EASE = [0.16, 1, 0.3, 1] as const;
-const SCROLL_REVEAL = {
-  initial: { opacity: 0, y: 28 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-48px' as const },
-  transition: { duration: 0.55, ease: MOTION_EASE },
-};
 
 const SEARCH_PLACEHOLDERS = [
   'Search movies across every indexed site…',
@@ -418,18 +411,19 @@ export default function HomePage() {
           ) : (
             <motion.div
               key={activeCategory}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.32, ease: MOTION_EASE }}
+              variants={STAGGER_GRID}
+              initial="hidden"
+              animate="show"
               className="home-directory-grid"
             >
               {filteredWebsites.map((site) => (
-                <a
+                <motion.a
                   key={site.id}
                   href={site.homepageUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="home-directory-card directory-card-link group flex flex-col rounded-2xl border border-white/10 bg-[#0a0d14]/55 hover:border-[#e8b86d]/30 active:scale-[0.99] transition-[transform,border-color,background-color] duration-200 p-4 sm:p-5"
+                  variants={STAGGER_CARD}
+                  className="home-directory-card directory-card-link gpu-smooth group flex flex-col rounded-2xl border border-white/10 bg-[#0a0d14]/55 hover:border-[#e8b86d]/30 active:scale-[0.99] p-4 sm:p-5"
                 >
                   <div className="flex items-start gap-3 mb-3 min-w-0">
                     <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center p-1.5 shrink-0 overflow-hidden">
@@ -473,7 +467,7 @@ export default function HomePage() {
                     <span>{formatNumber(site.totalIndexed || 0)} indexed</span>
                     <span className="text-emerald-400/90">Online</span>
                   </div>
-                </a>
+                </motion.a>
               ))}
             </motion.div>
           )}
@@ -514,10 +508,7 @@ export default function HomePage() {
                   <AnimatePresence initial={false}>
                     {open && (
                       <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.22 }}
+                        {...FAQ_CONTENT}
                         className="overflow-hidden"
                       >
                         <p className="pb-5 text-sm text-white/55 leading-relaxed pr-8">{faq.a}</p>

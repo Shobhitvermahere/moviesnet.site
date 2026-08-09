@@ -1,0 +1,5 @@
+Contact: mailto:security@moviesnet.site
+Preferred-Languages: en
+Canonical: https://moviesnet.site/.well-known/security.txt
+
+# Report vulnerabilities responsibly. Do not test against production without permission.
